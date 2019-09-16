@@ -15,7 +15,7 @@ If you are not yet an Ascend customer, you can
 Install the Ascend SDK using `pip` directly from this repo:
 
 ```sh
-pip install git+https://github.com/ascend-io/ascend-python-sdk.git
+pip install git+https://github.com/ascend-io/sdk-python.git
 ```
 
 ## Authorization
