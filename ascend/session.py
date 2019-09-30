@@ -57,8 +57,10 @@ class Session:
     def refresh_token_exchange(self):
         resp = self.refresh_session.post(self.base_uri + "authn/tokenExchange", verify=self.verify)
         resp.raise_for_status()
-        respJson = resp.Json()
+        respJson = resp.json()
         self.access_token, self.refresh_token = respJson["data"]["access_token"], respJson["data"]["refresh_token"]
+        self.bearer_session.auth = BearerAuth(self.access_token)
+        self.refresh_session.auth = RefreshAuth(self.refresh_token)
 
     def get(self, endpoint, query=None):
         """

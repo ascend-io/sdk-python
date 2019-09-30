@@ -107,7 +107,7 @@ class RefreshAuth(AuthBase):
         return self.add_refresh_token_header(req)
 
     def add_refresh_token_header(self, req):
-        header = {'Authorization' : 'RefreshToken'}
+        header = {'Authorization' : 'RefreshToken ' + self.refresh_token}
         req.headers.update(header)
 
         return req
