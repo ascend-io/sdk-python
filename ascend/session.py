@@ -43,6 +43,7 @@ class Session:
         self.init_token_exchange()
 
         self.bearer_session = requests.session()
+        self.bearer_session.headers["Ascend-Service-Name"] = "sdk"
         self.bearer_session.auth = BearerAuth(self.access_token)
 
         self.refresh_session = requests.session()

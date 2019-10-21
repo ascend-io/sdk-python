@@ -7,3 +7,4 @@ pyvenv.cfg
 share/
 .DS_Store
 /docs/html
+.idea/
