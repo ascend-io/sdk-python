@@ -270,9 +270,15 @@ class DataFeed:
         """
         self.session.delete(self.prefix_base)
 
-    def get_records(self):
+    def get_records(self, offset=0, limit=0):
         """
         Get the records of data from the Data Feed.
+
+        # Parameters
+        offset (int):
+            index at which records will start streaming from
+        limit (int):
+            maximum number of records that should be returned
 
         # Returns
         Iterator<dict>:
@@ -280,9 +286,20 @@ class DataFeed:
             Can be read into a Pandas DataFrame using `Pandas.DataFrame.from_records()`.
 
         # Raises
-        HTTPError: on API errors
+        ValueError: on invalid query parameter inputs
+        HTTPError:  on API errors
         """
-        return self.session.stream(self.prefix + "/records-stream")
+        if offset < 0:
+            raise ValueError("Offset must be a non-negative value.")
+        if limit < 0:
+            raise ValueError("Limit must be a non-negative value.")
+        query_params = {}
+        if offset > 0:
+            query_params["offset"] = offset
+        if limit > 0:
+            query_params["limit"] = limit
+            
+        return self.session.stream(self.prefix + "/records-stream", query=query_params)
 
     def __repr__(self):
         return '<{2}.{3} {0}.{1}>'.format(
@@ -352,9 +369,15 @@ class Component:
         """
         self.session.delete(self.prefix_base)
 
-    def get_records(self):
+    def get_records(self, offset=0, limit=0):
         """
         Get the records of data produced by the Component.
+
+        # Parameters
+        offset (int):
+            index at which records will start streaming from
+        limit (int):
+            maximum number of records that should be returned
 
         # Returns
         Iterator<dict>:
@@ -362,10 +385,21 @@ class Component:
             Can be read into a Pandas DataFrame using `Pandas.DataFrame.from_records()`.
 
         # Raises
-        HTTPError: on API errors
+        ValueError: on invalid query parameter inputs or if record streaming is unavailable for this component
+        HTTPError:  on API errors
         """
         if self.component_type not in ['view', 'source', 'sub', 'pub']:
             raise ValueError("Not able to get records from a {}.".format(display_type_name(self.component_type)))
+
+        if offset < 0:
+            raise ValueError("Offset must be a non-negative value.")
+        if limit < 0:
+            raise ValueError("Limit must be a non-negative value.")
+        query_params = {}
+        if offset > 0:
+            query_params["offset"] = offset
+        if limit > 0:
+            query_params["limit"] = limit
 
         return self.session.stream(self.prefix + "/records-stream")
 

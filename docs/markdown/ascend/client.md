@@ -76,14 +76,14 @@ __Raises__
 
 ### get_data_service
 ```python
-Client.get_data_service(self, id: str) -> ascend.model.DataService
+Client.get_data_service(self, data_service_id: str) -> ascend.model.DataService
 ```
 
 Get a Data Service.
 
 __Parameters__
 
-- __id (str)__: the ID of the Data Service
+- __data_service_id (str)__: the ID of the Data Service
 
 __Returns__
 
@@ -95,7 +95,7 @@ __Raises__
 
 ### get_dataflow
 ```python
-Client.get_dataflow(self, dataservice_id: str, dataflow_id: str) -> ascend.model.Dataflow
+Client.get_dataflow(self, data_service_id: str, dataflow_id: str) -> ascend.model.Dataflow
 ```
 
 Get a Dataflow within a Data Service.
@@ -115,7 +115,7 @@ __Raises__
 
 ### get_component
 ```python
-Client.get_component(self, dataservice_id: str, dataflow_id: str, component_id: str) -> ascend.model.Component
+Client.get_component(self, data_service_id: str, dataflow_id: str, component_id: str) -> ascend.model.Component
 ```
 
 Get a Component within a Dataflow.
@@ -197,6 +197,22 @@ __Parameters__
     verify the server's SSL certificate
     (default is `True`)
 
+### delete
+```python
+Session.delete(self, endpoint)
+```
+
+Make a DELETE request
+
+__Parameters__
+
+- __endpoint (str)__:
+    the partial URL of the request (does not include hostname or API prefix)
+
+__Returns__
+
+`int`: the HTTP response code status
+
 ### get
 ```python
 Session.get(self, endpoint, query=None)
@@ -214,6 +230,42 @@ __Parameters__
 __Returns__
 
 `dict`: the parsed JSON response
+
+### patch
+```python
+Session.patch(self, endpoint, data=None)
+```
+
+Make a PATCH request.
+
+__Parameters__
+
+- __endpoint (str)__:
+    the partial URL of the request (does not include hostname or API prefix)
+- __data (dict)__:
+    JSON to send in the request body
+
+__Returns__
+
+`int`: the HTTP response status code
+
+### post
+```python
+Session.post(self, endpoint, data=None)
+```
+
+Make a POST request.
+
+__Parameters__
+
+- __endpoint (str)__:
+    the partial URL of the request (does not include hostname or API prefix)
+- __data (dict)__:
+    JSON to send in the request body
+
+__Returns__
+
+`int`: the HTTP response status code
 
 ### stream
 ```python
