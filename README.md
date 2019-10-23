@@ -1,14 +1,10 @@
 # Ascend SDK for Python
 
 This repo contains the Ascend SDK for Python.
-With this SDK, you can
-read data from Ascend Components and Data Feeds,
-and examine some Dataflow metadata.
+With this SDK, you can operate on Ascend resources (i.e. Data Feeds, Data Services, Dataflows, Read Connectors, Transforms, and Write Connectors).
+The SDK supports create/read/update/delete operations on all aformentioned resources.
 
-Future versions of the SDK will permit full read/write access to Ascend Dataflows.
-
-If you are not yet an Ascend customer, you can
-[request a trial](https://www.ascend.io/get-started/).
+If you are not yet an Ascend customer, you can [request a trial](https://www.ascend.io/get-started/).
 
 ## Installation
 
@@ -20,11 +16,23 @@ pip install git+https://github.com/ascend-io/sdk-python.git
 
 ## Authorization
 
-Using the SDK requires that you create a Service Account in an Ascend Data Service
-to give an SDK Client access.
+### Developer Access
+
+Developer Access Keys allow user access to all data integrations.
+These keys inherit the permission of the user that created them.
+
+More documentation around deverloper access keys can be found [here](https://developer.ascend.io/docs/developer-keys).
+
+### Service Account Access
+
+For third party and application level integration, we encourage the use of service accounts to isolate access points and permission levels.
+You should create a Service Account in an Ascend Data Service to obtain SDK Client access.
+Service accounts are currently restricted to read-only access for all resources.
 
 * To access Data Feeds, the Service Account will need at least `Data Feed Read Only` access.
 * To access Dataflow metadata and Component data, the Service Account will need at least `Read Only` access.
+
+More documentation around service accounts can be found [here](https://developer.ascend.io/docs/service-accounts).
 
 ## Documentation
 

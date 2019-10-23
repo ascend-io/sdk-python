@@ -5,11 +5,11 @@ The Session module encapsulates an HTTP session, and adds authentication.
 All API requests pass through the Session.
 """
 
-from ascend.auth import AwsV4Auth,BearerAuth,RefreshAuth
+from ascend.auth import AwsV4Auth, BearerAuth, RefreshAuth
 
-import io
 import json
 import requests
+
 
 class Session:
     """
@@ -27,6 +27,7 @@ class Session:
         verify the server's SSL certificate
         (default is `True`)
     """
+
     def __init__(self, environment_hostname, access_key, secret_key, verify=True):
         if not access_key:
             raise ValueError("Missing api access key")
@@ -63,6 +64,36 @@ class Session:
         self.bearer_session.auth = BearerAuth(self.access_token)
         self.refresh_session.auth = RefreshAuth(self.refresh_token)
 
+    def exchange_tokens(self):
+        if self.refresh_token:
+            self.refresh_token_exchange()
+        else:
+            self.init_token_exchange()
+
+    def delete(self, endpoint):
+        """
+        Make a DELETE request
+
+        # Parameters
+        endpoint (str):
+            the partial URL of the request (does not include hostname or API prefix)
+
+        # Returns
+        int: the HTTP response code status
+        """
+        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
+
+        def delete_with_bearer():
+            resp = self.bearer_session.delete(api_url, verify=self.verify)
+            resp.raise_for_status()
+            return resp.status_code
+
+        try:
+            return delete_with_bearer()
+        except:
+            self.exchange_tokens()
+            return delete_with_bearer()
+
     def get(self, endpoint, query=None):
         """
         Make a GET request.
@@ -86,13 +117,60 @@ class Session:
         try:
             return get_with_bearer()
         except:
-            if self.refresh_token:
-                self.refresh_token_exchange()
-            else:
-                self.init_token_exchange()
-
+            self.exchange_tokens()
             return get_with_bearer()
 
+    def patch(self, endpoint, data=None):
+        """
+        Make a PATCH request.
+
+        # Parameters
+        endpoint (str):
+            the partial URL of the request (does not include hostname or API prefix)
+        data (dict):
+            JSON to send in the request body
+
+        # Returns
+        int: the HTTP response status code
+        """
+        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
+
+        def patch_with_bearer():
+            resp = self.bearer_session.patch(api_url, data=json.dumps(data), verify=self.verify)
+            resp.raise_for_status()
+            return resp.status_code
+
+        try:
+            return patch_with_bearer()
+        except:
+            self.exchange_tokens()
+            return patch_with_bearer()
+
+    def post(self, endpoint, data=None):
+        """
+        Make a POST request.
+
+        # Parameters
+        endpoint (str):
+            the partial URL of the request (does not include hostname or API prefix)
+        data (dict):
+            JSON to send in the request body
+
+        # Returns
+        int: the HTTP response status code
+        """
+        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
+
+        def post_with_bearer():
+            resp = self.bearer_session.post(api_url, data=json.dumps(data), verify=self.verify)
+            resp.raise_for_status()
+            return resp.status_code
+
+        try:
+            return post_with_bearer()
+        except:
+            self.exchange_tokens()
+            return post_with_bearer()
 
     def stream(self, endpoint, query=None):
         """
@@ -118,9 +196,5 @@ class Session:
         try:
             return stream_with_bearer()
         except:
-            if self.refresh_token:
-                self.refresh_token_exchange()
-            else:
-                self.init_token_exchange()
-
+            self.exchange_tokens()
             return stream_with_bearer()

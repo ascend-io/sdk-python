@@ -5,9 +5,8 @@ The Client module of the Ascend SDK manages an API connection to
 an Ascend environment.
 """
 
-from ascend.model import DataService, Dataflow, Component, DataFeed
+from ascend.model import Component, DataFeed, Dataflow, DataService
 from ascend.session import Session
-from typing import List
 from urllib.error import HTTPError
 
 
@@ -51,7 +50,7 @@ class Client(object):
     """
 
     def __init__(self, environment_hostname, access_key=None, secret_key=None, verify=True):
-        if access_key is not None   and secret_key is not None:
+        if access_key is not None and secret_key is not None:
             self.session = Session(environment_hostname, access_key, secret_key, verify)
 
     def get_session(self):
@@ -79,15 +78,15 @@ class Client(object):
             return services
         return list(map(
             lambda s:
-                DataService(s['id'], raw_json=s, session=self.session),
+            DataService(s['id'], raw_json=s, session=self.session),
             services))
 
-    def get_data_service(self, id: str) -> DataService:
+    def get_data_service(self, data_service_id: str) -> DataService:
         """
         Get a Data Service.
 
         # Parameters
-        id (str): the ID of the Data Service
+        data_service_id (str): the ID of the Data Service
 
         # Returns
         ascend.model.DataService: the Data Service
@@ -95,9 +94,9 @@ class Client(object):
         # Raises
         HTTPError: for errors returned by API
         """
-        return DataService(id, session=self.session)
+        return DataService(data_service_id, session=self.session)
 
-    def get_dataflow(self, dataservice_id: str, dataflow_id: str) -> Dataflow:
+    def get_dataflow(self, data_service_id: str, dataflow_id: str) -> Dataflow:
         """
         Get a Dataflow within a Data Service.
 
@@ -111,9 +110,9 @@ class Client(object):
         # Raises
         HTTPError: for errors returned by API
         """
-        return Dataflow(dataservice_id, dataflow_id, session=self.session)
+        return Dataflow(data_service_id, dataflow_id, session=self.session)
 
-    def get_component(self, dataservice_id: str, dataflow_id: str, component_id: str) -> Component:
+    def get_component(self, data_service_id: str, dataflow_id: str, component_id: str) -> Component:
         """
         Get a Component within a Dataflow.
 
@@ -128,9 +127,9 @@ class Client(object):
         # Raises
         HTTPError: for errors returned by API
         """
-        return Component(dataservice_id, dataflow_id, component_id, session=self.session)
+        return Component(data_service_id, dataflow_id, component_id, session=self.session)
 
-    def list_data_feeds(self, source_data_service_id = None, raw=False):
+    def list_data_feeds(self, source_data_service_id=None, raw=False):
         """
         List the Data Feeds which are available to the Client's Service Account.
 
@@ -148,7 +147,7 @@ class Client(object):
         if source_data_service_id is not None:
             pub_list = list(filter(
                 lambda pub:
-                    pub['fromOrgId'] == source_data_service_id,
+                pub['fromOrgId'] == source_data_service_id,
                 pub_list
             ))
         if raw:
@@ -156,7 +155,7 @@ class Client(object):
 
         return list(map(
             lambda pub:
-                DataFeed(pub['fromOrgId'], pub['id'], pub, self.session),
+            DataFeed(pub['fromOrgId'], pub['id'], pub, self.session),
             pub_list
         ))
 
@@ -175,8 +174,8 @@ class Client(object):
         """
         pub_list = self.list_data_feeds(data_service_id, raw=True)
         raw_matches = list(filter(
-            lambda pub:
-                pub['id'] == data_feed_id,
+            lambda p:
+            p['id'] == data_feed_id,
             pub_list
         ))
         if len(raw_matches) > 1:

@@ -8,7 +8,7 @@ The Access Keys and the token exchange algorithm conform to AWS V4 Auth,
 but the keys used will be generated and authenticated by Ascend, not AWS.
 """
 
-from ascend.util import create_signature_key, sign
+from ascend.util import create_signature_key
 from datetime import datetime
 from requests.auth import AuthBase
 from urllib.parse import quote, urlparse
@@ -38,8 +38,8 @@ class AwsV4Auth(AuthBase):
 
     def add_request_auth_headers(self, req):
         curr_timestamp = datetime.utcnow()
-        amz_timestamp = curr_timestamp.strftime(ISO8601_FORMAT) # Needed for x-amz-date header
-        date_timestamp = curr_timestamp.strftime(DATE_FORMAT) # Needed for Authorization header
+        amz_timestamp = curr_timestamp.strftime(ISO8601_FORMAT)  # Needed for x-amz-date header
+        date_timestamp = curr_timestamp.strftime(DATE_FORMAT)  # Needed for Authorization header
 
         # Step 1: Create a Canonical Request
         parsed_url = urlparse(req.url)
@@ -64,9 +64,15 @@ class AwsV4Auth(AuthBase):
 
         signed_headers = "host;x-amz-date"
 
-        body_hash = hashlib.sha256(("").encode("utf-8")).hexdigest()
+        body_hash = hashlib.sha256("".encode("utf-8")).hexdigest()
 
-        canonical_request = "{}\n{}\n{}\n{}\n{}\n{}".format(self.http_method, canonical_path, canonical_query, canonical_headers, signed_headers, body_hash)
+        canonical_request = "{}\n{}\n{}\n{}\n{}\n{}".format(
+            self.http_method,
+            canonical_path,
+            canonical_query,
+            canonical_headers,
+            signed_headers,
+            body_hash)
 
         # Step 2: Create a String to Sign
         scope = "{}/{}/{}/aws4_request".format(date_timestamp, SIGNED_REGION, SIGNED_SERVICE)
@@ -75,14 +81,20 @@ class AwsV4Auth(AuthBase):
 
         # Step 3: Calculate the Signature
         signing_key = create_signature_key(self.secret_key, date_timestamp, SIGNED_REGION, SIGNED_SERVICE)
-        signature = hmac.new(signing_key, (string_to_sign).encode('utf-8'), hashlib.sha256).hexdigest()
+        signature = hmac.new(signing_key, string_to_sign.encode('utf-8'), hashlib.sha256).hexdigest()
 
         # Step 4: Add the Signature to the HTTP Request
-        authz_header = "{} Credential={}/{}, SignedHeaders={}, Signature={}".format(HASHING_ALGORITHM, self.access_key, scope, signed_headers, signature)
+        authz_header = "{} Credential={}/{}, SignedHeaders={}, Signature={}".format(
+            HASHING_ALGORITHM,
+            self.access_key,
+            scope,
+            signed_headers,
+            signature)
         headers = {'X-Amz-Date': amz_timestamp, 'Authorization': authz_header}
         req.headers.update(headers)
 
         return req
+
 
 class BearerAuth(AuthBase):
 
@@ -93,10 +105,11 @@ class BearerAuth(AuthBase):
         return self.add_bearer_token_header(req)
 
     def add_bearer_token_header(self, req):
-        header = {'Authorization' : 'Bearer ' + self.access_token}
+        header = {'Authorization': 'Bearer ' + self.access_token}
         req.headers.update(header)
 
         return req
+
 
 class RefreshAuth(AuthBase):
 
@@ -107,7 +120,7 @@ class RefreshAuth(AuthBase):
         return self.add_refresh_token_header(req)
 
     def add_refresh_token_header(self, req):
-        header = {'Authorization' : 'RefreshToken ' + self.refresh_token}
+        header = {'Authorization': 'RefreshToken ' + self.refresh_token}
         req.headers.update(header)
 
         return req

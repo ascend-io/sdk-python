@@ -1,12 +1,4 @@
-"""
-Ascend Model module
-
-The Model module provides client-side representations of resources in
-Ascend, including Data Services, Dataflows, Data Feeds, and Components.
-"""
-
-from ascend.util import parse_component_type, type_displayname
-from urllib.error import HTTPError
+from ascend.util import parse_component_type, display_type_name
 
 
 class DataService:
@@ -30,33 +22,37 @@ class DataService:
     # Raises
     HTTPError: on API errors
     """
+
     def __init__(self, data_service_id, raw_json=None, session=None):
+        self.prefix_base = "organizations"
         self.data_service_id = data_service_id
         self.session = session
-        self.prefix = "organizations/{}".format(self.data_service_id)
+        self.prefix = "{}/{}".format(self.prefix_base, self.data_service_id)
 
-        if raw_json is None and session is not None:
-            raw_json = self.session.get(self.prefix) # to confirm access
+        if raw_json is not None:
+            self.raw_json = raw_json
+        elif raw_json is None and session is not None:
+            self.raw_json = self.session.get(self.prefix)  # to confirm access
 
-    def list_dataflows(self, raw=False):
+    def apply(self):
         """
-        List all the Dataflows in the Data Service which are accessible to the Client.
-
-        # Returns
-        List<Dataflow>: the Dataflows
+        Upserts this Data Service.
 
         # Raises
         HTTPError: on API errors
         """
-        raw_resp = self.session.get("{}/projects".format(self.prefix))
-        if raw:
-            return raw_resp
+        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
+        if resp_status_code < 200 or resp_status_code > 299:
+            self.session.patch(self.prefix, data=self.raw_json)
 
-        return list(map(
-            lambda df:
-                Dataflow(self.data_service_id, df['id'], raw_json=df, session=self.session),
-            raw_resp['data']
-        ))
+    def delete(self):
+        """
+        Deletes this Data Service.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        self.session.delete(self.prefix)
 
     def get_dataflow(self, dataflow_id, raw=False):
         """
@@ -77,64 +73,29 @@ class DataService:
 
         return Dataflow(self.data_service_id, dataflow_id, raw_json=raw_resp, session=self.session)
 
-    def __repr__(self):
-        return '<{1}.{2} {0}>'.format(
-            self.data_service_id,
-            self.__class__.__module__,
-            self.__class__.__qualname__)
-
-
-class DataFeed:
-    """
-    A Data Feed is a live-updated dataset which is produced by a Dataflow in one
-    Data Service and can be shared with other Data Services.
-
-    # Parameters
-    data_service_id (str):
-        The ID of the Data Service producing the Data Feed
-    data_feed_id (str):
-        The ID of the Data Feed. Must be unique within the Data Service.
-    raw_json (dict):
-        The API's JSON definition of the Data Feed.
-        Used, if provided, to construct the Data Feed directly
-        and avoid one API request.
-        (default is `None`)
-    session (ascend.session.Session):
-        The client session used for HTTP requests.
-
-    # Raises
-    HTTPError: on API errors
-    """
-    def __init__(self, data_service_id, data_feed_id, raw_json = None, session = None):
-        self.data_service_id = data_service_id
-        self.data_feed_id = data_feed_id
-        self.session = session
-
-        if raw_json is None:
-            # ATM we must have the JSON for the data feed to construct the prefix
-            raise ValueError("must provide JSON to construct DataFeed")
-
-        self.prefix =  "organizations/{}/projects/{}/pubs/{}".format(
-            data_service_id, raw_json['fromProjUUID'], raw_json['uuid'])
-
-    def get_records(self):
+    def list_dataflows(self, raw=False):
         """
-        Get the records of data from the Data Feed.
+        List all the Dataflows in the Data Service which are accessible to the Client.
 
         # Returns
-        Iterator<dict>:
-            An iterator over the records of data.
-            Can be read into a Pandas DataFrame using `Pandas.DataFrame.from_records()`.
+        List<Dataflow>: the Dataflows
 
         # Raises
         HTTPError: on API errors
         """
-        return self.session.stream(self.prefix + "/records-stream")
+        raw_resp = self.session.get("{}/projects".format(self.prefix))
+        if raw:
+            return raw_resp
+
+        return list(map(
+            lambda df:
+            Dataflow(self.data_service_id, df['id'], raw_json=df, session=self.session),
+            raw_resp['data']
+        ))
 
     def __repr__(self):
-        return '<{2}.{3} {0}.{1}>'.format(
+        return '<{1}.{2} {0}>'.format(
             self.data_service_id,
-            self.data_feed_id,
             self.__class__.__module__,
             self.__class__.__qualname__)
 
@@ -160,14 +121,38 @@ class Dataflow:
         # Raises
         HTTPError: on API errors
     """
-    def __init__(self, data_service_id, dataflow_id, raw_json = None, session = None):
+
+    def __init__(self, data_service_id, dataflow_id, raw_json=None, session=None):
         self.data_service_id = data_service_id
+        self.prefix_base = "organizations/{}/projects".format(self.data_service_id)
         self.dataflow_id = dataflow_id
         self.session = session
-        self.prefix = "organizations/{}/projects/{}".format(self.data_service_id, self.dataflow_id)
+        self.prefix = "{}/{}".format(self.prefix_base, self.dataflow_id)
 
-        if raw_json is None and session is not None:
-            raw_json = self.session.get(self.prefix) # to confirm access
+        if raw_json is not None:
+            self.raw_json = raw_json
+        elif raw_json is None and session is not None:
+            self.raw_json = self.session.get(self.prefix)
+
+    def apply(self):
+        """
+        Upserts this Dataflow.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
+        if resp_status_code < 200 or resp_status_code > 299:
+            self.session.patch(self.prefix, data=self.raw_json)
+
+    def delete(self):
+        """
+        Deletes this Dataflow.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        self.session.delete(self.prefix)
 
     def list_components(self, raw=False):
         """
@@ -185,7 +170,7 @@ class Dataflow:
 
         return list(map(
             lambda c:
-                Component(self.data_service_id, self.dataflow_id, c['id'], raw_json=c, session=self.session),
+            Component(self.data_service_id, self.dataflow_id, c['id'], raw_json=c, session=self.session),
             raw_resp['data']
         ))
 
@@ -212,16 +197,97 @@ class Dataflow:
             return raw_json
 
         return Component(
-                self.data_service_id,
-                self.dataflow_id,
-                component_id,
-                raw_json=raw_json,
-                session=self.session)
+            self.data_service_id,
+            self.dataflow_id,
+            component_id,
+            raw_json=raw_json,
+            session=self.session)
 
     def __repr__(self):
         return '<{2}.{3} {0}.{1}>'.format(
             self.data_service_id,
             self.dataflow_id,
+            self.__class__.__module__,
+            self.__class__.__qualname__)
+
+
+class DataFeed:
+    """
+    A Data Feed is a live-updated dataset which is produced by a Dataflow in one
+    Data Service and can be shared with other Data Services.
+
+    # Parameters
+    data_service_id (str):
+        The ID of the Data Service producing the Data Feed
+    data_feed_id (str):
+        The ID of the Data Feed. Must be unique within the Data Service.
+    raw_json (dict):
+        The API's JSON definition of the Data Feed.
+        Used, if provided, to construct the Data Feed directly
+        and avoid one API request.
+        (default is `None`)
+    session (ascend.session.Session):
+        The client session used for HTTP requests.
+
+    # Raises
+    HTTPError: on API errors
+    """
+
+    def __init__(self, data_service_id, data_feed_id, raw_json=None, session=None):
+        self.data_service_id = data_service_id
+        self.data_feed_id = data_feed_id
+        self.session = session
+
+        if raw_json is None:
+            # ATM we must have the JSON for the data feed to construct the prefix
+            raise ValueError("must provide JSON to construct DataFeed")
+        self.raw_json = raw_json
+
+        self.dataflow_id = raw_json['fromProjUUID']
+        if self.dataflow_id is None:
+            raise ValueError("invalid JSON for DataFeed - no Dataflow field")
+
+        self.prefix_base = "organizations/{}/projects/{}/pubs".format(self.data_service_id, self.dataflow_id)
+        self.prefix = "{}/{}".format(self.prefix_base, raw_json['uuid'])
+
+    def apply(self):
+        """
+        Upserts this Data Feed.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
+        if resp_status_code < 200 or resp_status_code > 299:
+            self.session.patch(self.prefix, data=self.raw_json)
+
+    def delete(self):
+        """
+        Deletes this Data Feed.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        self.session.delete(self.prefix_base)
+
+    def get_records(self):
+        """
+        Get the records of data from the Data Feed.
+
+        # Returns
+        Iterator<dict>:
+            An iterator over the records of data.
+            Can be read into a Pandas DataFrame using `Pandas.DataFrame.from_records()`.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        return self.session.stream(self.prefix + "/records-stream")
+
+    def __repr__(self):
+        return '<{2}.{3} {0}.{1}>'.format(
+            self.data_service_id,
+            self.data_feed_id,
             self.__class__.__module__,
             self.__class__.__qualname__)
 
@@ -248,20 +314,43 @@ class Component:
     # Raises
     HTTPError: on API errors
     """
+
     def __init__(self, data_service_id, dataflow_id, component_id, raw_json=None, session=None):
         self.data_service_id = data_service_id
         self.dataflow_id = dataflow_id
         self.component_id = component_id
         self.session = session
 
-        if raw_json is None and session is not None:
+        if raw_json is not None:
+            self.raw_json = raw_json
+        elif raw_json is None and session is not None:
             df = Dataflow(data_service_id, dataflow_id, session=session)
             raw_json = df.get_component(component_id, raw=True)
 
         self.component_type = parse_component_type(raw_json)
 
-        self.prefix = "organizations/{}/projects/{}/{}s/{}".format(
-            data_service_id, dataflow_id, self.component_type, component_id)
+        self.prefix_base = "organizations/{}/projects/{}/{}s".format(data_service_id, dataflow_id, self.component_type)
+        self.prefix = "{}/{}".format(self.prefix_base, component_id)
+
+    def apply(self):
+        """
+        Upserts this Component.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
+        if resp_status_code < 200 or resp_status_code > 299:
+            self.session.patch(self.prefix, data=self.raw_json)
+
+    def delete(self):
+        """
+        Deletes this Component.
+
+        # Raises
+        HTTPError: on API errors
+        """
+        self.session.delete(self.prefix_base)
 
     def get_records(self):
         """
@@ -276,9 +365,21 @@ class Component:
         HTTPError: on API errors
         """
         if self.component_type not in ['view', 'source', 'sub', 'pub']:
-            raise ValueError("Not able to get records from a {}.".format(type_displayname(self.component_type)))
+            raise ValueError("Not able to get records from a {}.".format(display_type_name(self.component_type)))
 
         return self.session.stream(self.prefix + "/records-stream")
+
+    def refresh(self):
+        """
+        Triggers a refresh on Read Connectors.
+
+        # Raises
+        HttpError: on API errors
+        """
+        if self.component_type not in ['source']:
+            raise ValueError("Not able to refresh Components that are not Read Connectors.")
+
+        self.session.post(self.prefix + "/refresh")
 
     def __repr__(self):
         return '<{3}.{4} {0}.{1}.{2} type={5}>'.format(
@@ -287,4 +388,4 @@ class Component:
             self.component_id,
             self.__class__.__module__,
             self.__class__.__qualname__,
-            type_displayname(self.component_type))
+            display_type_name(self.component_type))
