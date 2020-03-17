@@ -5,8 +5,8 @@ from types import MappingProxyType
 from typing import Mapping
 from ascend.cli import sh
 import ascend.credentials as credentials
-from protos.io import io_pb2
-from google.protobuf.json_format import MessageToDict, ParseDict
+from ascend.protos.io import io_pb2
+from google.protobuf.json_format import ParseDict
 
 
 def file_template_prefix(key, file_name):

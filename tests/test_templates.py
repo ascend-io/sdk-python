@@ -4,7 +4,7 @@ import shutil
 import unittest
 import yaml
 import ascend.jinja as jinja
-from protos.resource import resource_pb2
+from ascend.protos.resource import resource_pb2
 from ascend.resource_definitions import ResourceDefinition
 from google.protobuf.json_format import ParseDict, MessageToDict
 import jinja2

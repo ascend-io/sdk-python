@@ -1,10 +1,9 @@
 import unittest
-import ascend.resource as resource
 import ascend.resource_definitions as resource_definitions
 import ascend.transforms as transforms
 import ascend.credentials as credentials
 from google.protobuf.json_format import ParseDict, MessageToDict
-from protos.resource import resource_pb2
+from ascend.protos.resource import resource_pb2
 import yaml
 
 

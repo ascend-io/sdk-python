@@ -1,9 +1,7 @@
-from pprint import pprint
-
 from ascend import util
 from ascend.resource import Component, Resource
 from google.protobuf.json_format import MessageToDict, Parse, ParseDict
-from protos.resource import resource_pb2
+from ascend.protos.resource import resource_pb2
 from typing import List, TYPE_CHECKING
 if TYPE_CHECKING:
     from ascend.resource_definitions import ResourceSession

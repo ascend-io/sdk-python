@@ -1,23 +1,23 @@
+import abc
+import os
+import sys
 from collections import defaultdict
-import ascend.cli.sh as sh
+from typing import List, Optional, Tuple
+
+import jinja2
+import networkx as nx
+import yaml
+from google.protobuf.json_format import MessageToDict, ParseDict
+
 import ascend.cli.global_values as global_values
-import ascend.jinja as jinja
-from google.protobuf.json_format import MessageToDict, Parse, ParseDict
-from protos.resource import resource_pb2
+import ascend.cli.sh as sh
 import ascend.credentials
+import ascend.jinja as jinja
 import ascend.model as model
 import ascend.transforms as transforms
 from ascend.resource import Resource, Component
 from ascend.util import filter_none, flatten
-import abc
-import networkx as nx
-from typing import List, Optional, Tuple, Union
-import os
-import sys
-import yaml
-from dataclasses import dataclass
-import jinja2
-
+from ascend.protos.resource import resource_pb2
 
 ROOT_PATH = (None, None, None)
 

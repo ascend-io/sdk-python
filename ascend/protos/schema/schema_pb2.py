@@ -15,8 +15,7 @@ _sym_db = _symbol_database.Default()
 
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
-from protos.ascend import ascend_pb2 as protos_dot_ascend_dot_ascend__pb2
-
+from ascend.protos.ascend import ascend_pb2 as protos_dot_ascend_dot_ascend__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protos/schema/schema.proto',

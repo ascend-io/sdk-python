@@ -2,8 +2,8 @@ from requests import HTTPError
 import ascend.cli.global_values as global_values
 from google.protobuf.message import Message
 from google.protobuf.json_format import ParseDict
-from protos.resource import resource_pb2
-from typing import List, Optional, Tuple, Union, TYPE_CHECKING
+from ascend.protos.resource import resource_pb2
+from typing import List, TYPE_CHECKING
 if TYPE_CHECKING:
     from ascend.resource_definitions import ResourceSession
 

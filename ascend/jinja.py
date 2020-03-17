@@ -2,7 +2,7 @@ import base64
 import os
 import json
 from google.protobuf.json_format import ParseDict, MessageToJson
-from protos.io import io_pb2
+from ascend.protos.io import io_pb2
 
 import jinja2
 

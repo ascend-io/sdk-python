@@ -15,13 +15,13 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from protos.ascend import ascend_pb2 as protos_dot_ascend_dot_ascend__pb2
-from protos.content_encoding import content_encoding_pb2 as protos_dot_content__encoding_dot_content__encoding__pb2
-from protos.format import format_pb2 as protos_dot_format_dot_format__pb2
-from protos.function import function_pb2 as protos_dot_function_dot_function__pb2
-from protos.pattern import pattern_pb2 as protos_dot_pattern_dot_pattern__pb2
-from protos.schema import schema_pb2 as protos_dot_schema_dot_schema__pb2
-
+from ascend.protos.ascend import ascend_pb2 as protos_dot_ascend_dot_ascend__pb2
+from ascend.protos.content_encoding import \
+    content_encoding_pb2 as protos_dot_content__encoding_dot_content__encoding__pb2
+from ascend.protos.format import format_pb2 as protos_dot_format_dot_format__pb2
+from ascend.protos.function import function_pb2 as protos_dot_function_dot_function__pb2
+from ascend.protos.pattern import pattern_pb2 as protos_dot_pattern_dot_pattern__pb2
+from ascend.protos.schema import schema_pb2 as protos_dot_schema_dot_schema__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protos/io/io.proto',

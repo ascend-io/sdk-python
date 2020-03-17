@@ -16,12 +16,12 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
-from protos.content_encoding import content_encoding_pb2 as protos_dot_content__encoding_dot_content__encoding__pb2
-from protos.io import io_pb2 as protos_dot_io_dot_io__pb2
-from protos.operator import operator_pb2 as protos_dot_operator_dot_operator__pb2
-from protos.pattern import pattern_pb2 as protos_dot_pattern_dot_pattern__pb2
-from protos.schema import schema_pb2 as protos_dot_schema_dot_schema__pb2
-
+from ascend.protos.content_encoding import \
+    content_encoding_pb2 as protos_dot_content__encoding_dot_content__encoding__pb2
+from ascend.protos.io import io_pb2 as protos_dot_io_dot_io__pb2
+from ascend.protos.operator import operator_pb2 as protos_dot_operator_dot_operator__pb2
+from ascend.protos.pattern import pattern_pb2 as protos_dot_pattern_dot_pattern__pb2
+from ascend.protos.schema import schema_pb2 as protos_dot_schema_dot_schema__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protos/resource/resource.proto',

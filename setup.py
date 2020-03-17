@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='ascend-python-sdk',
@@ -8,7 +8,9 @@ setup(
     author='Ascend R&D Team',
     author_email='andy@ascend.io',
     license='Apache License 2.0',
-    packages=['ascend'],
+    packages=find_packages(),
+    include_package_data=True,
+    scripts=['bin/ascend'],
     install_requires=[
         'jinja2',
         'networkx',

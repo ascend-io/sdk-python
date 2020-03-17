@@ -12,11 +12,9 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
-
-from protos.ascend import ascend_pb2 as protos_dot_ascend_dot_ascend__pb2
-from protos.schema import schema_pb2 as protos_dot_schema_dot_schema__pb2
-from protos.text import text_pb2 as protos_dot_text_dot_text__pb2
-
+from ascend.protos.ascend import ascend_pb2 as protos_dot_ascend_dot_ascend__pb2
+from ascend.protos.schema import schema_pb2 as protos_dot_schema_dot_schema__pb2
+from ascend.protos.text import text_pb2 as protos_dot_text_dot_text__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='protos/format/format.proto',

@@ -1,9 +1,9 @@
 from ascend.cli import sh
 from dataclasses import dataclass
-from protos.io import io_pb2
-from protos.resource import resource_pb2
+from ascend.protos.io import io_pb2
+from ascend.protos.resource import resource_pb2
 from google.protobuf.json_format import MessageToDict, ParseDict
-from typing import Callable, Mapping, Optional
+from typing import Mapping, Optional
 import os
 import yaml
 
