@@ -1,0 +1,20 @@
+# id: S3_Parquet
+component:
+  groupId: Sink_Formatters
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        parquetFormatter: {}
+    container:
+      s3:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_s3_demo_data
+        credentials:
+          id: AKIAIDLZKCPVCHSDHP4Q
+        delimiter: /
+        prefix: kitchen_sink/parquet_sink/{{ config.uniquePiece }}/
+    inputId: Map_with_inner_join
+description: Sink from Map_with_inner_join
+name: S3_Parquet

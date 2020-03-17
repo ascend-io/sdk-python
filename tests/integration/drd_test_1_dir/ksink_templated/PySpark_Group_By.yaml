@@ -1,0 +1,29 @@
+# id: PySpark_Group_By
+component:
+  groupId: Partitioned
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            language:
+              python:
+                v3: {}
+            source:
+              inline: "def transform(spark_session, inputs):\n    inputs[0].createTempView(\"\
+                CSV_hourly_small\")\n    return spark_session.sql(\"\"\"\nSELECT DATE_TRUNC('HOUR',\
+                \ at) as at_hour, count(*) as num_events, MIN(at) as at_min, MAX(at)\
+                \ as at_max\nFROM CSV_hourly_small AS c\nGROUP BY at_hour\"\"\") \
+                \ \n"
+        reduction:
+          partial:
+            partitionBy:
+              0:
+                column: at
+                granularity:
+                  time:
+                    hour: {}
+name: PySpark_Group_By

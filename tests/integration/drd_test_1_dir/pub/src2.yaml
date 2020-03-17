@@ -1,0 +1,50 @@
+# id: src2
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        xsvParser:
+          columns:
+            parsingSpecifications:
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: a
+              targetName: a
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: b
+              targetName: b
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: c
+              targetName: c
+          delimiter: ','
+          headerLineCount: '1'
+          schema:
+            field:
+            - name: a
+              schema:
+                int: {}
+            - name: b
+              schema:
+                int: {}
+            - name: c
+              schema:
+                int: {}
+    container:
+      immediate:
+        contentSome: YSxiLGMKMSwyLDM=
+        object:
+        - contentSha: JVkY5jpWBIQ8CCxeZmJxIUuQkUhe5iRN9rfCfbI85Hs=
+          length: '11'
+          name: ascend_text_blob
+    pattern:
+      glob: '**'
+    updatePeriodical:
+      offset: 106368982s
+      period: 134217727s
+name: src2

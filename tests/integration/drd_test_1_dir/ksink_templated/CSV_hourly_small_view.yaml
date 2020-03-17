@@ -1,0 +1,15 @@
+# id: CSV_hourly_small_view
+component:
+  groupId: Reduction
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT *
+          FROM ${0} AS c
+          ORDER BY app_id
+description: View from CSV_hourly_small
+name: CSV_hourly_small_view

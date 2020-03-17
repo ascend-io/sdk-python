@@ -1,0 +1,30 @@
+# id: Blob_Parser_Function
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        lambdaParser:
+          code:
+            inline: IyBpbXBvcnQgcGFja2FnZSBuZWVkZWQgCiMgUGxlYXNlIGFkZCB0aGVtIHRvIGluc3RhbGwgbGlzdCBiZWxvdywKIyBpZiB0aGV5IGFyZSBub3QgcHJlLWJ1aWx0CmltcG9ydCBqc29uIAoKIyBtYWluIGZ1bmN0aW9uCmRlZiBwYXJzZXJfZnVuY3Rpb24ocmVhZGVyLCBvbk5leHQpOgogICAgIyBVc2UgcmVhZGVyIHRvIHJlYWQgaW4gZGF0YSwgYW5kIHBhc3MgYSBweXRob24gbWFwIHRvIG9uTmV4dCBmdW5jdGlvbiBhcyBwYXJzaW5nIHJlc3VsdC4KICAgIGZvciBsaW5lIGluIHJlYWRlcjoKICAgICAgICAjIHN0cmlwIHNwYWNlcyBhbmQgc2tpcCBvbiBlbXB0eSBsaW5lCiAgICAgICAgbGluZSA9IGxpbmUuc3RyaXAoKQogICAgICAgIGlmIGxpbmU6CiAgICAgICAgICAgICMgImxvYWRzIiB3aWxsIGNvbnZlcnQgbGluZSB0byBweXRob24gbWFwCiAgICAgICAgICAgIG9uTmV4dChqc29uLmxvYWRzKCd7InBpZ19sYXRpbiI6IicgKyB0b19waWdfbGF0aW4oc3RyKGxpbmUpKSArICcifScpKQogICAgcmVhZGVyLmNsb3NlKCkKCmRlZiB0b19waWdfbGF0aW4oc2VudGVuY2UpOgogICAgbHN0ID0gWydzaCcsICdnbCcsICdjaCcsICdwaCcsICd0cicsICdicicsICdmcicsICdibCcsICdncicsICdzdCcsICdzbCcsICdjbCcsICdwbCcsICdmbCddCiAgICB3b3JkcyA9IHNlbnRlbmNlLnNwbGl0KCkKICAgIGZvciBrIGluIHJhbmdlKGxlbih3b3JkcykpOgogICAgICAgIGkgPSB3b3Jkc1trXQogICAgICAgIGlmIGlbMF0gaW4gWydhJywgJ2UnLCAnaScsICdvJywgJ3UnXToKICAgICAgICAgICAgd29yZHNba10gPSBpKydheScKICAgICAgICBlbGlmIHQoaSkgaW4gbHN0OgogICAgICAgICAgICB3b3Jkc1trXSA9IGlbMjpdK2lbOjJdKydheScKICAgICAgICBlbGlmIGkuaXNhbHBoYSgpID09IEZhbHNlOgogICAgICAgICAgICB3b3Jkc1trXSA9IGkKICAgICAgICBlbHNlOgogICAgICAgICAgICB3b3Jkc1trXSA9IGlbMTpdK2lbMF0rJ2F5JwogICAgcmV0dXJuICcgJy5qb2luKHdvcmRzKQoKZGVmIHQoc3RyKToKICAgIHJldHVybiBzdHJbMF0rc3RyWzFd
+            language:
+              python:
+                v3: {}
+          schema:
+            field:
+            - name: pig_latin
+              schema:
+                string: {}
+    container:
+      immediate:
+        contentSome: aG93IG11Y2ggd29vZCB3b3VsZCBhIHdvb2RjaHVjayBjaHVjayBpZiBhIHdvb2RjaHVjayBjb3VsZCBjaHVjayB3b29kCmhlIHdvdWxkIGNodWNrLCBoZSB3b3VsZCwgYXMgbXVjaCBhcyBoZSBjb3VsZCwgYW5kIGNodWNrIGFzIG11Y2ggd29vZCBhcyBhIHdvb2RjaHVjayB3b3VsZCBpZiBhIHdvb2RjaHVjayBjb3VsZCBjaHVjayB3b29k
+        object:
+        - contentSha: NXFMYAKplovJ58tTrDj9oaqvqGNR01HF+stWHsHFREU=
+          length: '192'
+          name: ascend_text_blob
+    pattern:
+      glob: '**'
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Blob_Parser_Function

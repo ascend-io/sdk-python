@@ -1,0 +1,26 @@
+# id: Join_with_3_hour_window
+component:
+  groupId: Date_Partitioned_Join
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - Tickets_by_hour
+    - Orders_by_hour
+    operator:
+      sqlQuery:
+        sql: |-
+          select
+            ticket_id,
+            t.order_id,
+            order_name,
+            t.ts as ticket_ts,
+            o.ts as order_ts,
+            t.ts_hour as ticket_ts_hour,
+            o.ts_hour as order_ts_hour
+          FROM
+            ${0} as t
+            left join ${1} as o on t.order_id = o.order_id
+          where
+            o.ts_hour >= t.ts_hour - INTERVAL 1 hour
+            and o.ts_hour <= t.ts_hour + INTERVAL 1 hour
+name: Join_with_3_hour_window

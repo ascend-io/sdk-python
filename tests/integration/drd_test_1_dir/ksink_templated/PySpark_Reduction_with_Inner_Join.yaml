@@ -1,0 +1,34 @@
+# id: PySpark_Reduction_with_Inner_Join
+component:
+  groupId: Reduction
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    - Blob_JSON_hourly_small_metadata
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            language:
+              python:
+                v3: {}
+            source:
+              inline: |
+                def ad_group_bucket(ad_group_id):
+                    return ad_group_id % 100
+
+                def transform(spark_session, inputs):
+                    inputs[0].createTempView("CSV_hourly_small")
+                    inputs[1].createTempView("Blob_JSON_hourly_small_metadata")
+                    spark_session.udf.register("ad_group_bucket", ad_group_bucket)
+                    return spark_session.sql("""
+                SELECT *, ad_group_bucket(ad_group_id) as ad_group_bucket
+                FROM CSV_hourly_small AS c
+                  inner join Blob_JSON_hourly_small_metadata as b
+                  ON c.app_id = b.id
+                ORDER BY app_id
+                    """)
+        reduction:
+          full: {}
+name: PySpark_Reduction_with_Inner_Join

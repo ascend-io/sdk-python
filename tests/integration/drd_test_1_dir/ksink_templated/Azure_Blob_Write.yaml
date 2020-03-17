@@ -1,0 +1,26 @@
+# id: Azure_Blob_Write
+component:
+  groupId: Azure_Blob_Storage_RC___WC
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        xsvFormatter:
+          delimiter: ','
+          includeHeader: true
+          lineEnding:
+            lf: {}
+    container:
+      abs:
+        accountName: kitchensink
+        container: kitchen-sink
+        credentialId:
+          value: kitchen_sink_azure_shared_key
+        credentials:
+          sharedKey: {}
+        delimiter: /
+        locationTemplate: yield_curve.csv
+        prefix: {{ config.uniquePiece }}/
+    inputId: No_Change
+description: Write Connector from No Change
+name: Azure_Blob_Write

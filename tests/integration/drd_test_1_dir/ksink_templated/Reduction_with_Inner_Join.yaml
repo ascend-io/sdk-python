@@ -1,0 +1,18 @@
+# id: Reduction_with_Inner_Join
+component:
+  groupId: Reduction
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    - Blob_JSON_hourly_small_metadata
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT *, ad_group_id as aab
+          FROM ${0} AS c
+          inner join ${1} as b
+           ON c.app_id = b.id
+          ORDER BY app_id
+description: View from CSV_hourly_small
+name: Reduction_with_Inner_Join

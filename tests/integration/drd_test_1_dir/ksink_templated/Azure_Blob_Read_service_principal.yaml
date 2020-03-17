@@ -1,0 +1,29 @@
+# id: Azure_Blob_Read_service_principal
+component:
+  groupId: Azure_Blob_Storage_RC___WC
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        parquetParser:
+          schema:
+            field:
+            - name: ts
+              schema:
+                timestamp: {}
+    container:
+      abs:
+        accountName: kitchensink
+        container: service-principal
+        credentialId:
+          value: kitchen_sink_azure_service_principal
+        credentials:
+          servicePrincipal:
+            clientId: 00636442-d713-4a46-80c2-e73a5ac90ec0
+            tenant: f3a5598b-e043-4719-80a7-49b23046bdec
+    pattern:
+      exactMatch: ts.parquet
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Azure_Blob_Read_service_principal

@@ -1,0 +1,17 @@
+# id: Map_with_inner_join
+component:
+  groupId: Maps
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    - Blob_JSON_hourly_small_metadata
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT c.app_id, b.meta
+          FROM ${0} AS c
+          inner join ${1} AS b
+           ON b.id = c.app_id
+description: Composite view from CSV_hourly_small, Blob_JSON_hourly_small_metadata
+name: Map_with_inner_join

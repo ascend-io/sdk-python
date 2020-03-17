@@ -1,0 +1,25 @@
+# id: PySpark_Group_By_Auto
+component:
+  groupId: Partitioned
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - PySpark_Group_By
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            language:
+              python:
+                v3: {}
+            source:
+              inline: "def transform(session, inputs): \n    return inputs[0]   "
+        reduction:
+          partial:
+            partitionBy:
+              0:
+                column: at_hour
+                granularity:
+                  time:
+                    auto: {}
+name: PySpark_Group_By_Auto

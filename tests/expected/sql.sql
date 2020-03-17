@@ -1,0 +1,1 @@
+SELECT A, B, C FROM D

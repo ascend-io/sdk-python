@@ -1,0 +1,29 @@
+# id: Azure_Blob_Write_service_principal
+component:
+  groupId: Azure_Blob_Storage_RC___WC
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        xsvFormatter:
+          delimiter: ','
+          includeHeader: true
+          lineEnding:
+            lf: {}
+    container:
+      abs:
+        accountName: kitchensink
+        container: service-principal
+        credentialId:
+          value: kitchen_sink_azure_service_principal
+        credentials:
+          servicePrincipal:
+            clientId: 00636442-d713-4a46-80c2-e73a5ac90ec0
+            tenant: f3a5598b-e043-4719-80a7-49b23046bdec
+        delimiter: /
+        locationTemplate: az-sp-out.csv
+        prefix: {{ config.uniquePiece }}/
+        writePartFiles: true
+    inputId: No_Change
+description: Write Connector from No Change
+name: Azure_Blob_Write_service_principal

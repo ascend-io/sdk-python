@@ -1,0 +1,31 @@
+# id: PySpark_Map_with_inner_join
+component:
+  groupId: Maps
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    - Blob_JSON_hourly_small_metadata
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            language:
+              python:
+                v3: {}
+            source:
+              inline: |
+                from typing import List
+                from pyspark.sql import DataFrame, SparkSession
+                from pyspark.sql.functions import col
+
+                def transform(spark_session: SparkSession, inputs: List[DataFrame]) -> DataFrame:
+                  csv_hourly_small = inputs[0]
+                  blob_json_hourly_small_metadata = inputs[1]
+                  return \
+                    csv_hourly_small.alias('c') \
+                      .join(blob_json_hourly_small_metadata.alias('b'), on=col('b.id') == col('c.app_id'), how='inner') \
+                      .select('c.app_id', 'b.meta')
+        reduction:
+          noReduction: {}
+name: PySpark_Map_with_inner_join

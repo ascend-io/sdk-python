@@ -1,0 +1,28 @@
+# id: Partitioned_Redshift_Sink_Part_Files
+component:
+  groupId: Redshift_Sinks
+  writeConnector:
+    assignedPriority: {}
+    container:
+      redshift:
+        credentialId:
+          value: kitchen_sink_redshift
+        credentials:
+          username: awsuser
+        iamRoleArn: arn:aws:iam::115613497299:role/redshift-s3-read
+        jdbcUrl: jdbc:redshift://ascend-io-dev-redshift.cdmixszaipsh.us-east-1.redshift.amazonaws.com:5439/dev
+        locationTemplate: kitchen_sink_partitioned_pfs{{ config.uniquePiece }}
+        stagingContainer:
+          bucket: ascend-io-demo-data-redshift
+          credentialId:
+            value: kitchen_sink_s3_demo_data
+          credentials:
+            id: AKIAIDLZKCPVCHSDHP4Q
+          delimiter: /
+          prefix: kitchen_sink/staging/partitioned_rs_partfiles/{{ config.uniquePiece }}/
+          writePartFiles: true
+        updatePolicy:
+          alterTable: {}
+    inputId: Group_By_filename_hour
+    records: {}
+name: Partitioned_Redshift_Sink_Part_Files

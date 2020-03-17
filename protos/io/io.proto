@@ -1,0 +1,394 @@
+syntax = "proto3";
+
+package io;
+
+
+import "google/protobuf/empty.proto";
+import "protos/ascend/ascend.proto";
+import "protos/content_encoding/content_encoding.proto";
+import "protos/format/format.proto";
+import "protos/function/function.proto";
+import "protos/pattern/pattern.proto";
+import "protos/schema/schema.proto";
+
+message Credentials {
+  message Id {
+    string value = 1;
+  }
+
+  Id id = 1;
+  oneof details {
+    Aws.Credentials aws = 2;
+    Aws.Redshift.Credentials redshift = 3;
+    Azure.Credentials azure = 7;
+    Function.Credentials function = 6;
+    Gcp.Credentials gcp = 4;
+    Mysql.Credentials mysql = 5;
+    Snowflake.Credentials snowflake = 8;
+  }
+}
+
+enum CharacterEncoding {
+  UTF8 = 0;
+}
+
+message Aws {
+  message Credentials {
+    string id = 1;
+    string secret = 2 [(ascend.sensitive) = true];
+  }
+
+  message S3 {
+    message Container {
+
+      Aws.Credentials credentials = 1;
+      io.Credentials.Id credential_id = 10;
+      string region = 2;
+      string bucket = 3;
+      string prefix = 4;
+      string delimiter = 5;
+      bool disable_random_location_infix = 8;
+      string location_template = 6;
+      string location_suffix = 9;
+      Manifest manifest = 7;
+      bool write_part_files = 11;
+    }
+
+    message Location {
+
+      Container container = 1;
+      string object_name = 2;
+    }
+  }
+
+  message Redshift {
+    message Credentials {
+      string username = 1;
+      string password = 2 [(ascend.sensitive) = true];
+    }
+
+    message Container {
+      Credentials credentials = 1;
+      io.Credentials.Id credential_id = 8;
+      string jdbc_url = 2;
+      Aws.S3.Container staging_container = 4;
+      string location_template = 5;
+      bool default_to_ssl = 6;
+      schema.UpdatePolicy update_policy = 7;
+      string iam_role_arn = 9;
+
+      reserved 3;
+      reserved "no_egress_proxy";
+    }
+
+    message Location {
+      Container container = 1;
+      string table_name = 2;
+      schema.Map schema = 3;
+      repeated string sort_key = 4;
+      string partition_id = 5;
+    }
+  }
+}
+
+message Azure {
+  message Credentials {
+    message SharedKey {
+      string key = 1 [(ascend.sensitive) = true];
+    }
+    message ServicePrincipal {
+      string client_id = 1;
+      string client_secret = 2 [(ascend.sensitive) = true];
+      string tenant = 3;
+    }
+    message ServicePrincipalJson {
+      string json_key = 1 [(ascend.sensitive) = true];
+    }
+
+    oneof details {
+      SharedKey shared_key = 1;
+      ServicePrincipal service_principal = 2;
+      ServicePrincipalJson service_principal_json = 3;
+    }
+  }
+  message Abs {
+    message Container {
+      string account_name = 1;
+      Azure.Credentials credentials = 2;
+      io.Credentials.Id credential_id = 3;
+      string container = 4; // this is the Azure Blob Storage Container name
+      string prefix = 5;
+      string delimiter = 6;
+      bool disable_random_location_infix = 7;
+      string location_template = 8;
+      string location_suffix = 9;
+      Manifest manifest = 10;
+      bool write_part_files = 11;
+    }
+    message Location {
+      Container container = 1;
+      string blob_name = 2;
+    }
+  }
+}
+
+message File {
+  message Container {
+    string prefix = 1;
+    string location_template = 2;
+  }
+
+  message Location {
+    Container container = 1;
+    string object_name = 2;
+  }
+}
+
+message Gcp {
+  message Credentials {
+    oneof key {
+      string json_key = 1 [(ascend.sensitive) = true];
+    }
+  }
+
+  message BigQuery {
+    message Container {
+      Credentials credentials = 1;
+      io.Credentials.Id credential_id = 7;
+      string project = 2;
+      string dataset_prefix = 3;
+      string location_template = 4;
+      pattern.Pattern partition_pattern = 5;
+      Gcs.Container staging_container = 6;
+    }
+
+    message Location {
+      Container container = 1;
+      string table_name = 3;
+      schema.Map schema = 4;
+      int32 container_partition_index = 5;
+
+      reserved "dataset";
+      reserved 2;
+    }
+  }
+
+  message Gcs {
+    message Container {
+      Credentials credentials = 1;
+      io.Credentials.Id credential_id = 9;
+      string bucket = 2;
+      string prefix = 3;
+      string delimiter = 4;
+      bool disable_random_location_infix = 7;
+      string location_template = 5;
+      string location_suffix = 8;
+      Manifest manifest = 6;
+      bool write_part_files = 10;
+    }
+
+    message Location {
+      Container container = 1;
+      string object_name = 2;
+    }
+  }
+}
+
+message Immediate {
+  message Object {
+    string name = 1;
+    int64 length = 3;
+    bytes content_sha = 4;
+  }
+
+  message Container {
+    oneof maybe_content {
+      bytes content_some = 1 [(ascend.content) = true];
+      google.protobuf.Empty content_none = 2;
+    }
+    repeated Object object = 3;
+  }
+}
+
+message Mysql {
+  message Credentials {
+    string username = 1;
+    string password = 2 [(ascend.sensitive) = true];
+  }
+
+  message Container {
+
+    Credentials credentials = 1;
+    io.Credentials.Id credential_id = 6;
+    string host = 2;
+    int32 port = 3;
+    string database = 4;
+    string location_template = 5;
+    bool disable_tls = 7;
+  }
+
+  message Location {
+
+    Container container = 1;
+    string table_name = 2;
+    schema.Map schema = 3;
+  }
+
+  message Partition {
+
+    message Container {
+      Credentials credentials = 1;
+      io.Credentials.Id credential_id = 7;
+      string host = 2;
+      int32 port = 3;
+      string database = 4;
+      string table = 5;
+      string location_template = 6;
+      bool disable_tls = 8;
+    }
+
+    message Location {
+      Container container = 1;
+      string partition_name = 2;
+      schema.Map schema = 3;
+    }
+  }
+}
+
+message Snowflake {
+  message Credentials {
+    string username = 1;
+    string password = 2 [(ascend.sensitive) = true];
+  }
+
+  message Container {
+    Credentials credentials = 1;
+    io.Credentials.Id credential_id = 2;
+    schema.UpdatePolicy update_policy = 3;
+
+    oneof staging_container {
+      Aws.S3.Container s3 = 4;
+      Gcp.Gcs.Container gcs = 5;
+      Azure.Abs.Container abs = 6;
+    }
+
+    string location_template = 7;
+    string account = 8;
+    string warehouse = 9;
+    string database = 10;
+    string snowflake_schema = 11; // snowflake schema is like a namespace under database
+  }
+
+  message Location {
+    Container container = 1;
+    string table_name = 2;
+    schema.Map schema = 3;
+    string partition_id = 5;
+  }
+}
+
+message Spark {
+  message Store {
+    oneof details {
+      Aws.S3.Container s3 = 1;
+      Gcp.Gcs.Container gcs = 2;
+      Azure.Abs.Container abs = 5;
+    }
+    format.Format format = 3;
+    content_encoding.ContentEncoding content_encoding = 4;
+  }
+
+  message Container {
+    Store store = 1;
+  }
+
+  message Location {
+    Container container = 1;
+    string object_prefix = 2;
+    schema.Map schema = 3;
+  }
+}
+
+message Function {
+  message Credentials {
+    string secret = 1 [(ascend.sensitive) = true];
+  }
+
+  message CredentialsConfiguration {
+    io.Credentials.Id id = 1;
+    Credentials credentials = 2;
+  }
+
+  message Container {
+    message Byte {
+      Container container = 1;
+    }
+
+    message Record {
+      Container container = 1;
+    }
+
+    function.Executable executable = 1;
+    CredentialsConfiguration credentials_configuration = 2; // absence means no credentials for the container
+  }
+
+  message Location {
+    message Byte {
+      Container.Byte container = 1;
+      string name = 2;
+    }
+
+    message Record {
+      Container.Record container = 1;
+      string name = 2;
+      schema.Map schema = 3;
+    }
+  }
+}
+
+message Container {
+  oneof details {
+    Aws.Redshift.Container redshift = 1;
+    Aws.S3.Container s3 = 2;
+    Azure.Abs.Container abs = 12;
+    File.Container file = 3;
+    Function.Container.Byte byte_function = 10;
+    Function.Container.Record record_function = 11;
+    Gcp.BigQuery.Container big_query = 4;
+    Gcp.Gcs.Container gcs = 5;
+    Immediate.Container immediate = 8;
+    Mysql.Container mysql = 6;
+    Mysql.Partition.Container mysql_partition = 9;
+    Snowflake.Container snowflake = 13;
+    Spark.Container spark = 7;
+  }
+}
+
+message Location {
+  oneof details {
+    Aws.Redshift.Location redshift = 1;
+    Aws.S3.Location s3 = 2;
+    Azure.Abs.Location abs = 9;
+    File.Location file = 3;
+    Gcp.BigQuery.Location big_query = 4;
+    Gcp.Gcs.Location gcs = 5;
+    Mysql.Location mysql = 6;
+    Mysql.Partition.Location mysql_partition = 8;
+    Snowflake.Location snowflake = 10;
+    Spark.Location spark = 7;
+  }
+}
+
+message Manifest {
+  message Json {}
+  message Csv {}
+  message Format {
+    oneof details {
+      Json json = 1;
+      Csv csv = 2;
+    }
+  }
+
+  string name = 1;
+  Format format = 2;
+}

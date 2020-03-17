@@ -1,0 +1,9 @@
+# id: sub_v1
+component:
+  transform:
+    inputIds:
+    - drd_test_1.public_df1
+    operator:
+      sqlQuery:
+        sql: select * from ${0}
+name: sub_v1

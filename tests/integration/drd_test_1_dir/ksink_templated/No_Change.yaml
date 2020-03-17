@@ -1,0 +1,12 @@
+# id: No_Change
+component:
+  groupId: Azure_Blob_Storage_RC___WC
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - Azure_Blob_Read
+    operator:
+      sqlQuery:
+        sql: SELECT * FROM ${0} AS a
+description: Transform from Azure Blob Read
+name: No_Change

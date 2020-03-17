@@ -1,0 +1,30 @@
+# id: Redshift_Full_Load_Sink_PFS
+component:
+  groupId: Redshift_Sinks
+  writeConnector:
+    assignedPriority: {}
+    container:
+      redshift:
+        credentialId:
+          value: kitchen_sink_redshift
+        credentials:
+          username: awsuser
+        iamRoleArn: arn:aws:iam::115613497299:role/redshift-s3-read
+        jdbcUrl: jdbc:redshift://ascend-io-dev-redshift.cdmixszaipsh.us-east-1.redshift.amazonaws.com:5439/dev
+        locationTemplate: kitchen_sink_full_load_part_files{{ config.uniquePiece }}
+        stagingContainer:
+          bucket: ascend-io-demo-data-redshift
+          credentialId:
+            value: kitchen_sink_s3_demo_data
+          credentials:
+            id: AKIAIDLZKCPVCHSDHP4Q
+          delimiter: /
+          prefix: kitchen_sink/staging/full_redshift_part_files/{{ config.uniquePiece }}/
+          writePartFiles: true
+        updatePolicy:
+          dropTable: {}
+    inputId: Reduction_with_Inner_Join
+    records: {}
+description: |
+  Reduction_with_Inner_Join with part files enabled
+name: Redshift_Full_Load_Sink_PFS

@@ -1,0 +1,31 @@
+# id: Cascading_PySpark_with_filter
+component:
+  groupId: Maps
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - PySpark_Map_with_inner_join
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            language:
+              python:
+                v3: {}
+            source:
+              inline: |
+                from typing import List
+                from pyspark.sql import Column, DataFrame, SparkSession
+                from pyspark.sql.functions import col, expr
+
+                Column.__floordiv__ = lambda self, other: (self / other).cast('long')
+
+                def transform(spark_session: SparkSession, inputs: List[DataFrame]) -> DataFrame:
+                    table = inputs[0]
+                    return \
+                        table \
+                        .filter((400 <= table.app_id) & (table.app_id <= 700)) \
+                        .withColumn('group_id', table.app_id // 100)
+        reduction:
+          noReduction: {}
+name: Cascading_PySpark_with_filter

@@ -1,0 +1,34 @@
+# id: uber_bq_part_star
+component:
+  groupId: BQ_partitioned_sources
+  readConnector:
+    assignedPriority: {}
+    container:
+      bigQuery:
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        datasetPrefix: test_data
+        partitionPattern:
+          regex: .*
+        project: ascend-io-demo-data
+        stagingContainer: {}
+    pattern:
+      exactMatch: uber_stats_part
+    records:
+      schema:
+        field:
+        - name: f0_
+          schema:
+            long: {}
+        - name: d
+          schema:
+            timestamp: {}
+        - name: base
+          schema:
+            string: {}
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: uber_bq_part_star

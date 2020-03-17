@@ -1,0 +1,12 @@
+# id: Orders_by_hour
+component:
+  groupId: Date_Partitioned_Join
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - Orders
+    operator:
+      sqlQuery:
+        sql: select DATE_TRUNC('hour', ts) as ts_hour, order_id, order_name, ts from
+          ${0} group by ts_hour, ts, order_id, order_name
+name: Orders_by_hour

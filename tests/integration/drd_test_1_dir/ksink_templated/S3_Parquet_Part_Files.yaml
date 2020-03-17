@@ -1,0 +1,21 @@
+# id: S3_Parquet_Part_Files
+component:
+  groupId: Sink_Formatters
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        parquetFormatter: {}
+    container:
+      s3:
+        bucket: ascend-io-demo-data-part-files
+        credentialId:
+          value: kitchen_sink_s3_demo_data
+        credentials:
+          id: AKIAIDLZKCPVCHSDHP4Q
+        prefix: kitchen_sink/parquet_sink_part_files/{{ config.uniquePiece }}/
+        writePartFiles: true
+    inputId: Map_with_inner_join
+description: |
+  Parquet Sink from Map_with_inner_join with part files enabled
+name: S3_Parquet_Part_Files

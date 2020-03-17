@@ -1,0 +1,9 @@
+# id: v2
+component:
+  transform:
+    inputIds:
+    - src2
+    operator:
+      sqlQuery:
+        sql: select * from ${0}
+name: v2

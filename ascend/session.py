@@ -6,9 +6,11 @@ All API requests pass through the Session.
 """
 
 from ascend.auth import AwsV4Auth, BearerAuth, RefreshAuth
+import ascend.cli.sh as sh
 
 import json
 import requests
+import urllib3
 
 
 class Session:
@@ -35,6 +37,9 @@ class Session:
             raise ValueError("Missing api secret key")
         if not environment_hostname:
             raise ValueError("Missing environment hostname")
+        if not verify:
+            requests.packages.urllib3.disable_warnings(
+                category=urllib3.exceptions.InsecureRequestWarning)
 
         self.verify = verify
         self.base_uri = "https://{}:443/".format(environment_hostname)
@@ -70,7 +75,15 @@ class Session:
         else:
             self.init_token_exchange()
 
-    def delete(self, endpoint):
+    def request_with_bearer(self, *args, **kwargs):
+        sh.debug(" ".join(args))
+        response = self.bearer_session.request(*args, **kwargs)
+        if response.status_code == 401:
+            self.exchange_tokens()
+            return self.bearer_session.request(*args, **kwargs)
+        return response
+
+    def delete(self, endpoint, service='api'):
         """
         Make a DELETE request
 
@@ -81,20 +94,14 @@ class Session:
         # Returns
         int: the HTTP response code status
         """
-        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
-
         def delete_with_bearer():
-            resp = self.bearer_session.delete(api_url, verify=self.verify)
+            resp = self.bearer_session.delete(self.make_url(endpoint, service), verify=self.verify)
             resp.raise_for_status()
             return resp.status_code
 
-        try:
-            return delete_with_bearer()
-        except:
-            self.exchange_tokens()
-            return delete_with_bearer()
+        return delete_with_bearer()
 
-    def get(self, endpoint, query=None):
+    def get(self, endpoint, query=None, service='api'):
         """
         Make a GET request.
 
@@ -107,20 +114,18 @@ class Session:
         # Returns
         dict: the parsed JSON response
         """
-        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
-
         def get_with_bearer():
-            resp = self.bearer_session.get(api_url, params=query, verify=self.verify)
-            resp.raise_for_status()
-            return resp.json()
+            resp = self.request_with_bearer(
+                'GET', self.make_url(endpoint, service), params=query, verify=self.verify)
+            if resp.status_code == 404:
+                raise KeyError(resp.reason)
+            else:
+                resp.raise_for_status()
+                return resp.json()
 
-        try:
-            return get_with_bearer()
-        except:
-            self.exchange_tokens()
-            return get_with_bearer()
+        return get_with_bearer()
 
-    def patch(self, endpoint, data=None):
+    def patch(self, endpoint, data=None, service='api'):
         """
         Make a PATCH request.
 
@@ -133,20 +138,16 @@ class Session:
         # Returns
         int: the HTTP response status code
         """
-        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
-
         def patch_with_bearer():
-            resp = self.bearer_session.patch(api_url, data=json.dumps(data), verify=self.verify)
+            resp = self.request_with_bearer(
+                'PATCH', self.make_url(endpoint, service),
+                data=json.dumps(data), verify=self.verify)
             resp.raise_for_status()
             return resp.status_code
 
-        try:
-            return patch_with_bearer()
-        except:
-            self.exchange_tokens()
-            return patch_with_bearer()
+        return patch_with_bearer()
 
-    def post(self, endpoint, data=None):
+    def post(self, endpoint, data=None, service='api'):
         """
         Make a POST request.
 
@@ -159,20 +160,18 @@ class Session:
         # Returns
         int: the HTTP response status code
         """
-        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
-
         def post_with_bearer():
-            resp = self.bearer_session.post(api_url, data=json.dumps(data), verify=self.verify)
+            resp = self.request_with_bearer(
+                'POST', self.make_url(endpoint, service), data=json.dumps(data), verify=self.verify)
             resp.raise_for_status()
             return resp.status_code
 
-        try:
-            return post_with_bearer()
-        except:
-            self.exchange_tokens()
-            return post_with_bearer()
+        return post_with_bearer()
 
-    def stream(self, endpoint, query=None):
+    def make_url(self, endpoint, service):
+        return f'{self.base_uri}{service}/v1/{endpoint}'
+
+    def stream(self, endpoint, query=None, service='api'):
         """
         Make a GET request and process the results as a stream of JSON lines
 
@@ -185,16 +184,12 @@ class Session:
         # Returns
         Iterator<dict>: an iterator over the parsed JSON lines
         """
-        api_url = "{}api/v1/{}".format(self.base_uri, endpoint)
 
         def stream_with_bearer():
-            with self.bearer_session.get(api_url, params=query, verify=self.verify, stream=True) as resp:
+            with self.request_with_bearer(
+                    'GET', self.make_url(endpoint, service), params=query, verify=self.verify, stream=True) as resp:
                 resp.raise_for_status()
                 for row in resp.iter_lines():
                     yield json.loads(row)
 
-        try:
-            return stream_with_bearer()
-        except:
-            self.exchange_tokens()
-            return stream_with_bearer()
+        return stream_with_bearer()

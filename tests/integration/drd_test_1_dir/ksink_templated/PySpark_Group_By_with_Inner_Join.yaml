@@ -1,0 +1,35 @@
+# id: PySpark_Group_By_with_Inner_Join
+component:
+  groupId: Partitioned
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    - Blob_JSON_hourly_small_metadata
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            language:
+              python:
+                v3: {}
+            source:
+              inline: "from typing import List\nfrom pyspark.sql import DataFrame,\
+                \ SparkSession\n\ndef transform(spark_session: SparkSession, inputs:\
+                \ List[DataFrame]) -> DataFrame:\n\tCSV_hourly_small = inputs[0]\n\
+                \tBlob_JSON_hourly_small_metadata = inputs[1]\n\tCSV_hourly_small.createTempView(\"\
+                CSV_hourly_small\")\n\tBlob_JSON_hourly_small_metadata.createTempView(\"\
+                Blob_JSON_hourly_small_metadata\")\n\treturn spark_session.sql(\"\"\
+                \" \n\t\tSELECT DATE_TRUNC('HOUR', a.at) as at_hour, b.meta as meta,\
+                \ count(*) as num_events   \n\t\tFROM CSV_hourly_small as a INNER\
+                \ JOIN Blob_JSON_hourly_small_metadata as b\n\t\ton a.app_id=b.id\n\
+                \t\tGROUP BY at_hour, meta\"\"\")  \n"
+        reduction:
+          partial:
+            partitionBy:
+              0:
+                column: at
+                granularity:
+                  time:
+                    hour: {}
+name: PySpark_Group_By_with_Inner_Join

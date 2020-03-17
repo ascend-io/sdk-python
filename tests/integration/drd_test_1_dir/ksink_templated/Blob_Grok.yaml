@@ -1,0 +1,21 @@
+# id: Blob_Grok
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        grokParser:
+          pattern: '%{COMMONAPACHELOG}'
+    container:
+      immediate:
+        contentSome: MTI3LjAuMC4xIC0gZnJhbmsgWzEwL09jdC8yMDAwOjEzOjU1OjM2IC0wNzAwXSAiR0VUIC9hcGFjaGVfcGIuZ2lmIEhUVFAvMS4wIiAyMDAgMjMyNg==
+        object:
+        - contentSha: LWphMuzJ5SChOL+fnYCfxHHWLSF/9z2G9tU40Fu25mg=
+          length: '85'
+          name: ascend_text_blob
+    pattern:
+      glob: '**'
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Blob_Grok

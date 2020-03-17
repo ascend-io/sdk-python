@@ -1,0 +1,27 @@
+component:
+  writeConnector:
+    assignedPriority: {}
+    container:
+      snowflake:
+        account: ascendpartner
+        credentialId:
+          value: kitchen_sink_snowflake
+        credentials:
+          username: KITCHENSINK
+        database: test_db
+        locationTemplate: partitioned_snowflake_sink{{ config.uniquePiece }}
+        s3:
+          bucket: ascend-io-sample-data-write
+          credentialId:
+            value: kitchen_sink_s3_sample_data
+          credentials:
+            id: AKIARV2YZ67JZT3ML7PG
+          prefix: kitchen_sink/sinks/snowflake/partitioned_snowflake_sink/{{ config.uniquePiece }}/
+          writePartFiles: true
+        snowflakeSchema: public
+        updatePolicy:
+          dropTable: {}
+        warehouse: test
+    inputId: CSV_hourly_small_view
+    records: {}
+name: Partitioned_Snowflake_Sink

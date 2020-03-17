@@ -1,0 +1,47 @@
+# id: GCS_Parquet
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        parquetParser:
+          schema:
+            field:
+            - name: at_date
+              schema:
+                timestamp: {}
+            - name: at_ts
+              schema:
+                timestamp: {}
+            - name: n
+              schema:
+                long: {}
+            - name: mod10
+              schema:
+                long: {}
+            - name: mod100
+              schema:
+                long: {}
+            - name: mod1000
+              schema:
+                long: {}
+            - name: b
+              schema:
+                boolean: {}
+            - name: r
+              schema:
+                double: {}
+    container:
+      gcs:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        delimiter: /
+    pattern:
+      glob: test_data/parquet/**.parquet
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: GCS_Parquet

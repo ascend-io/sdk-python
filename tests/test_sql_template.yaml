@@ -1,0 +1,20 @@
+{%- set ascendSqlStmt=ascend_include_raw(resourceParentDirectory, "test_sql_template.sql") -%}
+dataflow:
+  components:
+    - id: sql_stmt.from
+      transform:
+        operator:
+          sqlQuery:
+            sql: {{ ascendSqlStmt | dumpJson }}
+    - id: sql_stmt.to
+      transform:
+        operator:
+          sqlQuery:
+            {% raw %}
+            sql: |
+              SELECT
+                "This is a {{ yikes }} string" as A,
+                B,
+                C
+              FROM "D"
+            {% endraw %}

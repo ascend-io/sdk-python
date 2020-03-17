@@ -1,0 +1,29 @@
+# id: Snowflake_Full_Load
+component:
+  groupId: Snowflake_Sinks
+  writeConnector:
+    assignedPriority:
+      weight: 10000.0
+    container:
+      snowflake:
+        account: ascendpartner
+        credentialId:
+          value: kitchen_sink_snowflake
+        credentials:
+          username: KITCHENSINK
+        database: test_db
+        locationTemplate: snowflake_full_load1581551594041969000
+        s3:
+          bucket: ascend-io-sample-data-write
+          credentialId:
+            value: kitchen_sink_s3_sample_data
+          credentials:
+            id: AKIARV2YZ67JZT3ML7PG
+          prefix: kitchen_sink/sinks/snowflake/snowflake_full_load/1581551594041969000/
+        snowflakeSchema: public
+        updatePolicy:
+          dropTable: {}
+        warehouse: test
+    inputId: Reduction_with_Inner_Join
+    records: {}
+name: Snowflake_Full_Load

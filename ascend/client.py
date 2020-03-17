@@ -6,8 +6,13 @@ an Ascend environment.
 """
 
 from ascend.model import Component, DataFeed, Dataflow, DataService
+from ascend.lineage import LineageGraph
 from ascend.session import Session
 from urllib.error import HTTPError
+
+import ascend.cli.sh as sh
+import configparser
+import os
 
 
 class Client(object):
@@ -53,6 +58,34 @@ class Client(object):
         if access_key is not None and secret_key is not None:
             self.session = Session(environment_hostname, access_key, secret_key, verify)
 
+    @staticmethod
+    def build(hostname: str) -> 'Client':
+        if hostname.endswith(".ascend.io"):
+            profile = hostname[:-10]
+        else:
+            raise ValueError(f"Invalid hostname {hostname}: "
+                             f"must follow format <SOMETHING>.ascend.io")
+
+        config = configparser.ConfigParser()
+
+        verify_ssl = True
+        access_key = sh.getenv("ASCEND_ACCESS_KEY_ID", required=False)
+        secret_key = sh.getenv("ASCEND_SECRET_ACCESS_KEY", required=False)
+
+        if not access_key and not secret_key:
+            config.read(os.path.expanduser("~/.ascend/credentials"))
+            try:
+                access_key = config.get(profile, "ascend_access_key_id")
+                secret_key = config.get(profile, "ascend_secret_access_key")
+                verify_ssl = config.getboolean(profile, "verify_ssl", fallback=True)
+            except Exception as e:
+                raise ValueError('Unable to obtain credential from config') from e
+
+        if not access_key or not secret_key:
+            raise ValueError("Must have credentials to build client.")
+
+        return Client(hostname, access_key=access_key, secret_key=secret_key, verify=verify_ssl)
+
     def get_session(self):
         """
         Get the Session object which the Client uses to make API requests.
@@ -61,6 +94,10 @@ class Client(object):
         ascend.session.Session: the `Session` object
         """
         return self.session
+
+    def list_roles(self):
+        roles = self.session.get('org_roles', service='authz')['data']
+        return roles
 
     def list_data_services(self, raw=False):
         """
@@ -78,7 +115,7 @@ class Client(object):
             return services
         return list(map(
             lambda s:
-            DataService(s['id'], raw_json=s, session=self.session),
+            DataService(s['id'], json_definition=s, session=self.session),
             services))
 
     def get_data_service(self, data_service_id: str) -> DataService:
@@ -101,7 +138,7 @@ class Client(object):
         Get a Dataflow within a Data Service.
 
         # Parameters
-        dataservice_id (str): the ID of the Data Service
+        data_service_id (str): the ID of the Data Service
         dataflow_id (str): the ID of the Dataflow
 
         # Returns
@@ -117,7 +154,7 @@ class Client(object):
         Get a Component within a Dataflow.
 
         # Parameters
-        dataservice_id (str): the ID of the Data Service
+        data_service_id (str): the ID of the Data Service
         dataflow_id (str): the ID of the Dataflow
         component_id (str): the ID of the Component
 
@@ -127,7 +164,9 @@ class Client(object):
         # Raises
         HTTPError: for errors returned by API
         """
-        return Component(data_service_id, dataflow_id, component_id, session=self.session)
+        dataflow = Dataflow(data_service_id, dataflow_id, session=self.session)
+        comps = dataflow.list_components()
+        return [c for c in comps if c.component_id == component_id][0]
 
     def list_data_feeds(self, source_data_service_id=None, raw=False):
         """
@@ -155,9 +194,12 @@ class Client(object):
 
         return list(map(
             lambda pub:
-            DataFeed(pub['fromOrgId'], pub['id'], pub, self.session),
+            DataFeed(pub['fromOrgId'], pub['fromProjId'], pub['id'], pub, self.session),
             pub_list
         ))
+
+    def get_lineage(self):
+        return LineageGraph(self.session)
 
     def get_data_feed(self, data_service_id, data_feed_id, raw=False):
         """

@@ -1,0 +1,23 @@
+# id: drd_test_1
+dataService:
+  dataFeeds:
+  - groupId: data_feeds
+    id: selective_df2
+    inputId: pub.v2
+    name: selective_df2
+    sharing:
+      dataServices:
+      - drd_test_2
+  - groupId: data_feeds
+    id: public_df1
+    inputId: pub.v1
+    name: public_df1
+    sharing:
+      all: true
+  - groupId: data_feeds
+    id: hidden_df3
+    inputId: pub.v3
+    name: hidden_df3
+    sharing:
+      hidden: true
+name: drd test 1

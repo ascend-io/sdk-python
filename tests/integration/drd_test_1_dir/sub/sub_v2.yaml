@@ -1,0 +1,9 @@
+# id: sub_v2
+component:
+  transform:
+    inputIds:
+    - drd_test_1.selective_df2
+    operator:
+      sqlQuery:
+        sql: select * from ${0}
+name: sub_v2

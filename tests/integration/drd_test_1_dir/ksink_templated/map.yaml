@@ -1,0 +1,13 @@
+# id: map
+component:
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT *
+          FROM ${0} AS c
+description: View from CSV_hourly_small
+name: map

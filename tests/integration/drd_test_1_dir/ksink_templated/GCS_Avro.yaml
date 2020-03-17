@@ -1,0 +1,26 @@
+# id: GCS_Avro
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        avroParser:
+          schema:
+            field:
+            - name: country
+              schema:
+                string: {}
+    container:
+      gcs:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        delimiter: /
+    pattern:
+      glob: test_data/avro/test.avro
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: GCS_Avro

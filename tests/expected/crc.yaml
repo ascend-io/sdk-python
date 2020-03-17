@@ -1,0 +1,20 @@
+# id: crc
+{%- set ascend_byte_function = ascend_include_raw(resourceParentDirectory, "crc_byte_function.py") %}
+{%- set ascend_lambda_parser = ascend_include_raw(resourceParentDirectory, "crc_lambda_parser.py") %}
+component:
+  readConnector:
+    bytes:
+      parser:
+        lambdaParser:
+          code:
+            inline: {{ ascend_lambda_parser | b64encode }}
+    container:
+      byteFunction:
+        container:
+          executable:
+            code:
+              source:
+                inline: {{ ascend_byte_function | b64encode }}
+    updatePeriodical:
+      offset: 103366736s
+      period: 134217727s

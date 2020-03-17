@@ -1,0 +1,6 @@
+id: sql
+component:
+  transform:
+    operator:
+      sqlQuery:
+        sql: SELECT A, B, C FROM D

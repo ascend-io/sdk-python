@@ -1,0 +1,384 @@
+# id: GCS_CSV_hourly_small__12_21_
+component:
+  groupId: GCS___CSV_Source
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        xsvParser:
+          columns:
+            parsingSpecifications:
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: ad_group_id
+              targetName: ad_group_id
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: ad_group_type
+              string: {}
+              targetName: ad_group_type
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: advertiser_domain
+              string: {}
+              targetName: advertiser_domain
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: app_id
+              targetName: app_id
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: app_platform
+              string: {}
+              targetName: app_platform
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: app_store_id
+              string: {}
+              targetName: app_store_id
+            - invalidValueHandling:
+                useDefault: {}
+              sourceName: at
+              targetName: at
+              timestamp: {}
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__app__app_store_id
+              string: {}
+              targetName: bid_request__app__app_store_id
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__app__genre
+              string: {}
+              targetName: bid_request__app__genre
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__app__name
+              string: {}
+              targetName: bid_request__app__name
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__app__publisher_id
+              string: {}
+              targetName: bid_request__app__publisher_id
+            - invalidValueHandling:
+                useDefault: {}
+              sourceName: bid_request__at
+              targetName: bid_request__at
+              timestamp: {}
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__geo__country
+              string: {}
+              targetName: bid_request__device__geo__country
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__geo__geo_ip_location__city
+              string: {}
+              targetName: bid_request__device__geo__geo_ip_location__city
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__geo__geo_ip_location__country_code
+              string: {}
+              targetName: bid_request__device__geo__geo_ip_location__country_code
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__geo__geo_ip_location__isp
+              string: {}
+              targetName: bid_request__device__geo__geo_ip_location__isp
+            - double:
+                decimalSeparator: .
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: bid_request__device__geo__geo_ip_location__latitude
+              targetName: bid_request__device__geo__geo_ip_location__latitude
+            - double:
+                decimalSeparator: .
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: bid_request__device__geo__geo_ip_location__longitude
+              targetName: bid_request__device__geo__geo_ip_location__longitude
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__geo__geo_ip_location__time_zone
+              string: {}
+              targetName: bid_request__device__geo__geo_ip_location__time_zone
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__geo__geo_ip_location__zip
+              string: {}
+              targetName: bid_request__device__geo__geo_ip_location__zip
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__model_data__brand
+              string: {}
+              targetName: bid_request__device__model_data__brand
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__model_data__marketing_name
+              string: {}
+              targetName: bid_request__device__model_data__marketing_name
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__device__platform
+              string: {}
+              targetName: bid_request__device__platform
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: bid_request__exchange
+              string: {}
+              targetName: bid_request__exchange
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: campaign_id
+              targetName: campaign_id
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: channel_id
+              targetName: channel_id
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: creative__ad_format
+              string: {}
+              targetName: creative__ad_format
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: creative__creative_template_id
+              targetName: creative__creative_template_id
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: creative__id
+              targetName: creative__id
+            - boolean: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: creative__is_autoplay_video
+              targetName: creative__is_autoplay_video
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: creative__type
+              string: {}
+              targetName: creative__type
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: customer_id
+              targetName: customer_id
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: normalized_dest_app_store_id
+              targetName: normalized_dest_app_store_id
+            - double:
+                decimalSeparator: .
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: price
+              targetName: price
+            - double:
+                decimalSeparator: .
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: sample_frequency
+              targetName: sample_frequency
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: targeted_city_id
+              string: {}
+              targetName: targeted_city_id
+          delimiter: ','
+          headerLineCount: '1'
+          schema:
+            field:
+            - name: ad_group_id
+              schema:
+                int: {}
+            - name: ad_group_type
+              schema:
+                string: {}
+            - name: advertiser_domain
+              schema:
+                string: {}
+            - name: app_id
+              schema:
+                int: {}
+            - name: app_platform
+              schema:
+                string: {}
+            - name: app_store_id
+              schema:
+                string: {}
+            - name: at
+              schema:
+                timestamp: {}
+            - name: bid_request__app__app_store_id
+              schema:
+                string: {}
+            - name: bid_request__app__genre
+              schema:
+                string: {}
+            - name: bid_request__app__name
+              schema:
+                string: {}
+            - name: bid_request__app__publisher_id
+              schema:
+                string: {}
+            - name: bid_request__at
+              schema:
+                timestamp: {}
+            - name: bid_request__device__geo__country
+              schema:
+                string: {}
+            - name: bid_request__device__geo__geo_ip_location__city
+              schema:
+                string: {}
+            - name: bid_request__device__geo__geo_ip_location__country_code
+              schema:
+                string: {}
+            - name: bid_request__device__geo__geo_ip_location__isp
+              schema:
+                string: {}
+            - name: bid_request__device__geo__geo_ip_location__latitude
+              schema:
+                double: {}
+            - name: bid_request__device__geo__geo_ip_location__longitude
+              schema:
+                double: {}
+            - name: bid_request__device__geo__geo_ip_location__time_zone
+              schema:
+                string: {}
+            - name: bid_request__device__geo__geo_ip_location__zip
+              schema:
+                string: {}
+            - name: bid_request__device__model_data__brand
+              schema:
+                string: {}
+            - name: bid_request__device__model_data__marketing_name
+              schema:
+                string: {}
+            - name: bid_request__device__platform
+              schema:
+                string: {}
+            - name: bid_request__exchange
+              schema:
+                string: {}
+            - name: campaign_id
+              schema:
+                int: {}
+            - name: channel_id
+              schema:
+                int: {}
+            - name: creative__ad_format
+              schema:
+                string: {}
+            - name: creative__creative_template_id
+              schema:
+                int: {}
+            - name: creative__id
+              schema:
+                int: {}
+            - name: creative__is_autoplay_video
+              schema:
+                boolean: {}
+            - name: creative__type
+              schema:
+                string: {}
+            - name: customer_id
+              schema:
+                int: {}
+            - name: normalized_dest_app_store_id
+              schema:
+                int: {}
+            - name: price
+              schema:
+                double: {}
+            - name: sample_frequency
+              schema:
+                double: {}
+            - name: targeted_city_id
+              schema:
+                string: {}
+    container:
+      gcs:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        delimiter: /
+    lastManualRefreshTime: '2019-03-20T23:57:37Z'
+    pattern:
+      glob: test_data/csv_hourly_small/2016/12/21/**.csv
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: GCS_CSV_hourly_small__12_21_

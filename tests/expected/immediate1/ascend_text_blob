@@ -1,0 +1,3 @@
+Example text blob file production
+Line 2 of Example text blob file production
+This blob has jinja {{ chars }} in it

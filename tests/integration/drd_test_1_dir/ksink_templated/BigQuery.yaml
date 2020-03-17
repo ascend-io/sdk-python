@@ -1,0 +1,27 @@
+# id: BigQuery
+component:
+  groupId: Sink_Formatters
+  writeConnector:
+    assignedPriority: {}
+    container:
+      bigQuery:
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        datasetPrefix: kitchen_sink
+        locationTemplate: map_sink{{ config.uniquePiece }}
+        partitionPattern: {}
+        project: ascend-io-demo-data
+        stagingContainer:
+          bucket: ascend-io-demo-data
+          credentialId:
+            value: kitchen_sink_gcs_demo_data
+          credentials:
+            jsonKey: ''
+          prefix: kitchen_sink/staging/map_sink/{{ config.uniquePiece }}/
+          writePartFiles: true
+    inputId: Map_with_inner_join
+    records: {}
+description: Sink from Map_with_inner_join
+name: BigQuery

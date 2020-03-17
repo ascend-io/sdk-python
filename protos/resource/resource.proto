@@ -1,0 +1,148 @@
+syntax = "proto3";
+package resource;
+
+option optimize_for = SPEED;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "protos/content_encoding/content_encoding.proto";
+import "protos/io/io.proto";
+import "protos/operator/operator.proto";
+import "protos/pattern/pattern.proto";
+import "protos/schema/schema.proto";
+
+// N.B. The id, name, description fields appear at different levels of
+// nesting depending on option selection. In general, the way it works
+// is that it appears at the outermost level
+
+message Environment {
+    repeated DataService data_services = 1;
+}
+
+message Credentials {
+    repeated io.Credentials credentials = 1;
+}
+
+message Resource {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+
+    oneof type {
+        DataService data_service = 4;
+        Dataflow dataflow = 5;
+        Group group = 6;
+        DataFeed data_feed = 7;
+        Component component = 8;
+    }
+    int32 version = 10;
+}
+
+message DataService {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+
+    repeated DataFeed data_feeds = 5;
+    repeated Dataflow dataflows = 6; // for nested only
+}
+
+message Dataflow {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+
+    repeated Group groups = 6;
+    repeated Component components = 7; // for nested only
+}
+
+message Component {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+
+    oneof details {
+        ReadConnector read_connector = 4;
+        Transform transform = 5;
+        WriteConnector write_connector = 6;
+    }
+
+    string group_id = 12;
+}
+
+message Group {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message ReadConnector {
+    pattern.Pattern pattern = 1;
+    io.Container container = 2;
+    Periodical updatePeriodical = 3;
+    google.protobuf.Timestamp last_manual_refresh_time = 4;
+    Priority assigned_priority = 5;
+
+    oneof from {
+        FromBytes bytes = 6;
+        FromRecords records = 7;
+    }
+
+    message FromBytes {
+        operator.Operator parser = 1;
+    }
+
+    message FromRecords {
+        schema.Map schema = 1;
+    }
+}
+
+message Transform {
+    repeated string input_ids = 1;
+    operator.Operator operator = 2;
+    Priority assigned_priority = 3;
+}
+
+message WriteConnector {
+    string input_id = 1;
+    io.Container container = 2;
+    Priority assigned_priority = 3;
+
+    oneof to {
+        ToBytes bytes = 4;
+        ToRecords records = 5;
+    }
+
+    message ToBytes {
+        operator.Operator formatter = 1;
+        content_encoding.ContentEncoding content_encoding = 2;
+    }
+
+    message ToRecords {
+    }
+}
+
+message DataFeed {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+
+    message Sharing {
+        repeated string data_services = 1;
+        bool all = 2;
+        bool hidden = 3;
+    }
+    string input_id = 4; // <dataflow_id>.<resource_id>
+    Sharing sharing = 5;
+    string group_id = 6;
+}
+
+message Periodical {
+  google.protobuf.Duration period = 1;
+  google.protobuf.Duration offset = 2;
+}
+
+message Priority {
+  google.protobuf.DoubleValue weight = 1;
+}

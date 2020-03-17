@@ -1,7 +1,26 @@
-from ascend.util import parse_component_type, display_type_name
+from pprint import pprint
 
+from ascend import util
+from ascend.resource import Component, Resource
+from google.protobuf.json_format import MessageToDict, Parse, ParseDict
+from protos.resource import resource_pb2
+from typing import List, TYPE_CHECKING
+if TYPE_CHECKING:
+    from ascend.resource_definitions import ResourceSession
 
-class DataService:
+import json
+
+RENAME_MAP = {
+    'sub': 'data_feed_connector',
+    'pub': 'data_feed',
+    'source': 'read_connector',
+    'view': 'transform',
+    'sink': 'write_connector',
+    'project': 'dataflow',
+    'organization': 'data_service',
+}
+
+class DataService(Resource):
     """
     A Data Service is the highest-level organizational structure in
     Ascend, and the primary means of controlling access.
@@ -23,36 +42,18 @@ class DataService:
     HTTPError: on API errors
     """
 
-    def __init__(self, data_service_id, raw_json=None, session=None):
-        self.prefix_base = "organizations"
+    def __init__(self, data_service_id, json_definition=None, session=None):
+        super().__init__(data_service_id, "organizations", json_definition=json_definition, session=session)
+
+        # Override raw_json fields
+        self.json_definition["id"] = self.resource_id
+        self.json_definition["name"] = self.resource_id.replace("_", " ")
         self.data_service_id = data_service_id
-        self.session = session
-        self.prefix = "{}/{}".format(self.prefix_base, self.data_service_id)
+        self.api_type = 'organization'
+        self.resource_type = 'data_service'
 
-        if raw_json is not None:
-            self.raw_json = raw_json
-        elif raw_json is None and session is not None:
-            self.raw_json = self.session.get(self.prefix)  # to confirm access
-
-    def apply(self):
-        """
-        Upserts this Data Service.
-
-        # Raises
-        HTTPError: on API errors
-        """
-        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
-        if resp_status_code < 200 or resp_status_code > 299:
-            self.session.patch(self.prefix, data=self.raw_json)
-
-    def delete(self):
-        """
-        Deletes this Data Service.
-
-        # Raises
-        HTTPError: on API errors
-        """
-        self.session.delete(self.prefix)
+    def get_rd_path(self):
+        return (self.resource_id, None, None)
 
     def get_dataflow(self, dataflow_id, raw=False):
         """
@@ -67,13 +68,13 @@ class DataService:
         # Raises
         HTTPError: on API errors
         """
-        raw_resp = self.session.get("{}/projects/{}".format(self.prefix, dataflow_id))
+        raw_resp = self.session.get("{}/projects/{}".format(self.resource_path, dataflow_id))
         if raw:
             return raw_resp
 
-        return Dataflow(self.data_service_id, dataflow_id, raw_json=raw_resp, session=self.session)
+        return Dataflow(self.resource_id, dataflow_id, json_definition=raw_resp, session=self.session)
 
-    def list_dataflows(self, raw=False):
+    def list_dataflows(self, raw=False) -> List['Dataflow']:
         """
         List all the Dataflows in the Data Service which are accessible to the Client.
 
@@ -83,24 +84,52 @@ class DataService:
         # Raises
         HTTPError: on API errors
         """
-        raw_resp = self.session.get("{}/projects".format(self.prefix))
+        raw_resp = self.session.get("{}/projects".format(self.resource_path))
         if raw:
             return raw_resp
 
         return list(map(
             lambda df:
-            Dataflow(self.data_service_id, df['id'], raw_json=df, session=self.session),
+            Dataflow(self.resource_id, df['id'], json_definition=df, session=self.session),
             raw_resp['data']
         ))
 
+    def rd_path(self):
+        return (self.data_service_id, None, None)
+
+    def to_type_proto(self, rs: 'ResourceSession', options, top_level=False):
+        d = {}
+        if top_level:
+            self.set_boilerplate(d)
+        rs.load_data_service(self)
+        pub_uuids = [
+            v for k, v in rs.type_to_api_path_to_uuid['pub'].items()
+            if k[0] == self.data_service_id
+        ]
+        d['dataFeeds'] = sorted([
+            MessageToDict(rs.uuid_to_resource[uuid].to_type_proto(rs, options, top_level=True))
+            for uuid in pub_uuids
+        ], key=lambda d: d['id'])
+        if options.recursive and not getattr(options, 'directory', False):
+            uuids = [
+                v for k, v in rs.type_to_api_path_to_uuid['project'].items()
+                if k[0] == self.data_service_id
+            ]
+            d['dataflows'] = sorted([
+                MessageToDict(rs.uuid_to_resource[uuid].to_type_proto(rs, options, top_level=True))
+                for uuid in uuids
+            ], key=lambda d: d['id'])
+        message = resource_pb2.DataService()
+        Parse(json.dumps(d), message, ignore_unknown_fields=True)
+        return message
+
     def __repr__(self):
         return '<{1}.{2} {0}>'.format(
-            self.data_service_id,
+            self.resource_id,
             self.__class__.__module__,
             self.__class__.__qualname__)
 
-
-class Dataflow:
+class Dataflow(Resource):
     """
         A Dataflow is where Connectors and Transforms are defined,
         and the dependency graph specified.
@@ -122,39 +151,25 @@ class Dataflow:
         HTTPError: on API errors
     """
 
-    def __init__(self, data_service_id, dataflow_id, raw_json=None, session=None):
+    def __init__(self, data_service_id, dataflow_id, json_definition=None, session=None):
+        super().__init__(
+            dataflow_id,
+            "organizations/{}/projects".format(data_service_id),
+            json_definition=json_definition,
+            session=session)
+
+        # Parental id's
         self.data_service_id = data_service_id
-        self.prefix_base = "organizations/{}/projects".format(self.data_service_id)
         self.dataflow_id = dataflow_id
-        self.session = session
-        self.prefix = "{}/{}".format(self.prefix_base, self.dataflow_id)
+        self.api_type = 'project'
 
-        if raw_json is not None:
-            self.raw_json = raw_json
-        elif raw_json is None and session is not None:
-            self.raw_json = self.session.get(self.prefix)
+        # Override raw_json id's
+        self.json_definition["data_service_id"] = self.data_service_id
+        self.json_definition["dataflow_id"] = self.dataflow_id
+        self.json_definition["id"] = self.resource_id
+        self.resource_type = 'dataflow'
 
-    def apply(self):
-        """
-        Upserts this Dataflow.
-
-        # Raises
-        HTTPError: on API errors
-        """
-        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
-        if resp_status_code < 200 or resp_status_code > 299:
-            self.session.patch(self.prefix, data=self.raw_json)
-
-    def delete(self):
-        """
-        Deletes this Dataflow.
-
-        # Raises
-        HTTPError: on API errors
-        """
-        self.session.delete(self.prefix)
-
-    def list_components(self, raw=False):
+    def list_components(self) -> List[Component]:
         """
         List the Components (Connectors and Transforms) in the Dataflow.
 
@@ -164,17 +179,48 @@ class Dataflow:
         # Raises
         HTTPError: on API errors
         """
-        raw_resp = self.session.get(self.prefix + "/components")
-        if raw:
-            return raw_resp
+        raw_resp = self.session.get("{}/components".format(self.resource_path))
 
-        return list(map(
-            lambda c:
-            Component(self.data_service_id, self.dataflow_id, c['id'], raw_json=c, session=self.session),
-            raw_resp['data']
-        ))
+        if not raw_resp['data']:
+            return []
 
-    def get_component(self, component_id, raw=False):
+        dataflow_components = {}
+        for c in raw_resp['data']:
+            component = component_definition_to_component(
+                self.data_service_id,
+                self.resource_id,
+                c['id'],
+                c,
+                self.session)
+            if component:
+                dataflow_components[component.uuid] = component
+
+        return list(dataflow_components.values())
+
+    def list_groups(self) -> List['Group']:
+        """
+        List the Groups in the Dataflow.
+
+        # Returns
+        List<Groups>: the Groups
+
+        # Raises
+        HTTPError: on API errors
+        """
+        raw_resp = self.session.get("{}/groups".format(self.resource_path))
+
+        if not raw_resp['data']:
+            return []
+
+        groups = []
+        for c in raw_resp['data']:
+            group = Group(self.data_service_id, self.resource_id, c['id'], c, self.session)
+            if group:
+                groups.append(group)
+
+        return groups
+
+    def get_component(self, component_id):
         """
         Get a Component from a Dataflow
 
@@ -187,31 +233,92 @@ class Dataflow:
         # Raises
         HTTPError: on API errors
         """
-        raw_list = filter(
-            lambda c: c['id'] == component_id,
-            self.list_components(raw=True)['data'])
-        raw_json = next(raw_list, None)
-        if raw_json is None:
-            raise KeyError('No component with id: ' + component_id)
-        if raw:
-            return raw_json
+        return list(filter(lambda c: c.resource_id == component_id, self.list_components()))[0]
 
-        return Component(
-            self.data_service_id,
-            self.dataflow_id,
-            component_id,
-            raw_json=raw_json,
-            session=self.session)
+    def to_type_proto(self, rs: 'ResourceSession', options, top_level=False):
+        d = {}
+        if top_level:
+            self.set_boilerplate(d)
+        rs.load_dataflow(self)
+        group_uuids = [
+            v for k, v in rs.type_to_api_path_to_uuid['group'].items()
+            if k[0] == self.data_service_id and k[1] == self.resource_id
+        ]
+        if options.recursive:
+            groups = [rs.uuid_to_resource[uuid] for uuid in group_uuids]
+            d['groups'] = sorted([
+                MessageToDict(group.to_type_proto(rs, options, top_level=True)) for group in groups
+            ], key=lambda d: d['id'])
+        if not getattr(options, 'directory', False) and options.recursive:
+            # add components for nested style
+            uuids = [
+                v for t in ['source', 'view', 'sink']
+                for k, v in rs.type_to_api_path_to_uuid[t].items()
+                if k[0] == self.data_service_id and k[1] == self.dataflow_id
+            ]
+            protos = [rs.uuid_to_resource[uuid].to_type_proto(rs, options, True) for uuid in uuids]
+            d['components'] = sorted([
+                MessageToDict(proto) for proto in protos
+            ], key=lambda d: d['id'])
+        message = resource_pb2.Dataflow()
+        ParseDict(d, message)
+        return message
+
+    def get_rd_path(self):
+        return self.data_service_id, self.dataflow_id, None
 
     def __repr__(self):
         return '<{2}.{3} {0}.{1}>'.format(
             self.data_service_id,
-            self.dataflow_id,
+            self.resource_id,
             self.__class__.__module__,
             self.__class__.__qualname__)
 
 
-class DataFeed:
+class Group(Resource):
+    def __init__(self, data_service_id, dataflow_id, group_id, json_definition=None, session=None):
+        super().__init__(
+            group_id,
+            "organizations/{}/projects/{}/groups".format(data_service_id, dataflow_id),
+            json_definition=json_definition,
+            session=session)
+
+        # Parental id's
+        self.data_service_id = data_service_id
+        self.dataflow_id = dataflow_id
+        self.api_type = 'group'
+        self.resource_type = 'group'
+        self.exportable = False
+
+        # Override raw_json id's
+        self.json_definition["data_service_id"] = self.data_service_id
+        self.json_definition["id"] = self.resource_id
+
+    def to_type_proto(self, rs: 'ResourceSession', options, top_level=False):
+        d = {}
+        if top_level:
+            self.set_boilerplate(d)
+        self.set_boilerplate(d)
+        message = resource_pb2.Group()
+        Parse(json.dumps(d), message, ignore_unknown_fields=True)
+        return message
+
+    def get_api_path(self):
+        return self.data_service_id, self.dataflow_id, self.resource_id
+
+    def get_rd_path(self):
+        return self.data_service_id, self.dataflow_id, self.resource_id
+
+    def __repr__(self):
+        return '<{3}.{4} {0}.{1}.{2}>'.format(
+            self.data_service_id,
+            self.dataflow_id,
+            self.resource_id,
+            self.__class__.__module__,
+            self.__class__.__qualname__)
+
+
+class DataFeed(Component):
     """
     A Data Feed is a live-updated dataset which is produced by a Dataflow in one
     Data Service and can be shared with other Data Services.
@@ -233,83 +340,136 @@ class DataFeed:
     HTTPError: on API errors
     """
 
-    def __init__(self, data_service_id, data_feed_id, raw_json=None, session=None):
-        self.data_service_id = data_service_id
+    def __init__(self, data_service_id, dataflow_id, data_feed_id, json_definition=None, session=None):
+        super().__init__(
+            data_service_id,
+            dataflow_id,
+            'pub',
+            data_feed_id,
+            json_definition=json_definition,
+            session=session)
+        self.component_type = "DataFeed"
         self.data_feed_id = data_feed_id
-        self.session = session
+        self.resource_type = 'data_feed'
+        self.exportable = False
 
-        if raw_json is None:
-            # ATM we must have the JSON for the data feed to construct the prefix
-            raise ValueError("must provide JSON to construct DataFeed")
-        self.raw_json = raw_json
+        # Override id's
+        self.json_definition["data_service_id"] = self.data_service_id
+        self.json_definition["dataflow_id"] = self.dataflow_id
+        self.json_definition["id"] = self.resource_id
 
-        self.dataflow_id = raw_json['fromProjUUID']
-        if self.dataflow_id is None:
-            raise ValueError("invalid JSON for DataFeed - no Dataflow field")
+    def get_rd_path(self):
+        return (self.data_service_id, self.resource_id, None)
 
-        self.prefix_base = "organizations/{}/projects/{}/pubs".format(self.data_service_id, self.dataflow_id)
-        self.prefix = "{}/{}".format(self.prefix_base, raw_json['uuid'])
+    def resource_ref(self, rs: 'ResourceSession'):
+        return '.'.join(filter(lambda x: x is not None, self.get_rd_path()))
 
-    def apply(self):
-        """
-        Upserts this Data Feed.
+    def input_uuids(self):
+        return [self.json_definition['inputUUID']]
 
-        # Raises
-        HTTPError: on API errors
-        """
-        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
-        if resp_status_code < 200 or resp_status_code > 299:
-            self.session.patch(self.prefix, data=self.raw_json)
+    def to_type_proto(self, rs: 'ResourceSession', options, top_level=False):
+        d = {}
+        if top_level:
+            self.set_boilerplate(d)
+        rd_path = self.get_rd_path()
+        if rd_path in rs.content_path_to_group_path:
+            d['group_id'] = rs.content_path_to_group_path[rd_path][2]
+        self.set_details(rs, d, options)
+        message = resource_pb2.DataFeed()
+        ParseDict(d, message)
+        return message
 
-    def delete(self):
-        """
-        Deletes this Data Feed.
+    def set_details(self, rs, d, options):
+        dataflow = rs.get_resource(self.data_service_id, self.dataflow_id, None)
+        rs.load_dataflow(dataflow)
+        inp = rs.uuid_to_resource[self.json_definition['inputUUID']]
+        if self.json_definition['open']:
+            sharing = {'all': True}
+        else:
+            shared_ds = set()
+            rs.load_env()
+            hidden = True  # hidden means data feed is not shared with its own data service
+            for roleUUID in self.json_definition['pubToRoles'].split(','):
+                role = rs.uuid_to_resource.get(roleUUID)
+                if not role:
+                    # org-specific roles can be ignored
+                    continue
+                if role['id'] == 'Everyone':
+                    ds = rs.uuid_to_resource[role['orgId']]
+                    if ds.resource_id == self.data_service_id:
+                        hidden = False
+                    else:
+                        shared_ds.add(ds.resource_id)
+            sharing = {'data_services': list(shared_ds)}
+            # print(self.json_definition)
+            if hidden:
+                sharing = {**sharing, 'hidden': True}
+        d['input_id'] = f'{inp.dataflow_id}.{inp.resource_id}'
+        d['sharing'] = sharing
 
-        # Raises
-        HTTPError: on API errors
-        """
-        self.session.delete(self.prefix_base)
-
-    def get_records(self, offset=0, limit=0):
-        """
-        Get the records of data from the Data Feed.
-
-        # Parameters
-        offset (int):
-            index at which records will start streaming from
-        limit (int):
-            maximum number of records that should be returned
-
-        # Returns
-        Iterator<dict>:
-            An iterator over the records of data.
-            Can be read into a Pandas DataFrame using `Pandas.DataFrame.from_records()`.
-
-        # Raises
-        ValueError: on invalid query parameter inputs
-        HTTPError:  on API errors
-        """
-        if offset < 0:
-            raise ValueError("Offset must be a non-negative value.")
-        if limit < 0:
-            raise ValueError("Limit must be a non-negative value.")
-        query_params = {}
-        if offset > 0:
-            query_params["offset"] = offset
-        if limit > 0:
-            query_params["limit"] = limit
-            
-        return self.session.stream(self.prefix + "/records-stream", query=query_params)
+    def get_api_path(self):
+        return super().get_rd_path()
 
     def __repr__(self):
         return '<{2}.{3} {0}.{1}>'.format(
             self.data_service_id,
-            self.data_feed_id,
+            self.resource_id,
             self.__class__.__module__,
             self.__class__.__qualname__)
 
 
-class Component:
+class DataFeedConnector(Component):
+    def __init__(self, data_service_id, dataflow_id, data_feed_connector_id, json_definition=None, session=None):
+        super().__init__(
+            data_service_id,
+            dataflow_id,
+            'sub',
+            data_feed_connector_id,
+            json_definition=json_definition,
+            session=session)
+        self.component_type = "DataFeedConnector"
+        self.json_definition = json_definition
+
+        # Override id's
+        self.json_definition["data_service_id"] = self.data_service_id
+        self.json_definition["dataflow_id"] = self.dataflow_id
+        self.json_definition["id"] = self.resource_id
+        self.exportable = False
+
+    def set_details(self, *args):
+        raise NotImplementedError(f'{self} does not have an rd representation')
+
+    def get_rd_path(self):
+        raise NotImplementedError(f'{self} does not have an rd representation')
+
+    def input_uuids(self) -> List[str]:
+        return [self.json_definition['pubUUID']]
+
+    # data feed connectors need to supply a reference to their pub
+    def resource_ref(self, rs: 'ResourceSession'):
+        pubUUID = self.json_definition['pubUUID']
+        if pubUUID not in rs.uuid_to_resource:
+            payload = self.session.get(f'{self.base_api_path}/{self.resource_id}/pub')['data']
+            pub = component_from_json(payload, self.session)
+            origin_dataflow = rs.get_df(pub.data_service_id, pub.dataflow_id)
+            # just load the whole dataflow
+            rs.load_dataflow(origin_dataflow)
+        return rs.uuid_to_resource[pubUUID].resource_ref(rs)
+
+    def get_api_path(self):
+        return super().get_rd_path()
+
+    def __repr__(self):
+        return '<{3}.{4} {0}.{1}.{2} type={5}>'.format(
+            self.data_service_id,
+            self.dataflow_id,
+            self.resource_id,
+            self.__class__.__module__,
+            self.__class__.__qualname__,
+            self.component_type)
+
+
+class ReadConnector(Component):
     """
     Components are the functional units in a Dataflow.
     There are two main types of Components: Connectors and Transforms.
@@ -332,76 +492,20 @@ class Component:
     HTTPError: on API errors
     """
 
-    def __init__(self, data_service_id, dataflow_id, component_id, raw_json=None, session=None):
-        self.data_service_id = data_service_id
-        self.dataflow_id = dataflow_id
-        self.component_id = component_id
-        self.session = session
+    def __init__(self, data_service_id, dataflow_id, component_id, json_definition=None, session=None):
+        super().__init__(
+            data_service_id,
+            dataflow_id,
+            'source',
+            component_id,
+            json_definition=json_definition,
+            session=session)
+        self.component_type = "ReadConnector"
 
-        if raw_json is not None:
-            self.raw_json = raw_json
-        elif raw_json is None and session is not None:
-            df = Dataflow(data_service_id, dataflow_id, session=session)
-            raw_json = df.get_component(component_id, raw=True)
-
-        self.component_type = parse_component_type(raw_json)
-
-        self.prefix_base = "organizations/{}/projects/{}/{}s".format(data_service_id, dataflow_id, self.component_type)
-        self.prefix = "{}/{}".format(self.prefix_base, component_id)
-
-    def apply(self):
-        """
-        Upserts this Component.
-
-        # Raises
-        HTTPError: on API errors
-        """
-        resp_status_code = self.session.post(self.prefix_base, data=self.raw_json)
-        if resp_status_code < 200 or resp_status_code > 299:
-            self.session.patch(self.prefix, data=self.raw_json)
-
-    def delete(self):
-        """
-        Deletes this Component.
-
-        # Raises
-        HTTPError: on API errors
-        """
-        self.session.delete(self.prefix_base)
-
-    def get_records(self, offset=0, limit=0):
-        """
-        Get the records of data produced by the Component.
-
-        # Parameters
-        offset (int):
-            index at which records will start streaming from
-        limit (int):
-            maximum number of records that should be returned
-
-        # Returns
-        Iterator<dict>:
-            An iterator over the records of data.
-            Can be read into a Pandas DataFrame using `Pandas.DataFrame.from_records()`.
-
-        # Raises
-        ValueError: on invalid query parameter inputs or if record streaming is unavailable for this component
-        HTTPError:  on API errors
-        """
-        if self.component_type not in ['view', 'source', 'sub', 'pub']:
-            raise ValueError("Not able to get records from a {}.".format(display_type_name(self.component_type)))
-
-        if offset < 0:
-            raise ValueError("Offset must be a non-negative value.")
-        if limit < 0:
-            raise ValueError("Limit must be a non-negative value.")
-        query_params = {}
-        if offset > 0:
-            query_params["offset"] = offset
-        if limit > 0:
-            query_params["limit"] = limit
-
-        return self.session.stream(self.prefix + "/records-stream")
+        # Override id's
+        self.json_definition["data_service_id"] = self.data_service_id
+        self.json_definition["dataflow_id"] = self.dataflow_id
+        self.json_definition["id"] = self.resource_id
 
     def refresh(self):
         """
@@ -410,16 +514,170 @@ class Component:
         # Raises
         HttpError: on API errors
         """
-        if self.component_type not in ['source']:
-            raise ValueError("Not able to refresh Components that are not Read Connectors.")
+        self.session.post(self.resource_api_path + "/refresh")
 
-        self.session.post(self.prefix + "/refresh")
+    def set_details(self, rs: 'ResourceSession', d, options):
+        d['read_connector'] = self.json_definition['source']
 
     def __repr__(self):
         return '<{3}.{4} {0}.{1}.{2} type={5}>'.format(
             self.data_service_id,
             self.dataflow_id,
-            self.component_id,
+            self.resource_id,
             self.__class__.__module__,
             self.__class__.__qualname__,
-            display_type_name(self.component_type))
+            self.component_type)
+
+
+class Transform(Component):
+    """
+    Components are the functional units in a Dataflow.
+    There are two main types of Components: Connectors and Transforms.
+
+    # Parameters
+    data_service_id (str):
+        The ID of the Data Service which contains this Dataflow
+    dataflow_id (str):
+        The ID of the Dataflow. Must be unique within the Data Service.
+    component_id (str):
+        The ID of the Component. Must be unique within the Dataflow.
+    raw_json (dict):
+        The API's JSON definition of the Data Service.
+        Used, if provided, to construct the DataService directly and avoid one API request.
+        (default is `None`)
+    session (ascend.session.Session):
+        The client session used for HTTP requests.
+
+    # Raises
+    HTTPError: on API errors
+    """
+
+    def __init__(self, data_service_id, dataflow_id, component_id, json_definition=None, session=None):
+        super().__init__(
+            data_service_id,
+            dataflow_id,
+            'view',
+            component_id,
+            json_definition=json_definition,
+            session=session)
+        self.component_type = "Transform"
+
+        # Override id's
+        self.json_definition["data_service_id"] = self.data_service_id
+        self.json_definition["dataflow_id"] = self.dataflow_id
+        self.json_definition["id"] = self.resource_id
+
+    def set_details(self, rs: 'ResourceSession', d, options):
+        input_ress = map(rs.uuid_to_resource.get, self.input_uuids())
+        d['transform'] = {
+            **self.json_definition['view'],
+            'input_ids': [input_res.resource_ref(rs) for input_res in input_ress]
+        }
+
+    def input_uuids(self) -> List[str]:
+        return [input['uuid'] for input in self.json_definition['inputs']]
+
+    @classmethod
+    def apply_rename(cls, json_definition):
+        name_mapping = {"view": "transform"}
+        for old_name, new_name in name_mapping.items():
+            if old_name in json_definition:
+                json_definition[new_name] = json_definition[old_name]
+                del json_definition[old_name]
+        return json_definition
+
+    def __repr__(self):
+        return '<{3}.{4} {0}.{1}.{2} type={5}>'.format(
+            self.data_service_id,
+            self.dataflow_id,
+            self.resource_id,
+            self.__class__.__module__,
+            self.__class__.__qualname__,
+            self.component_type)
+
+
+class WriteConnector(Component):
+    """
+    Components are the functional units in a Dataflow.
+    There are two main types of Components: Connectors and Transforms.
+
+    # Parameters
+    data_service_id (str):
+        The ID of the Data Service which contains this Dataflow
+    dataflow_id (str):
+        The ID of the Dataflow. Must be unique within the Data Service.
+    component_id (str):
+        The ID of the Component. Must be unique within the Dataflow.
+    raw_json (dict):
+        The API's JSON definition of the Data Service.
+        Used, if provided, to construct the DataService directly and avoid one API request.
+        (default is `None`)
+    session (ascend.session.Session):
+        The client session used for HTTP requests.
+
+    # Raises
+    HTTPError: on API errors
+    """
+
+    def __init__(self, data_service_id, dataflow_id, component_id, json_definition=None, session=None):
+        super().__init__(
+            data_service_id,
+            dataflow_id,
+            'sink',
+            component_id,
+            json_definition=json_definition,
+            session=session)
+        self.component_type = "WriteConnector"
+
+        # Override id's
+        self.json_definition["data_service_id"] = self.data_service_id
+        self.json_definition["dataflow_id"] = self.dataflow_id
+        self.json_definition["id"] = self.resource_id
+
+    def input_uuids(self) -> List[str]:
+        return [self.json_definition['inputUUID']]
+
+    def set_details(self, rs: 'ResourceSession', d, options):
+        input_uuid = self.json_definition['inputUUID']
+        input_res = rs.uuid_to_resource[input_uuid]
+        d['write_connector'] = {
+            **self.json_definition['sink'],
+            'input_id': input_res.resource_id
+        }
+
+    def __repr__(self):
+        return '<{3}.{4} {0}.{1}.{2} type={5}>'.format(
+            self.data_service_id,
+            self.dataflow_id,
+            self.resource_id,
+            self.__class__.__module__,
+            self.__class__.__qualname__,
+            self.component_type)
+
+
+def component_from_json(json_definition, session):
+    data_service_id = json_definition['organization']['id']
+    dataflow_id = json_definition['project']['id']
+    component_id = json_definition['id']
+    return component_definition_to_component(
+        data_service_id,
+        dataflow_id,
+        component_id,
+        json_definition,
+        session
+    )
+
+
+def component_definition_to_component(data_service_id, dataflow_id, component_id, c, session):
+    component_type = util.parse_component_type(c)
+
+    if component_type == "ReadConnector":
+        return ReadConnector(data_service_id, dataflow_id, component_id, json_definition=c, session=session)
+    elif component_type == "Transform":
+        return Transform(data_service_id, dataflow_id, component_id, json_definition=c, session=session)
+    elif component_type == "WriteConnector":
+        return WriteConnector(data_service_id, dataflow_id, component_id, json_definition=c, session=session)
+    elif component_type == "DataFeed":
+        return DataFeed(data_service_id, dataflow_id, component_id, json_definition=c, session=session)
+    elif component_type == "DataFeedConnector":
+        return DataFeedConnector(data_service_id, dataflow_id, component_id, json_definition=c, session=session)

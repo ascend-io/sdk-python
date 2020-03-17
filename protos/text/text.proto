@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package text;
+
+
+// line break definition from here: https://en.wikipedia.org/wiki/Newline
+message LineEnding {
+  // ascii line break
+  message Cr {} // 0D
+  message CrLf{} // 0D0A
+  message Lf {} // 0A
+  message LfCr{} // 0A0D
+
+  // utf based line break
+  message Ff {} // 000C
+  message Ls {} // 2028
+  message Nel {} // 0085
+  message Ps {} // 2029
+  message Vt {} // 000B
+
+  oneof detail {
+    Cr cr = 1;
+    CrLf cr_lf = 2;
+    Lf lf = 3;
+    LfCr lf_cr = 4;
+    Ff ff = 5;
+    Ls ls = 6;
+    Nel nel = 7;
+    Ps ps = 8;
+    Vt vt = 9;
+  }
+}

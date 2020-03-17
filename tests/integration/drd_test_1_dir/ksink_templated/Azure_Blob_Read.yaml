@@ -1,0 +1,62 @@
+# id: Azure_Blob_Read
+component:
+  groupId: Azure_Blob_Storage_RC___WC
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        xsvParser:
+          columns:
+            parsingSpecifications:
+            - date: {}
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              targetName: date_col
+            - float:
+                decimalSeparator: .
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              targetName: yield_val
+            - float:
+                decimalSeparator: .
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              targetName: prev_yield_val
+            - float:
+                decimalSeparator: .
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              targetName: daily_diff
+          delimiter: ','
+          schema:
+            field:
+            - name: date_col
+              schema:
+                date: {}
+            - name: yield_val
+              schema:
+                float: {}
+            - name: prev_yield_val
+              schema:
+                float: {}
+            - name: daily_diff
+              schema:
+                float: {}
+    container:
+      abs:
+        accountName: kitchensink
+        container: kitchen-sink
+        credentialId:
+          value: kitchen_sink_azure_shared_key
+        credentials:
+          sharedKey: {}
+    pattern:
+      exactMatch: yield_curve.csv
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Azure_Blob_Read

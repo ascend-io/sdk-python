@@ -1,0 +1,3095 @@
+# id: drd_test_1
+dataService:
+  dataFeeds:
+  - groupId: data_feeds
+    id: selective_df2
+    inputId: pub.v2
+    name: selective_df2
+    sharing:
+      dataServices:
+      - drd_test_2
+  - groupId: data_feeds
+    id: public_df1
+    inputId: pub.v1
+    name: public_df1
+    sharing:
+      all: true
+  - groupId: data_feeds
+    id: hidden_df3
+    inputId: pub.v3
+    name: hidden_df3
+    sharing:
+      hidden: true
+  dataflows:
+  - components:
+    - id: Blob_UDP
+      name: Blob_UDP
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            lambdaParser:
+              code:
+                inline: aW1wb3J0IGpzb24KaW1wb3J0IGRhdGV0aW1lCgojIG1pbmltdW0gaGVsbG9Xb3JsZCBleGFtcGxlCmRlZiBwYXJzZXJfZnVuY3Rpb24ocmVhZGVyLCBvbk5leHQpOgogICAgbG9vcCA9IDEwMAogICAgZm9yIGkgaW4gcmFuZ2UobG9vcCk6CiAgICAgICAgb25OZXh0KHsKICAgICAgICAgICAgJ21zZyc6ICdIZWxsbyBXb3JsZCEhIScsCiAgICAgICAgICAgICd0aW1lc3RhbXAnOiBkYXRldGltZS5kYXRldGltZS5ub3coKS5pc29mb3JtYXQoKSwKICAgICAgICB9KQogICAgcmVhZGVyLmNsb3NlKCk=
+                language:
+                  python:
+                    v3: {}
+              metadata: '{   "pre-cmd": {      "github": {       "repo": "github.com/ascend-io/21cf",        "branch":
+                "master",        "auth": {          "id_rsa" : "redact ssl key"       }     }   },   "cmd":
+                "export; find . -name ''*''; python3 ./udps/hello-world/hello.py"
+                }'
+              schema:
+                field:
+                - name: msg
+                  schema:
+                    string: {}
+                - name: timestamp
+                  schema:
+                    timestamp: {}
+        container:
+          immediate:
+            contentSome: Rm9v
+            object:
+            - contentSha: HL7HN/hj5JIs7mPMLrv6r80c/4t5DYz9LmpdVQtkivo=
+              length: '3'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: BQ_partitioned_sources
+      id: uber_bq_part_specific
+      name: uber_bq_part_specific
+      readConnector:
+        assignedPriority: {}
+        container:
+          bigQuery:
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            datasetPrefix: test_data
+            partitionPattern:
+              glob: '20140502'
+            project: ascend-io-demo-data
+            stagingContainer: {}
+        pattern:
+          exactMatch: uber_stats_part
+        records:
+          schema:
+            field:
+            - name: f0_
+              schema:
+                long: {}
+            - name: d
+              schema:
+                timestamp: {}
+            - name: base
+              schema:
+                string: {}
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - id: Source_Function_Basic
+      name: Source_Function_Basic
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            jsonParser:
+              columns:
+                parsingSpecifications:
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: id
+                  string: {}
+                  targetName: id
+                - int: {}
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: age
+                  targetName: age
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: name
+                  string: {}
+                  targetName: name
+              namespaceDelimiter: __
+              schema:
+                field:
+                - name: id
+                  schema:
+                    string: {}
+                - name: age
+                  schema:
+                    int: {}
+                - name: name
+                  schema:
+                    string: {}
+        container:
+          byteFunction:
+            container:
+              executable:
+                code:
+                  language:
+                    python:
+                      v3: {}
+                  source:
+                    inline: IyBtaW5pbXVtIGV4YW1wbGUgb24gZXh0cmFjaW5nIGlubGluZSBzb3VyY2UgYXMganNvbgppbXBvcnQganNvbgojICJjb250ZXh0IiBmdW5jdGlvbiBpcyBvcHRpb25hbCBiZWNhdXNlIGluIG1lbW9yeSBkYXRhIG5lZWRzIG5vIGNyZWQgdG8gYWNjZXNzCiMgZGVmIGNvbnRleHQoY3JlZGVudGlhbHMpOgojICAgICByZXR1cm4geydjcmVkZW50aWFscyc6IGNyZWRlbnRpYWxzfQoKCmRlZiBsaXN0X29iamVjdHMoY29udGV4dCwgbWV0YWRhdGEpOgogICAgIyBzaW11bGF0aW5nIHR3byBqc29uIGZpbGVzLiAiZmluZ2VycHJpbnQiIGlzIGEgdW5pcXVlIGlkZW50aWZpZXIuIEl0IGNvdWxkIGJlIGEgaGFzaCB2YWx1ZSBnZW5lcmF0ZWQKICAgICMgZnJvbSBkYXRhIGNvbnRlbnQgKGUuZy4gTUQ1KSBvciAibGFzdF9tb2RpZmllZCIgdGltZS4gUHJlZml4IGp1c3QgbGlrZSBkaXJlY3RvcnkgaW4gcmVndWxhcgogICAgIyBmaWxlc3lzdGVtLiAiaXNfcHJlZml4IiBkZWZhdWx0cyB0byBiZSBGYWxzZSwgc28gaXQgb25seSBuZWVkcyB0byBiZSBzZXQgZm9yIGRpcmVjdG9yeSBvYmplY3QKICAgIHlpZWxkIHsnbmFtZSc6ICdqc29uMScsICdmaW5nZXJwcmludCc6ICc5OEVEQjk1QkInfQogICAgeWllbGQgeyduYW1lJzogJ2pzb24yJywgJ2ZpbmdlcnByaW50JzogJ0QzM0JGM0ZEQyd9CgoKZGVmIHJlYWRfYnl0ZXMoY29udGV4dCwgbWV0YWRhdGEpOgogICAgaWYgbWV0YWRhdGFbJ25hbWUnXSA9PSAnanNvbjEnOgogICAgICAgIHJvdyA9IHsnaWQnOiAxLCAnbmFtZSc6ICdKb2huJywgJ2FnZSc6IDM1fQogICAgICAgIHlpZWxkIGpzb24uZHVtcHMocm93KSArICdcbicKICAgICAgICByb3cgPSB7J2lkJzogMiwgJ25hbWUnOiAnQW5uYScsICdhZ2UnOiAxNn0KICAgICAgICB5aWVsZCBqc29uLmR1bXBzKHJvdykgKyAnXG4nCiAgICBpZiBtZXRhZGF0YVsnbmFtZSddID09ICdqc29uMic6CiAgICAgICAgcm93ID0geydpZCc6IDMsICduYW1lJzogJ1RvbnknLCAnYWdlJzogNTZ9CiAgICAgICAgeWllbGQganNvbi5kdW1wcyhyb3cpICsgJ1xuJwo=
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - id: CSV_hourly_small
+      name: CSV_hourly_small
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: ad_group_id
+                  targetName: ad_group_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: ad_group_type
+                  string: {}
+                  targetName: ad_group_type
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: advertiser_domain
+                  string: {}
+                  targetName: advertiser_domain
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: app_id
+                  targetName: app_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: app_platform
+                  string: {}
+                  targetName: app_platform
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: app_store_id
+                  string: {}
+                  targetName: app_store_id
+                - invalidValueHandling:
+                    useDefault: {}
+                  sourceName: at
+                  targetName: at
+                  timestamp: {}
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__app_store_id
+                  string: {}
+                  targetName: bid_request__app__app_store_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__genre
+                  string: {}
+                  targetName: bid_request__app__genre
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__name
+                  string: {}
+                  targetName: bid_request__app__name
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__publisher_id
+                  string: {}
+                  targetName: bid_request__app__publisher_id
+                - invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__at
+                  targetName: bid_request__at
+                  timestamp: {}
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__country
+                  string: {}
+                  targetName: bid_request__device__geo__country
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__city
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__city
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__country_code
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__country_code
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__isp
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__isp
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__device__geo__geo_ip_location__latitude
+                  targetName: bid_request__device__geo__geo_ip_location__latitude
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__device__geo__geo_ip_location__longitude
+                  targetName: bid_request__device__geo__geo_ip_location__longitude
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__time_zone
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__time_zone
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__zip
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__zip
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__model_data__brand
+                  string: {}
+                  targetName: bid_request__device__model_data__brand
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__model_data__marketing_name
+                  string: {}
+                  targetName: bid_request__device__model_data__marketing_name
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__platform
+                  string: {}
+                  targetName: bid_request__device__platform
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__exchange
+                  string: {}
+                  targetName: bid_request__exchange
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: campaign_id
+                  targetName: campaign_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: channel_id
+                  targetName: channel_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: creative__ad_format
+                  string: {}
+                  targetName: creative__ad_format
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__creative_template_id
+                  targetName: creative__creative_template_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__id
+                  targetName: creative__id
+                - boolean: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__is_autoplay_video
+                  targetName: creative__is_autoplay_video
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: creative__type
+                  string: {}
+                  targetName: creative__type
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: customer_id
+                  targetName: customer_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: normalized_dest_app_store_id
+                  targetName: normalized_dest_app_store_id
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: price
+                  targetName: price
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: sample_frequency
+                  targetName: sample_frequency
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: targeted_city_id
+                  string: {}
+                  targetName: targeted_city_id
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: ad_group_id
+                  schema:
+                    int: {}
+                - name: ad_group_type
+                  schema:
+                    string: {}
+                - name: advertiser_domain
+                  schema:
+                    string: {}
+                - name: app_id
+                  schema:
+                    int: {}
+                - name: app_platform
+                  schema:
+                    string: {}
+                - name: app_store_id
+                  schema:
+                    string: {}
+                - name: at
+                  schema:
+                    timestamp: {}
+                - name: bid_request__app__app_store_id
+                  schema:
+                    string: {}
+                - name: bid_request__app__genre
+                  schema:
+                    string: {}
+                - name: bid_request__app__name
+                  schema:
+                    string: {}
+                - name: bid_request__app__publisher_id
+                  schema:
+                    string: {}
+                - name: bid_request__at
+                  schema:
+                    timestamp: {}
+                - name: bid_request__device__geo__country
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__city
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__country_code
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__isp
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__latitude
+                  schema:
+                    double: {}
+                - name: bid_request__device__geo__geo_ip_location__longitude
+                  schema:
+                    double: {}
+                - name: bid_request__device__geo__geo_ip_location__time_zone
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__zip
+                  schema:
+                    string: {}
+                - name: bid_request__device__model_data__brand
+                  schema:
+                    string: {}
+                - name: bid_request__device__model_data__marketing_name
+                  schema:
+                    string: {}
+                - name: bid_request__device__platform
+                  schema:
+                    string: {}
+                - name: bid_request__exchange
+                  schema:
+                    string: {}
+                - name: campaign_id
+                  schema:
+                    int: {}
+                - name: channel_id
+                  schema:
+                    int: {}
+                - name: creative__ad_format
+                  schema:
+                    string: {}
+                - name: creative__creative_template_id
+                  schema:
+                    int: {}
+                - name: creative__id
+                  schema:
+                    int: {}
+                - name: creative__is_autoplay_video
+                  schema:
+                    boolean: {}
+                - name: creative__type
+                  schema:
+                    string: {}
+                - name: customer_id
+                  schema:
+                    int: {}
+                - name: normalized_dest_app_store_id
+                  schema:
+                    int: {}
+                - name: price
+                  schema:
+                    double: {}
+                - name: sample_frequency
+                  schema:
+                    double: {}
+                - name: targeted_city_id
+                  schema:
+                    string: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+        lastManualRefreshTime: '2019-02-02T01:19:03Z'
+        pattern:
+          glob: test_data/csv_hourly_small/**.csv
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: GCS___CSV_Source
+      id: GCS_CSV_hourly_small__12_20_
+      name: GCS_CSV_hourly_small__12_20_
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: ad_group_id
+                  targetName: ad_group_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: ad_group_type
+                  string: {}
+                  targetName: ad_group_type
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: advertiser_domain
+                  string: {}
+                  targetName: advertiser_domain
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: app_id
+                  targetName: app_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: app_platform
+                  string: {}
+                  targetName: app_platform
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: app_store_id
+                  string: {}
+                  targetName: app_store_id
+                - invalidValueHandling:
+                    useDefault: {}
+                  sourceName: at
+                  targetName: at
+                  timestamp: {}
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__app_store_id
+                  string: {}
+                  targetName: bid_request__app__app_store_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__genre
+                  string: {}
+                  targetName: bid_request__app__genre
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__name
+                  string: {}
+                  targetName: bid_request__app__name
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__publisher_id
+                  string: {}
+                  targetName: bid_request__app__publisher_id
+                - invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__at
+                  targetName: bid_request__at
+                  timestamp: {}
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__country
+                  string: {}
+                  targetName: bid_request__device__geo__country
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__city
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__city
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__country_code
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__country_code
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__isp
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__isp
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__device__geo__geo_ip_location__latitude
+                  targetName: bid_request__device__geo__geo_ip_location__latitude
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__device__geo__geo_ip_location__longitude
+                  targetName: bid_request__device__geo__geo_ip_location__longitude
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__time_zone
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__time_zone
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__zip
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__zip
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__model_data__brand
+                  string: {}
+                  targetName: bid_request__device__model_data__brand
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__model_data__marketing_name
+                  string: {}
+                  targetName: bid_request__device__model_data__marketing_name
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__platform
+                  string: {}
+                  targetName: bid_request__device__platform
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__exchange
+                  string: {}
+                  targetName: bid_request__exchange
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: campaign_id
+                  targetName: campaign_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: channel_id
+                  targetName: channel_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: creative__ad_format
+                  string: {}
+                  targetName: creative__ad_format
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__creative_template_id
+                  targetName: creative__creative_template_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__id
+                  targetName: creative__id
+                - boolean: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__is_autoplay_video
+                  targetName: creative__is_autoplay_video
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: creative__type
+                  string: {}
+                  targetName: creative__type
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: customer_id
+                  targetName: customer_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: normalized_dest_app_store_id
+                  targetName: normalized_dest_app_store_id
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: price
+                  targetName: price
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: sample_frequency
+                  targetName: sample_frequency
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: targeted_city_id
+                  string: {}
+                  targetName: targeted_city_id
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: ad_group_id
+                  schema:
+                    int: {}
+                - name: ad_group_type
+                  schema:
+                    string: {}
+                - name: advertiser_domain
+                  schema:
+                    string: {}
+                - name: app_id
+                  schema:
+                    int: {}
+                - name: app_platform
+                  schema:
+                    string: {}
+                - name: app_store_id
+                  schema:
+                    string: {}
+                - name: at
+                  schema:
+                    timestamp: {}
+                - name: bid_request__app__app_store_id
+                  schema:
+                    string: {}
+                - name: bid_request__app__genre
+                  schema:
+                    string: {}
+                - name: bid_request__app__name
+                  schema:
+                    string: {}
+                - name: bid_request__app__publisher_id
+                  schema:
+                    string: {}
+                - name: bid_request__at
+                  schema:
+                    timestamp: {}
+                - name: bid_request__device__geo__country
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__city
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__country_code
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__isp
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__latitude
+                  schema:
+                    double: {}
+                - name: bid_request__device__geo__geo_ip_location__longitude
+                  schema:
+                    double: {}
+                - name: bid_request__device__geo__geo_ip_location__time_zone
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__zip
+                  schema:
+                    string: {}
+                - name: bid_request__device__model_data__brand
+                  schema:
+                    string: {}
+                - name: bid_request__device__model_data__marketing_name
+                  schema:
+                    string: {}
+                - name: bid_request__device__platform
+                  schema:
+                    string: {}
+                - name: bid_request__exchange
+                  schema:
+                    string: {}
+                - name: campaign_id
+                  schema:
+                    int: {}
+                - name: channel_id
+                  schema:
+                    int: {}
+                - name: creative__ad_format
+                  schema:
+                    string: {}
+                - name: creative__creative_template_id
+                  schema:
+                    int: {}
+                - name: creative__id
+                  schema:
+                    int: {}
+                - name: creative__is_autoplay_video
+                  schema:
+                    boolean: {}
+                - name: creative__type
+                  schema:
+                    string: {}
+                - name: customer_id
+                  schema:
+                    int: {}
+                - name: normalized_dest_app_store_id
+                  schema:
+                    int: {}
+                - name: price
+                  schema:
+                    double: {}
+                - name: sample_frequency
+                  schema:
+                    double: {}
+                - name: targeted_city_id
+                  schema:
+                    string: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+        pattern:
+          glob: test_data/csv_hourly_small/2016/12/20/**.csv
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: GCS___CSV_Source
+      id: GCS_CSV_hourly_small__12_21_
+      name: GCS_CSV_hourly_small__12_21_
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: ad_group_id
+                  targetName: ad_group_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: ad_group_type
+                  string: {}
+                  targetName: ad_group_type
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: advertiser_domain
+                  string: {}
+                  targetName: advertiser_domain
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: app_id
+                  targetName: app_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: app_platform
+                  string: {}
+                  targetName: app_platform
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: app_store_id
+                  string: {}
+                  targetName: app_store_id
+                - invalidValueHandling:
+                    useDefault: {}
+                  sourceName: at
+                  targetName: at
+                  timestamp: {}
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__app_store_id
+                  string: {}
+                  targetName: bid_request__app__app_store_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__genre
+                  string: {}
+                  targetName: bid_request__app__genre
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__name
+                  string: {}
+                  targetName: bid_request__app__name
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__app__publisher_id
+                  string: {}
+                  targetName: bid_request__app__publisher_id
+                - invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__at
+                  targetName: bid_request__at
+                  timestamp: {}
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__country
+                  string: {}
+                  targetName: bid_request__device__geo__country
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__city
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__city
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__country_code
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__country_code
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__isp
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__isp
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__device__geo__geo_ip_location__latitude
+                  targetName: bid_request__device__geo__geo_ip_location__latitude
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: bid_request__device__geo__geo_ip_location__longitude
+                  targetName: bid_request__device__geo__geo_ip_location__longitude
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__time_zone
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__time_zone
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__geo__geo_ip_location__zip
+                  string: {}
+                  targetName: bid_request__device__geo__geo_ip_location__zip
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__model_data__brand
+                  string: {}
+                  targetName: bid_request__device__model_data__brand
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__model_data__marketing_name
+                  string: {}
+                  targetName: bid_request__device__model_data__marketing_name
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__device__platform
+                  string: {}
+                  targetName: bid_request__device__platform
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: bid_request__exchange
+                  string: {}
+                  targetName: bid_request__exchange
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: campaign_id
+                  targetName: campaign_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: channel_id
+                  targetName: channel_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: creative__ad_format
+                  string: {}
+                  targetName: creative__ad_format
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__creative_template_id
+                  targetName: creative__creative_template_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__id
+                  targetName: creative__id
+                - boolean: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: creative__is_autoplay_video
+                  targetName: creative__is_autoplay_video
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: creative__type
+                  string: {}
+                  targetName: creative__type
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: customer_id
+                  targetName: customer_id
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: normalized_dest_app_store_id
+                  targetName: normalized_dest_app_store_id
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: price
+                  targetName: price
+                - double:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: sample_frequency
+                  targetName: sample_frequency
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: targeted_city_id
+                  string: {}
+                  targetName: targeted_city_id
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: ad_group_id
+                  schema:
+                    int: {}
+                - name: ad_group_type
+                  schema:
+                    string: {}
+                - name: advertiser_domain
+                  schema:
+                    string: {}
+                - name: app_id
+                  schema:
+                    int: {}
+                - name: app_platform
+                  schema:
+                    string: {}
+                - name: app_store_id
+                  schema:
+                    string: {}
+                - name: at
+                  schema:
+                    timestamp: {}
+                - name: bid_request__app__app_store_id
+                  schema:
+                    string: {}
+                - name: bid_request__app__genre
+                  schema:
+                    string: {}
+                - name: bid_request__app__name
+                  schema:
+                    string: {}
+                - name: bid_request__app__publisher_id
+                  schema:
+                    string: {}
+                - name: bid_request__at
+                  schema:
+                    timestamp: {}
+                - name: bid_request__device__geo__country
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__city
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__country_code
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__isp
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__latitude
+                  schema:
+                    double: {}
+                - name: bid_request__device__geo__geo_ip_location__longitude
+                  schema:
+                    double: {}
+                - name: bid_request__device__geo__geo_ip_location__time_zone
+                  schema:
+                    string: {}
+                - name: bid_request__device__geo__geo_ip_location__zip
+                  schema:
+                    string: {}
+                - name: bid_request__device__model_data__brand
+                  schema:
+                    string: {}
+                - name: bid_request__device__model_data__marketing_name
+                  schema:
+                    string: {}
+                - name: bid_request__device__platform
+                  schema:
+                    string: {}
+                - name: bid_request__exchange
+                  schema:
+                    string: {}
+                - name: campaign_id
+                  schema:
+                    int: {}
+                - name: channel_id
+                  schema:
+                    int: {}
+                - name: creative__ad_format
+                  schema:
+                    string: {}
+                - name: creative__creative_template_id
+                  schema:
+                    int: {}
+                - name: creative__id
+                  schema:
+                    int: {}
+                - name: creative__is_autoplay_video
+                  schema:
+                    boolean: {}
+                - name: creative__type
+                  schema:
+                    string: {}
+                - name: customer_id
+                  schema:
+                    int: {}
+                - name: normalized_dest_app_store_id
+                  schema:
+                    int: {}
+                - name: price
+                  schema:
+                    double: {}
+                - name: sample_frequency
+                  schema:
+                    double: {}
+                - name: targeted_city_id
+                  schema:
+                    string: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+        lastManualRefreshTime: '2019-03-20T23:57:37Z'
+        pattern:
+          glob: test_data/csv_hourly_small/2016/12/21/**.csv
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Credless_Auth_
+      id: gcs_with_credless
+      name: gcs_with_credless
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: field1
+                  string: {}
+                  targetName: field1
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: field2
+                  string: {}
+                  targetName: field2
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: field3
+                  string: {}
+                  targetName: field3
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: field1
+                  schema:
+                    string: {}
+                - name: field2
+                  schema:
+                    string: {}
+                - name: field3
+                  schema:
+                    string: {}
+        container:
+          gcs:
+            bucket: test_credless
+        pattern:
+          glob: test1/test1
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Credless_Auth_
+      id: s3_with_credless
+      name: s3_with_credless
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - float:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: external_author_id
+                  targetName: external_author_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: author
+                  string: {}
+                  targetName: author
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: content
+                  string: {}
+                  targetName: content
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: region
+                  string: {}
+                  targetName: region
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: language
+                  string: {}
+                  targetName: language
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: publish_date
+                  string: {}
+                  targetName: publish_date
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: harvested_date
+                  string: {}
+                  targetName: harvested_date
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: following
+                  targetName: following
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: followers
+                  targetName: followers
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: updates
+                  targetName: updates
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: post_type
+                  string: {}
+                  targetName: post_type
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: account_type
+                  string: {}
+                  targetName: account_type
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: new_june_2018
+                  targetName: new_june_2018
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: retweet
+                  targetName: retweet
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault:
+                      defaultValue: ''
+                  nullIsInvalid: true
+                  sourceName: account_category
+                  string: {}
+                  targetName: account_category
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: external_author_id
+                  schema:
+                    float: {}
+                - name: author
+                  schema:
+                    string: {}
+                - name: content
+                  schema:
+                    string: {}
+                - name: region
+                  schema:
+                    string: {}
+                - name: language
+                  schema:
+                    string: {}
+                - name: publish_date
+                  schema:
+                    string: {}
+                - name: harvested_date
+                  schema:
+                    string: {}
+                - name: following
+                  schema:
+                    int: {}
+                - name: followers
+                  schema:
+                    int: {}
+                - name: updates
+                  schema:
+                    int: {}
+                - name: post_type
+                  schema:
+                    string: {}
+                - name: account_type
+                  schema:
+                    string: {}
+                - name: new_june_2018
+                  schema:
+                    int: {}
+                - name: retweet
+                  schema:
+                    int: {}
+                - name: account_category
+                  schema:
+                    string: {}
+        container:
+          s3:
+            bucket: ryft-public-sample-data
+        pattern:
+          glob: twitter/russian-troll/IRAhandle_tweets_1.csv
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - id: GCS_Parquet
+      name: GCS_Parquet
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            parquetParser:
+              schema:
+                field:
+                - name: at_date
+                  schema:
+                    timestamp: {}
+                - name: at_ts
+                  schema:
+                    timestamp: {}
+                - name: n
+                  schema:
+                    long: {}
+                - name: mod10
+                  schema:
+                    long: {}
+                - name: mod100
+                  schema:
+                    long: {}
+                - name: mod1000
+                  schema:
+                    long: {}
+                - name: b
+                  schema:
+                    boolean: {}
+                - name: r
+                  schema:
+                    double: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+        pattern:
+          glob: test_data/parquet/**.parquet
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Date_Partitioned_Join
+      id: Orders
+      name: Orders
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            jsonParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: order_id
+                  targetName: order_id
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: order_name
+                  string: {}
+                  targetName: order_name
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: ts
+                  targetName: ts
+                  timestamp: {}
+              namespaceDelimiter: __
+              schema:
+                field:
+                - name: order_id
+                  schema:
+                    int: {}
+                - name: order_name
+                  schema:
+                    string: {}
+                - name: ts
+                  schema:
+                    timestamp: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+        pattern:
+          glob: kitchen_sink/dpj-test-data/orders/**
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Credless_Auth_
+      id: bq_with_credless
+      name: bq_with_credless
+      readConnector:
+        assignedPriority: {}
+        container:
+          bigQuery:
+            datasetPrefix: austin_incidents
+            partitionPattern: {}
+            project: bigquery-public-data
+            stagingContainer: {}
+        pattern:
+          exactMatch: incidents_2009
+        records:
+          schema:
+            field:
+            - name: unique_key
+              schema:
+                long: {}
+            - name: descript
+              schema:
+                string: {}
+            - name: date
+              schema:
+                date: {}
+            - name: time
+              schema:
+                string: {}
+            - name: address
+              schema:
+                string: {}
+            - name: longitude
+              schema:
+                double: {}
+            - name: latitude
+              schema:
+                double: {}
+            - name: location
+              schema:
+                string: {}
+            - name: timestamp
+              schema:
+                timestamp: {}
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Azure_Blob_Storage_RC___WC
+      id: Azure_Blob_Read_service_principal
+      name: Azure_Blob_Read_service_principal
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            parquetParser:
+              schema:
+                field:
+                - name: ts
+                  schema:
+                    timestamp: {}
+        container:
+          abs:
+            accountName: kitchensink
+            container: service-principal
+            credentialId:
+              value: kitchen_sink_azure_service_principal
+            credentials:
+              servicePrincipal:
+                clientId: 00636442-d713-4a46-80c2-e73a5ac90ec0
+                tenant: f3a5598b-e043-4719-80a7-49b23046bdec
+        pattern:
+          exactMatch: ts.parquet
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - id: GCS_Avro
+      name: GCS_Avro
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            avroParser:
+              schema:
+                field:
+                - name: country
+                  schema:
+                    string: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+        pattern:
+          glob: test_data/avro/test.avro
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Azure_Blob_Storage_RC___WC
+      id: Azure_Blob_Read
+      name: Azure_Blob_Read
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - date: {}
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  targetName: date_col
+                - float:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  targetName: yield_val
+                - float:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  targetName: prev_yield_val
+                - float:
+                    decimalSeparator: .
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  targetName: daily_diff
+              delimiter: ','
+              schema:
+                field:
+                - name: date_col
+                  schema:
+                    date: {}
+                - name: yield_val
+                  schema:
+                    float: {}
+                - name: prev_yield_val
+                  schema:
+                    float: {}
+                - name: daily_diff
+                  schema:
+                    float: {}
+        container:
+          abs:
+            accountName: kitchensink
+            container: kitchen-sink
+            credentialId:
+              value: kitchen_sink_azure_shared_key
+            credentials:
+              sharedKey: {}
+        pattern:
+          exactMatch: yield_curve.csv
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: BQ_partitioned_sources
+      id: uber_bq_part_star
+      name: uber_bq_part_star
+      readConnector:
+        assignedPriority: {}
+        container:
+          bigQuery:
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            datasetPrefix: test_data
+            partitionPattern:
+              regex: .*
+            project: ascend-io-demo-data
+            stagingContainer: {}
+        pattern:
+          exactMatch: uber_stats_part
+        records:
+          schema:
+            field:
+            - name: f0_
+              schema:
+                long: {}
+            - name: d
+              schema:
+                timestamp: {}
+            - name: base
+              schema:
+                string: {}
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - id: Blob_JSON_hourly_small_metadata
+      name: Blob_JSON_hourly_small_metadata
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            jsonParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  targetName: id
+                - invalidValueHandling:
+                    useDefault: {}
+                  string: {}
+                  targetName: meta
+              namespaceDelimiter: __
+              schema:
+                field:
+                - name: id
+                  schema:
+                    int: {}
+                - name: meta
+                  schema:
+                    string: {}
+        container:
+          immediate:
+            contentSome: eyJpZCI6IDYyMiwgIm1ldGEiOiAic2l4LXR3ZW50eS10d28ifQp7ImlkIjogNDI5LCAibWV0YSI6ICJmb3VyLXR3ZW50eS1uaW5lIn0KeyJpZCI6IDc4NCwgIm1ldGEiOiAic2V2ZW4tZWlnaHR5LWZvdXIifQp7ImlkIjogODEwLCAibWV0YSI6ImVpZ2h0LXRlbiJ9CnsiaWQiOjEwODMsICJtZXRhIjoidGVuLWVpZ2h0eS10aHJlZSJ9CnsiaWQiOjExNiwgIm1ldGEiOiJvbmUtc2l4dGVlbiJ9CnsiaWQiOiAyMzIsICJtZXRhIjoidHdvdGhyZWV0aHdvIn0KeyJpZCI6IDIzMCwgIm1ldGEiOiJ0d290aHJlZXRod28ifQ==
+            object:
+            - contentSha: BuElEDQ+VZevlDQY+SjZogk6QbeO7mBARBICHX3aTzU=
+              length: '292'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: BQ_partitioned_sources
+      id: uber_bq_part_no_match
+      name: uber_bq_part_no_match
+      readConnector:
+        assignedPriority: {}
+        container:
+          bigQuery:
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            datasetPrefix: test_data
+            partitionPattern:
+              regex: YYMMDD
+            project: ascend-io-demo-data
+            stagingContainer: {}
+        pattern:
+          exactMatch: uber_stats_part
+        records:
+          schema:
+            field:
+            - name: f0_
+              schema:
+                long: {}
+            - name: d
+              schema:
+                timestamp: {}
+            - name: base
+              schema:
+                string: {}
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - id: Blob_Parser_Function
+      name: Blob_Parser_Function
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            lambdaParser:
+              code:
+                inline: IyBpbXBvcnQgcGFja2FnZSBuZWVkZWQgCiMgUGxlYXNlIGFkZCB0aGVtIHRvIGluc3RhbGwgbGlzdCBiZWxvdywKIyBpZiB0aGV5IGFyZSBub3QgcHJlLWJ1aWx0CmltcG9ydCBqc29uIAoKIyBtYWluIGZ1bmN0aW9uCmRlZiBwYXJzZXJfZnVuY3Rpb24ocmVhZGVyLCBvbk5leHQpOgogICAgIyBVc2UgcmVhZGVyIHRvIHJlYWQgaW4gZGF0YSwgYW5kIHBhc3MgYSBweXRob24gbWFwIHRvIG9uTmV4dCBmdW5jdGlvbiBhcyBwYXJzaW5nIHJlc3VsdC4KICAgIGZvciBsaW5lIGluIHJlYWRlcjoKICAgICAgICAjIHN0cmlwIHNwYWNlcyBhbmQgc2tpcCBvbiBlbXB0eSBsaW5lCiAgICAgICAgbGluZSA9IGxpbmUuc3RyaXAoKQogICAgICAgIGlmIGxpbmU6CiAgICAgICAgICAgICMgImxvYWRzIiB3aWxsIGNvbnZlcnQgbGluZSB0byBweXRob24gbWFwCiAgICAgICAgICAgIG9uTmV4dChqc29uLmxvYWRzKCd7InBpZ19sYXRpbiI6IicgKyB0b19waWdfbGF0aW4oc3RyKGxpbmUpKSArICcifScpKQogICAgcmVhZGVyLmNsb3NlKCkKCmRlZiB0b19waWdfbGF0aW4oc2VudGVuY2UpOgogICAgbHN0ID0gWydzaCcsICdnbCcsICdjaCcsICdwaCcsICd0cicsICdicicsICdmcicsICdibCcsICdncicsICdzdCcsICdzbCcsICdjbCcsICdwbCcsICdmbCddCiAgICB3b3JkcyA9IHNlbnRlbmNlLnNwbGl0KCkKICAgIGZvciBrIGluIHJhbmdlKGxlbih3b3JkcykpOgogICAgICAgIGkgPSB3b3Jkc1trXQogICAgICAgIGlmIGlbMF0gaW4gWydhJywgJ2UnLCAnaScsICdvJywgJ3UnXToKICAgICAgICAgICAgd29yZHNba10gPSBpKydheScKICAgICAgICBlbGlmIHQoaSkgaW4gbHN0OgogICAgICAgICAgICB3b3Jkc1trXSA9IGlbMjpdK2lbOjJdKydheScKICAgICAgICBlbGlmIGkuaXNhbHBoYSgpID09IEZhbHNlOgogICAgICAgICAgICB3b3Jkc1trXSA9IGkKICAgICAgICBlbHNlOgogICAgICAgICAgICB3b3Jkc1trXSA9IGlbMTpdK2lbMF0rJ2F5JwogICAgcmV0dXJuICcgJy5qb2luKHdvcmRzKQoKZGVmIHQoc3RyKToKICAgIHJldHVybiBzdHJbMF0rc3RyWzFd
+                language:
+                  python:
+                    v3: {}
+              schema:
+                field:
+                - name: pig_latin
+                  schema:
+                    string: {}
+        container:
+          immediate:
+            contentSome: aG93IG11Y2ggd29vZCB3b3VsZCBhIHdvb2RjaHVjayBjaHVjayBpZiBhIHdvb2RjaHVjayBjb3VsZCBjaHVjayB3b29kCmhlIHdvdWxkIGNodWNrLCBoZSB3b3VsZCwgYXMgbXVjaCBhcyBoZSBjb3VsZCwgYW5kIGNodWNrIGFzIG11Y2ggd29vZCBhcyBhIHdvb2RjaHVjayB3b3VsZCBpZiBhIHdvb2RjaHVjayBjb3VsZCBjaHVjayB3b29k
+            object:
+            - contentSha: NXFMYAKplovJ58tTrDj9oaqvqGNR01HF+stWHsHFREU=
+              length: '192'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - id: Blob_Grok
+      name: Blob_Grok
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            grokParser:
+              pattern: '%{COMMONAPACHELOG}'
+        container:
+          immediate:
+            contentSome: MTI3LjAuMC4xIC0gZnJhbmsgWzEwL09jdC8yMDAwOjEzOjU1OjM2IC0wNzAwXSAiR0VUIC9hcGFjaGVfcGIuZ2lmIEhUVFAvMS4wIiAyMDAgMjMyNg==
+            object:
+            - contentSha: LWphMuzJ5SChOL+fnYCfxHHWLSF/9z2G9tU40Fu25mg=
+              length: '85'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Date_Partitioned_Join
+      id: Tickets
+      name: Tickets
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            jsonParser:
+              columns:
+                parsingSpecifications:
+                - invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: ts
+                  targetName: ts
+                  timestamp: {}
+                - int: {}
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: ticket_id
+                  targetName: ticket_id
+                - int: {}
+                  invalidValueHandling:
+                    suppressWarn: true
+                    useDefault: {}
+                  sourceName: order_id
+                  targetName: order_id
+              namespaceDelimiter: __
+              schema:
+                field:
+                - name: ts
+                  schema:
+                    timestamp: {}
+                - name: ticket_id
+                  schema:
+                    int: {}
+                - name: order_id
+                  schema:
+                    int: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+        pattern:
+          glob: kitchen_sink/dpj-test-data/tickets/**
+        updatePeriodical:
+          offset: 101025131s
+          period: 134217727s
+    - groupId: Maps
+      id: Cascading_PySpark_with_filter
+      name: Cascading_PySpark_with_filter
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - PySpark_Map_with_inner_join
+        operator:
+          sparkFunction:
+            executable:
+              code:
+                language:
+                  python:
+                    v3: {}
+                source:
+                  inline: |
+                    from typing import List
+                    from pyspark.sql import Column, DataFrame, SparkSession
+                    from pyspark.sql.functions import col, expr
+
+                    Column.__floordiv__ = lambda self, other: (self / other).cast('long')
+
+                    def transform(spark_session: SparkSession, inputs: List[DataFrame]) -> DataFrame:
+                        table = inputs[0]
+                        return \
+                            table \
+                            .filter((400 <= table.app_id) & (table.app_id <= 700)) \
+                            .withColumn('group_id', table.app_id // 100)
+            reduction:
+              noReduction: {}
+    - description: View from CSV_hourly_small
+      groupId: Reduction
+      id: CSV_hourly_small_view
+      name: CSV_hourly_small_view
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT *
+              FROM ${0} AS c
+              ORDER BY app_id
+    - groupId: Partitioned
+      id: PySpark_Group_By
+      name: PySpark_Group_By
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        operator:
+          sparkFunction:
+            executable:
+              code:
+                language:
+                  python:
+                    v3: {}
+                source:
+                  inline: "def transform(spark_session, inputs):\n    inputs[0].createTempView(\"\
+                    CSV_hourly_small\")\n    return spark_session.sql(\"\"\"\nSELECT\
+                    \ DATE_TRUNC('HOUR', at) as at_hour, count(*) as num_events, MIN(at)\
+                    \ as at_min, MAX(at) as at_max\nFROM CSV_hourly_small AS c\nGROUP\
+                    \ BY at_hour\"\"\")  \n"
+            reduction:
+              partial:
+                partitionBy:
+                  0:
+                    column: at
+                    granularity:
+                      time:
+                        hour: {}
+    - description: Transform from Azure Blob Read
+      groupId: Azure_Blob_Storage_RC___WC
+      id: No_Change
+      name: No_Change
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - Azure_Blob_Read
+        operator:
+          sqlQuery:
+            sql: SELECT * FROM ${0} AS a
+    - description: Composite view from GCS_CSV_hourly_small__12_20_, GCS_CSV_hourly_small__12_21_
+      groupId: Maps
+      id: Hourly_small_Union
+      name: Hourly_small_Union
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - GCS_CSV_hourly_small__12_20_
+        - GCS_CSV_hourly_small__12_21_
+        operator:
+          sqlQuery:
+            sql: "SELECT * FROM ${0} AS g1, ${1} AS g2\n "
+    - description: Composite view from CSV_hourly_small, Blob_JSON_hourly_small_metadata
+      groupId: Maps
+      id: Map_with_inner_join
+      name: Map_with_inner_join
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        - Blob_JSON_hourly_small_metadata
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT c.app_id, b.meta
+              FROM ${0} AS c
+              inner join ${1} AS b
+               ON b.id = c.app_id
+    - description: View from CSV_hourly_small
+      groupId: Partitioned
+      id: Group_By
+      name: Group_By
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT DATE_TRUNC('HOUR', at) as at_hour, count(*) as num_events
+              FROM ${0} AS c
+              GROUP BY at_hour
+    - description: Composite transform from Tickets_by_hour, Orders_by_hour
+      groupId: Date_Partitioned_Join
+      id: _Validation__Join_with_3_hour_window
+      name: _Validation__Join_with_3_hour_window
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - Tickets_by_hour
+        - Orders_by_hour
+        operator:
+          sqlQuery:
+            sql: "select\n  ticket_id,\n  t.order_id,\n  order_name,\n  t.ts as ticket_ts,\n\
+              \  o.ts as order_ts,\n  t.ts_hour as ticket_ts_hour,\n  o.ts_hour as\
+              \ order_ts_hour\nFROM\n  ${0} as t\n  left join ${1} as o on t.order_id\
+              \ = o.order_id\nwhere\n  o.ts_hour >= t.ts_hour - INTERVAL 1 hour\n\
+              \  and o.ts_hour <= t.ts_hour + INTERVAL 1 hour\norder by \n  ticket_id"
+    - groupId: Date_Partitioned_Join
+      id: Validation_Check
+      name: Validation_Check
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - Join_with_3_hour_window
+        - _Validation__Join_with_3_hour_window
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT
+                j.ticket_id,
+                j.order_id as test_order_id,
+                vj.order_id as validation_order_id,
+                CASE
+                  WHEN j.order_id <> vj.order_id THEN RAISE_ERROR("invalid data")
+                  ELSE "OK"
+                END as test
+              FROM
+                ${0} as j
+                full outer join ${1} as vj on j.ticket_id = vj.ticket_id
+    - description: View from CSV_hourly_small
+      groupId: Maps
+      id: Map_with_where
+      name: Map_with_where
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT *
+              FROM ${0} AS c
+              WHERE c.at < TIMESTAMP('2016-12-20T23:00:00Z')
+    - description: Composite view from CSV_hourly_small, Blob_JSON_hourly_small_metadata
+      groupId: Partitioned
+      id: Group_By_with_Inner_Join
+      name: Group_By_with_Inner_Join
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        - Blob_JSON_hourly_small_metadata
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT DATE_TRUNC('HOUR', at) as at_hour, app_id, meta
+              FROM ${0} AS c
+              inner join ${1} AS b
+               ON c.app_id = b.id
+              GROUP BY at_hour, app_id, meta
+    - description: View from CSV_hourly_small
+      id: map
+      name: map
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT *
+              FROM ${0} AS c
+    - groupId: Date_Partitioned_Join
+      id: Tickets_by_hour
+      name: Tickets_by_hour
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - Tickets
+        operator:
+          sqlQuery:
+            sql: select DATE_TRUNC('hour', ts) as ts_hour, ts, order_id, ticket_id
+              from ${0} as t group by ts_hour, ts, order_id, ticket_id
+    - groupId: Date_Partitioned_Join
+      id: Join_with_3_hour_window
+      name: Join_with_3_hour_window
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - Tickets_by_hour
+        - Orders_by_hour
+        operator:
+          sqlQuery:
+            sql: |-
+              select
+                ticket_id,
+                t.order_id,
+                order_name,
+                t.ts as ticket_ts,
+                o.ts as order_ts,
+                t.ts_hour as ticket_ts_hour,
+                o.ts_hour as order_ts_hour
+              FROM
+                ${0} as t
+                left join ${1} as o on t.order_id = o.order_id
+              where
+                o.ts_hour >= t.ts_hour - INTERVAL 1 hour
+                and o.ts_hour <= t.ts_hour + INTERVAL 1 hour
+    - groupId: Partitioned
+      id: PySpark_Group_By_Auto
+      name: PySpark_Group_By_Auto
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - PySpark_Group_By
+        operator:
+          sparkFunction:
+            executable:
+              code:
+                language:
+                  python:
+                    v3: {}
+                source:
+                  inline: "def transform(session, inputs): \n    return inputs[0]\
+                    \   "
+            reduction:
+              partial:
+                partitionBy:
+                  0:
+                    column: at_hour
+                    granularity:
+                      time:
+                        auto: {}
+    - groupId: Maps
+      id: PySpark_Map_with_inner_join
+      name: PySpark_Map_with_inner_join
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        - Blob_JSON_hourly_small_metadata
+        operator:
+          sparkFunction:
+            executable:
+              code:
+                language:
+                  python:
+                    v3: {}
+                source:
+                  inline: |
+                    from typing import List
+                    from pyspark.sql import DataFrame, SparkSession
+                    from pyspark.sql.functions import col
+
+                    def transform(spark_session: SparkSession, inputs: List[DataFrame]) -> DataFrame:
+                      csv_hourly_small = inputs[0]
+                      blob_json_hourly_small_metadata = inputs[1]
+                      return \
+                        csv_hourly_small.alias('c') \
+                          .join(blob_json_hourly_small_metadata.alias('b'), on=col('b.id') == col('c.app_id'), how='inner') \
+                          .select('c.app_id', 'b.meta')
+            reduction:
+              noReduction: {}
+    - description: View from CSV_hourly_small
+      groupId: Partitioned
+      id: Group_By_filename_hour
+      name: Group_By_filename_hour
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT DATE_TRUNC('HOUR', TO_TIMESTAMP(SUBSTR(__ascend__url, 39, 13), 'yyyy-MM-dd\'T\'HH')) as filename_hour, ad_group_id, count(*) as num_events
+              FROM ${0} AS c
+              GROUP BY filename_hour, ad_group_id
+    - groupId: Partitioned
+      id: PySpark_Group_By_with_Inner_Join
+      name: PySpark_Group_By_with_Inner_Join
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        - Blob_JSON_hourly_small_metadata
+        operator:
+          sparkFunction:
+            executable:
+              code:
+                language:
+                  python:
+                    v3: {}
+                source:
+                  inline: "from typing import List\nfrom pyspark.sql import DataFrame,\
+                    \ SparkSession\n\ndef transform(spark_session: SparkSession, inputs:\
+                    \ List[DataFrame]) -> DataFrame:\n\tCSV_hourly_small = inputs[0]\n\
+                    \tBlob_JSON_hourly_small_metadata = inputs[1]\n\tCSV_hourly_small.createTempView(\"\
+                    CSV_hourly_small\")\n\tBlob_JSON_hourly_small_metadata.createTempView(\"\
+                    Blob_JSON_hourly_small_metadata\")\n\treturn spark_session.sql(\"\
+                    \"\" \n\t\tSELECT DATE_TRUNC('HOUR', a.at) as at_hour, b.meta\
+                    \ as meta, count(*) as num_events   \n\t\tFROM CSV_hourly_small\
+                    \ as a INNER JOIN Blob_JSON_hourly_small_metadata as b\n\t\ton\
+                    \ a.app_id=b.id\n\t\tGROUP BY at_hour, meta\"\"\")  \n"
+            reduction:
+              partial:
+                partitionBy:
+                  0:
+                    column: at
+                    granularity:
+                      time:
+                        hour: {}
+    - groupId: Maps
+      id: Cascading_SQL_after_PySpark_with_filter
+      name: Cascading_SQL_after_PySpark_with_filter
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - PySpark_Map_with_inner_join
+        operator:
+          sqlQuery:
+            sql: |
+              SELECT *, CAST(FLOOR(app_id / 100) AS BIGINT) as group_id
+              FROM ${0} AS p
+              WHERE 400 <= app_id AND app_id <= 700
+    - description: View from CSV_hourly_small
+      groupId: Reduction
+      id: Reduction_with_Inner_Join
+      name: Reduction_with_Inner_Join
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        - Blob_JSON_hourly_small_metadata
+        operator:
+          sqlQuery:
+            sql: |-
+              SELECT *, ad_group_id as aab
+              FROM ${0} AS c
+              inner join ${1} as b
+               ON c.app_id = b.id
+              ORDER BY app_id
+    - groupId: Reduction
+      id: PySpark_Reduction_with_Inner_Join
+      name: PySpark_Reduction_with_Inner_Join
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - CSV_hourly_small
+        - Blob_JSON_hourly_small_metadata
+        operator:
+          sparkFunction:
+            executable:
+              code:
+                language:
+                  python:
+                    v3: {}
+                source:
+                  inline: |
+                    def ad_group_bucket(ad_group_id):
+                        return ad_group_id % 100
+
+                    def transform(spark_session, inputs):
+                        inputs[0].createTempView("CSV_hourly_small")
+                        inputs[1].createTempView("Blob_JSON_hourly_small_metadata")
+                        spark_session.udf.register("ad_group_bucket", ad_group_bucket)
+                        return spark_session.sql("""
+                    SELECT *, ad_group_bucket(ad_group_id) as ad_group_bucket
+                    FROM CSV_hourly_small AS c
+                      inner join Blob_JSON_hourly_small_metadata as b
+                      ON c.app_id = b.id
+                    ORDER BY app_id
+                        """)
+            reduction:
+              full: {}
+    - groupId: Date_Partitioned_Join
+      id: Orders_by_hour
+      name: Orders_by_hour
+      transform:
+        assignedPriority: {}
+        inputIds:
+        - Orders
+        operator:
+          sqlQuery:
+            sql: select DATE_TRUNC('hour', ts) as ts_hour, order_id, order_name, ts
+              from ${0} group by ts_hour, ts, order_id, order_name
+    - groupId: Sink_Triggers
+      id: Cascading_PySpark_Sink
+      name: Cascading_PySpark_Sink
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            parquetFormatter: {}
+        container:
+          s3:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_s3_demo_data
+            credentials:
+              id: AKIAIDLZKCPVCHSDHP4Q
+            delimiter: /
+            prefix: kitchen_sink/cascading_pyspark_sink/1581551594041967000/
+        inputId: PySpark_Map_with_inner_join
+    - description: Sink from Map_with_inner_join with part files enabled
+      groupId: Sink_Formatters
+      id: GCS_XSV_Part_Files
+      name: GCS_XSV_Part_Files
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            xsvFormatter:
+              delimiter: ','
+              includeHeader: true
+              lineEnding:
+                crLf: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            prefix: kitchen_sink/csv_sink_part_files/1581551594041967000/
+            writePartFiles: true
+        inputId: Map_with_inner_join
+    - description: Sink from Map_with_inner_join
+      groupId: Sink_Formatters
+      id: BigQuery
+      name: BigQuery
+      writeConnector:
+        assignedPriority: {}
+        container:
+          bigQuery:
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            datasetPrefix: kitchen_sink
+            locationTemplate: map_sink1581551594041967000
+            partitionPattern: {}
+            project: ascend-io-demo-data
+            stagingContainer:
+              bucket: ascend-io-demo-data
+              credentialId:
+                value: kitchen_sink_gcs_demo_data
+              credentials:
+                jsonKey: ''
+              prefix: kitchen_sink/staging/map_sink/1581551594041967000/
+              writePartFiles: true
+        inputId: Map_with_inner_join
+        records: {}
+    - description: Sink from Map_with_inner_join
+      groupId: Sink_Formatters
+      id: S3_Parquet
+      name: S3_Parquet
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            parquetFormatter: {}
+        container:
+          s3:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_s3_demo_data
+            credentials:
+              id: AKIAIDLZKCPVCHSDHP4Q
+            delimiter: /
+            prefix: kitchen_sink/parquet_sink/1581551594041967000/
+        inputId: Map_with_inner_join
+    - description: |
+        Reduction_with_Inner_Join with part files enabled
+      id: Reshift_Full_Load_PFS
+      name: Redshift_Full_Load_Sink_PFS
+      writeConnector:
+        assignedPriority: {}
+        container:
+          redshift:
+            credentialId:
+              value: kitchen_sink_redshift
+            credentials:
+              username: awsuser
+            iamRoleArn: arn:aws:iam::115613497299:role/redshift-s3-read
+            jdbcUrl: jdbc:redshift://ascend-io-dev-redshift.cdmixszaipsh.us-east-1.redshift.amazonaws.com:5439/dev
+            locationTemplate: kitchen_sink_full_load_part_files1581551594041967000
+            stagingContainer:
+              bucket: ascend-io-demo-data-redshift
+              credentialId:
+                value: kitchen_sink_s3_demo_data
+              credentials:
+                id: AKIAIDLZKCPVCHSDHP4Q
+              delimiter: /
+              prefix: kitchen_sink/staging/full_redshift_part_files/1581551594041967000/
+              writePartFiles: true
+            updatePolicy:
+              dropTable: {}
+        inputId: Reduction_with_Inner_Join
+        records: {}
+    - description: Sink from Map_with_inner_join
+      groupId: Sink_Formatters
+      id: GCS_JSON
+      name: GCS_JSON
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            jsonFormatter: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+            prefix: kitchen_sink/json/1581551594041967000/
+        inputId: Map_with_inner_join
+    - groupId: Redshift_Sinks
+      id: Partitioned_Redshift_Sink_Part_Files
+      name: Partitioned_Redshift_Sink_Part_Files
+      writeConnector:
+        assignedPriority: {}
+        container:
+          redshift:
+            credentialId:
+              value: kitchen_sink_redshift
+            credentials:
+              username: awsuser
+            iamRoleArn: arn:aws:iam::115613497299:role/redshift-s3-read
+            jdbcUrl: jdbc:redshift://ascend-io-dev-redshift.cdmixszaipsh.us-east-1.redshift.amazonaws.com:5439/dev
+            locationTemplate: kitchen_sink_partitioned_pfs1581551594041967000
+            stagingContainer:
+              bucket: ascend-io-demo-data-redshift
+              credentialId:
+                value: kitchen_sink_s3_demo_data
+              credentials:
+                id: AKIAIDLZKCPVCHSDHP4Q
+              delimiter: /
+              prefix: kitchen_sink/staging/partitioned_rs_partfiles/1581551594041967000/
+              writePartFiles: true
+            updatePolicy:
+              alterTable: {}
+        inputId: Group_By_filename_hour
+        records: {}
+    - description: |
+        BigQuery Sink from Map_with_inner_join with part files enabled on the staging container
+      groupId: Sink_Formatters
+      id: BigQueryPFS
+      name: BigQueryPFS
+      writeConnector:
+        assignedPriority: {}
+        container:
+          bigQuery:
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            datasetPrefix: kitchen_sink
+            locationTemplate: map_sink_partfiles1581551594041967000
+            partitionPattern: {}
+            project: ascend-io-demo-data
+            stagingContainer:
+              bucket: ascend-io-demo-data
+              credentialId:
+                value: kitchen_sink_gcs_demo_data
+              credentials:
+                jsonKey: ''
+              prefix: kitchen_sink/staging/map_sink_part_files/1581551594041967000/
+              writePartFiles: true
+        inputId: Map_with_inner_join
+        records: {}
+    - description: Write Connector from No Change
+      groupId: Azure_Blob_Storage_RC___WC
+      id: Azure_Blob_Write_service_principal
+      name: Azure_Blob_Write_service_principal
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            xsvFormatter:
+              delimiter: ','
+              includeHeader: true
+              lineEnding:
+                lf: {}
+        container:
+          abs:
+            accountName: kitchensink
+            container: service-principal
+            credentialId:
+              value: kitchen_sink_azure_service_principal
+            credentials:
+              servicePrincipal:
+                clientId: 00636442-d713-4a46-80c2-e73a5ac90ec0
+                tenant: f3a5598b-e043-4719-80a7-49b23046bdec
+            delimiter: /
+            locationTemplate: az-sp-out.csv
+            prefix: 1581551594041967000/
+            writePartFiles: true
+        inputId: No_Change
+    - description: Sink from Map_with_inner_join
+      groupId: Sink_Formatters
+      id: GCS_XSV
+      name: GCS_XSV
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            xsvFormatter:
+              delimiter: ','
+              includeHeader: true
+              lineEnding:
+                crLf: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            delimiter: /
+            manifest:
+              format:
+                csv: {}
+              name: Manifest
+            prefix: kitchen_sink/csv/1581551594041967000/
+        inputId: Map_with_inner_join
+    - groupId: Snowflake_Sinks
+      id: Partitioned_Snowflake_Sink
+      name: Partitioned_Snowflake_Sink
+      writeConnector:
+        assignedPriority: {}
+        container:
+          snowflake:
+            account: ascendpartner
+            credentialId:
+              value: kitchen_sink_snowflake
+            credentials:
+              username: KITCHENSINK
+            database: test_db
+            locationTemplate: partitioned_snowflake_sink_1581551594041969000
+            s3:
+              bucket: ascend-io-sample-data-write
+              credentialId:
+                value: kitchen_sink_s3_sample_data
+              credentials:
+                id: AKIARV2YZ67JZT3ML7PG
+              prefix: kitchen_sink/sinks/snowflake/partitioned_snowflake_sink/1581551594041969000/
+              writePartFiles: true
+            snowflakeSchema: public
+            updatePolicy:
+              dropTable: {}
+            warehouse: test
+        inputId: Group_By_filename_hour
+        records: {}
+    - description: |
+        Reduction_with_Inner_Join with part files enabled
+      groupId: Redshift_Sinks
+      id: Redshift_Full_Load_Sink_PFS
+      name: Redshift_Full_Load_Sink_PFS
+      writeConnector:
+        assignedPriority: {}
+        container:
+          redshift:
+            credentialId:
+              value: kitchen_sink_redshift
+            credentials:
+              username: awsuser
+            iamRoleArn: arn:aws:iam::115613497299:role/redshift-s3-read
+            jdbcUrl: jdbc:redshift://ascend-io-dev-redshift.cdmixszaipsh.us-east-1.redshift.amazonaws.com:5439/dev
+            locationTemplate: kitchen_sink_full_load_part_files1581551594041967000
+            stagingContainer:
+              bucket: ascend-io-demo-data-redshift
+              credentialId:
+                value: kitchen_sink_s3_demo_data
+              credentials:
+                id: AKIAIDLZKCPVCHSDHP4Q
+              delimiter: /
+              prefix: kitchen_sink/staging/full_redshift_part_files/1581551594041967000/
+              writePartFiles: true
+            updatePolicy:
+              dropTable: {}
+        inputId: Reduction_with_Inner_Join
+        records: {}
+    - description: Sink from Map_with_inner_join
+      groupId: Sink_Formatters
+      id: S3_Avro
+      name: S3_Avro
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            avroFormatter: {}
+        container:
+          s3:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_s3_demo_data
+            credentials:
+              id: AKIAIDLZKCPVCHSDHP4Q
+            delimiter: /
+            manifest:
+              format:
+                json: {}
+              name: Manifest
+            prefix: kitchen_sink/avro/1581551594041967000/
+        inputId: Map_with_inner_join
+    - groupId: Snowflake_Sinks
+      id: Snowflake_Full_Load
+      name: Snowflake_Full_Load
+      writeConnector:
+        assignedPriority:
+          weight: 10000.0
+        container:
+          snowflake:
+            account: ascendpartner
+            credentialId:
+              value: kitchen_sink_snowflake
+            credentials:
+              username: KITCHENSINK
+            database: test_db
+            locationTemplate: snowflake_full_load1581551594041969000
+            s3:
+              bucket: ascend-io-sample-data-write
+              credentialId:
+                value: kitchen_sink_s3_sample_data
+              credentials:
+                id: AKIARV2YZ67JZT3ML7PG
+              prefix: kitchen_sink/sinks/snowflake/snowflake_full_load/1581551594041969000/
+            snowflakeSchema: public
+            updatePolicy:
+              dropTable: {}
+            warehouse: test
+        inputId: Reduction_with_Inner_Join
+        records: {}
+    - description: Write Connector from No Change
+      groupId: Azure_Blob_Storage_RC___WC
+      id: Azure_Blob_Write
+      name: Azure_Blob_Write
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            xsvFormatter:
+              delimiter: ','
+              includeHeader: true
+              lineEnding:
+                lf: {}
+        container:
+          abs:
+            accountName: kitchensink
+            container: kitchen-sink
+            credentialId:
+              value: kitchen_sink_azure_shared_key
+            credentials:
+              sharedKey: {}
+            delimiter: /
+            locationTemplate: yield_curve.csv
+            prefix: 1581551594041967000/
+        inputId: No_Change
+    - description: |
+        Parquet Sink from Map_with_inner_join with part files enabled
+      groupId: Sink_Formatters
+      id: S3_Parquet_Part_Files
+      name: S3_Parquet_Part_Files
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            parquetFormatter: {}
+        container:
+          s3:
+            bucket: ascend-io-demo-data-part-files
+            credentialId:
+              value: kitchen_sink_s3_demo_data
+            credentials:
+              id: AKIAIDLZKCPVCHSDHP4Q
+            prefix: kitchen_sink/parquet_sink_part_files/1581551594041967000/
+            writePartFiles: true
+        inputId: Map_with_inner_join
+    - description: Sink from Map_with_inner_join with part files enabled
+      groupId: Sink_Formatters
+      id: GCS_JSON_Part_Files
+      name: GCS_JSON_Part_Files
+      writeConnector:
+        assignedPriority: {}
+        bytes:
+          formatter:
+            jsonFormatter: {}
+        container:
+          gcs:
+            bucket: ascend-io-demo-data
+            credentialId:
+              value: kitchen_sink_gcs_demo_data
+            credentials:
+              jsonKey: ''
+            prefix: kitchen_sink/json_sink_part_files/1581551594041967000/
+            writePartFiles: true
+        inputId: Map_with_inner_join
+    groups:
+    - description: Sometimes it is important to trigger computation by adding a downstream
+        sink
+      id: Sink_Triggers
+      name: Sink_Triggers
+    - id: Credless_Auth_
+      name: Credless_Auth_
+    - id: BQ_partitioned_sources
+      name: BQ_partitioned_sources
+    - id: Maps
+      name: Maps
+    - id: GCS___CSV_Source
+      name: GCS___CSV_Source
+    - id: Sink_Formatters
+      name: Sink_Formatters
+    - id: Reduction
+      name: Reduction
+    - id: Partitioned
+      name: Partitioned
+    - id: Snowflake_Sinks
+      name: Snowflake_Sinks
+    - id: Azure_Blob_Storage_RC___WC
+      name: Azure_Blob_Storage_RC___WC
+    - id: Date_Partitioned_Join
+      name: Date_Partitioned_Join
+    - id: Redshift_Sinks
+      name: Redshift_Sinks
+    id: ksink
+    name: ksink
+  - components:
+    - id: src2
+      name: src2
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: a
+                  targetName: a
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: b
+                  targetName: b
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: c
+                  targetName: c
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: a
+                  schema:
+                    int: {}
+                - name: b
+                  schema:
+                    int: {}
+                - name: c
+                  schema:
+                    int: {}
+        container:
+          immediate:
+            contentSome: YSxiLGMKMSwyLDM=
+            object:
+            - contentSha: JVkY5jpWBIQ8CCxeZmJxIUuQkUhe5iRN9rfCfbI85Hs=
+              length: '11'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 106368982s
+          period: 134217727s
+    - id: src3
+      name: src3
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: a
+                  targetName: a
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: b
+                  targetName: b
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: c
+                  targetName: c
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: a
+                  schema:
+                    int: {}
+                - name: b
+                  schema:
+                    int: {}
+                - name: c
+                  schema:
+                    int: {}
+        container:
+          immediate:
+            contentSome: YSxiLGMKMSwyLDM=
+            object:
+            - contentSha: JVkY5jpWBIQ8CCxeZmJxIUuQkUhe5iRN9rfCfbI85Hs=
+              length: '11'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 106368999s
+          period: 134217727s
+    - id: src1
+      name: src1
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: a
+                  targetName: a
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: b
+                  targetName: b
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: c
+                  targetName: c
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: a
+                  schema:
+                    int: {}
+                - name: b
+                  schema:
+                    int: {}
+                - name: c
+                  schema:
+                    int: {}
+        container:
+          immediate:
+            contentSome: YSxiLGMKMSwyLDM=
+            object:
+            - contentSha: JVkY5jpWBIQ8CCxeZmJxIUuQkUhe5iRN9rfCfbI85Hs=
+              length: '11'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 106368971s
+          period: 134217727s
+    - id: v3
+      name: v3
+      transform:
+        inputIds:
+        - src3
+        operator:
+          sqlQuery:
+            sql: select * from ${0}
+    - id: v1
+      name: v1
+      transform:
+        inputIds:
+        - src1
+        operator:
+          sqlQuery:
+            sql: select * from ${0}
+    - id: v2
+      name: v2
+      transform:
+        inputIds:
+        - src2
+        operator:
+          sqlQuery:
+            sql: select * from ${0}
+    groups:
+    - id: data_feeds
+      name: data_feeds
+    id: pub
+    name: pub
+  - components:
+    - id: src1
+      name: src1
+      readConnector:
+        assignedPriority: {}
+        bytes:
+          parser:
+            xsvParser:
+              columns:
+                parsingSpecifications:
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: a
+                  targetName: a
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: b
+                  targetName: b
+                - int: {}
+                  invalidValueHandling:
+                    useDefault: {}
+                  sourceName: c
+                  targetName: c
+              delimiter: ','
+              headerLineCount: '1'
+              schema:
+                field:
+                - name: a
+                  schema:
+                    int: {}
+                - name: b
+                  schema:
+                    int: {}
+                - name: c
+                  schema:
+                    int: {}
+        container:
+          immediate:
+            contentSome: YSxiLGMKMSwyLDM=
+            object:
+            - contentSha: JVkY5jpWBIQ8CCxeZmJxIUuQkUhe5iRN9rfCfbI85Hs=
+              length: '11'
+              name: ascend_text_blob
+        pattern:
+          glob: '**'
+        updatePeriodical:
+          offset: 106368424s
+          period: 134217727s
+    id: source
+    name: basic
+  - components:
+    - id: sub_v1
+      name: sub_v1
+      transform:
+        inputIds:
+        - drd_test_1.public_df1
+        operator:
+          sqlQuery:
+            sql: select * from ${0}
+    - id: sub_v2
+      name: sub_v2
+      transform:
+        inputIds:
+        - drd_test_1.selective_df2
+        operator:
+          sqlQuery:
+            sql: select * from ${0}
+    id: sub
+    name: sub
+name: drd test 1

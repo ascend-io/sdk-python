@@ -1,0 +1,171 @@
+# id: s3_with_credless
+component:
+  groupId: Credless_Auth_
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        xsvParser:
+          columns:
+            parsingSpecifications:
+            - float:
+                decimalSeparator: .
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: external_author_id
+              targetName: external_author_id
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: author
+              string: {}
+              targetName: author
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: content
+              string: {}
+              targetName: content
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: region
+              string: {}
+              targetName: region
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: language
+              string: {}
+              targetName: language
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: publish_date
+              string: {}
+              targetName: publish_date
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: harvested_date
+              string: {}
+              targetName: harvested_date
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: following
+              targetName: following
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: followers
+              targetName: followers
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: updates
+              targetName: updates
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: post_type
+              string: {}
+              targetName: post_type
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: account_type
+              string: {}
+              targetName: account_type
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: new_june_2018
+              targetName: new_june_2018
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              sourceName: retweet
+              targetName: retweet
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: account_category
+              string: {}
+              targetName: account_category
+          delimiter: ','
+          headerLineCount: '1'
+          schema:
+            field:
+            - name: external_author_id
+              schema:
+                float: {}
+            - name: author
+              schema:
+                string: {}
+            - name: content
+              schema:
+                string: {}
+            - name: region
+              schema:
+                string: {}
+            - name: language
+              schema:
+                string: {}
+            - name: publish_date
+              schema:
+                string: {}
+            - name: harvested_date
+              schema:
+                string: {}
+            - name: following
+              schema:
+                int: {}
+            - name: followers
+              schema:
+                int: {}
+            - name: updates
+              schema:
+                int: {}
+            - name: post_type
+              schema:
+                string: {}
+            - name: account_type
+              schema:
+                string: {}
+            - name: new_june_2018
+              schema:
+                int: {}
+            - name: retweet
+              schema:
+                int: {}
+            - name: account_category
+              schema:
+                string: {}
+    container:
+      s3:
+        bucket: ryft-public-sample-data
+    pattern:
+      glob: twitter/russian-troll/IRAhandle_tweets_1.csv
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: s3_with_credless

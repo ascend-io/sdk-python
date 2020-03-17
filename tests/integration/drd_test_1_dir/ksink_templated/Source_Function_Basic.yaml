@@ -1,0 +1,55 @@
+# id: Source_Function_Basic
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        jsonParser:
+          columns:
+            parsingSpecifications:
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: id
+              string: {}
+              targetName: id
+            - int: {}
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: age
+              targetName: age
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: name
+              string: {}
+              targetName: name
+          namespaceDelimiter: __
+          schema:
+            field:
+            - name: id
+              schema:
+                string: {}
+            - name: age
+              schema:
+                int: {}
+            - name: name
+              schema:
+                string: {}
+    container:
+      byteFunction:
+        container:
+          executable:
+            code:
+              language:
+                python:
+                  v3: {}
+              source:
+                inline: IyBtaW5pbXVtIGV4YW1wbGUgb24gZXh0cmFjaW5nIGlubGluZSBzb3VyY2UgYXMganNvbgppbXBvcnQganNvbgojICJjb250ZXh0IiBmdW5jdGlvbiBpcyBvcHRpb25hbCBiZWNhdXNlIGluIG1lbW9yeSBkYXRhIG5lZWRzIG5vIGNyZWQgdG8gYWNjZXNzCiMgZGVmIGNvbnRleHQoY3JlZGVudGlhbHMpOgojICAgICByZXR1cm4geydjcmVkZW50aWFscyc6IGNyZWRlbnRpYWxzfQoKCmRlZiBsaXN0X29iamVjdHMoY29udGV4dCwgbWV0YWRhdGEpOgogICAgIyBzaW11bGF0aW5nIHR3byBqc29uIGZpbGVzLiAiZmluZ2VycHJpbnQiIGlzIGEgdW5pcXVlIGlkZW50aWZpZXIuIEl0IGNvdWxkIGJlIGEgaGFzaCB2YWx1ZSBnZW5lcmF0ZWQKICAgICMgZnJvbSBkYXRhIGNvbnRlbnQgKGUuZy4gTUQ1KSBvciAibGFzdF9tb2RpZmllZCIgdGltZS4gUHJlZml4IGp1c3QgbGlrZSBkaXJlY3RvcnkgaW4gcmVndWxhcgogICAgIyBmaWxlc3lzdGVtLiAiaXNfcHJlZml4IiBkZWZhdWx0cyB0byBiZSBGYWxzZSwgc28gaXQgb25seSBuZWVkcyB0byBiZSBzZXQgZm9yIGRpcmVjdG9yeSBvYmplY3QKICAgIHlpZWxkIHsnbmFtZSc6ICdqc29uMScsICdmaW5nZXJwcmludCc6ICc5OEVEQjk1QkInfQogICAgeWllbGQgeyduYW1lJzogJ2pzb24yJywgJ2ZpbmdlcnByaW50JzogJ0QzM0JGM0ZEQyd9CgoKZGVmIHJlYWRfYnl0ZXMoY29udGV4dCwgbWV0YWRhdGEpOgogICAgaWYgbWV0YWRhdGFbJ25hbWUnXSA9PSAnanNvbjEnOgogICAgICAgIHJvdyA9IHsnaWQnOiAxLCAnbmFtZSc6ICdKb2huJywgJ2FnZSc6IDM1fQogICAgICAgIHlpZWxkIGpzb24uZHVtcHMocm93KSArICdcbicKICAgICAgICByb3cgPSB7J2lkJzogMiwgJ25hbWUnOiAnQW5uYScsICdhZ2UnOiAxNn0KICAgICAgICB5aWVsZCBqc29uLmR1bXBzKHJvdykgKyAnXG4nCiAgICBpZiBtZXRhZGF0YVsnbmFtZSddID09ICdqc29uMic6CiAgICAgICAgcm93ID0geydpZCc6IDMsICduYW1lJzogJ1RvbnknLCAnYWdlJzogNTZ9CiAgICAgICAgeWllbGQganNvbi5kdW1wcyhyb3cpICsgJ1xuJwo=
+    pattern:
+      glob: '**'
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Source_Function_Basic

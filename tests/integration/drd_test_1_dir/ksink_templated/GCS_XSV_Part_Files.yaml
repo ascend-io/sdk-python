@@ -1,0 +1,24 @@
+# id: GCS_XSV_Part_Files
+component:
+  groupId: Sink_Formatters
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        xsvFormatter:
+          delimiter: ','
+          includeHeader: true
+          lineEnding:
+            crLf: {}
+    container:
+      gcs:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        prefix: kitchen_sink/csv_sink_part_files/{{ config.uniquePiece }}/
+        writePartFiles: true
+    inputId: Map_with_inner_join
+description: Sink from Map_with_inner_join with part files enabled
+name: GCS_XSV_Part_Files

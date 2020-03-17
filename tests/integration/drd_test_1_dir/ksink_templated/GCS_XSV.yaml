@@ -1,0 +1,28 @@
+# id: GCS_XSV
+component:
+  groupId: Sink_Formatters
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        xsvFormatter:
+          delimiter: ','
+          includeHeader: true
+          lineEnding:
+            crLf: {}
+    container:
+      gcs:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        delimiter: /
+        manifest:
+          format:
+            csv: {}
+          name: Manifest
+        prefix: kitchen_sink/csv/{{ config.uniquePiece }}/
+    inputId: Map_with_inner_join
+description: Sink from Map_with_inner_join
+name: GCS_XSV

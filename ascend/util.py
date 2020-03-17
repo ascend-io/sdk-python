@@ -30,13 +30,20 @@ def create_signature_key(signing_key, timestamp, region, service):
 
 def parse_component_type(component_json):
     k = component_json.get('type', None)
-    if k is not None:
-        return k
-    for k in component_json.keys():
-        if k in type_names:
-            return k
-    return ""
+    return type_names.get(k, '')
 
 
 def display_type_name(typ):
     return type_names.get(typ, 'UnknownComponent({})'.format(typ))
+
+
+def flatten(ll):
+    return [e for l in ll for e in l]
+
+
+def filter_none(l):
+    return list(filter(lambda v: v is not None, l))
+
+
+def compose(f, g):
+    return lambda x: f(g(x))

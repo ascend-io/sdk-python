@@ -1,0 +1,19 @@
+# id: Cascading_PySpark_Sink
+component:
+  groupId: Sink_Triggers
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        parquetFormatter: {}
+    container:
+      s3:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_s3_demo_data
+        credentials:
+          id: AKIAIDLZKCPVCHSDHP4Q
+        delimiter: /
+        prefix: kitchen_sink/cascading_pyspark_sink/{{ config.uniquePiece }}/
+    inputId: PySpark_Map_with_inner_join
+name: Cascading_PySpark_Sink

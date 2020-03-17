@@ -1,0 +1,39 @@
+# id: Blob_JSON_hourly_small_metadata
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        jsonParser:
+          columns:
+            parsingSpecifications:
+            - int: {}
+              invalidValueHandling:
+                useDefault: {}
+              targetName: id
+            - invalidValueHandling:
+                useDefault: {}
+              string: {}
+              targetName: meta
+          namespaceDelimiter: __
+          schema:
+            field:
+            - name: id
+              schema:
+                int: {}
+            - name: meta
+              schema:
+                string: {}
+    container:
+      immediate:
+        contentSome: eyJpZCI6IDYyMiwgIm1ldGEiOiAic2l4LXR3ZW50eS10d28ifQp7ImlkIjogNDI5LCAibWV0YSI6ICJmb3VyLXR3ZW50eS1uaW5lIn0KeyJpZCI6IDc4NCwgIm1ldGEiOiAic2V2ZW4tZWlnaHR5LWZvdXIifQp7ImlkIjogODEwLCAibWV0YSI6ImVpZ2h0LXRlbiJ9CnsiaWQiOjEwODMsICJtZXRhIjoidGVuLWVpZ2h0eS10aHJlZSJ9CnsiaWQiOjExNiwgIm1ldGEiOiJvbmUtc2l4dGVlbiJ9CnsiaWQiOiAyMzIsICJtZXRhIjoidHdvdGhyZWV0aHdvIn0KeyJpZCI6IDIzMCwgIm1ldGEiOiJ0d290aHJlZXRod28ifQ==
+        object:
+        - contentSha: BuElEDQ+VZevlDQY+SjZogk6QbeO7mBARBICHX3aTzU=
+          length: '292'
+          name: ascend_text_blob
+    pattern:
+      glob: '**'
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Blob_JSON_hourly_small_metadata

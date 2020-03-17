@@ -1,0 +1,460 @@
+syntax = "proto3";
+
+package schema;
+
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "protos/ascend/ascend.proto";
+
+message Boolean {
+  message Parser {}
+}
+message Byte {
+  message Parser {}
+}
+message Bytes {
+  message Parser {}
+}
+message Char {
+  message Parser {}
+}
+message Date {
+  message Parser {}
+}
+message Double {
+  message Parser {
+    string decimal_separator = 1;
+    string thousands_separator = 2;
+    // usage examples:
+    // decimal_separator = ',', thousands_separator = '.'  <- this would be European style, e.g. one thousand two hundred thirty-four and fifty-six hundredths is 1.234,56
+    // decimal_separator = '.', thousands_separator = ','  <- this would be American style, e.g. one thousand two hundred thirty-four and fifty-six hundredths is 1,234.56
+    // decimal_separator = ',', thousands_separator = ' '  <- this would be Canadian style, e.g. one thousand two hundred thirty-four and fifty-six hundredths is 1 234,56
+  }
+}
+message Float {
+  message Parser {
+    string decimal_separator = 1;
+    string thousands_separator = 2;
+  }
+}
+message Int {
+  message Parser {
+    string thousands_separator = 1;
+  }
+}
+message Long {
+  message Parser {
+    string thousands_separator = 1;
+  }
+}
+message Nothing {}
+message String {
+  message Parser {
+    bool trim = 1;
+    // trim = true -> "   abc   " becomes "abc"
+  }
+}
+message Timestamp {
+  message Parser {
+  /*
+  / this part is being commented out for now as we are not sure about use cases
+    message Epoch {
+      // we may want to a more typt-safe option than string
+      string unit = 1; // sec, second, seconds, milli, millisec, millisecond, milliseconds
+    }
+    message ISO8601 {}
+    oneof format {
+      Epoch epoch = 2;
+      ISO8601 iso8601 = 1;
+    }
+  */
+  }
+}
+
+message Field {
+  string name = 1;
+  Schema schema = 2;
+}
+
+message Map {
+  repeated Field field = 1;
+}
+
+// Next unused: 15
+message Schema {
+  oneof details {
+    Boolean boolean = 1;
+    Byte byte = 2;
+    // Bytes bytes = 13;
+    Char char = 3;
+    Date date = 11;
+    Double double = 14;
+    Float float = 4;
+    Int int = 5;
+    Long long = 6;
+    Map map = 7;
+    Nothing nothing = 8;
+    String string = 9;
+    Timestamp timestamp = 10;
+  }
+  reserved 12;
+  reserved "date_time";
+}
+
+message AbsList {
+  // Go doc: https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#BlobProperties
+  // REST API doc: https://docs.microsoft.com/en-us/rest/api/storageservices/list-blobs
+  String name = 1;
+  Boolean deleted = 2;
+  String snapshot = 3;
+
+  // Properties
+  Timestamp properties__creation_time = 4;
+  Timestamp properties__last_modified = 5;
+  String properties__etag = 6;
+  Long properties__content_length = 7;
+  String properties__content_type = 8;
+  String properties__content_encoding = 9;
+  String properties__content_language = 10;
+  String properties__content_md5 = 11; // Bytes?
+  String properties__cache_control = 12;
+  Long properties__blob_sequence_number = 13;
+  String properties__blob_type = 14; // BlockBlob | PageBlob | AppendBlob | <none>
+  String properties__access_tier = 15; // ?
+  String properties__lease_status = 16; // locked | unlocked | <none>
+  String properties__lease_state = 17; // available | leased | expired | breaking | broken | <none>
+  String properties__lease_duration = 18; // infinite | fixed | <none>
+  String properties__copy_id = 19;
+  String properties__copy_status = 20; // pending | success | aborted | failed | <none>
+  String properties__copy_source = 21;
+  String properties__copy_progress = 22;
+  Timestamp properties__copy_completion_time = 23;
+  String properties__copy_status_description = 24;
+  Boolean properties__server_encrypted = 25;
+  Boolean properties__incremental_copy = 26;
+  Boolean properties__access_tier_inferred = 27;
+  Timestamp properties__access_tier_change_time = 28;
+  Timestamp properties__deleted_time = 29;
+  Long properties__remaining_retention_days = 30;
+  // Below exist in Go API only
+  String properties__content_disposition = 31;
+  String properties__destination_shapshot = 32;
+  String properties__archive_status = 33; // rehydrate-pending-to-hot | rehydrate-pending-to-cool
+
+  // Metadata
+  ascend.Struct metadata = 34;
+
+  Boolean is_prefix = 35;
+}
+
+message BqListTables {
+  String name = 1;
+  String partition_id = 6;
+  String schema = 3; // base64 of binary serialization of schema
+  Long last_modified = 4;
+  Long num_rows = 5;
+  Boolean is_prefix = 7;
+  String dataset = 8;
+
+  reserved 2;
+  reserved "inputs_sha";
+}
+
+message BqListDatasets {
+  // https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets/list
+  String id = 1;
+  String dataset_id = 2;
+  String project_id = 3;
+  String friendly_name = 4;
+  String label = 5; // json serialization of labels (presumably/eventually)
+}
+
+message ImmediateList {
+  String name = 1;
+  String sha = 2;
+}
+
+message MysqlListDatabases {
+  // https://dev.mysql.com/doc/refman/5.7/en/schemata-table.html
+  String name = 1;
+}
+
+message MysqlListPartitions {
+  String partition = 1;
+}
+
+message MysqlListTables {
+  String name = 1;
+}
+
+message SnowflakeListPartitions {
+  String partition = 1;
+}
+
+message FileList {
+  String name = 1;
+  Long last_modified = 2;       // Seconds since the epoch
+                                // - FIXME(smp): change to Timestamp
+                                //   based on conversation, we want the worker to canonicalize
+}
+
+message ListSchema {
+  ascend.Struct record = 1;
+}
+
+message S3List {
+  // Descriptions from AWS docs:
+  // https://docs.aws.amazon.com/AmazonS3/latest/API/v2-RESTBucketGET.html
+  String id = 2;                // Object owner's ID.
+  String etag = 3;              // The entity tag is an MD5 hash of the object.
+  String name = 4;              // Name of the bucket.
+  String key = 5;               // The object's key.
+  Long last_modified = 6;       // Seconds since the epoch
+                                // - FIXME(smp): change to Timestamp
+                                //   based on conversation, we want the worker to canonicalize
+  Long size = 7;                // Size in bytes of the object.
+  String storage_class = 8;     // STANDARD | STANDARD_IA | REDUCED_REDUNDANCY | GLACIER
+  Boolean is_prefix = 9;
+
+  reserved 1;
+  reserved "inputs_sha", "token";
+}
+
+message FunctionContainerList {
+  String name = 1;
+  Boolean is_prefix = 2;
+  String fingerprint = 3;
+  Timestamp last_modified = 4;
+}
+
+message GcsList {
+  String bucket = 2;
+  String name = 3;
+  String content_type = 4;
+  String content_language = 5;
+  String cache_control = 6;
+  String owner = 7;
+  Long size = 8;
+  String content_encoding = 9;
+  String content_disposition = 10;
+  String md5 = 11;
+  Long crc32c = 12;
+  String media_link = 13;
+  Long generation = 14;
+  Long meta_generation = 15;
+  String storage_class = 16;
+  String created = 17;
+  String deleted = 18;
+  String updated = 19;  // RFC 3339
+                        // - FIXME(smp): change to Timestamp
+                        //   based on conversation, we want the worker to canonicalize
+  String customer_key_sha256 = 20;
+  String prefix = 21;
+  Boolean is_prefix = 22;
+
+  reserved 1;
+  reserved "inputs_sha";
+}
+
+message GrokPattern {
+  oneof pattern {
+    CommonApacheLog common_apache_log = 1;
+    CombinedApacheLog combined_apache_log = 2;
+    AdobeFlashMediaServerLog adobeFms = 3;
+  }
+}
+
+message CommonApacheLog {
+  String hostname = 1;
+  Int hour = 2;
+  Int minute = 3;
+  Int second = 4;
+  String month = 5;
+  Int monthday = 6;
+  Int year = 7;
+  String time = 8;
+  String auth = 9;
+  Long bytes = 10;
+  String clientip = 11;
+  String httpversion = 12;
+  String ident = 13;
+  String rawrequest = 14;
+  String request = 15;
+  Int response = 16;
+  String timestamp = 17;
+  String verb = 18;
+}
+
+message CombinedApacheLog {
+  String commonapachelog = 1;
+  String hostname = 2;
+  Int hour = 3;
+  Int minute = 4;
+  Int second = 5;
+  String month = 6;
+  Int monthday = 7;
+  Int year = 8;
+  String time = 9;
+  String auth = 10;
+  Long bytes = 11;
+  String clientip = 12;
+  String httpversion = 13;
+  String ident = 14;
+  String rawrequest = 15;
+  String request = 16;
+  Int response = 17;
+  String timestamp = 18;
+  String verb = 19;
+  String referrer = 20;
+  String agent = 21;
+}
+
+message AdobeFlashMediaServerLog {
+  String x_event = 1;
+  String x_category = 2;
+  Int year = 3;
+  Int month = 4;
+  Int day = 5;
+  Int hour = 6;
+  Int minute = 7;
+  Int second = 8;
+  String time = 9;
+  String tz = 10;
+  String x_ctx = 11;
+  String s_ip = 12;
+  Int x_pid = 13;
+  Long x_cpu_load = 14;
+  Long x_mem_load = 15;
+  String x_adaptor = 16;
+  String x_vhost = 17;
+  String x_app = 18;
+  String x_app_inst = 19;
+  Long x_duration = 20;
+  String x_status = 21;
+  String c_ip = 22;
+  String c_proto = 23;
+  String s_uri = 24;
+  String cs_uri_stem = 25;
+  String cs_uri_query= 26;
+  String c_referrer = 27;
+  String c_user_agent = 28;
+  Int c_client_id = 29;
+  Long cs_bytes = 30;
+  Long sc_bytes = 31;
+  String x_sname = 32;
+  String x_sname_query = 33;
+  String x_file_name = 34;
+  String x_file_ext = 35;
+  Long x_file_size = 36;
+  Long x_file_length = 37;
+  Long x_spos = 38;
+  Long cs_stream_bytes = 39;
+  Long sc_stream_bytes = 40;
+  Long x_sc_qos_bytes = 41;
+  String x_trans_sname = 42;
+  String x_trans_sname_query = 43;
+  String x_trans_file_ext = 44;
+  String x_comment = 45;
+}
+
+// In the worker DB
+message Statistics {
+  /*
+   select
+     "<sha>" as sha,
+     "<column_name>" as dimension,
+     "<class_tag>" as type_tag,
+     count(1) as cardinality,
+     exact_count_distinct(column_name) as distinct_cardinality,
+     count(distinct column_name) as approximate_distinct_cardinality
+     min(column_name) as timestamp_minimum,
+     max(column_name) as timestamp_maximum;
+  */
+
+  String sha = 1;
+  String dimension = 2;
+
+  String schema = 3; // Schema proto bytes
+
+  Long cardinality = 4;
+  Long distinct_cardinality = 5;
+  Long approximate_distinct_cardinality = 6;
+
+  Long long_minimum = 7;
+  Long long_maximum = 8;
+  Long long_sum = 13;
+
+  Double double_minimum = 9;
+  Double double_maximum = 10;
+  Double double_sum = 14;
+
+  Timestamp timestamp_minimum = 11;
+  Timestamp timestamp_maximum = 12;
+}
+
+// Define policy flag when two schemas does not match
+message UpdatePolicy {
+  message Error {}
+  message DropTable {}
+  message AlterTable {
+    bool alter_columns_on_type_mismatch = 1;
+    bool drop_unknown_columns = 2;
+  }
+
+  oneof details {
+    Error error = 1;
+    DropTable drop_table = 2;
+    AlterTable alter_table = 3;
+  }
+}
+
+message PartFileMetadata {
+  message Part {
+    google.protobuf.UInt64Value record_count = 1;
+    google.protobuf.UInt64Value byte_count = 2;
+    oneof part {
+      // Indexes less than 12 should used if they are unreserved
+      Abs abs = 12;
+      File file = 13;
+      S3 s3 = 14;
+      Gcs gcs = 15;
+    }
+  }
+
+  message S3 {
+    string bucket = 1;
+    string object = 2;
+    string etag = 3;
+    google.protobuf.Timestamp last_modified = 4;
+  }
+
+  message Gcs {
+    string bucket = 1;
+    string object = 2;
+    string md5 = 3;
+    google.protobuf.Timestamp last_modified = 4;
+  }
+
+  message Abs {
+    string account = 1;
+    string container = 2;
+    string blob = 3;
+    string md5 = 4;
+    string etag = 6;
+    google.protobuf.Timestamp last_modified = 5;
+  }
+
+  message File {
+    string path = 1;
+    google.protobuf.Timestamp last_modified = 2;
+  }
+
+  string metadata_content_type = 1;
+  uint32 part_count = 2;
+  string part_content_type = 3;
+  string part_content_encoding = 4;
+  google.protobuf.UInt64Value record_count = 5;
+  google.protobuf.UInt64Value byte_count = 6;
+  repeated Part parts = 7;
+}

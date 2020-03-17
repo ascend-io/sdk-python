@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package function;
+
+
+message Code {
+  message Language {
+    message Python {
+      message Version {
+        message V2 {}
+        message V3 {}
+      }
+
+      repeated string pip_package = 1;
+
+      oneof version {
+        Version.V2 v2 = 2;
+        Version.V3 v3 = 3;
+      }
+    }
+
+    oneof language {
+      Python python = 1;
+    }
+  }
+
+  message Source {
+    oneof source {
+      string inline = 2;
+    }
+  }
+
+  Language language = 1;
+  Source source = 2;
+}
+
+message Executable {
+  oneof executable {
+    Code code = 1;
+  }
+}

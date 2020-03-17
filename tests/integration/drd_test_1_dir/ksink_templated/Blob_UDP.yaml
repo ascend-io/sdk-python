@@ -1,0 +1,36 @@
+# id: Blob_UDP
+component:
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        lambdaParser:
+          code:
+            inline: aW1wb3J0IGpzb24KaW1wb3J0IGRhdGV0aW1lCgojIG1pbmltdW0gaGVsbG9Xb3JsZCBleGFtcGxlCmRlZiBwYXJzZXJfZnVuY3Rpb24ocmVhZGVyLCBvbk5leHQpOgogICAgbG9vcCA9IDEwMAogICAgZm9yIGkgaW4gcmFuZ2UobG9vcCk6CiAgICAgICAgb25OZXh0KHsKICAgICAgICAgICAgJ21zZyc6ICdIZWxsbyBXb3JsZCEhIScsCiAgICAgICAgICAgICd0aW1lc3RhbXAnOiBkYXRldGltZS5kYXRldGltZS5ub3coKS5pc29mb3JtYXQoKSwKICAgICAgICB9KQogICAgcmVhZGVyLmNsb3NlKCk=
+            language:
+              python:
+                v3: {}
+          metadata: '{   "pre-cmd": {      "github": {       "repo": "github.com/ascend-io/21cf",        "branch":
+            "master",        "auth": {          "id_rsa" : "redact ssl key"       }     }   },   "cmd":
+            "export; find . -name ''*''; python3 ./udps/hello-world/hello.py" }'
+          schema:
+            field:
+            - name: msg
+              schema:
+                string: {}
+            - name: timestamp
+              schema:
+                timestamp: {}
+    container:
+      immediate:
+        contentSome: Rm9v
+        object:
+        - contentSha: HL7HN/hj5JIs7mPMLrv6r80c/4t5DYz9LmpdVQtkivo=
+          length: '3'
+          name: ascend_text_blob
+    pattern:
+      glob: '**'
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Blob_UDP

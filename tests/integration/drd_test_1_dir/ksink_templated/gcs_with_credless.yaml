@@ -1,0 +1,56 @@
+# id: gcs_with_credless
+component:
+  groupId: Credless_Auth_
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        xsvParser:
+          columns:
+            parsingSpecifications:
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: field1
+              string: {}
+              targetName: field1
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: field2
+              string: {}
+              targetName: field2
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault:
+                  defaultValue: ''
+              nullIsInvalid: true
+              sourceName: field3
+              string: {}
+              targetName: field3
+          delimiter: ','
+          headerLineCount: '1'
+          schema:
+            field:
+            - name: field1
+              schema:
+                string: {}
+            - name: field2
+              schema:
+                string: {}
+            - name: field3
+              schema:
+                string: {}
+    container:
+      gcs:
+        bucket: test_credless
+    pattern:
+      glob: test1/test1
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: gcs_with_credless

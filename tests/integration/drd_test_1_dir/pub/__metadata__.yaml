@@ -1,0 +1,6 @@
+# id: pub
+dataflow:
+  groups:
+  - id: data_feeds
+    name: data_feeds
+name: pub

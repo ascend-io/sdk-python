@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pattern;
+
+
+message Pattern {
+  oneof pattern {
+    string glob = 1;
+    string regex = 2;
+    string exact_match = 3;
+  }
+}

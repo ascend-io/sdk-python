@@ -1,0 +1,54 @@
+# id: Orders
+component:
+  groupId: Date_Partitioned_Join
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        jsonParser:
+          columns:
+            parsingSpecifications:
+            - int: {}
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: order_id
+              targetName: order_id
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: order_name
+              string: {}
+              targetName: order_name
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: ts
+              targetName: ts
+              timestamp: {}
+          namespaceDelimiter: __
+          schema:
+            field:
+            - name: order_id
+              schema:
+                int: {}
+            - name: order_name
+              schema:
+                string: {}
+            - name: ts
+              schema:
+                timestamp: {}
+    container:
+      gcs:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        delimiter: /
+    pattern:
+      glob: kitchen_sink/dpj-test-data/orders/**
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Orders

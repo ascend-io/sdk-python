@@ -1,0 +1,7 @@
+# id: sql
+{%- set ascendSqlStmt = ascend_include_raw(resourceParentDirectory, "sql.sql") %}
+component:
+  transform:
+    operator:
+      sqlQuery:
+        sql: {{ ascendSqlStmt | dumpJson }}

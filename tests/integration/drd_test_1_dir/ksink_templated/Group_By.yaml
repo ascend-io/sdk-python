@@ -1,0 +1,15 @@
+# id: Group_By
+component:
+  groupId: Partitioned
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT DATE_TRUNC('HOUR', at) as at_hour, count(*) as num_events
+          FROM ${0} AS c
+          GROUP BY at_hour
+description: View from CSV_hourly_small
+name: Group_By

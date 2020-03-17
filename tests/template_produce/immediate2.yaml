@@ -1,0 +1,14 @@
+id: immediate2
+component:
+  readConnector:
+    container:
+      immediate:
+        content_some: QSxCLEMKMSwyLDNBLEIsQwo0LDUsNgo3LDgsOQ==
+        object:
+          - name: f1.csv
+            length: 11
+          - name: f2.csv
+            length: 17
+    updatePeriodical:
+      offset: 103366736s
+      period: 134217727s

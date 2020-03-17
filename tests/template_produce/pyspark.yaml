@@ -1,0 +1,11 @@
+id: pyspark
+component:
+  transform:
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            source:
+              inline: |-
+                def transform(inputs):
+                    return inputs[0]

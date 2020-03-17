@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package content_encoding;
+
+
+// Data (content/transfer) encodings ... after IANA content/transfer encodings
+message Identity {}
+message Compress {}
+message Deflate {}
+message Gzip {}
+message Lzo {} // no standard IANA content/transfer encoding string for this
+
+message ContentEncoding {
+  oneof encoding {
+    Identity identity = 1;
+    Compress compress = 2;
+    Deflate deflate = 3;
+    Gzip gzip = 4;
+    Lzo lzo = 5;
+  }
+}

@@ -1,0 +1,23 @@
+# id: drd_test_2
+dataService:
+  dataflows:
+  - components:
+    - id: cross_ds_1
+      name: cross_ds_1
+      transform:
+        inputIds:
+        - drd_test_1.public_df1
+        operator:
+          sqlQuery:
+            sql: select * from ${0}
+    - id: cross_ds_selective_2
+      name: cross_ds_selective_2
+      transform:
+        inputIds:
+        - drd_test_1.selective_df2
+        operator:
+          sqlQuery:
+            sql: select * from ${0}
+    id: sub
+    name: sub
+name: drd test 2

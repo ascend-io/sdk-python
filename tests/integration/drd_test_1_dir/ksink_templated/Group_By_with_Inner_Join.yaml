@@ -1,0 +1,18 @@
+# id: Group_By_with_Inner_Join
+component:
+  groupId: Partitioned
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    - Blob_JSON_hourly_small_metadata
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT DATE_TRUNC('HOUR', at) as at_hour, app_id, meta
+          FROM ${0} AS c
+          inner join ${1} AS b
+           ON c.app_id = b.id
+          GROUP BY at_hour, app_id, meta
+description: Composite view from CSV_hourly_small, Blob_JSON_hourly_small_metadata
+name: Group_By_with_Inner_Join

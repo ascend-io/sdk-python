@@ -1,0 +1,10 @@
+# id: pyspark
+{%- set ascend_pyspark = ascend_include_raw(resourceParentDirectory, "pyspark_pyspark.py") %}
+component:
+  transform:
+    operator:
+      sparkFunction:
+        executable:
+          code:
+            source:
+              inline: {{ ascend_pyspark | dumpJson }}

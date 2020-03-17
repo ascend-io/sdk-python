@@ -1,0 +1,202 @@
+syntax = "proto3";
+
+package format;
+
+
+import "protos/ascend/ascend.proto";
+import "protos/schema/schema.proto";
+import "protos/text/text.proto";
+
+message Avro {
+  message Formatter {
+  }
+  message Parser {
+    schema.Map schema = 1;
+  }
+}
+
+message Grok {
+  message Parser {
+    string pattern = 1;  // e.g.,: "%{COMBINEDAPACHELOG}"
+  }
+}
+
+message Json {
+  message Formatter {
+  }
+  message Parser {
+    Columns columns = 6;
+    bool flatten_nested = 5;
+    int64 max_warn_count = 7;
+    string namespace_delimiter = 4;
+
+    // temporarily undo the deprecation for compatibility
+    // reserved 1, 2, 3;
+    // reserved "max_error_count", "max_error_percentage_points", "schema";
+    schema.Map schema = 1;
+    int32 max_error_count = 2;
+    double max_error_percentage_points = 3;
+  }
+}
+
+message Parquet {
+  message Formatter {
+  }
+  message Parser {
+
+    schema.Map schema = 1;
+    string namespace_delimiter = 2;
+    // parquet schema cannot be a subset of Ascend schema
+    bool require_no_missing_fields_in_parquet = 3;
+    // Ascend schema cannot be a subset of parquet schema
+    bool require_no_extra_fields_in_parquet = 4;
+    bool require_field_type_match_schema = 5;
+  }
+}
+
+message Lambda {
+  message Formatter {
+  }
+  message Parser {
+
+    message DockerImage {
+      string image_name = 1;
+    }
+
+    message Language {
+      message Python {
+        repeated string pip_package = 1;
+
+        message V2 {
+        }
+
+        message V3 {
+        }
+
+        oneof version {
+          V2 v2 = 2;
+          V3 v3 = 3;
+        };
+      }
+
+      oneof language {
+        Python python = 1;
+      }
+    }
+
+    message File {
+      string uri = 1;
+    }
+
+    message Code {
+      Language language = 1;
+      oneof source {
+        string inline = 2;
+        File file = 3;
+      }
+    }
+
+    oneof executable {
+      DockerImage docker_image = 1;
+      Code code = 2;
+    }
+
+    string metadata = 3;
+    schema.Map schema = 4;
+    int32 max_error_count = 5;
+  }
+}
+
+
+message Xsv {
+  message Options {
+    string delimiter = 1;
+    bool include_header = 2;
+    text.LineEnding line_ending = 3;
+    // Probably other fields that are currently only in the parser should be here, like:
+    // string escape_character = 4;
+    // string comment_prefix = 5;
+    // string quote_character = 6;
+  }
+
+  message Formatter {
+    // these should ideally be deprecated and replaced with a field of type `Options`
+    string delimiter = 1;
+    bool include_header = 2;
+    text.LineEnding line_ending = 3;
+  }
+  message Parser {
+    // Fields strictly related to the format should ideally be deprecated and replaced with a field
+    // of type `Options`; other fields related purely to parsing (columns, error handling, ...)
+    // should remain here
+    Columns columns = 10;
+    string comment_prefix = 1;
+    string delimiter = 2;
+    string escape_character = 3;
+    int64 header_line_count = 4;
+    int64 max_warn_count = 11;
+    string quote_character = 8;
+
+    // temporarily undo the deprecation for compatibility
+    // reserved 5, 6, 7, 9;
+    // reserved "headers_to_columns", "max_error_count", "max_error_percentage_points", "schema";
+    map<string, string> headers_to_columns = 5;
+    int64 max_error_count = 6;
+    double max_error_percentage_points = 7;
+    schema.Map schema = 9;
+  }
+
+  Options options = 1;
+}
+
+message Columns {
+  message ParsingSpecification {
+    message InvalidValueHandling {
+      message UseDefault {
+        oneof maybe_default_value {
+          string default_value = 1;
+        }
+      }
+      message SkipRecord {}
+      message Fail {}
+
+      bool suppress_warn = 1;
+      oneof on_invalid_value {
+        UseDefault use_default = 2;
+        SkipRecord skip_record = 3;
+        Fail fail = 4;
+      }
+    }
+
+    string source_name = 1; // name of source field
+    string target_name = 2; // name of column in output
+    bool null_is_invalid = 3;
+    InvalidValueHandling invalid_value_handling = 4;
+    oneof schema_parser {
+      schema.Boolean.Parser boolean = 5;
+      schema.Date.Parser date = 6;
+      schema.Double.Parser double = 8;
+      schema.Float.Parser float = 9;
+      schema.Int.Parser int = 10;
+      schema.Long.Parser long = 11;
+      schema.String.Parser string = 12;
+      schema.Timestamp.Parser timestamp = 13;
+    }
+    reserved 7;
+    reserved "date_time";
+  }
+
+  repeated ParsingSpecification parsing_specifications = 1;
+}
+
+message Format {
+  oneof format {
+    Avro avro = 1;
+    Grok grok = 2;
+    Json json = 3;
+    Parquet parquet = 4;
+    Xsv xsv = 6;
+  }
+  reserved 5;
+  reserved "user_defined";
+}

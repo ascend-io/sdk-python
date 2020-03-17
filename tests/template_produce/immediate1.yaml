@@ -1,0 +1,12 @@
+id: immediate1
+component:
+  readConnector:
+    container:
+      immediate:
+        content_some: RXhhbXBsZSB0ZXh0IGJsb2IgZmlsZSBwcm9kdWN0aW9uCkxpbmUgMiBvZiBFeGFtcGxlIHRleHQgYmxvYiBmaWxlIHByb2R1Y3Rpb24KVGhpcyBibG9iIGhhcyBqaW5qYSB7eyBjaGFycyB9fSBpbiBpdAo=
+        object:
+          - name: ascend_text_blob
+            length: 116
+    updatePeriodical:
+      offset: 103366736s
+      period: 134217727s

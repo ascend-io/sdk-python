@@ -1,0 +1,13 @@
+# id: Hourly_small_Union
+component:
+  groupId: Maps
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - GCS_CSV_hourly_small__12_20_
+    - GCS_CSV_hourly_small__12_21_
+    operator:
+      sqlQuery:
+        sql: "SELECT * FROM ${0} AS g1, ${1} AS g2\n "
+description: Composite view from GCS_CSV_hourly_small__12_20_, GCS_CSV_hourly_small__12_21_
+name: Hourly_small_Union

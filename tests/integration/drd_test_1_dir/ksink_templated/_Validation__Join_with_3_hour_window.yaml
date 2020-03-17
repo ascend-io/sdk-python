@@ -1,0 +1,17 @@
+# id: _Validation__Join_with_3_hour_window
+component:
+  groupId: Date_Partitioned_Join
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - Tickets_by_hour
+    - Orders_by_hour
+    operator:
+      sqlQuery:
+        sql: "select\n  ticket_id,\n  t.order_id,\n  order_name,\n  t.ts as ticket_ts,\n\
+          \  o.ts as order_ts,\n  t.ts_hour as ticket_ts_hour,\n  o.ts_hour as order_ts_hour\n\
+          FROM\n  ${0} as t\n  left join ${1} as o on t.order_id = o.order_id\nwhere\n\
+          \  o.ts_hour >= t.ts_hour - INTERVAL 1 hour\n  and o.ts_hour <= t.ts_hour\
+          \ + INTERVAL 1 hour\norder by \n  ticket_id"
+description: Composite transform from Tickets_by_hour, Orders_by_hour
+name: _Validation__Join_with_3_hour_window

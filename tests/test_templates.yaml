@@ -1,0 +1,38 @@
+{%- set ascendImmediateDir -%}{{ resourceParentDirectory }}/template_dir{%- endset -%}
+{%- set ascendImmediateFiles = [
+   "ascend_text_blob",
+] -%}
+{%- set ascendImmediateObjects = [ascendImmediateContent1]  + ascendImmediateFiles -%}
+{%- set ascendImmediateFiles2 = [
+  "f1.jsonl",
+  "f2.jsonl",
+] -%}
+components:
+  - id: ascend_text.from
+    readConnector:
+      container:
+        immediate: {{ construct_immediate_container(ascendImmediateDir, ascendImmediateFiles) }}
+  - id: ascend_text.to
+    readConnector:
+      container:
+        immediate:
+          content_some: VGhpcyBpcyBhbiBleGFtcGxlIGZpbGU=
+          object:
+            - name: ascend_text_blob
+              length: 23
+  - id: two_files.from
+    name: {{ config.twoFileNameKey }}
+    readConnector:
+      container:
+        immediate: {{ construct_immediate_container(ascendImmediateDir, ascendImmediateFiles2) }}
+  - id: two_files.to
+    name: twoFileNameValue
+    readConnector:
+      container:
+        immediate:
+          content_some: eyJrZXkiOiAidmFsdWUiLCAiazIiOiAxMH0KeyJrZXkiOiAidmFsdWUyIiwgImsyIjogMTB9Cnsia2V5IjogInZhbHVlIiwgImsyIjogMjB9Cnsia2V5IjogInZhbHVlMiIsICJrMiI6IDIwfQo=
+          object:
+            - name: f1.jsonl
+              length: 55
+            - name: f2.jsonl
+              length: 55

@@ -1,0 +1,54 @@
+# id: Tickets
+component:
+  groupId: Date_Partitioned_Join
+  readConnector:
+    assignedPriority: {}
+    bytes:
+      parser:
+        jsonParser:
+          columns:
+            parsingSpecifications:
+            - invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: ts
+              targetName: ts
+              timestamp: {}
+            - int: {}
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: ticket_id
+              targetName: ticket_id
+            - int: {}
+              invalidValueHandling:
+                suppressWarn: true
+                useDefault: {}
+              sourceName: order_id
+              targetName: order_id
+          namespaceDelimiter: __
+          schema:
+            field:
+            - name: ts
+              schema:
+                timestamp: {}
+            - name: ticket_id
+              schema:
+                int: {}
+            - name: order_id
+              schema:
+                int: {}
+    container:
+      gcs:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_gcs_demo_data
+        credentials:
+          jsonKey: ''
+        delimiter: /
+    pattern:
+      glob: kitchen_sink/dpj-test-data/tickets/**
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: Tickets

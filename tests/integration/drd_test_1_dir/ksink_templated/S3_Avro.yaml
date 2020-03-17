@@ -1,0 +1,24 @@
+# id: S3_Avro
+component:
+  groupId: Sink_Formatters
+  writeConnector:
+    assignedPriority: {}
+    bytes:
+      formatter:
+        avroFormatter: {}
+    container:
+      s3:
+        bucket: ascend-io-demo-data
+        credentialId:
+          value: kitchen_sink_s3_demo_data
+        credentials:
+          id: AKIAIDLZKCPVCHSDHP4Q
+        delimiter: /
+        manifest:
+          format:
+            json: {}
+          name: Manifest
+        prefix: kitchen_sink/avro/{{ config.uniquePiece }}/
+    inputId: Map_with_inner_join
+description: Sink from Map_with_inner_join
+name: S3_Avro

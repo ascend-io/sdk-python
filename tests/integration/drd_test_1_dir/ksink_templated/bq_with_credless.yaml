@@ -1,0 +1,47 @@
+# id: bq_with_credless
+component:
+  groupId: Credless_Auth_
+  readConnector:
+    assignedPriority: {}
+    container:
+      bigQuery:
+        datasetPrefix: austin_incidents
+        partitionPattern: {}
+        project: bigquery-public-data
+        stagingContainer: {}
+    pattern:
+      exactMatch: incidents_2009
+    records:
+      schema:
+        field:
+        - name: unique_key
+          schema:
+            long: {}
+        - name: descript
+          schema:
+            string: {}
+        - name: date
+          schema:
+            date: {}
+        - name: time
+          schema:
+            string: {}
+        - name: address
+          schema:
+            string: {}
+        - name: longitude
+          schema:
+            double: {}
+        - name: latitude
+          schema:
+            double: {}
+        - name: location
+          schema:
+            string: {}
+        - name: timestamp
+          schema:
+            timestamp: {}
+    updatePeriodical:
+      offset: 101025131s
+      period: 134217727s
+name: bq_with_credless

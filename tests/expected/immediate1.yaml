@@ -1,0 +1,10 @@
+# id: immediate1
+{%- set ascendImmediateDir -%}{{ resourceParentDirectory }}/immediate1{%- endset %}
+{%- set ascendImmediateFiles = ["ascend_text_blob"] %}
+component:
+  readConnector:
+    container:
+      immediate: {{ construct_immediate_container(ascendImmediateDir, ascendImmediateFiles) }}
+    updatePeriodical:
+      offset: 103366736s
+      period: 134217727s

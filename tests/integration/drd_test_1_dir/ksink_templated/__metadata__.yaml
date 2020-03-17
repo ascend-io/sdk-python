@@ -1,0 +1,30 @@
+# id: ksink
+dataflow:
+  groups:
+  - id: Azure_Blob_Storage_RC___WC
+    name: Azure_Blob_Storage_RC___WC
+  - id: BQ_partitioned_sources
+    name: BQ_partitioned_sources
+  - id: Credless_Auth_
+    name: Credless_Auth_
+  - id: Date_Partitioned_Join
+    name: Date_Partitioned_Join
+  - id: GCS___CSV_Source
+    name: GCS___CSV_Source
+  - id: Maps
+    name: Maps
+  - id: Partitioned
+    name: Partitioned
+  - id: Redshift_Sinks
+    name: Redshift_Sinks
+  - id: Reduction
+    name: Reduction
+  - id: Sink_Formatters
+    name: Sink_Formatters
+  - description: Sometimes it is important to trigger computation by adding a downstream
+      sink
+    id: Sink_Triggers
+    name: Sink_Triggers
+  - id: Snowflake_Sinks
+    name: Snowflake_Sinks
+name: ksink_templated

@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package operator;
+
+
+import "google/protobuf/wrappers.proto";
+import "protos/ascend/ascend.proto";
+import "protos/format/format.proto";
+import "protos/function/function.proto";
+import "protos/io/io.proto";
+import "protos/schema/schema.proto";
+
+// Granularity of temporal partitioning, e.g., when doing partial
+// reductions.
+message Granularity {
+  message Time {
+    message Auto {}
+    message Year {}
+    message Month {}
+    message Day {}
+    message Hour {}
+    message Minute {}
+
+    oneof time {
+      Auto auto = 1;
+      Year year = 2;
+      Month month = 3;
+      Day day = 4;
+      Hour hour = 5;
+      Minute minute = 6;
+    }
+  }
+
+  oneof granularity {
+    Time time = 1;
+  }
+}
+
+message InstanceType {
+  message Small {}
+  message Medium {}
+  message Large {}
+  message XLarge {}
+
+  oneof details {
+    Small small = 1;
+    Medium medium = 2;
+    Large large = 3;
+    XLarge xlarge = 4;
+  }
+}
+
+message Reduction {
+  message NoReduction {}
+  message Full {}
+  message Partial {
+    message PartitionSpecification {
+      string column = 1;
+      Granularity granularity = 2;
+    }
+
+    // map from input index to partition spec
+    map<int32, PartitionSpecification> partition_by = 1;
+  }
+
+  oneof reduction {
+    Full full = 1;
+    NoReduction no_reduction = 2;
+    Partial partial = 3;
+  }
+
+}
+
+message Sql {
+  message Query {
+    string sql = 1;
+    Spark.JobConfiguration spark_job_configuration = 2;
+  }
+}
+
+message Spark {
+  message JobConfiguration {
+    google.protobuf.Int32Value executor_instances = 1;
+    InstanceType executor_instance_type = 2;
+    InstanceType driver_instance_type = 3;
+  }
+
+  message Function {
+    function.Executable executable = 1;
+    Reduction reduction = 2;
+    io.Function.CredentialsConfiguration credentials_configuration = 3;
+    JobConfiguration job_configuration = 4;
+  }
+}
+
+message Identity {
+  schema.Schema schema = 1;
+}
+
+message Operator {
+  oneof details { // next unused: 16
+    format.Avro.Formatter avro_formatter = 2;
+    format.Avro.Parser avro_parser = 3;
+    format.Grok.Parser grok_parser = 4;
+    format.Json.Formatter json_formatter = 5;
+    format.Json.Parser json_parser = 6;
+    format.Lambda.Formatter lambda_formatter = 13;
+    format.Lambda.Parser lambda_parser = 14;
+    format.Parquet.Formatter parquet_formatter = 7;
+    format.Parquet.Parser parquet_parser = 8;
+    format.Xsv.Formatter xsv_formatter = 11;
+    format.Xsv.Parser xsv_parser = 12;
+    Spark.Function spark_function = 15;
+    Sql.Query sql_query = 1;
+  }
+  reserved 9, 10;
+  reserved "user_defined_formatter", "user_defined_parser";
+}

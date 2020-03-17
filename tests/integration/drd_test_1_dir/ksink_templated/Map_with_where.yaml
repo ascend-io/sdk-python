@@ -1,0 +1,15 @@
+# id: Map_with_where
+component:
+  groupId: Maps
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT *
+          FROM ${0} AS c
+          WHERE c.at < TIMESTAMP('2016-12-20T23:00:00Z')
+description: View from CSV_hourly_small
+name: Map_with_where

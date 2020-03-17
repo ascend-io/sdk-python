@@ -1,0 +1,14 @@
+# id: Cascading_SQL_after_PySpark_with_filter
+component:
+  groupId: Maps
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - PySpark_Map_with_inner_join
+    operator:
+      sqlQuery:
+        sql: |
+          SELECT *, CAST(FLOOR(app_id / 100) AS BIGINT) as group_id
+          FROM ${0} AS p
+          WHERE 400 <= app_id AND app_id <= 700
+name: Cascading_SQL_after_PySpark_with_filter

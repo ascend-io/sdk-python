@@ -1,0 +1,23 @@
+# id: Validation_Check
+component:
+  groupId: Date_Partitioned_Join
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - Join_with_3_hour_window
+    - _Validation__Join_with_3_hour_window
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT
+            j.ticket_id,
+            j.order_id as test_order_id,
+            vj.order_id as validation_order_id,
+            CASE
+              WHEN j.order_id <> vj.order_id THEN RAISE_ERROR("invalid data")
+              ELSE "OK"
+            END as test
+          FROM
+            ${0} as j
+            full outer join ${1} as vj on j.ticket_id = vj.ticket_id
+name: Validation_Check

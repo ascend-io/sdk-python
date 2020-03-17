@@ -1,0 +1,15 @@
+# id: Group_By_filename_hour
+component:
+  groupId: Partitioned
+  transform:
+    assignedPriority: {}
+    inputIds:
+    - CSV_hourly_small
+    operator:
+      sqlQuery:
+        sql: |-
+          SELECT DATE_TRUNC('HOUR', TO_TIMESTAMP(SUBSTR(__ascend__url, 39, 13), 'yyyy-MM-dd\'T\'HH')) as filename_hour, ad_group_id, count(*) as num_events
+          FROM ${0} AS c
+          GROUP BY filename_hour, ad_group_id
+description: View from CSV_hourly_small
+name: Group_By_filename_hour

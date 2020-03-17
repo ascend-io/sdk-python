@@ -1,0 +1,9 @@
+# id: cross_ds_selective_2
+component:
+  transform:
+    inputIds:
+    - drd_test_1.selective_df2
+    operator:
+      sqlQuery:
+        sql: select * from ${0}
+name: cross_ds_selective_2
