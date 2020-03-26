@@ -36,7 +36,7 @@ def dump_credentials(d: Mapping[str, 'Credential']):
     if len(d) > 0:
         creds = sorted((v for v in d.values()), key=lambda v: v.credential_id)
         proto = resource_pb2.Credentials(credentials=[c.proto for c in creds])
-        return yaml.dump(MessageToDict(proto))
+        return yaml.dump(MessageToDict(proto, including_default_value_fields=True))
     else:
         return ''
 
