@@ -177,7 +177,7 @@ class Dataflow(Resource):
         # Raises
         HTTPError: on API errors
         """
-        raw_resp = self.session.get("{}/components".format(self.resource_path))
+        raw_resp = self.session.get("{}/components?deep=true".format(self.resource_path))
 
         if not raw_resp['data']:
             return []
