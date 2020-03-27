@@ -4,12 +4,12 @@ package io;
 
 
 import "google/protobuf/empty.proto";
-import "protos/ascend/ascend.proto";
-import "protos/content_encoding/content_encoding.proto";
-import "protos/format/format.proto";
-import "protos/function/function.proto";
-import "protos/pattern/pattern.proto";
-import "protos/schema/schema.proto";
+import "ascend/protos/ascend/ascend.proto";
+import "ascend/protos/content_encoding/content_encoding.proto";
+import "ascend/protos/format/format.proto";
+import "ascend/protos/function/function.proto";
+import "ascend/protos/pattern/pattern.proto";
+import "ascend/protos/schema/schema.proto";
 
 message Credentials {
   message Id {
@@ -23,6 +23,7 @@ message Credentials {
     Azure.Credentials azure = 7;
     Function.Credentials function = 6;
     Gcp.Credentials gcp = 4;
+    MsSqlServer.Credentials ms_sql_server = 9;
     Mysql.Credentials mysql = 5;
     Snowflake.Credentials snowflake = 8;
   }
@@ -210,6 +211,40 @@ message Immediate {
   }
 }
 
+message MsSqlServer {
+  message Credentials {
+    message SqlAuthentication {
+      string user = 1;
+      string password = 2 [(ascend.sensitive) = true];
+    }
+
+    oneof details {
+      SqlAuthentication sql_authentication = 1;
+    }
+  }
+
+  message Container {
+    Credentials credentials = 1;
+    io.Credentials.Id credential_id = 2;
+    string server_name = 3;
+    int32 port = 4;
+    bool use_encryption = 5;
+    string database_name = 6;
+    oneof staging_container {
+      Azure.Abs.Container abs = 7;
+    }
+    string location_template = 8;
+    schema.UpdatePolicy update_policy = 9;
+  }
+
+  message Location {
+    Container container = 1;
+    string table_name = 2;
+    schema.Map schema = 3;
+    string partition_id = 5;
+  }
+}
+
 message Mysql {
   message Credentials {
     string username = 1;
@@ -357,6 +392,7 @@ message Container {
     Gcp.BigQuery.Container big_query = 4;
     Gcp.Gcs.Container gcs = 5;
     Immediate.Container immediate = 8;
+    MsSqlServer.Container ms_sql_server = 14;
     Mysql.Container mysql = 6;
     Mysql.Partition.Container mysql_partition = 9;
     Snowflake.Container snowflake = 13;
@@ -372,6 +408,7 @@ message Location {
     File.Location file = 3;
     Gcp.BigQuery.Location big_query = 4;
     Gcp.Gcs.Location gcs = 5;
+    MsSqlServer.Location ms_sql_server = 11;
     Mysql.Location mysql = 6;
     Mysql.Partition.Location mysql_partition = 8;
     Snowflake.Location snowflake = 10;

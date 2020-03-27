@@ -4,11 +4,11 @@ package operator;
 
 
 import "google/protobuf/wrappers.proto";
-import "protos/ascend/ascend.proto";
-import "protos/format/format.proto";
-import "protos/function/function.proto";
-import "protos/io/io.proto";
-import "protos/schema/schema.proto";
+import "ascend/protos/ascend/ascend.proto";
+import "ascend/protos/format/format.proto";
+import "ascend/protos/function/function.proto";
+import "ascend/protos/io/io.proto";
+import "ascend/protos/schema/schema.proto";
 
 // Granularity of temporal partitioning, e.g., when doing partial
 // reductions.

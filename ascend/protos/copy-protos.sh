@@ -2,18 +2,11 @@
 
 set -e
 set -x
-
-ROOT="$(dirname $0)/.."
-
-cd "$ROOT"
-ROOT=$(pwd)
-cd ..
-SRC="$(pwd)/source"
-cd "$ROOT"
+ROOT=$(dirname "$0")/..
 
 copy_file() {
   local path=$1
-  cp "$SRC/$path" "$ROOT/$path"
+  cp "$SOURCE/$path" "$ROOT/$path"
 }
 
 copy_file "protos/ascend/ascend.proto"
@@ -26,7 +19,11 @@ copy_file "protos/pattern/pattern.proto"
 copy_file "protos/schema/schema.proto"
 copy_file "protos/text/text.proto"
 
-cd "protos"
+cd "$ROOT/protos"
+# remove java options
 sed -i '/java_/d' */*.proto
+# remove java classtags
 sed -i '/\.class_tag/d' */*.proto
+# adjust imports to be inside ascend directory
+sed -i 's/import "protos/import "ascend\/protos/g' */*.proto
 echo "Done (copy-protos.sh)!"

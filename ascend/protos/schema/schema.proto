@@ -5,7 +5,7 @@ package schema;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
-import "protos/ascend/ascend.proto";
+import "ascend/protos/ascend/ascend.proto";
 
 message Boolean {
   message Parser {}
@@ -173,6 +173,10 @@ message BqListDatasets {
 message ImmediateList {
   String name = 1;
   String sha = 2;
+}
+
+message MsSqlServerListPartitions {
+  String partition = 1;
 }
 
 message MysqlListDatabases {

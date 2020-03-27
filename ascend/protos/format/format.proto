@@ -3,9 +3,9 @@ syntax = "proto3";
 package format;
 
 
-import "protos/ascend/ascend.proto";
-import "protos/schema/schema.proto";
-import "protos/text/text.proto";
+import "ascend/protos/ascend/ascend.proto";
+import "ascend/protos/schema/schema.proto";
+import "ascend/protos/text/text.proto";
 
 message Avro {
   message Formatter {

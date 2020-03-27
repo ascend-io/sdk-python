@@ -279,12 +279,15 @@ class FunctionCreds(Creds):
             sh.debug(f'no credential config for {rd}')
 
 
-class SnowflakeCreds(Creds):
+class StagedCreds(Creds):
     staging_reg = {
         's3': S3Creds,
         'gcs': GcpCreds,
         'abs': AzureCreds
     }
+
+    def cred_type(self):
+        raise NotImplementedError(self)
 
     def snippet(self) -> Mapping[str, credentials.Credential]:
         rd = self.rd[self.k]
@@ -293,7 +296,7 @@ class SnowflakeCreds(Creds):
         if cred_id:
             d = {
                 'id': cred_id,
-                'snowflake': rd.get('credentials')
+                self.cred_type(): rd.get('credentials')
             }
             cred = io_pb2.Credentials()
             ParseDict(d, cred)
@@ -307,12 +310,22 @@ class SnowflakeCreds(Creds):
         id = rd.get('credentialId')
         if id is not None:
             cred_id = id['value']
-            apply_creds(rd, 'snowflake', cred_id, creds)
+            apply_creds(rd, self.cred_type(), cred_id, creds)
             staging_type = (set(self.staging_reg.keys()) & set(rd.keys())).pop()
             staging_creds = self.staging_reg[staging_type](rd, staging_type)
             staging_creds.set_creds(rd[staging_type], creds)
         else:
             sh.debug(f'no credentialId for {rd}')
+
+
+class SnowflakeCreds(StagedCreds):
+    def cred_type(self):
+        return 'snowflake'
+
+
+class MsSqlServerCreds(StagedCreds):
+    def cred_type(self):
+        return 'ms_sql_server'
 
 
 class PopulateUpdatePeriodical(MapData):
@@ -351,6 +364,9 @@ ContainerTransforms = MappingProxyType({
     },
     'immediate': {
         TRANSFORM_KEY: ImmediateContainer,
+    },
+    'msSqlServer': {
+        TRANSFORM_KEY: MsSqlServerCreds,
     },
     'mysql': {
         TRANSFORM_KEY: MySqlCreds,

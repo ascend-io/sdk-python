@@ -6,11 +6,11 @@ option optimize_for = SPEED;
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
-import "protos/content_encoding/content_encoding.proto";
-import "protos/io/io.proto";
-import "protos/operator/operator.proto";
-import "protos/pattern/pattern.proto";
-import "protos/schema/schema.proto";
+import "ascend/protos/content_encoding/content_encoding.proto";
+import "ascend/protos/io/io.proto";
+import "ascend/protos/operator/operator.proto";
+import "ascend/protos/pattern/pattern.proto";
+import "ascend/protos/schema/schema.proto";
 
 // N.B. The id, name, description fields appear at different levels of
 // nesting depending on option selection. In general, the way it works
