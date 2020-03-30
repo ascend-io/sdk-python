@@ -12,6 +12,7 @@ setup(
     include_package_data=True,
     scripts=['bin/ascend'],
     install_requires=[
+        'dataclasses; python_version=="3.6"',
         'jinja2',
         'networkx',
         'protobuf',
@@ -19,5 +20,6 @@ setup(
         'requests>=2.22.0',
         'urllib3',
     ],
-    zip_safe=False
+    python_requires='>=3.6',
+    zip_safe=False,
 )
