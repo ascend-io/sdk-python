@@ -220,12 +220,14 @@ class Client(object):
             p['id'] == data_feed_id,
             pub_list
         ))
+
         if len(raw_matches) > 1:
             raise HTTPError(400, "Bad Request, Data Feed name not unique: " + data_feed_id)
         if len(raw_matches) < 1:
             raise HTTPError(403, "Forbidden, No access to Data Feed: {}.{}".format(data_service_id, data_feed_id))
+
         pub = raw_matches[0]
         if raw:
             return pub
 
-        return DataFeed(data_service_id, data_feed_id, pub, self.session)
+        return DataFeed(data_service_id, pub['fromProjId'], data_feed_id, pub, self.session)

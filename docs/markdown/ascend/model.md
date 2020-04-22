@@ -166,7 +166,7 @@ __Raises__
 
 ## DataFeed
 ```python
-DataFeed(self, data_service_id, data_feed_id, raw_json=None, session=None)
+DataFeed(self, data_service_id, dataflow_id, data_feed_id, raw_json=None, session=None)
 ```
 
 A Data Feed is a live-updated dataset which is produced by a Dataflow in one
