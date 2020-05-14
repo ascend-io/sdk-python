@@ -28,7 +28,7 @@ class DataService(Resource):
     # Parameters
     data_service_id (str):
         The ID of the Data Service to connect to
-    raw_json (dict):
+    json_definition (dict):
         The API's JSON definition of the Data Service.
         Used, if provided, to construct the DataService directly
         and avoid one API request.
@@ -137,7 +137,7 @@ class Dataflow(Resource):
             The ID of the Data Service which contains this Dataflow
         dataflow_id (str):
             The ID of the Dataflow. Must be unique within the Data Service.
-        raw_json (dict):
+        json_definition (dict):
             The API's JSON definition of the Data Service.
             Used, if provided, to construct the DataService directly
             and avoid one API request.
@@ -326,7 +326,7 @@ class DataFeed(Component):
         The ID of the Data Service producing the Data Feed
     data_feed_id (str):
         The ID of the Data Feed. Must be unique within the Data Service.
-    raw_json (dict):
+    json_definition (dict):
         The API's JSON definition of the Data Feed.
         Used, if provided, to construct the Data Feed directly
         and avoid one API request.
@@ -479,7 +479,7 @@ class ReadConnector(Component):
         The ID of the Dataflow. Must be unique within the Data Service.
     component_id (str):
         The ID of the Component. Must be unique within the Dataflow.
-    raw_json (dict):
+    json_definition (dict):
         The API's JSON definition of the Data Service.
         Used, if provided, to construct the DataService directly and avoid one API request.
         (default is `None`)
@@ -539,7 +539,7 @@ class Transform(Component):
         The ID of the Dataflow. Must be unique within the Data Service.
     component_id (str):
         The ID of the Component. Must be unique within the Dataflow.
-    raw_json (dict):
+    json_definition (dict):
         The API's JSON definition of the Data Service.
         Used, if provided, to construct the DataService directly and avoid one API request.
         (default is `None`)
@@ -606,7 +606,7 @@ class WriteConnector(Component):
         The ID of the Dataflow. Must be unique within the Data Service.
     component_id (str):
         The ID of the Component. Must be unique within the Dataflow.
-    raw_json (dict):
+    json_definition (dict):
         The API's JSON definition of the Data Service.
         Used, if provided, to construct the DataService directly and avoid one API request.
         (default is `None`)

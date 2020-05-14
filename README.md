@@ -6,6 +6,10 @@ The SDK supports create/read/update/delete operations on all aformentioned resou
 
 If you are not yet an Ascend customer, you can [request a trial](https://www.ascend.io/get-started/).
 
+## Documentation
+
+Read our [Documentation](https://developer.ascend.io/reference).
+
 ## Installation
 
 Install the Ascend SDK using `pip` directly from this repo:
@@ -33,10 +37,6 @@ Service accounts are currently restricted to read-only access for all resources.
 * To access Dataflow metadata and Component data, the Service Account will need at least `Read Only` access.
 
 More documentation around service accounts can be found [here](https://developer.ascend.io/docs/service-accounts).
-
-## Documentation
-
-Read the [SDK Documentation](./docs/markdown/ascend).
 
 ## Examples
 
