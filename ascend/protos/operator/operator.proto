@@ -98,7 +98,7 @@ message Identity {
 }
 
 message Operator {
-  oneof details { // next unused: 16
+  oneof details { // next unused: 17
     format.Avro.Formatter avro_formatter = 2;
     format.Avro.Parser avro_parser = 3;
     format.Grok.Parser grok_parser = 4;
@@ -106,6 +106,7 @@ message Operator {
     format.Json.Parser json_parser = 6;
     format.Lambda.Formatter lambda_formatter = 13;
     format.Lambda.Parser lambda_parser = 14;
+    format.Orc.Formatter orc_formatter = 16;
     format.Parquet.Formatter parquet_formatter = 7;
     format.Parquet.Parser parquet_parser = 8;
     format.Xsv.Formatter xsv_formatter = 11;

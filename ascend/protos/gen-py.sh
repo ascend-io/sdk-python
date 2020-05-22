@@ -3,6 +3,9 @@
 set -e
 set -x
 
+# make sure we use the latest grpcio-tools
+pip3 install  --upgrade grpcio-tools
+
 ROOT="$(dirname $0)/../.."
 
 cd "$ROOT"
@@ -20,15 +23,8 @@ gen_python() {
   ${python_cmd} "${args[@]}" ${path}
 }
 
-gen_python "ascend/protos/ascend/ascend.proto"
-gen_python "ascend/protos/content_encoding/content_encoding.proto"
-gen_python "ascend/protos/format/format.proto"
-gen_python "ascend/protos/function/function.proto"
-gen_python "ascend/protos/io/io.proto"
-gen_python "ascend/protos/operator/operator.proto"
-gen_python "ascend/protos/pattern/pattern.proto"
-gen_python "ascend/protos/resource/resource.proto"
-gen_python "ascend/protos/schema/schema.proto"
-gen_python "ascend/protos/text/text.proto"
+find ./ascend/protos/ -name '*.proto' | while read file; do
+  gen_python "$file"
+done
 
 echo "Done (gen-py.sh)!"
