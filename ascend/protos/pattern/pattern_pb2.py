@@ -85,11 +85,11 @@ _PATTERN.fields_by_name['exact_match'].containing_oneof = _PATTERN.oneofs_by_nam
 DESCRIPTOR.message_types_by_name['Pattern'] = _PATTERN
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Pattern = _reflection.GeneratedProtocolMessageType('Pattern', (_message.Message,), dict(
-  DESCRIPTOR = _PATTERN,
-  __module__ = 'ascend.protos.pattern.pattern_pb2'
+Pattern = _reflection.GeneratedProtocolMessageType('Pattern', (_message.Message,), {
+  'DESCRIPTOR' : _PATTERN,
+  '__module__' : 'ascend.protos.pattern.pattern_pb2'
   # @@protoc_insertion_point(class_scope:pattern.Pattern)
-  ))
+  })
 _sym_db.RegisterMessage(Pattern)
 
 

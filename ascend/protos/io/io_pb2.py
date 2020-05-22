@@ -3397,82 +3397,82 @@ DESCRIPTOR.message_types_by_name['Manifest'] = _MANIFEST
 DESCRIPTOR.enum_types_by_name['CharacterEncoding'] = _CHARACTERENCODING
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
+Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
 
-  Id = _reflection.GeneratedProtocolMessageType('Id', (_message.Message,), dict(
-    DESCRIPTOR = _CREDENTIALS_ID,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Id' : _reflection.GeneratedProtocolMessageType('Id', (_message.Message,), {
+    'DESCRIPTOR' : _CREDENTIALS_ID,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Credentials.Id)
-    ))
+    })
   ,
-  DESCRIPTOR = _CREDENTIALS,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _CREDENTIALS,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Credentials)
-  ))
+  })
 _sym_db.RegisterMessage(Credentials)
 _sym_db.RegisterMessage(Credentials.Id)
 
-Aws = _reflection.GeneratedProtocolMessageType('Aws', (_message.Message,), dict(
+Aws = _reflection.GeneratedProtocolMessageType('Aws', (_message.Message,), {
 
-  Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
-    DESCRIPTOR = _AWS_CREDENTIALS,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
+    'DESCRIPTOR' : _AWS_CREDENTIALS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Aws.Credentials)
-    ))
+    })
   ,
 
-  S3 = _reflection.GeneratedProtocolMessageType('S3', (_message.Message,), dict(
+  'S3' : _reflection.GeneratedProtocolMessageType('S3', (_message.Message,), {
 
-    Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-      DESCRIPTOR = _AWS_S3_CONTAINER,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+      'DESCRIPTOR' : _AWS_S3_CONTAINER,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Aws.S3.Container)
-      ))
+      })
     ,
 
-    Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-      DESCRIPTOR = _AWS_S3_LOCATION,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+      'DESCRIPTOR' : _AWS_S3_LOCATION,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Aws.S3.Location)
-      ))
+      })
     ,
-    DESCRIPTOR = _AWS_S3,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _AWS_S3,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Aws.S3)
-    ))
+    })
   ,
 
-  Redshift = _reflection.GeneratedProtocolMessageType('Redshift', (_message.Message,), dict(
+  'Redshift' : _reflection.GeneratedProtocolMessageType('Redshift', (_message.Message,), {
 
-    Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
-      DESCRIPTOR = _AWS_REDSHIFT_CREDENTIALS,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
+      'DESCRIPTOR' : _AWS_REDSHIFT_CREDENTIALS,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Aws.Redshift.Credentials)
-      ))
+      })
     ,
 
-    Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-      DESCRIPTOR = _AWS_REDSHIFT_CONTAINER,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+      'DESCRIPTOR' : _AWS_REDSHIFT_CONTAINER,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Aws.Redshift.Container)
-      ))
+      })
     ,
 
-    Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-      DESCRIPTOR = _AWS_REDSHIFT_LOCATION,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+      'DESCRIPTOR' : _AWS_REDSHIFT_LOCATION,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Aws.Redshift.Location)
-      ))
+      })
     ,
-    DESCRIPTOR = _AWS_REDSHIFT,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _AWS_REDSHIFT,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Aws.Redshift)
-    ))
+    })
   ,
-  DESCRIPTOR = _AWS,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _AWS,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Aws)
-  ))
+  })
 _sym_db.RegisterMessage(Aws)
 _sym_db.RegisterMessage(Aws.Credentials)
 _sym_db.RegisterMessage(Aws.S3)
@@ -3483,60 +3483,60 @@ _sym_db.RegisterMessage(Aws.Redshift.Credentials)
 _sym_db.RegisterMessage(Aws.Redshift.Container)
 _sym_db.RegisterMessage(Aws.Redshift.Location)
 
-Azure = _reflection.GeneratedProtocolMessageType('Azure', (_message.Message,), dict(
+Azure = _reflection.GeneratedProtocolMessageType('Azure', (_message.Message,), {
 
-  Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
+  'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
 
-    SharedKey = _reflection.GeneratedProtocolMessageType('SharedKey', (_message.Message,), dict(
-      DESCRIPTOR = _AZURE_CREDENTIALS_SHAREDKEY,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'SharedKey' : _reflection.GeneratedProtocolMessageType('SharedKey', (_message.Message,), {
+      'DESCRIPTOR' : _AZURE_CREDENTIALS_SHAREDKEY,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Azure.Credentials.SharedKey)
-      ))
+      })
     ,
 
-    ServicePrincipal = _reflection.GeneratedProtocolMessageType('ServicePrincipal', (_message.Message,), dict(
-      DESCRIPTOR = _AZURE_CREDENTIALS_SERVICEPRINCIPAL,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'ServicePrincipal' : _reflection.GeneratedProtocolMessageType('ServicePrincipal', (_message.Message,), {
+      'DESCRIPTOR' : _AZURE_CREDENTIALS_SERVICEPRINCIPAL,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Azure.Credentials.ServicePrincipal)
-      ))
+      })
     ,
 
-    ServicePrincipalJson = _reflection.GeneratedProtocolMessageType('ServicePrincipalJson', (_message.Message,), dict(
-      DESCRIPTOR = _AZURE_CREDENTIALS_SERVICEPRINCIPALJSON,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'ServicePrincipalJson' : _reflection.GeneratedProtocolMessageType('ServicePrincipalJson', (_message.Message,), {
+      'DESCRIPTOR' : _AZURE_CREDENTIALS_SERVICEPRINCIPALJSON,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Azure.Credentials.ServicePrincipalJson)
-      ))
+      })
     ,
-    DESCRIPTOR = _AZURE_CREDENTIALS,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _AZURE_CREDENTIALS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Azure.Credentials)
-    ))
+    })
   ,
 
-  Abs = _reflection.GeneratedProtocolMessageType('Abs', (_message.Message,), dict(
+  'Abs' : _reflection.GeneratedProtocolMessageType('Abs', (_message.Message,), {
 
-    Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-      DESCRIPTOR = _AZURE_ABS_CONTAINER,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+      'DESCRIPTOR' : _AZURE_ABS_CONTAINER,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Azure.Abs.Container)
-      ))
+      })
     ,
 
-    Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-      DESCRIPTOR = _AZURE_ABS_LOCATION,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+      'DESCRIPTOR' : _AZURE_ABS_LOCATION,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Azure.Abs.Location)
-      ))
+      })
     ,
-    DESCRIPTOR = _AZURE_ABS,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _AZURE_ABS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Azure.Abs)
-    ))
+    })
   ,
-  DESCRIPTOR = _AZURE,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _AZURE,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Azure)
-  ))
+  })
 _sym_db.RegisterMessage(Azure)
 _sym_db.RegisterMessage(Azure.Credentials)
 _sym_db.RegisterMessage(Azure.Credentials.SharedKey)
@@ -3546,83 +3546,83 @@ _sym_db.RegisterMessage(Azure.Abs)
 _sym_db.RegisterMessage(Azure.Abs.Container)
 _sym_db.RegisterMessage(Azure.Abs.Location)
 
-File = _reflection.GeneratedProtocolMessageType('File', (_message.Message,), dict(
+File = _reflection.GeneratedProtocolMessageType('File', (_message.Message,), {
 
-  Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-    DESCRIPTOR = _FILE_CONTAINER,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+    'DESCRIPTOR' : _FILE_CONTAINER,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.File.Container)
-    ))
+    })
   ,
 
-  Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-    DESCRIPTOR = _FILE_LOCATION,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+    'DESCRIPTOR' : _FILE_LOCATION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.File.Location)
-    ))
+    })
   ,
-  DESCRIPTOR = _FILE,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _FILE,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.File)
-  ))
+  })
 _sym_db.RegisterMessage(File)
 _sym_db.RegisterMessage(File.Container)
 _sym_db.RegisterMessage(File.Location)
 
-Gcp = _reflection.GeneratedProtocolMessageType('Gcp', (_message.Message,), dict(
+Gcp = _reflection.GeneratedProtocolMessageType('Gcp', (_message.Message,), {
 
-  Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
-    DESCRIPTOR = _GCP_CREDENTIALS,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
+    'DESCRIPTOR' : _GCP_CREDENTIALS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Gcp.Credentials)
-    ))
+    })
   ,
 
-  BigQuery = _reflection.GeneratedProtocolMessageType('BigQuery', (_message.Message,), dict(
+  'BigQuery' : _reflection.GeneratedProtocolMessageType('BigQuery', (_message.Message,), {
 
-    Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-      DESCRIPTOR = _GCP_BIGQUERY_CONTAINER,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+      'DESCRIPTOR' : _GCP_BIGQUERY_CONTAINER,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Gcp.BigQuery.Container)
-      ))
+      })
     ,
 
-    Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-      DESCRIPTOR = _GCP_BIGQUERY_LOCATION,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+      'DESCRIPTOR' : _GCP_BIGQUERY_LOCATION,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Gcp.BigQuery.Location)
-      ))
+      })
     ,
-    DESCRIPTOR = _GCP_BIGQUERY,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _GCP_BIGQUERY,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Gcp.BigQuery)
-    ))
+    })
   ,
 
-  Gcs = _reflection.GeneratedProtocolMessageType('Gcs', (_message.Message,), dict(
+  'Gcs' : _reflection.GeneratedProtocolMessageType('Gcs', (_message.Message,), {
 
-    Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-      DESCRIPTOR = _GCP_GCS_CONTAINER,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+      'DESCRIPTOR' : _GCP_GCS_CONTAINER,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Gcp.Gcs.Container)
-      ))
+      })
     ,
 
-    Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-      DESCRIPTOR = _GCP_GCS_LOCATION,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+      'DESCRIPTOR' : _GCP_GCS_LOCATION,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Gcp.Gcs.Location)
-      ))
+      })
     ,
-    DESCRIPTOR = _GCP_GCS,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _GCP_GCS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Gcp.Gcs)
-    ))
+    })
   ,
-  DESCRIPTOR = _GCP,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _GCP,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Gcp)
-  ))
+  })
 _sym_db.RegisterMessage(Gcp)
 _sym_db.RegisterMessage(Gcp.Credentials)
 _sym_db.RegisterMessage(Gcp.BigQuery)
@@ -3632,115 +3632,115 @@ _sym_db.RegisterMessage(Gcp.Gcs)
 _sym_db.RegisterMessage(Gcp.Gcs.Container)
 _sym_db.RegisterMessage(Gcp.Gcs.Location)
 
-Immediate = _reflection.GeneratedProtocolMessageType('Immediate', (_message.Message,), dict(
+Immediate = _reflection.GeneratedProtocolMessageType('Immediate', (_message.Message,), {
 
-  Object = _reflection.GeneratedProtocolMessageType('Object', (_message.Message,), dict(
-    DESCRIPTOR = _IMMEDIATE_OBJECT,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Object' : _reflection.GeneratedProtocolMessageType('Object', (_message.Message,), {
+    'DESCRIPTOR' : _IMMEDIATE_OBJECT,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Immediate.Object)
-    ))
+    })
   ,
 
-  Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-    DESCRIPTOR = _IMMEDIATE_CONTAINER,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+    'DESCRIPTOR' : _IMMEDIATE_CONTAINER,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Immediate.Container)
-    ))
+    })
   ,
-  DESCRIPTOR = _IMMEDIATE,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _IMMEDIATE,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Immediate)
-  ))
+  })
 _sym_db.RegisterMessage(Immediate)
 _sym_db.RegisterMessage(Immediate.Object)
 _sym_db.RegisterMessage(Immediate.Container)
 
-MsSqlServer = _reflection.GeneratedProtocolMessageType('MsSqlServer', (_message.Message,), dict(
+MsSqlServer = _reflection.GeneratedProtocolMessageType('MsSqlServer', (_message.Message,), {
 
-  Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
+  'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
 
-    SqlAuthentication = _reflection.GeneratedProtocolMessageType('SqlAuthentication', (_message.Message,), dict(
-      DESCRIPTOR = _MSSQLSERVER_CREDENTIALS_SQLAUTHENTICATION,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'SqlAuthentication' : _reflection.GeneratedProtocolMessageType('SqlAuthentication', (_message.Message,), {
+      'DESCRIPTOR' : _MSSQLSERVER_CREDENTIALS_SQLAUTHENTICATION,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.MsSqlServer.Credentials.SqlAuthentication)
-      ))
+      })
     ,
-    DESCRIPTOR = _MSSQLSERVER_CREDENTIALS,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _MSSQLSERVER_CREDENTIALS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.MsSqlServer.Credentials)
-    ))
+    })
   ,
 
-  Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-    DESCRIPTOR = _MSSQLSERVER_CONTAINER,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+    'DESCRIPTOR' : _MSSQLSERVER_CONTAINER,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.MsSqlServer.Container)
-    ))
+    })
   ,
 
-  Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-    DESCRIPTOR = _MSSQLSERVER_LOCATION,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+    'DESCRIPTOR' : _MSSQLSERVER_LOCATION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.MsSqlServer.Location)
-    ))
+    })
   ,
-  DESCRIPTOR = _MSSQLSERVER,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _MSSQLSERVER,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.MsSqlServer)
-  ))
+  })
 _sym_db.RegisterMessage(MsSqlServer)
 _sym_db.RegisterMessage(MsSqlServer.Credentials)
 _sym_db.RegisterMessage(MsSqlServer.Credentials.SqlAuthentication)
 _sym_db.RegisterMessage(MsSqlServer.Container)
 _sym_db.RegisterMessage(MsSqlServer.Location)
 
-Mysql = _reflection.GeneratedProtocolMessageType('Mysql', (_message.Message,), dict(
+Mysql = _reflection.GeneratedProtocolMessageType('Mysql', (_message.Message,), {
 
-  Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
-    DESCRIPTOR = _MYSQL_CREDENTIALS,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
+    'DESCRIPTOR' : _MYSQL_CREDENTIALS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Mysql.Credentials)
-    ))
+    })
   ,
 
-  Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-    DESCRIPTOR = _MYSQL_CONTAINER,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+    'DESCRIPTOR' : _MYSQL_CONTAINER,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Mysql.Container)
-    ))
+    })
   ,
 
-  Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-    DESCRIPTOR = _MYSQL_LOCATION,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+    'DESCRIPTOR' : _MYSQL_LOCATION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Mysql.Location)
-    ))
+    })
   ,
 
-  Partition = _reflection.GeneratedProtocolMessageType('Partition', (_message.Message,), dict(
+  'Partition' : _reflection.GeneratedProtocolMessageType('Partition', (_message.Message,), {
 
-    Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-      DESCRIPTOR = _MYSQL_PARTITION_CONTAINER,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+      'DESCRIPTOR' : _MYSQL_PARTITION_CONTAINER,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Mysql.Partition.Container)
-      ))
+      })
     ,
 
-    Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-      DESCRIPTOR = _MYSQL_PARTITION_LOCATION,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+      'DESCRIPTOR' : _MYSQL_PARTITION_LOCATION,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Mysql.Partition.Location)
-      ))
+      })
     ,
-    DESCRIPTOR = _MYSQL_PARTITION,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _MYSQL_PARTITION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Mysql.Partition)
-    ))
+    })
   ,
-  DESCRIPTOR = _MYSQL,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _MYSQL,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Mysql)
-  ))
+  })
 _sym_db.RegisterMessage(Mysql)
 _sym_db.RegisterMessage(Mysql.Credentials)
 _sym_db.RegisterMessage(Mysql.Container)
@@ -3749,129 +3749,129 @@ _sym_db.RegisterMessage(Mysql.Partition)
 _sym_db.RegisterMessage(Mysql.Partition.Container)
 _sym_db.RegisterMessage(Mysql.Partition.Location)
 
-Snowflake = _reflection.GeneratedProtocolMessageType('Snowflake', (_message.Message,), dict(
+Snowflake = _reflection.GeneratedProtocolMessageType('Snowflake', (_message.Message,), {
 
-  Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
-    DESCRIPTOR = _SNOWFLAKE_CREDENTIALS,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
+    'DESCRIPTOR' : _SNOWFLAKE_CREDENTIALS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Snowflake.Credentials)
-    ))
+    })
   ,
 
-  Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-    DESCRIPTOR = _SNOWFLAKE_CONTAINER,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+    'DESCRIPTOR' : _SNOWFLAKE_CONTAINER,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Snowflake.Container)
-    ))
+    })
   ,
 
-  Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-    DESCRIPTOR = _SNOWFLAKE_LOCATION,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+    'DESCRIPTOR' : _SNOWFLAKE_LOCATION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Snowflake.Location)
-    ))
+    })
   ,
-  DESCRIPTOR = _SNOWFLAKE,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _SNOWFLAKE,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Snowflake)
-  ))
+  })
 _sym_db.RegisterMessage(Snowflake)
 _sym_db.RegisterMessage(Snowflake.Credentials)
 _sym_db.RegisterMessage(Snowflake.Container)
 _sym_db.RegisterMessage(Snowflake.Location)
 
-Spark = _reflection.GeneratedProtocolMessageType('Spark', (_message.Message,), dict(
+Spark = _reflection.GeneratedProtocolMessageType('Spark', (_message.Message,), {
 
-  Store = _reflection.GeneratedProtocolMessageType('Store', (_message.Message,), dict(
-    DESCRIPTOR = _SPARK_STORE,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Store' : _reflection.GeneratedProtocolMessageType('Store', (_message.Message,), {
+    'DESCRIPTOR' : _SPARK_STORE,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Spark.Store)
-    ))
+    })
   ,
 
-  Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-    DESCRIPTOR = _SPARK_CONTAINER,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+    'DESCRIPTOR' : _SPARK_CONTAINER,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Spark.Container)
-    ))
+    })
   ,
 
-  Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-    DESCRIPTOR = _SPARK_LOCATION,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+    'DESCRIPTOR' : _SPARK_LOCATION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Spark.Location)
-    ))
+    })
   ,
-  DESCRIPTOR = _SPARK,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _SPARK,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Spark)
-  ))
+  })
 _sym_db.RegisterMessage(Spark)
 _sym_db.RegisterMessage(Spark.Store)
 _sym_db.RegisterMessage(Spark.Container)
 _sym_db.RegisterMessage(Spark.Location)
 
-Function = _reflection.GeneratedProtocolMessageType('Function', (_message.Message,), dict(
+Function = _reflection.GeneratedProtocolMessageType('Function', (_message.Message,), {
 
-  Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
-    DESCRIPTOR = _FUNCTION_CREDENTIALS,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Credentials' : _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
+    'DESCRIPTOR' : _FUNCTION_CREDENTIALS,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Function.Credentials)
-    ))
+    })
   ,
 
-  CredentialsConfiguration = _reflection.GeneratedProtocolMessageType('CredentialsConfiguration', (_message.Message,), dict(
-    DESCRIPTOR = _FUNCTION_CREDENTIALSCONFIGURATION,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'CredentialsConfiguration' : _reflection.GeneratedProtocolMessageType('CredentialsConfiguration', (_message.Message,), {
+    'DESCRIPTOR' : _FUNCTION_CREDENTIALSCONFIGURATION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Function.CredentialsConfiguration)
-    ))
+    })
   ,
 
-  Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
+  'Container' : _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
 
-    Byte = _reflection.GeneratedProtocolMessageType('Byte', (_message.Message,), dict(
-      DESCRIPTOR = _FUNCTION_CONTAINER_BYTE,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Byte' : _reflection.GeneratedProtocolMessageType('Byte', (_message.Message,), {
+      'DESCRIPTOR' : _FUNCTION_CONTAINER_BYTE,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Function.Container.Byte)
-      ))
+      })
     ,
 
-    Record = _reflection.GeneratedProtocolMessageType('Record', (_message.Message,), dict(
-      DESCRIPTOR = _FUNCTION_CONTAINER_RECORD,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Record' : _reflection.GeneratedProtocolMessageType('Record', (_message.Message,), {
+      'DESCRIPTOR' : _FUNCTION_CONTAINER_RECORD,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Function.Container.Record)
-      ))
+      })
     ,
-    DESCRIPTOR = _FUNCTION_CONTAINER,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _FUNCTION_CONTAINER,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Function.Container)
-    ))
+    })
   ,
 
-  Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
+  'Location' : _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
 
-    Byte = _reflection.GeneratedProtocolMessageType('Byte', (_message.Message,), dict(
-      DESCRIPTOR = _FUNCTION_LOCATION_BYTE,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Byte' : _reflection.GeneratedProtocolMessageType('Byte', (_message.Message,), {
+      'DESCRIPTOR' : _FUNCTION_LOCATION_BYTE,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Function.Location.Byte)
-      ))
+      })
     ,
 
-    Record = _reflection.GeneratedProtocolMessageType('Record', (_message.Message,), dict(
-      DESCRIPTOR = _FUNCTION_LOCATION_RECORD,
-      __module__ = 'ascend.protos.io.io_pb2'
+    'Record' : _reflection.GeneratedProtocolMessageType('Record', (_message.Message,), {
+      'DESCRIPTOR' : _FUNCTION_LOCATION_RECORD,
+      '__module__' : 'ascend.protos.io.io_pb2'
       # @@protoc_insertion_point(class_scope:io.Function.Location.Record)
-      ))
+      })
     ,
-    DESCRIPTOR = _FUNCTION_LOCATION,
-    __module__ = 'ascend.protos.io.io_pb2'
+    'DESCRIPTOR' : _FUNCTION_LOCATION,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Function.Location)
-    ))
+    })
   ,
-  DESCRIPTOR = _FUNCTION,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _FUNCTION,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Function)
-  ))
+  })
 _sym_db.RegisterMessage(Function)
 _sym_db.RegisterMessage(Function.Credentials)
 _sym_db.RegisterMessage(Function.CredentialsConfiguration)
@@ -3882,46 +3882,46 @@ _sym_db.RegisterMessage(Function.Location)
 _sym_db.RegisterMessage(Function.Location.Byte)
 _sym_db.RegisterMessage(Function.Location.Record)
 
-Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), dict(
-  DESCRIPTOR = _CONTAINER,
-  __module__ = 'ascend.protos.io.io_pb2'
+Container = _reflection.GeneratedProtocolMessageType('Container', (_message.Message,), {
+  'DESCRIPTOR' : _CONTAINER,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Container)
-  ))
+  })
 _sym_db.RegisterMessage(Container)
 
-Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), dict(
-  DESCRIPTOR = _LOCATION,
-  __module__ = 'ascend.protos.io.io_pb2'
+Location = _reflection.GeneratedProtocolMessageType('Location', (_message.Message,), {
+  'DESCRIPTOR' : _LOCATION,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Location)
-  ))
+  })
 _sym_db.RegisterMessage(Location)
 
-Manifest = _reflection.GeneratedProtocolMessageType('Manifest', (_message.Message,), dict(
+Manifest = _reflection.GeneratedProtocolMessageType('Manifest', (_message.Message,), {
 
-  Json = _reflection.GeneratedProtocolMessageType('Json', (_message.Message,), dict(
-    DESCRIPTOR = _MANIFEST_JSON,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Json' : _reflection.GeneratedProtocolMessageType('Json', (_message.Message,), {
+    'DESCRIPTOR' : _MANIFEST_JSON,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Manifest.Json)
-    ))
+    })
   ,
 
-  Csv = _reflection.GeneratedProtocolMessageType('Csv', (_message.Message,), dict(
-    DESCRIPTOR = _MANIFEST_CSV,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Csv' : _reflection.GeneratedProtocolMessageType('Csv', (_message.Message,), {
+    'DESCRIPTOR' : _MANIFEST_CSV,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Manifest.Csv)
-    ))
+    })
   ,
 
-  Format = _reflection.GeneratedProtocolMessageType('Format', (_message.Message,), dict(
-    DESCRIPTOR = _MANIFEST_FORMAT,
-    __module__ = 'ascend.protos.io.io_pb2'
+  'Format' : _reflection.GeneratedProtocolMessageType('Format', (_message.Message,), {
+    'DESCRIPTOR' : _MANIFEST_FORMAT,
+    '__module__' : 'ascend.protos.io.io_pb2'
     # @@protoc_insertion_point(class_scope:io.Manifest.Format)
-    ))
+    })
   ,
-  DESCRIPTOR = _MANIFEST,
-  __module__ = 'ascend.protos.io.io_pb2'
+  'DESCRIPTOR' : _MANIFEST,
+  '__module__' : 'ascend.protos.io.io_pb2'
   # @@protoc_insertion_point(class_scope:io.Manifest)
-  ))
+  })
 _sym_db.RegisterMessage(Manifest)
 _sym_db.RegisterMessage(Manifest.Json)
 _sym_db.RegisterMessage(Manifest.Csv)

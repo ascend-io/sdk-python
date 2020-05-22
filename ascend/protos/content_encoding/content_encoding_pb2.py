@@ -235,46 +235,46 @@ DESCRIPTOR.message_types_by_name['Lzo'] = _LZO
 DESCRIPTOR.message_types_by_name['ContentEncoding'] = _CONTENTENCODING
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Identity = _reflection.GeneratedProtocolMessageType('Identity', (_message.Message,), dict(
-  DESCRIPTOR = _IDENTITY,
-  __module__ = 'ascend.protos.content_encoding.content_encoding_pb2'
+Identity = _reflection.GeneratedProtocolMessageType('Identity', (_message.Message,), {
+  'DESCRIPTOR' : _IDENTITY,
+  '__module__' : 'ascend.protos.content_encoding.content_encoding_pb2'
   # @@protoc_insertion_point(class_scope:content_encoding.Identity)
-  ))
+  })
 _sym_db.RegisterMessage(Identity)
 
-Compress = _reflection.GeneratedProtocolMessageType('Compress', (_message.Message,), dict(
-  DESCRIPTOR = _COMPRESS,
-  __module__ = 'ascend.protos.content_encoding.content_encoding_pb2'
+Compress = _reflection.GeneratedProtocolMessageType('Compress', (_message.Message,), {
+  'DESCRIPTOR' : _COMPRESS,
+  '__module__' : 'ascend.protos.content_encoding.content_encoding_pb2'
   # @@protoc_insertion_point(class_scope:content_encoding.Compress)
-  ))
+  })
 _sym_db.RegisterMessage(Compress)
 
-Deflate = _reflection.GeneratedProtocolMessageType('Deflate', (_message.Message,), dict(
-  DESCRIPTOR = _DEFLATE,
-  __module__ = 'ascend.protos.content_encoding.content_encoding_pb2'
+Deflate = _reflection.GeneratedProtocolMessageType('Deflate', (_message.Message,), {
+  'DESCRIPTOR' : _DEFLATE,
+  '__module__' : 'ascend.protos.content_encoding.content_encoding_pb2'
   # @@protoc_insertion_point(class_scope:content_encoding.Deflate)
-  ))
+  })
 _sym_db.RegisterMessage(Deflate)
 
-Gzip = _reflection.GeneratedProtocolMessageType('Gzip', (_message.Message,), dict(
-  DESCRIPTOR = _GZIP,
-  __module__ = 'ascend.protos.content_encoding.content_encoding_pb2'
+Gzip = _reflection.GeneratedProtocolMessageType('Gzip', (_message.Message,), {
+  'DESCRIPTOR' : _GZIP,
+  '__module__' : 'ascend.protos.content_encoding.content_encoding_pb2'
   # @@protoc_insertion_point(class_scope:content_encoding.Gzip)
-  ))
+  })
 _sym_db.RegisterMessage(Gzip)
 
-Lzo = _reflection.GeneratedProtocolMessageType('Lzo', (_message.Message,), dict(
-  DESCRIPTOR = _LZO,
-  __module__ = 'ascend.protos.content_encoding.content_encoding_pb2'
+Lzo = _reflection.GeneratedProtocolMessageType('Lzo', (_message.Message,), {
+  'DESCRIPTOR' : _LZO,
+  '__module__' : 'ascend.protos.content_encoding.content_encoding_pb2'
   # @@protoc_insertion_point(class_scope:content_encoding.Lzo)
-  ))
+  })
 _sym_db.RegisterMessage(Lzo)
 
-ContentEncoding = _reflection.GeneratedProtocolMessageType('ContentEncoding', (_message.Message,), dict(
-  DESCRIPTOR = _CONTENTENCODING,
-  __module__ = 'ascend.protos.content_encoding.content_encoding_pb2'
+ContentEncoding = _reflection.GeneratedProtocolMessageType('ContentEncoding', (_message.Message,), {
+  'DESCRIPTOR' : _CONTENTENCODING,
+  '__module__' : 'ascend.protos.content_encoding.content_encoding_pb2'
   # @@protoc_insertion_point(class_scope:content_encoding.ContentEncoding)
-  ))
+  })
 _sym_db.RegisterMessage(ContentEncoding)
 
 

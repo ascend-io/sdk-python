@@ -3415,403 +3415,403 @@ DESCRIPTOR.message_types_by_name['UpdatePolicy'] = _UPDATEPOLICY
 DESCRIPTOR.message_types_by_name['PartFileMetadata'] = _PARTFILEMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Boolean = _reflection.GeneratedProtocolMessageType('Boolean', (_message.Message,), dict(
+Boolean = _reflection.GeneratedProtocolMessageType('Boolean', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _BOOLEAN_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _BOOLEAN_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Boolean.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _BOOLEAN,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _BOOLEAN,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Boolean)
-  ))
+  })
 _sym_db.RegisterMessage(Boolean)
 _sym_db.RegisterMessage(Boolean.Parser)
 
-Byte = _reflection.GeneratedProtocolMessageType('Byte', (_message.Message,), dict(
+Byte = _reflection.GeneratedProtocolMessageType('Byte', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _BYTE_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _BYTE_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Byte.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _BYTE,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _BYTE,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Byte)
-  ))
+  })
 _sym_db.RegisterMessage(Byte)
 _sym_db.RegisterMessage(Byte.Parser)
 
-Bytes = _reflection.GeneratedProtocolMessageType('Bytes', (_message.Message,), dict(
+Bytes = _reflection.GeneratedProtocolMessageType('Bytes', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _BYTES_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _BYTES_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Bytes.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _BYTES,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _BYTES,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Bytes)
-  ))
+  })
 _sym_db.RegisterMessage(Bytes)
 _sym_db.RegisterMessage(Bytes.Parser)
 
-Char = _reflection.GeneratedProtocolMessageType('Char', (_message.Message,), dict(
+Char = _reflection.GeneratedProtocolMessageType('Char', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _CHAR_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _CHAR_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Char.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _CHAR,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _CHAR,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Char)
-  ))
+  })
 _sym_db.RegisterMessage(Char)
 _sym_db.RegisterMessage(Char.Parser)
 
-Date = _reflection.GeneratedProtocolMessageType('Date', (_message.Message,), dict(
+Date = _reflection.GeneratedProtocolMessageType('Date', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _DATE_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _DATE_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Date.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _DATE,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _DATE,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Date)
-  ))
+  })
 _sym_db.RegisterMessage(Date)
 _sym_db.RegisterMessage(Date.Parser)
 
-Double = _reflection.GeneratedProtocolMessageType('Double', (_message.Message,), dict(
+Double = _reflection.GeneratedProtocolMessageType('Double', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _DOUBLE_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _DOUBLE_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Double.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _DOUBLE,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _DOUBLE,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Double)
-  ))
+  })
 _sym_db.RegisterMessage(Double)
 _sym_db.RegisterMessage(Double.Parser)
 
-Float = _reflection.GeneratedProtocolMessageType('Float', (_message.Message,), dict(
+Float = _reflection.GeneratedProtocolMessageType('Float', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _FLOAT_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _FLOAT_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Float.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _FLOAT,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _FLOAT,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Float)
-  ))
+  })
 _sym_db.RegisterMessage(Float)
 _sym_db.RegisterMessage(Float.Parser)
 
-Int = _reflection.GeneratedProtocolMessageType('Int', (_message.Message,), dict(
+Int = _reflection.GeneratedProtocolMessageType('Int', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _INT_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _INT_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Int.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _INT,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _INT,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Int)
-  ))
+  })
 _sym_db.RegisterMessage(Int)
 _sym_db.RegisterMessage(Int.Parser)
 
-Long = _reflection.GeneratedProtocolMessageType('Long', (_message.Message,), dict(
+Long = _reflection.GeneratedProtocolMessageType('Long', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _LONG_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _LONG_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Long.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _LONG,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _LONG,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Long)
-  ))
+  })
 _sym_db.RegisterMessage(Long)
 _sym_db.RegisterMessage(Long.Parser)
 
-Nothing = _reflection.GeneratedProtocolMessageType('Nothing', (_message.Message,), dict(
-  DESCRIPTOR = _NOTHING,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+Nothing = _reflection.GeneratedProtocolMessageType('Nothing', (_message.Message,), {
+  'DESCRIPTOR' : _NOTHING,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Nothing)
-  ))
+  })
 _sym_db.RegisterMessage(Nothing)
 
-String = _reflection.GeneratedProtocolMessageType('String', (_message.Message,), dict(
+String = _reflection.GeneratedProtocolMessageType('String', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _STRING_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _STRING_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.String.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _STRING,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _STRING,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.String)
-  ))
+  })
 _sym_db.RegisterMessage(String)
 _sym_db.RegisterMessage(String.Parser)
 
-Timestamp = _reflection.GeneratedProtocolMessageType('Timestamp', (_message.Message,), dict(
+Timestamp = _reflection.GeneratedProtocolMessageType('Timestamp', (_message.Message,), {
 
-  Parser = _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), dict(
-    DESCRIPTOR = _TIMESTAMP_PARSER,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
+    'DESCRIPTOR' : _TIMESTAMP_PARSER,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.Timestamp.Parser)
-    ))
+    })
   ,
-  DESCRIPTOR = _TIMESTAMP,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _TIMESTAMP,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Timestamp)
-  ))
+  })
 _sym_db.RegisterMessage(Timestamp)
 _sym_db.RegisterMessage(Timestamp.Parser)
 
-Field = _reflection.GeneratedProtocolMessageType('Field', (_message.Message,), dict(
-  DESCRIPTOR = _FIELD,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+Field = _reflection.GeneratedProtocolMessageType('Field', (_message.Message,), {
+  'DESCRIPTOR' : _FIELD,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Field)
-  ))
+  })
 _sym_db.RegisterMessage(Field)
 
-Map = _reflection.GeneratedProtocolMessageType('Map', (_message.Message,), dict(
-  DESCRIPTOR = _MAP,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+Map = _reflection.GeneratedProtocolMessageType('Map', (_message.Message,), {
+  'DESCRIPTOR' : _MAP,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Map)
-  ))
+  })
 _sym_db.RegisterMessage(Map)
 
-Schema = _reflection.GeneratedProtocolMessageType('Schema', (_message.Message,), dict(
-  DESCRIPTOR = _SCHEMA,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+Schema = _reflection.GeneratedProtocolMessageType('Schema', (_message.Message,), {
+  'DESCRIPTOR' : _SCHEMA,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Schema)
-  ))
+  })
 _sym_db.RegisterMessage(Schema)
 
-AbsList = _reflection.GeneratedProtocolMessageType('AbsList', (_message.Message,), dict(
-  DESCRIPTOR = _ABSLIST,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+AbsList = _reflection.GeneratedProtocolMessageType('AbsList', (_message.Message,), {
+  'DESCRIPTOR' : _ABSLIST,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.AbsList)
-  ))
+  })
 _sym_db.RegisterMessage(AbsList)
 
-BqListTables = _reflection.GeneratedProtocolMessageType('BqListTables', (_message.Message,), dict(
-  DESCRIPTOR = _BQLISTTABLES,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+BqListTables = _reflection.GeneratedProtocolMessageType('BqListTables', (_message.Message,), {
+  'DESCRIPTOR' : _BQLISTTABLES,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.BqListTables)
-  ))
+  })
 _sym_db.RegisterMessage(BqListTables)
 
-BqListDatasets = _reflection.GeneratedProtocolMessageType('BqListDatasets', (_message.Message,), dict(
-  DESCRIPTOR = _BQLISTDATASETS,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+BqListDatasets = _reflection.GeneratedProtocolMessageType('BqListDatasets', (_message.Message,), {
+  'DESCRIPTOR' : _BQLISTDATASETS,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.BqListDatasets)
-  ))
+  })
 _sym_db.RegisterMessage(BqListDatasets)
 
-ImmediateList = _reflection.GeneratedProtocolMessageType('ImmediateList', (_message.Message,), dict(
-  DESCRIPTOR = _IMMEDIATELIST,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+ImmediateList = _reflection.GeneratedProtocolMessageType('ImmediateList', (_message.Message,), {
+  'DESCRIPTOR' : _IMMEDIATELIST,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.ImmediateList)
-  ))
+  })
 _sym_db.RegisterMessage(ImmediateList)
 
-MsSqlServerListPartitions = _reflection.GeneratedProtocolMessageType('MsSqlServerListPartitions', (_message.Message,), dict(
-  DESCRIPTOR = _MSSQLSERVERLISTPARTITIONS,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+MsSqlServerListPartitions = _reflection.GeneratedProtocolMessageType('MsSqlServerListPartitions', (_message.Message,), {
+  'DESCRIPTOR' : _MSSQLSERVERLISTPARTITIONS,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.MsSqlServerListPartitions)
-  ))
+  })
 _sym_db.RegisterMessage(MsSqlServerListPartitions)
 
-MysqlListDatabases = _reflection.GeneratedProtocolMessageType('MysqlListDatabases', (_message.Message,), dict(
-  DESCRIPTOR = _MYSQLLISTDATABASES,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+MysqlListDatabases = _reflection.GeneratedProtocolMessageType('MysqlListDatabases', (_message.Message,), {
+  'DESCRIPTOR' : _MYSQLLISTDATABASES,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.MysqlListDatabases)
-  ))
+  })
 _sym_db.RegisterMessage(MysqlListDatabases)
 
-MysqlListPartitions = _reflection.GeneratedProtocolMessageType('MysqlListPartitions', (_message.Message,), dict(
-  DESCRIPTOR = _MYSQLLISTPARTITIONS,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+MysqlListPartitions = _reflection.GeneratedProtocolMessageType('MysqlListPartitions', (_message.Message,), {
+  'DESCRIPTOR' : _MYSQLLISTPARTITIONS,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.MysqlListPartitions)
-  ))
+  })
 _sym_db.RegisterMessage(MysqlListPartitions)
 
-MysqlListTables = _reflection.GeneratedProtocolMessageType('MysqlListTables', (_message.Message,), dict(
-  DESCRIPTOR = _MYSQLLISTTABLES,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+MysqlListTables = _reflection.GeneratedProtocolMessageType('MysqlListTables', (_message.Message,), {
+  'DESCRIPTOR' : _MYSQLLISTTABLES,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.MysqlListTables)
-  ))
+  })
 _sym_db.RegisterMessage(MysqlListTables)
 
-SnowflakeListPartitions = _reflection.GeneratedProtocolMessageType('SnowflakeListPartitions', (_message.Message,), dict(
-  DESCRIPTOR = _SNOWFLAKELISTPARTITIONS,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+SnowflakeListPartitions = _reflection.GeneratedProtocolMessageType('SnowflakeListPartitions', (_message.Message,), {
+  'DESCRIPTOR' : _SNOWFLAKELISTPARTITIONS,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.SnowflakeListPartitions)
-  ))
+  })
 _sym_db.RegisterMessage(SnowflakeListPartitions)
 
-FileList = _reflection.GeneratedProtocolMessageType('FileList', (_message.Message,), dict(
-  DESCRIPTOR = _FILELIST,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+FileList = _reflection.GeneratedProtocolMessageType('FileList', (_message.Message,), {
+  'DESCRIPTOR' : _FILELIST,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.FileList)
-  ))
+  })
 _sym_db.RegisterMessage(FileList)
 
-ListSchema = _reflection.GeneratedProtocolMessageType('ListSchema', (_message.Message,), dict(
-  DESCRIPTOR = _LISTSCHEMA,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+ListSchema = _reflection.GeneratedProtocolMessageType('ListSchema', (_message.Message,), {
+  'DESCRIPTOR' : _LISTSCHEMA,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.ListSchema)
-  ))
+  })
 _sym_db.RegisterMessage(ListSchema)
 
-S3List = _reflection.GeneratedProtocolMessageType('S3List', (_message.Message,), dict(
-  DESCRIPTOR = _S3LIST,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+S3List = _reflection.GeneratedProtocolMessageType('S3List', (_message.Message,), {
+  'DESCRIPTOR' : _S3LIST,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.S3List)
-  ))
+  })
 _sym_db.RegisterMessage(S3List)
 
-FunctionContainerList = _reflection.GeneratedProtocolMessageType('FunctionContainerList', (_message.Message,), dict(
-  DESCRIPTOR = _FUNCTIONCONTAINERLIST,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+FunctionContainerList = _reflection.GeneratedProtocolMessageType('FunctionContainerList', (_message.Message,), {
+  'DESCRIPTOR' : _FUNCTIONCONTAINERLIST,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.FunctionContainerList)
-  ))
+  })
 _sym_db.RegisterMessage(FunctionContainerList)
 
-GcsList = _reflection.GeneratedProtocolMessageType('GcsList', (_message.Message,), dict(
-  DESCRIPTOR = _GCSLIST,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+GcsList = _reflection.GeneratedProtocolMessageType('GcsList', (_message.Message,), {
+  'DESCRIPTOR' : _GCSLIST,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.GcsList)
-  ))
+  })
 _sym_db.RegisterMessage(GcsList)
 
-GrokPattern = _reflection.GeneratedProtocolMessageType('GrokPattern', (_message.Message,), dict(
-  DESCRIPTOR = _GROKPATTERN,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+GrokPattern = _reflection.GeneratedProtocolMessageType('GrokPattern', (_message.Message,), {
+  'DESCRIPTOR' : _GROKPATTERN,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.GrokPattern)
-  ))
+  })
 _sym_db.RegisterMessage(GrokPattern)
 
-CommonApacheLog = _reflection.GeneratedProtocolMessageType('CommonApacheLog', (_message.Message,), dict(
-  DESCRIPTOR = _COMMONAPACHELOG,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+CommonApacheLog = _reflection.GeneratedProtocolMessageType('CommonApacheLog', (_message.Message,), {
+  'DESCRIPTOR' : _COMMONAPACHELOG,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.CommonApacheLog)
-  ))
+  })
 _sym_db.RegisterMessage(CommonApacheLog)
 
-CombinedApacheLog = _reflection.GeneratedProtocolMessageType('CombinedApacheLog', (_message.Message,), dict(
-  DESCRIPTOR = _COMBINEDAPACHELOG,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+CombinedApacheLog = _reflection.GeneratedProtocolMessageType('CombinedApacheLog', (_message.Message,), {
+  'DESCRIPTOR' : _COMBINEDAPACHELOG,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.CombinedApacheLog)
-  ))
+  })
 _sym_db.RegisterMessage(CombinedApacheLog)
 
-AdobeFlashMediaServerLog = _reflection.GeneratedProtocolMessageType('AdobeFlashMediaServerLog', (_message.Message,), dict(
-  DESCRIPTOR = _ADOBEFLASHMEDIASERVERLOG,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+AdobeFlashMediaServerLog = _reflection.GeneratedProtocolMessageType('AdobeFlashMediaServerLog', (_message.Message,), {
+  'DESCRIPTOR' : _ADOBEFLASHMEDIASERVERLOG,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.AdobeFlashMediaServerLog)
-  ))
+  })
 _sym_db.RegisterMessage(AdobeFlashMediaServerLog)
 
-Statistics = _reflection.GeneratedProtocolMessageType('Statistics', (_message.Message,), dict(
-  DESCRIPTOR = _STATISTICS,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+Statistics = _reflection.GeneratedProtocolMessageType('Statistics', (_message.Message,), {
+  'DESCRIPTOR' : _STATISTICS,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Statistics)
-  ))
+  })
 _sym_db.RegisterMessage(Statistics)
 
-UpdatePolicy = _reflection.GeneratedProtocolMessageType('UpdatePolicy', (_message.Message,), dict(
+UpdatePolicy = _reflection.GeneratedProtocolMessageType('UpdatePolicy', (_message.Message,), {
 
-  Error = _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), dict(
-    DESCRIPTOR = _UPDATEPOLICY_ERROR,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Error' : _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), {
+    'DESCRIPTOR' : _UPDATEPOLICY_ERROR,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.UpdatePolicy.Error)
-    ))
+    })
   ,
 
-  DropTable = _reflection.GeneratedProtocolMessageType('DropTable', (_message.Message,), dict(
-    DESCRIPTOR = _UPDATEPOLICY_DROPTABLE,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'DropTable' : _reflection.GeneratedProtocolMessageType('DropTable', (_message.Message,), {
+    'DESCRIPTOR' : _UPDATEPOLICY_DROPTABLE,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.UpdatePolicy.DropTable)
-    ))
+    })
   ,
 
-  AlterTable = _reflection.GeneratedProtocolMessageType('AlterTable', (_message.Message,), dict(
-    DESCRIPTOR = _UPDATEPOLICY_ALTERTABLE,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'AlterTable' : _reflection.GeneratedProtocolMessageType('AlterTable', (_message.Message,), {
+    'DESCRIPTOR' : _UPDATEPOLICY_ALTERTABLE,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.UpdatePolicy.AlterTable)
-    ))
+    })
   ,
-  DESCRIPTOR = _UPDATEPOLICY,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _UPDATEPOLICY,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.UpdatePolicy)
-  ))
+  })
 _sym_db.RegisterMessage(UpdatePolicy)
 _sym_db.RegisterMessage(UpdatePolicy.Error)
 _sym_db.RegisterMessage(UpdatePolicy.DropTable)
 _sym_db.RegisterMessage(UpdatePolicy.AlterTable)
 
-PartFileMetadata = _reflection.GeneratedProtocolMessageType('PartFileMetadata', (_message.Message,), dict(
+PartFileMetadata = _reflection.GeneratedProtocolMessageType('PartFileMetadata', (_message.Message,), {
 
-  Part = _reflection.GeneratedProtocolMessageType('Part', (_message.Message,), dict(
-    DESCRIPTOR = _PARTFILEMETADATA_PART,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Part' : _reflection.GeneratedProtocolMessageType('Part', (_message.Message,), {
+    'DESCRIPTOR' : _PARTFILEMETADATA_PART,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.Part)
-    ))
+    })
   ,
 
-  S3 = _reflection.GeneratedProtocolMessageType('S3', (_message.Message,), dict(
-    DESCRIPTOR = _PARTFILEMETADATA_S3,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'S3' : _reflection.GeneratedProtocolMessageType('S3', (_message.Message,), {
+    'DESCRIPTOR' : _PARTFILEMETADATA_S3,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.S3)
-    ))
+    })
   ,
 
-  Gcs = _reflection.GeneratedProtocolMessageType('Gcs', (_message.Message,), dict(
-    DESCRIPTOR = _PARTFILEMETADATA_GCS,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Gcs' : _reflection.GeneratedProtocolMessageType('Gcs', (_message.Message,), {
+    'DESCRIPTOR' : _PARTFILEMETADATA_GCS,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.Gcs)
-    ))
+    })
   ,
 
-  Abs = _reflection.GeneratedProtocolMessageType('Abs', (_message.Message,), dict(
-    DESCRIPTOR = _PARTFILEMETADATA_ABS,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'Abs' : _reflection.GeneratedProtocolMessageType('Abs', (_message.Message,), {
+    'DESCRIPTOR' : _PARTFILEMETADATA_ABS,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.Abs)
-    ))
+    })
   ,
 
-  File = _reflection.GeneratedProtocolMessageType('File', (_message.Message,), dict(
-    DESCRIPTOR = _PARTFILEMETADATA_FILE,
-    __module__ = 'ascend.protos.schema.schema_pb2'
+  'File' : _reflection.GeneratedProtocolMessageType('File', (_message.Message,), {
+    'DESCRIPTOR' : _PARTFILEMETADATA_FILE,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
     # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.File)
-    ))
+    })
   ,
-  DESCRIPTOR = _PARTFILEMETADATA,
-  __module__ = 'ascend.protos.schema.schema_pb2'
+  'DESCRIPTOR' : _PARTFILEMETADATA,
+  '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.PartFileMetadata)
-  ))
+  })
 _sym_db.RegisterMessage(PartFileMetadata)
 _sym_db.RegisterMessage(PartFileMetadata.Part)
 _sym_db.RegisterMessage(PartFileMetadata.S3)

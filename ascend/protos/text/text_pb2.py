@@ -370,74 +370,74 @@ _LINEENDING.fields_by_name['vt'].containing_oneof = _LINEENDING.oneofs_by_name['
 DESCRIPTOR.message_types_by_name['LineEnding'] = _LINEENDING
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-LineEnding = _reflection.GeneratedProtocolMessageType('LineEnding', (_message.Message,), dict(
+LineEnding = _reflection.GeneratedProtocolMessageType('LineEnding', (_message.Message,), {
 
-  Cr = _reflection.GeneratedProtocolMessageType('Cr', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_CR,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'Cr' : _reflection.GeneratedProtocolMessageType('Cr', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_CR,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.Cr)
-    ))
+    })
   ,
 
-  CrLf = _reflection.GeneratedProtocolMessageType('CrLf', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_CRLF,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'CrLf' : _reflection.GeneratedProtocolMessageType('CrLf', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_CRLF,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.CrLf)
-    ))
+    })
   ,
 
-  Lf = _reflection.GeneratedProtocolMessageType('Lf', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_LF,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'Lf' : _reflection.GeneratedProtocolMessageType('Lf', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_LF,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.Lf)
-    ))
+    })
   ,
 
-  LfCr = _reflection.GeneratedProtocolMessageType('LfCr', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_LFCR,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'LfCr' : _reflection.GeneratedProtocolMessageType('LfCr', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_LFCR,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.LfCr)
-    ))
+    })
   ,
 
-  Ff = _reflection.GeneratedProtocolMessageType('Ff', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_FF,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'Ff' : _reflection.GeneratedProtocolMessageType('Ff', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_FF,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.Ff)
-    ))
+    })
   ,
 
-  Ls = _reflection.GeneratedProtocolMessageType('Ls', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_LS,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'Ls' : _reflection.GeneratedProtocolMessageType('Ls', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_LS,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.Ls)
-    ))
+    })
   ,
 
-  Nel = _reflection.GeneratedProtocolMessageType('Nel', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_NEL,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'Nel' : _reflection.GeneratedProtocolMessageType('Nel', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_NEL,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.Nel)
-    ))
+    })
   ,
 
-  Ps = _reflection.GeneratedProtocolMessageType('Ps', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_PS,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'Ps' : _reflection.GeneratedProtocolMessageType('Ps', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_PS,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.Ps)
-    ))
+    })
   ,
 
-  Vt = _reflection.GeneratedProtocolMessageType('Vt', (_message.Message,), dict(
-    DESCRIPTOR = _LINEENDING_VT,
-    __module__ = 'ascend.protos.text.text_pb2'
+  'Vt' : _reflection.GeneratedProtocolMessageType('Vt', (_message.Message,), {
+    'DESCRIPTOR' : _LINEENDING_VT,
+    '__module__' : 'ascend.protos.text.text_pb2'
     # @@protoc_insertion_point(class_scope:text.LineEnding.Vt)
-    ))
+    })
   ,
-  DESCRIPTOR = _LINEENDING,
-  __module__ = 'ascend.protos.text.text_pb2'
+  'DESCRIPTOR' : _LINEENDING,
+  '__module__' : 'ascend.protos.text.text_pb2'
   # @@protoc_insertion_point(class_scope:text.LineEnding)
-  ))
+  })
 _sym_db.RegisterMessage(LineEnding)
 _sym_db.RegisterMessage(LineEnding.Cr)
 _sym_db.RegisterMessage(LineEnding.CrLf)

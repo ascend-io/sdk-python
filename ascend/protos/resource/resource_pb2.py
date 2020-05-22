@@ -998,135 +998,135 @@ DESCRIPTOR.message_types_by_name['Periodical'] = _PERIODICAL
 DESCRIPTOR.message_types_by_name['Priority'] = _PRIORITY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Environment = _reflection.GeneratedProtocolMessageType('Environment', (_message.Message,), dict(
-  DESCRIPTOR = _ENVIRONMENT,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Environment = _reflection.GeneratedProtocolMessageType('Environment', (_message.Message,), {
+  'DESCRIPTOR' : _ENVIRONMENT,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Environment)
-  ))
+  })
 _sym_db.RegisterMessage(Environment)
 
-Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), dict(
-  DESCRIPTOR = _CREDENTIALS,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.Message,), {
+  'DESCRIPTOR' : _CREDENTIALS,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Credentials)
-  ))
+  })
 _sym_db.RegisterMessage(Credentials)
 
-Resource = _reflection.GeneratedProtocolMessageType('Resource', (_message.Message,), dict(
-  DESCRIPTOR = _RESOURCE,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Resource = _reflection.GeneratedProtocolMessageType('Resource', (_message.Message,), {
+  'DESCRIPTOR' : _RESOURCE,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Resource)
-  ))
+  })
 _sym_db.RegisterMessage(Resource)
 
-DataService = _reflection.GeneratedProtocolMessageType('DataService', (_message.Message,), dict(
-  DESCRIPTOR = _DATASERVICE,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+DataService = _reflection.GeneratedProtocolMessageType('DataService', (_message.Message,), {
+  'DESCRIPTOR' : _DATASERVICE,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.DataService)
-  ))
+  })
 _sym_db.RegisterMessage(DataService)
 
-Dataflow = _reflection.GeneratedProtocolMessageType('Dataflow', (_message.Message,), dict(
-  DESCRIPTOR = _DATAFLOW,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Dataflow = _reflection.GeneratedProtocolMessageType('Dataflow', (_message.Message,), {
+  'DESCRIPTOR' : _DATAFLOW,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Dataflow)
-  ))
+  })
 _sym_db.RegisterMessage(Dataflow)
 
-Component = _reflection.GeneratedProtocolMessageType('Component', (_message.Message,), dict(
-  DESCRIPTOR = _COMPONENT,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Component = _reflection.GeneratedProtocolMessageType('Component', (_message.Message,), {
+  'DESCRIPTOR' : _COMPONENT,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Component)
-  ))
+  })
 _sym_db.RegisterMessage(Component)
 
-Group = _reflection.GeneratedProtocolMessageType('Group', (_message.Message,), dict(
-  DESCRIPTOR = _GROUP,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Group = _reflection.GeneratedProtocolMessageType('Group', (_message.Message,), {
+  'DESCRIPTOR' : _GROUP,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Group)
-  ))
+  })
 _sym_db.RegisterMessage(Group)
 
-ReadConnector = _reflection.GeneratedProtocolMessageType('ReadConnector', (_message.Message,), dict(
+ReadConnector = _reflection.GeneratedProtocolMessageType('ReadConnector', (_message.Message,), {
 
-  FromBytes = _reflection.GeneratedProtocolMessageType('FromBytes', (_message.Message,), dict(
-    DESCRIPTOR = _READCONNECTOR_FROMBYTES,
-    __module__ = 'ascend.protos.resource.resource_pb2'
+  'FromBytes' : _reflection.GeneratedProtocolMessageType('FromBytes', (_message.Message,), {
+    'DESCRIPTOR' : _READCONNECTOR_FROMBYTES,
+    '__module__' : 'ascend.protos.resource.resource_pb2'
     # @@protoc_insertion_point(class_scope:resource.ReadConnector.FromBytes)
-    ))
+    })
   ,
 
-  FromRecords = _reflection.GeneratedProtocolMessageType('FromRecords', (_message.Message,), dict(
-    DESCRIPTOR = _READCONNECTOR_FROMRECORDS,
-    __module__ = 'ascend.protos.resource.resource_pb2'
+  'FromRecords' : _reflection.GeneratedProtocolMessageType('FromRecords', (_message.Message,), {
+    'DESCRIPTOR' : _READCONNECTOR_FROMRECORDS,
+    '__module__' : 'ascend.protos.resource.resource_pb2'
     # @@protoc_insertion_point(class_scope:resource.ReadConnector.FromRecords)
-    ))
+    })
   ,
-  DESCRIPTOR = _READCONNECTOR,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+  'DESCRIPTOR' : _READCONNECTOR,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.ReadConnector)
-  ))
+  })
 _sym_db.RegisterMessage(ReadConnector)
 _sym_db.RegisterMessage(ReadConnector.FromBytes)
 _sym_db.RegisterMessage(ReadConnector.FromRecords)
 
-Transform = _reflection.GeneratedProtocolMessageType('Transform', (_message.Message,), dict(
-  DESCRIPTOR = _TRANSFORM,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Transform = _reflection.GeneratedProtocolMessageType('Transform', (_message.Message,), {
+  'DESCRIPTOR' : _TRANSFORM,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Transform)
-  ))
+  })
 _sym_db.RegisterMessage(Transform)
 
-WriteConnector = _reflection.GeneratedProtocolMessageType('WriteConnector', (_message.Message,), dict(
+WriteConnector = _reflection.GeneratedProtocolMessageType('WriteConnector', (_message.Message,), {
 
-  ToBytes = _reflection.GeneratedProtocolMessageType('ToBytes', (_message.Message,), dict(
-    DESCRIPTOR = _WRITECONNECTOR_TOBYTES,
-    __module__ = 'ascend.protos.resource.resource_pb2'
+  'ToBytes' : _reflection.GeneratedProtocolMessageType('ToBytes', (_message.Message,), {
+    'DESCRIPTOR' : _WRITECONNECTOR_TOBYTES,
+    '__module__' : 'ascend.protos.resource.resource_pb2'
     # @@protoc_insertion_point(class_scope:resource.WriteConnector.ToBytes)
-    ))
+    })
   ,
 
-  ToRecords = _reflection.GeneratedProtocolMessageType('ToRecords', (_message.Message,), dict(
-    DESCRIPTOR = _WRITECONNECTOR_TORECORDS,
-    __module__ = 'ascend.protos.resource.resource_pb2'
+  'ToRecords' : _reflection.GeneratedProtocolMessageType('ToRecords', (_message.Message,), {
+    'DESCRIPTOR' : _WRITECONNECTOR_TORECORDS,
+    '__module__' : 'ascend.protos.resource.resource_pb2'
     # @@protoc_insertion_point(class_scope:resource.WriteConnector.ToRecords)
-    ))
+    })
   ,
-  DESCRIPTOR = _WRITECONNECTOR,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+  'DESCRIPTOR' : _WRITECONNECTOR,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.WriteConnector)
-  ))
+  })
 _sym_db.RegisterMessage(WriteConnector)
 _sym_db.RegisterMessage(WriteConnector.ToBytes)
 _sym_db.RegisterMessage(WriteConnector.ToRecords)
 
-DataFeed = _reflection.GeneratedProtocolMessageType('DataFeed', (_message.Message,), dict(
+DataFeed = _reflection.GeneratedProtocolMessageType('DataFeed', (_message.Message,), {
 
-  Sharing = _reflection.GeneratedProtocolMessageType('Sharing', (_message.Message,), dict(
-    DESCRIPTOR = _DATAFEED_SHARING,
-    __module__ = 'ascend.protos.resource.resource_pb2'
+  'Sharing' : _reflection.GeneratedProtocolMessageType('Sharing', (_message.Message,), {
+    'DESCRIPTOR' : _DATAFEED_SHARING,
+    '__module__' : 'ascend.protos.resource.resource_pb2'
     # @@protoc_insertion_point(class_scope:resource.DataFeed.Sharing)
-    ))
+    })
   ,
-  DESCRIPTOR = _DATAFEED,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+  'DESCRIPTOR' : _DATAFEED,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.DataFeed)
-  ))
+  })
 _sym_db.RegisterMessage(DataFeed)
 _sym_db.RegisterMessage(DataFeed.Sharing)
 
-Periodical = _reflection.GeneratedProtocolMessageType('Periodical', (_message.Message,), dict(
-  DESCRIPTOR = _PERIODICAL,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Periodical = _reflection.GeneratedProtocolMessageType('Periodical', (_message.Message,), {
+  'DESCRIPTOR' : _PERIODICAL,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Periodical)
-  ))
+  })
 _sym_db.RegisterMessage(Periodical)
 
-Priority = _reflection.GeneratedProtocolMessageType('Priority', (_message.Message,), dict(
-  DESCRIPTOR = _PRIORITY,
-  __module__ = 'ascend.protos.resource.resource_pb2'
+Priority = _reflection.GeneratedProtocolMessageType('Priority', (_message.Message,), {
+  'DESCRIPTOR' : _PRIORITY,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
   # @@protoc_insertion_point(class_scope:resource.Priority)
-  ))
+  })
 _sym_db.RegisterMessage(Priority)
 
 

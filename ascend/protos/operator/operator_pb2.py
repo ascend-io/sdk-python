@@ -1094,60 +1094,60 @@ DESCRIPTOR.message_types_by_name['Identity'] = _IDENTITY
 DESCRIPTOR.message_types_by_name['Operator'] = _OPERATOR
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Granularity = _reflection.GeneratedProtocolMessageType('Granularity', (_message.Message,), dict(
+Granularity = _reflection.GeneratedProtocolMessageType('Granularity', (_message.Message,), {
 
-  Time = _reflection.GeneratedProtocolMessageType('Time', (_message.Message,), dict(
+  'Time' : _reflection.GeneratedProtocolMessageType('Time', (_message.Message,), {
 
-    Auto = _reflection.GeneratedProtocolMessageType('Auto', (_message.Message,), dict(
-      DESCRIPTOR = _GRANULARITY_TIME_AUTO,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'Auto' : _reflection.GeneratedProtocolMessageType('Auto', (_message.Message,), {
+      'DESCRIPTOR' : _GRANULARITY_TIME_AUTO,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Granularity.Time.Auto)
-      ))
+      })
     ,
 
-    Year = _reflection.GeneratedProtocolMessageType('Year', (_message.Message,), dict(
-      DESCRIPTOR = _GRANULARITY_TIME_YEAR,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'Year' : _reflection.GeneratedProtocolMessageType('Year', (_message.Message,), {
+      'DESCRIPTOR' : _GRANULARITY_TIME_YEAR,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Granularity.Time.Year)
-      ))
+      })
     ,
 
-    Month = _reflection.GeneratedProtocolMessageType('Month', (_message.Message,), dict(
-      DESCRIPTOR = _GRANULARITY_TIME_MONTH,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'Month' : _reflection.GeneratedProtocolMessageType('Month', (_message.Message,), {
+      'DESCRIPTOR' : _GRANULARITY_TIME_MONTH,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Granularity.Time.Month)
-      ))
+      })
     ,
 
-    Day = _reflection.GeneratedProtocolMessageType('Day', (_message.Message,), dict(
-      DESCRIPTOR = _GRANULARITY_TIME_DAY,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'Day' : _reflection.GeneratedProtocolMessageType('Day', (_message.Message,), {
+      'DESCRIPTOR' : _GRANULARITY_TIME_DAY,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Granularity.Time.Day)
-      ))
+      })
     ,
 
-    Hour = _reflection.GeneratedProtocolMessageType('Hour', (_message.Message,), dict(
-      DESCRIPTOR = _GRANULARITY_TIME_HOUR,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'Hour' : _reflection.GeneratedProtocolMessageType('Hour', (_message.Message,), {
+      'DESCRIPTOR' : _GRANULARITY_TIME_HOUR,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Granularity.Time.Hour)
-      ))
+      })
     ,
 
-    Minute = _reflection.GeneratedProtocolMessageType('Minute', (_message.Message,), dict(
-      DESCRIPTOR = _GRANULARITY_TIME_MINUTE,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'Minute' : _reflection.GeneratedProtocolMessageType('Minute', (_message.Message,), {
+      'DESCRIPTOR' : _GRANULARITY_TIME_MINUTE,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Granularity.Time.Minute)
-      ))
+      })
     ,
-    DESCRIPTOR = _GRANULARITY_TIME,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+    'DESCRIPTOR' : _GRANULARITY_TIME,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.Granularity.Time)
-    ))
+    })
   ,
-  DESCRIPTOR = _GRANULARITY,
-  __module__ = 'ascend.protos.operator.operator_pb2'
+  'DESCRIPTOR' : _GRANULARITY,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
   # @@protoc_insertion_point(class_scope:operator.Granularity)
-  ))
+  })
 _sym_db.RegisterMessage(Granularity)
 _sym_db.RegisterMessage(Granularity.Time)
 _sym_db.RegisterMessage(Granularity.Time.Auto)
@@ -1157,85 +1157,85 @@ _sym_db.RegisterMessage(Granularity.Time.Day)
 _sym_db.RegisterMessage(Granularity.Time.Hour)
 _sym_db.RegisterMessage(Granularity.Time.Minute)
 
-InstanceType = _reflection.GeneratedProtocolMessageType('InstanceType', (_message.Message,), dict(
+InstanceType = _reflection.GeneratedProtocolMessageType('InstanceType', (_message.Message,), {
 
-  Small = _reflection.GeneratedProtocolMessageType('Small', (_message.Message,), dict(
-    DESCRIPTOR = _INSTANCETYPE_SMALL,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'Small' : _reflection.GeneratedProtocolMessageType('Small', (_message.Message,), {
+    'DESCRIPTOR' : _INSTANCETYPE_SMALL,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.InstanceType.Small)
-    ))
+    })
   ,
 
-  Medium = _reflection.GeneratedProtocolMessageType('Medium', (_message.Message,), dict(
-    DESCRIPTOR = _INSTANCETYPE_MEDIUM,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'Medium' : _reflection.GeneratedProtocolMessageType('Medium', (_message.Message,), {
+    'DESCRIPTOR' : _INSTANCETYPE_MEDIUM,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.InstanceType.Medium)
-    ))
+    })
   ,
 
-  Large = _reflection.GeneratedProtocolMessageType('Large', (_message.Message,), dict(
-    DESCRIPTOR = _INSTANCETYPE_LARGE,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'Large' : _reflection.GeneratedProtocolMessageType('Large', (_message.Message,), {
+    'DESCRIPTOR' : _INSTANCETYPE_LARGE,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.InstanceType.Large)
-    ))
+    })
   ,
 
-  XLarge = _reflection.GeneratedProtocolMessageType('XLarge', (_message.Message,), dict(
-    DESCRIPTOR = _INSTANCETYPE_XLARGE,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'XLarge' : _reflection.GeneratedProtocolMessageType('XLarge', (_message.Message,), {
+    'DESCRIPTOR' : _INSTANCETYPE_XLARGE,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.InstanceType.XLarge)
-    ))
+    })
   ,
-  DESCRIPTOR = _INSTANCETYPE,
-  __module__ = 'ascend.protos.operator.operator_pb2'
+  'DESCRIPTOR' : _INSTANCETYPE,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
   # @@protoc_insertion_point(class_scope:operator.InstanceType)
-  ))
+  })
 _sym_db.RegisterMessage(InstanceType)
 _sym_db.RegisterMessage(InstanceType.Small)
 _sym_db.RegisterMessage(InstanceType.Medium)
 _sym_db.RegisterMessage(InstanceType.Large)
 _sym_db.RegisterMessage(InstanceType.XLarge)
 
-Reduction = _reflection.GeneratedProtocolMessageType('Reduction', (_message.Message,), dict(
+Reduction = _reflection.GeneratedProtocolMessageType('Reduction', (_message.Message,), {
 
-  NoReduction = _reflection.GeneratedProtocolMessageType('NoReduction', (_message.Message,), dict(
-    DESCRIPTOR = _REDUCTION_NOREDUCTION,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'NoReduction' : _reflection.GeneratedProtocolMessageType('NoReduction', (_message.Message,), {
+    'DESCRIPTOR' : _REDUCTION_NOREDUCTION,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.Reduction.NoReduction)
-    ))
+    })
   ,
 
-  Full = _reflection.GeneratedProtocolMessageType('Full', (_message.Message,), dict(
-    DESCRIPTOR = _REDUCTION_FULL,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'Full' : _reflection.GeneratedProtocolMessageType('Full', (_message.Message,), {
+    'DESCRIPTOR' : _REDUCTION_FULL,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.Reduction.Full)
-    ))
+    })
   ,
 
-  Partial = _reflection.GeneratedProtocolMessageType('Partial', (_message.Message,), dict(
+  'Partial' : _reflection.GeneratedProtocolMessageType('Partial', (_message.Message,), {
 
-    PartitionSpecification = _reflection.GeneratedProtocolMessageType('PartitionSpecification', (_message.Message,), dict(
-      DESCRIPTOR = _REDUCTION_PARTIAL_PARTITIONSPECIFICATION,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'PartitionSpecification' : _reflection.GeneratedProtocolMessageType('PartitionSpecification', (_message.Message,), {
+      'DESCRIPTOR' : _REDUCTION_PARTIAL_PARTITIONSPECIFICATION,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Reduction.Partial.PartitionSpecification)
-      ))
+      })
     ,
 
-    PartitionByEntry = _reflection.GeneratedProtocolMessageType('PartitionByEntry', (_message.Message,), dict(
-      DESCRIPTOR = _REDUCTION_PARTIAL_PARTITIONBYENTRY,
-      __module__ = 'ascend.protos.operator.operator_pb2'
+    'PartitionByEntry' : _reflection.GeneratedProtocolMessageType('PartitionByEntry', (_message.Message,), {
+      'DESCRIPTOR' : _REDUCTION_PARTIAL_PARTITIONBYENTRY,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
       # @@protoc_insertion_point(class_scope:operator.Reduction.Partial.PartitionByEntry)
-      ))
+      })
     ,
-    DESCRIPTOR = _REDUCTION_PARTIAL,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+    'DESCRIPTOR' : _REDUCTION_PARTIAL,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.Reduction.Partial)
-    ))
+    })
   ,
-  DESCRIPTOR = _REDUCTION,
-  __module__ = 'ascend.protos.operator.operator_pb2'
+  'DESCRIPTOR' : _REDUCTION,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
   # @@protoc_insertion_point(class_scope:operator.Reduction)
-  ))
+  })
 _sym_db.RegisterMessage(Reduction)
 _sym_db.RegisterMessage(Reduction.NoReduction)
 _sym_db.RegisterMessage(Reduction.Full)
@@ -1243,56 +1243,56 @@ _sym_db.RegisterMessage(Reduction.Partial)
 _sym_db.RegisterMessage(Reduction.Partial.PartitionSpecification)
 _sym_db.RegisterMessage(Reduction.Partial.PartitionByEntry)
 
-Sql = _reflection.GeneratedProtocolMessageType('Sql', (_message.Message,), dict(
+Sql = _reflection.GeneratedProtocolMessageType('Sql', (_message.Message,), {
 
-  Query = _reflection.GeneratedProtocolMessageType('Query', (_message.Message,), dict(
-    DESCRIPTOR = _SQL_QUERY,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'Query' : _reflection.GeneratedProtocolMessageType('Query', (_message.Message,), {
+    'DESCRIPTOR' : _SQL_QUERY,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.Sql.Query)
-    ))
+    })
   ,
-  DESCRIPTOR = _SQL,
-  __module__ = 'ascend.protos.operator.operator_pb2'
+  'DESCRIPTOR' : _SQL,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
   # @@protoc_insertion_point(class_scope:operator.Sql)
-  ))
+  })
 _sym_db.RegisterMessage(Sql)
 _sym_db.RegisterMessage(Sql.Query)
 
-Spark = _reflection.GeneratedProtocolMessageType('Spark', (_message.Message,), dict(
+Spark = _reflection.GeneratedProtocolMessageType('Spark', (_message.Message,), {
 
-  JobConfiguration = _reflection.GeneratedProtocolMessageType('JobConfiguration', (_message.Message,), dict(
-    DESCRIPTOR = _SPARK_JOBCONFIGURATION,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'JobConfiguration' : _reflection.GeneratedProtocolMessageType('JobConfiguration', (_message.Message,), {
+    'DESCRIPTOR' : _SPARK_JOBCONFIGURATION,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.Spark.JobConfiguration)
-    ))
+    })
   ,
 
-  Function = _reflection.GeneratedProtocolMessageType('Function', (_message.Message,), dict(
-    DESCRIPTOR = _SPARK_FUNCTION,
-    __module__ = 'ascend.protos.operator.operator_pb2'
+  'Function' : _reflection.GeneratedProtocolMessageType('Function', (_message.Message,), {
+    'DESCRIPTOR' : _SPARK_FUNCTION,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
     # @@protoc_insertion_point(class_scope:operator.Spark.Function)
-    ))
+    })
   ,
-  DESCRIPTOR = _SPARK,
-  __module__ = 'ascend.protos.operator.operator_pb2'
+  'DESCRIPTOR' : _SPARK,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
   # @@protoc_insertion_point(class_scope:operator.Spark)
-  ))
+  })
 _sym_db.RegisterMessage(Spark)
 _sym_db.RegisterMessage(Spark.JobConfiguration)
 _sym_db.RegisterMessage(Spark.Function)
 
-Identity = _reflection.GeneratedProtocolMessageType('Identity', (_message.Message,), dict(
-  DESCRIPTOR = _IDENTITY,
-  __module__ = 'ascend.protos.operator.operator_pb2'
+Identity = _reflection.GeneratedProtocolMessageType('Identity', (_message.Message,), {
+  'DESCRIPTOR' : _IDENTITY,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
   # @@protoc_insertion_point(class_scope:operator.Identity)
-  ))
+  })
 _sym_db.RegisterMessage(Identity)
 
-Operator = _reflection.GeneratedProtocolMessageType('Operator', (_message.Message,), dict(
-  DESCRIPTOR = _OPERATOR,
-  __module__ = 'ascend.protos.operator.operator_pb2'
+Operator = _reflection.GeneratedProtocolMessageType('Operator', (_message.Message,), {
+  'DESCRIPTOR' : _OPERATOR,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
   # @@protoc_insertion_point(class_scope:operator.Operator)
-  ))
+  })
 _sym_db.RegisterMessage(Operator)
 
 

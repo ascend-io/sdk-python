@@ -547,84 +547,84 @@ DESCRIPTOR.extensions_by_name['sensitive'] = sensitive
 DESCRIPTOR.extensions_by_name['content'] = content
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-AscendOptions = _reflection.GeneratedProtocolMessageType('AscendOptions', (_message.Message,), dict(
-  DESCRIPTOR = _ASCENDOPTIONS,
-  __module__ = 'ascend.protos.ascend.ascend_pb2'
+AscendOptions = _reflection.GeneratedProtocolMessageType('AscendOptions', (_message.Message,), {
+  'DESCRIPTOR' : _ASCENDOPTIONS,
+  '__module__' : 'ascend.protos.ascend.ascend_pb2'
   # @@protoc_insertion_point(class_scope:ascend.AscendOptions)
-  ))
+  })
 _sym_db.RegisterMessage(AscendOptions)
 
-Struct = _reflection.GeneratedProtocolMessageType('Struct', (_message.Message,), dict(
+Struct = _reflection.GeneratedProtocolMessageType('Struct', (_message.Message,), {
 
-  FieldsEntry = _reflection.GeneratedProtocolMessageType('FieldsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _STRUCT_FIELDSENTRY,
-    __module__ = 'ascend.protos.ascend.ascend_pb2'
+  'FieldsEntry' : _reflection.GeneratedProtocolMessageType('FieldsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _STRUCT_FIELDSENTRY,
+    '__module__' : 'ascend.protos.ascend.ascend_pb2'
     # @@protoc_insertion_point(class_scope:ascend.Struct.FieldsEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _STRUCT,
-  __module__ = 'ascend.protos.ascend.ascend_pb2'
+  'DESCRIPTOR' : _STRUCT,
+  '__module__' : 'ascend.protos.ascend.ascend_pb2'
   # @@protoc_insertion_point(class_scope:ascend.Struct)
-  ))
+  })
 _sym_db.RegisterMessage(Struct)
 _sym_db.RegisterMessage(Struct.FieldsEntry)
 
-Value = _reflection.GeneratedProtocolMessageType('Value', (_message.Message,), dict(
-  DESCRIPTOR = _VALUE,
-  __module__ = 'ascend.protos.ascend.ascend_pb2'
+Value = _reflection.GeneratedProtocolMessageType('Value', (_message.Message,), {
+  'DESCRIPTOR' : _VALUE,
+  '__module__' : 'ascend.protos.ascend.ascend_pb2'
   # @@protoc_insertion_point(class_scope:ascend.Value)
-  ))
+  })
 _sym_db.RegisterMessage(Value)
 
-Values = _reflection.GeneratedProtocolMessageType('Values', (_message.Message,), dict(
-  DESCRIPTOR = _VALUES,
-  __module__ = 'ascend.protos.ascend.ascend_pb2'
+Values = _reflection.GeneratedProtocolMessageType('Values', (_message.Message,), {
+  'DESCRIPTOR' : _VALUES,
+  '__module__' : 'ascend.protos.ascend.ascend_pb2'
   # @@protoc_insertion_point(class_scope:ascend.Values)
-  ))
+  })
 _sym_db.RegisterMessage(Values)
 
-Structs = _reflection.GeneratedProtocolMessageType('Structs', (_message.Message,), dict(
-  DESCRIPTOR = _STRUCTS,
-  __module__ = 'ascend.protos.ascend.ascend_pb2'
+Structs = _reflection.GeneratedProtocolMessageType('Structs', (_message.Message,), {
+  'DESCRIPTOR' : _STRUCTS,
+  '__module__' : 'ascend.protos.ascend.ascend_pb2'
   # @@protoc_insertion_point(class_scope:ascend.Structs)
-  ))
+  })
 _sym_db.RegisterMessage(Structs)
 
-Log = _reflection.GeneratedProtocolMessageType('Log', (_message.Message,), dict(
+Log = _reflection.GeneratedProtocolMessageType('Log', (_message.Message,), {
 
-  Level = _reflection.GeneratedProtocolMessageType('Level', (_message.Message,), dict(
-    DESCRIPTOR = _LOG_LEVEL,
-    __module__ = 'ascend.protos.ascend.ascend_pb2'
+  'Level' : _reflection.GeneratedProtocolMessageType('Level', (_message.Message,), {
+    'DESCRIPTOR' : _LOG_LEVEL,
+    '__module__' : 'ascend.protos.ascend.ascend_pb2'
     # @@protoc_insertion_point(class_scope:ascend.Log.Level)
-    ))
+    })
   ,
 
-  LoggerLevel = _reflection.GeneratedProtocolMessageType('LoggerLevel', (_message.Message,), dict(
-    DESCRIPTOR = _LOG_LOGGERLEVEL,
-    __module__ = 'ascend.protos.ascend.ascend_pb2'
+  'LoggerLevel' : _reflection.GeneratedProtocolMessageType('LoggerLevel', (_message.Message,), {
+    'DESCRIPTOR' : _LOG_LOGGERLEVEL,
+    '__module__' : 'ascend.protos.ascend.ascend_pb2'
     # @@protoc_insertion_point(class_scope:ascend.Log.LoggerLevel)
-    ))
+    })
   ,
-  DESCRIPTOR = _LOG,
-  __module__ = 'ascend.protos.ascend.ascend_pb2'
+  'DESCRIPTOR' : _LOG,
+  '__module__' : 'ascend.protos.ascend.ascend_pb2'
   # @@protoc_insertion_point(class_scope:ascend.Log)
-  ))
+  })
 _sym_db.RegisterMessage(Log)
 _sym_db.RegisterMessage(Log.Level)
 _sym_db.RegisterMessage(Log.LoggerLevel)
 
-Interval = _reflection.GeneratedProtocolMessageType('Interval', (_message.Message,), dict(
+Interval = _reflection.GeneratedProtocolMessageType('Interval', (_message.Message,), {
 
-  Endpoint = _reflection.GeneratedProtocolMessageType('Endpoint', (_message.Message,), dict(
-    DESCRIPTOR = _INTERVAL_ENDPOINT,
-    __module__ = 'ascend.protos.ascend.ascend_pb2'
+  'Endpoint' : _reflection.GeneratedProtocolMessageType('Endpoint', (_message.Message,), {
+    'DESCRIPTOR' : _INTERVAL_ENDPOINT,
+    '__module__' : 'ascend.protos.ascend.ascend_pb2'
     # @@protoc_insertion_point(class_scope:ascend.Interval.Endpoint)
-    ))
+    })
   ,
-  DESCRIPTOR = _INTERVAL,
-  __module__ = 'ascend.protos.ascend.ascend_pb2'
+  'DESCRIPTOR' : _INTERVAL,
+  '__module__' : 'ascend.protos.ascend.ascend_pb2'
   # @@protoc_insertion_point(class_scope:ascend.Interval)
-  ))
+  })
 _sym_db.RegisterMessage(Interval)
 _sym_db.RegisterMessage(Interval.Endpoint)
 

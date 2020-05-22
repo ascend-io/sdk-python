@@ -39,6 +39,14 @@ message Json {
   }
 }
 
+message Orc {
+  message Formatter {
+  }
+  message Parser {
+    schema.Map schema = 1;
+  }
+}
+
 message Parquet {
   message Formatter {
   }
@@ -196,6 +204,7 @@ message Format {
     Json json = 3;
     Parquet parquet = 4;
     Xsv xsv = 6;
+    Orc orc = 7;
   }
   reserved 5;
   reserved "user_defined";

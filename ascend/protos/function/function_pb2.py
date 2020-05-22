@@ -310,53 +310,53 @@ DESCRIPTOR.message_types_by_name['Code'] = _CODE
 DESCRIPTOR.message_types_by_name['Executable'] = _EXECUTABLE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Code = _reflection.GeneratedProtocolMessageType('Code', (_message.Message,), dict(
+Code = _reflection.GeneratedProtocolMessageType('Code', (_message.Message,), {
 
-  Language = _reflection.GeneratedProtocolMessageType('Language', (_message.Message,), dict(
+  'Language' : _reflection.GeneratedProtocolMessageType('Language', (_message.Message,), {
 
-    Python = _reflection.GeneratedProtocolMessageType('Python', (_message.Message,), dict(
+    'Python' : _reflection.GeneratedProtocolMessageType('Python', (_message.Message,), {
 
-      Version = _reflection.GeneratedProtocolMessageType('Version', (_message.Message,), dict(
+      'Version' : _reflection.GeneratedProtocolMessageType('Version', (_message.Message,), {
 
-        V2 = _reflection.GeneratedProtocolMessageType('V2', (_message.Message,), dict(
-          DESCRIPTOR = _CODE_LANGUAGE_PYTHON_VERSION_V2,
-          __module__ = 'ascend.protos.function.function_pb2'
+        'V2' : _reflection.GeneratedProtocolMessageType('V2', (_message.Message,), {
+          'DESCRIPTOR' : _CODE_LANGUAGE_PYTHON_VERSION_V2,
+          '__module__' : 'ascend.protos.function.function_pb2'
           # @@protoc_insertion_point(class_scope:function.Code.Language.Python.Version.V2)
-          ))
+          })
         ,
 
-        V3 = _reflection.GeneratedProtocolMessageType('V3', (_message.Message,), dict(
-          DESCRIPTOR = _CODE_LANGUAGE_PYTHON_VERSION_V3,
-          __module__ = 'ascend.protos.function.function_pb2'
+        'V3' : _reflection.GeneratedProtocolMessageType('V3', (_message.Message,), {
+          'DESCRIPTOR' : _CODE_LANGUAGE_PYTHON_VERSION_V3,
+          '__module__' : 'ascend.protos.function.function_pb2'
           # @@protoc_insertion_point(class_scope:function.Code.Language.Python.Version.V3)
-          ))
+          })
         ,
-        DESCRIPTOR = _CODE_LANGUAGE_PYTHON_VERSION,
-        __module__ = 'ascend.protos.function.function_pb2'
+        'DESCRIPTOR' : _CODE_LANGUAGE_PYTHON_VERSION,
+        '__module__' : 'ascend.protos.function.function_pb2'
         # @@protoc_insertion_point(class_scope:function.Code.Language.Python.Version)
-        ))
+        })
       ,
-      DESCRIPTOR = _CODE_LANGUAGE_PYTHON,
-      __module__ = 'ascend.protos.function.function_pb2'
+      'DESCRIPTOR' : _CODE_LANGUAGE_PYTHON,
+      '__module__' : 'ascend.protos.function.function_pb2'
       # @@protoc_insertion_point(class_scope:function.Code.Language.Python)
-      ))
+      })
     ,
-    DESCRIPTOR = _CODE_LANGUAGE,
-    __module__ = 'ascend.protos.function.function_pb2'
+    'DESCRIPTOR' : _CODE_LANGUAGE,
+    '__module__' : 'ascend.protos.function.function_pb2'
     # @@protoc_insertion_point(class_scope:function.Code.Language)
-    ))
+    })
   ,
 
-  Source = _reflection.GeneratedProtocolMessageType('Source', (_message.Message,), dict(
-    DESCRIPTOR = _CODE_SOURCE,
-    __module__ = 'ascend.protos.function.function_pb2'
+  'Source' : _reflection.GeneratedProtocolMessageType('Source', (_message.Message,), {
+    'DESCRIPTOR' : _CODE_SOURCE,
+    '__module__' : 'ascend.protos.function.function_pb2'
     # @@protoc_insertion_point(class_scope:function.Code.Source)
-    ))
+    })
   ,
-  DESCRIPTOR = _CODE,
-  __module__ = 'ascend.protos.function.function_pb2'
+  'DESCRIPTOR' : _CODE,
+  '__module__' : 'ascend.protos.function.function_pb2'
   # @@protoc_insertion_point(class_scope:function.Code)
-  ))
+  })
 _sym_db.RegisterMessage(Code)
 _sym_db.RegisterMessage(Code.Language)
 _sym_db.RegisterMessage(Code.Language.Python)
@@ -365,11 +365,11 @@ _sym_db.RegisterMessage(Code.Language.Python.Version.V2)
 _sym_db.RegisterMessage(Code.Language.Python.Version.V3)
 _sym_db.RegisterMessage(Code.Source)
 
-Executable = _reflection.GeneratedProtocolMessageType('Executable', (_message.Message,), dict(
-  DESCRIPTOR = _EXECUTABLE,
-  __module__ = 'ascend.protos.function.function_pb2'
+Executable = _reflection.GeneratedProtocolMessageType('Executable', (_message.Message,), {
+  'DESCRIPTOR' : _EXECUTABLE,
+  '__module__' : 'ascend.protos.function.function_pb2'
   # @@protoc_insertion_point(class_scope:function.Executable)
-  ))
+  })
 _sym_db.RegisterMessage(Executable)
 
 
