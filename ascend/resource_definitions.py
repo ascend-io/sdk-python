@@ -795,8 +795,6 @@ class ResourceSession:
         return self._list(res_path, res_path, recursive, 0 - (res_path != ROOT_PATH))
 
     def _list(self, origin, res_path: ResourcePath, recursive, depth):
-        if not res_path.exportable:
-            return
         res_path.dump(origin, depth)
         if origin.rd_path == res_path.rd_path or recursive:
             for child_path in res_path.children(self):
