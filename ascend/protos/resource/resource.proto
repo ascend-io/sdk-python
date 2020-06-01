@@ -83,6 +83,7 @@ message ReadConnector {
     Periodical updatePeriodical = 3;
     google.protobuf.Timestamp last_manual_refresh_time = 4;
     Priority assigned_priority = 5;
+    google.protobuf.Int64Value aggregation_limit = 8;
 
     oneof from {
         FromBytes bytes = 6;
