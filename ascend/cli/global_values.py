@@ -11,4 +11,4 @@ DEBUG = False
 
 SOURCE_DIR = os.path.realpath(os.path.join(os.path.realpath(__file__), '..', '..'))
 
-API_VERSION = 2
+API_VERSION = 4
