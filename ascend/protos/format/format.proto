@@ -42,9 +42,6 @@ message Json {
 message Orc {
   message Formatter {
   }
-  message Parser {
-    schema.Map schema = 1;
-  }
 }
 
 message Parquet {

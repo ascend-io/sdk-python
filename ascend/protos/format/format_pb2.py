@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='format',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n!ascend/protos/format/format.proto\x12\x06\x66ormat\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/schema/schema.proto\x1a\x1d\x61scend/protos/text/text.proto\":\n\x04\x41vro\x1a\x0b\n\tFormatter\x1a%\n\x06Parser\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\"!\n\x04Grok\x1a\x19\n\x06Parser\x12\x0f\n\x07pattern\x18\x01 \x01(\t\"\xe8\x01\n\x04Json\x1a\x0b\n\tFormatter\x1a\xd2\x01\n\x06Parser\x12 \n\x07\x63olumns\x18\x06 \x01(\x0b\x32\x0f.format.Columns\x12\x16\n\x0e\x66latten_nested\x18\x05 \x01(\x08\x12\x16\n\x0emax_warn_count\x18\x07 \x01(\x03\x12\x1b\n\x13namespace_delimiter\x18\x04 \x01(\t\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\x12\x17\n\x0fmax_error_count\x18\x02 \x01(\x05\x12#\n\x1bmax_error_percentage_points\x18\x03 \x01(\x01\"9\n\x03Orc\x1a\x0b\n\tFormatter\x1a%\n\x06Parser\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\"\xde\x01\n\x07Parquet\x1a\x0b\n\tFormatter\x1a\xc5\x01\n\x06Parser\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\x12\x1b\n\x13namespace_delimiter\x18\x02 \x01(\t\x12,\n$require_no_missing_fields_in_parquet\x18\x03 \x01(\x08\x12*\n\"require_no_extra_fields_in_parquet\x18\x04 \x01(\x08\x12\'\n\x1frequire_field_type_match_schema\x18\x05 \x01(\x08\"\x91\x05\n\x06Lambda\x1a\x0b\n\tFormatter\x1a\xf9\x04\n\x06Parser\x12\x39\n\x0c\x64ocker_image\x18\x01 \x01(\x0b\x32!.format.Lambda.Parser.DockerImageH\x00\x12*\n\x04\x63ode\x18\x02 \x01(\x0b\x32\x1a.format.Lambda.Parser.CodeH\x00\x12\x10\n\x08metadata\x18\x03 \x01(\t\x12\x1b\n\x06schema\x18\x04 \x01(\x0b\x32\x0b.schema.Map\x12\x17\n\x0fmax_error_count\x18\x05 \x01(\x05\x1a!\n\x0b\x44ockerImage\x12\x12\n\nimage_name\x18\x01 \x01(\t\x1a\xf6\x01\n\x08Language\x12\x37\n\x06python\x18\x01 \x01(\x0b\x32%.format.Lambda.Parser.Language.PythonH\x00\x1a\xa4\x01\n\x06Python\x12\x13\n\x0bpip_package\x18\x01 \x03(\t\x12\x36\n\x02v2\x18\x02 \x01(\x0b\x32(.format.Lambda.Parser.Language.Python.V2H\x00\x12\x36\n\x02v3\x18\x03 \x01(\x0b\x32(.format.Lambda.Parser.Language.Python.V3H\x00\x1a\x04\n\x02V2\x1a\x04\n\x02V3B\t\n\x07versionB\n\n\x08language\x1a\x13\n\x04\x46ile\x12\x0b\n\x03uri\x18\x01 \x01(\t\x1a\x80\x01\n\x04\x43ode\x12\x30\n\x08language\x18\x01 \x01(\x0b\x32\x1e.format.Lambda.Parser.Language\x12\x10\n\x06inline\x18\x02 \x01(\tH\x00\x12*\n\x04\x66ile\x18\x03 \x01(\x0b\x32\x1a.format.Lambda.Parser.FileH\x00\x42\x08\n\x06sourceB\x0c\n\nexecutable\"\xff\x04\n\x03Xsv\x12$\n\x07options\x18\x01 \x01(\x0b\x32\x13.format.Xsv.Options\x1a[\n\x07Options\x12\x11\n\tdelimiter\x18\x01 \x01(\t\x12\x16\n\x0einclude_header\x18\x02 \x01(\x08\x12%\n\x0bline_ending\x18\x03 \x01(\x0b\x32\x10.text.LineEnding\x1a]\n\tFormatter\x12\x11\n\tdelimiter\x18\x01 \x01(\t\x12\x16\n\x0einclude_header\x18\x02 \x01(\x08\x12%\n\x0bline_ending\x18\x03 \x01(\x0b\x32\x10.text.LineEnding\x1a\x95\x03\n\x06Parser\x12 \n\x07\x63olumns\x18\n \x01(\x0b\x32\x0f.format.Columns\x12\x16\n\x0e\x63omment_prefix\x18\x01 \x01(\t\x12\x11\n\tdelimiter\x18\x02 \x01(\t\x12\x18\n\x10\x65scape_character\x18\x03 \x01(\t\x12\x19\n\x11header_line_count\x18\x04 \x01(\x03\x12\x16\n\x0emax_warn_count\x18\x0b \x01(\x03\x12\x17\n\x0fquote_character\x18\x08 \x01(\t\x12\x44\n\x12headers_to_columns\x18\x05 \x03(\x0b\x32(.format.Xsv.Parser.HeadersToColumnsEntry\x12\x17\n\x0fmax_error_count\x18\x06 \x01(\x03\x12#\n\x1bmax_error_percentage_points\x18\x07 \x01(\x01\x12\x1b\n\x06schema\x18\t \x01(\x0b\x32\x0b.schema.Map\x1a\x37\n\x15HeadersToColumnsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8a\x08\n\x07\x43olumns\x12\x44\n\x16parsing_specifications\x18\x01 \x03(\x0b\x32$.format.Columns.ParsingSpecification\x1a\xb8\x07\n\x14ParsingSpecification\x12\x13\n\x0bsource_name\x18\x01 \x01(\t\x12\x13\n\x0btarget_name\x18\x02 \x01(\t\x12\x17\n\x0fnull_is_invalid\x18\x03 \x01(\x08\x12Y\n\x16invalid_value_handling\x18\x04 \x01(\x0b\x32\x39.format.Columns.ParsingSpecification.InvalidValueHandling\x12)\n\x07\x62oolean\x18\x05 \x01(\x0b\x32\x16.schema.Boolean.ParserH\x00\x12#\n\x04\x64\x61te\x18\x06 \x01(\x0b\x32\x13.schema.Date.ParserH\x00\x12\'\n\x06\x64ouble\x18\x08 \x01(\x0b\x32\x15.schema.Double.ParserH\x00\x12%\n\x05\x66loat\x18\t \x01(\x0b\x32\x14.schema.Float.ParserH\x00\x12!\n\x03int\x18\n \x01(\x0b\x32\x12.schema.Int.ParserH\x00\x12#\n\x04long\x18\x0b \x01(\x0b\x32\x13.schema.Long.ParserH\x00\x12\'\n\x06string\x18\x0c \x01(\x0b\x32\x15.schema.String.ParserH\x00\x12-\n\ttimestamp\x18\r \x01(\x0b\x32\x18.schema.Timestamp.ParserH\x00\x1a\x9f\x03\n\x14InvalidValueHandling\x12\x15\n\rsuppress_warn\x18\x01 \x01(\x08\x12[\n\x0buse_default\x18\x02 \x01(\x0b\x32\x44.format.Columns.ParsingSpecification.InvalidValueHandling.UseDefaultH\x00\x12[\n\x0bskip_record\x18\x03 \x01(\x0b\x32\x44.format.Columns.ParsingSpecification.InvalidValueHandling.SkipRecordH\x00\x12N\n\x04\x66\x61il\x18\x04 \x01(\x0b\x32>.format.Columns.ParsingSpecification.InvalidValueHandling.FailH\x00\x1a<\n\nUseDefault\x12\x17\n\rdefault_value\x18\x01 \x01(\tH\x00\x42\x15\n\x13maybe_default_value\x1a\x0c\n\nSkipRecord\x1a\x06\n\x04\x46\x61ilB\x12\n\x10on_invalid_valueB\x0f\n\rschema_parserJ\x04\x08\x07\x10\x08R\tdate_time\"\xdc\x01\n\x06\x46ormat\x12\x1c\n\x04\x61vro\x18\x01 \x01(\x0b\x32\x0c.format.AvroH\x00\x12\x1c\n\x04grok\x18\x02 \x01(\x0b\x32\x0c.format.GrokH\x00\x12\x1c\n\x04json\x18\x03 \x01(\x0b\x32\x0c.format.JsonH\x00\x12\"\n\x07parquet\x18\x04 \x01(\x0b\x32\x0f.format.ParquetH\x00\x12\x1a\n\x03xsv\x18\x06 \x01(\x0b\x32\x0b.format.XsvH\x00\x12\x1a\n\x03orc\x18\x07 \x01(\x0b\x32\x0b.format.OrcH\x00\x42\x08\n\x06\x66ormatJ\x04\x08\x05\x10\x06R\x0cuser_definedb\x06proto3'
+  serialized_pb=b'\n!ascend/protos/format/format.proto\x12\x06\x66ormat\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/schema/schema.proto\x1a\x1d\x61scend/protos/text/text.proto\":\n\x04\x41vro\x1a\x0b\n\tFormatter\x1a%\n\x06Parser\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\"!\n\x04Grok\x1a\x19\n\x06Parser\x12\x0f\n\x07pattern\x18\x01 \x01(\t\"\xe8\x01\n\x04Json\x1a\x0b\n\tFormatter\x1a\xd2\x01\n\x06Parser\x12 \n\x07\x63olumns\x18\x06 \x01(\x0b\x32\x0f.format.Columns\x12\x16\n\x0e\x66latten_nested\x18\x05 \x01(\x08\x12\x16\n\x0emax_warn_count\x18\x07 \x01(\x03\x12\x1b\n\x13namespace_delimiter\x18\x04 \x01(\t\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\x12\x17\n\x0fmax_error_count\x18\x02 \x01(\x05\x12#\n\x1bmax_error_percentage_points\x18\x03 \x01(\x01\"\x12\n\x03Orc\x1a\x0b\n\tFormatter\"\xde\x01\n\x07Parquet\x1a\x0b\n\tFormatter\x1a\xc5\x01\n\x06Parser\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\x12\x1b\n\x13namespace_delimiter\x18\x02 \x01(\t\x12,\n$require_no_missing_fields_in_parquet\x18\x03 \x01(\x08\x12*\n\"require_no_extra_fields_in_parquet\x18\x04 \x01(\x08\x12\'\n\x1frequire_field_type_match_schema\x18\x05 \x01(\x08\"\x91\x05\n\x06Lambda\x1a\x0b\n\tFormatter\x1a\xf9\x04\n\x06Parser\x12\x39\n\x0c\x64ocker_image\x18\x01 \x01(\x0b\x32!.format.Lambda.Parser.DockerImageH\x00\x12*\n\x04\x63ode\x18\x02 \x01(\x0b\x32\x1a.format.Lambda.Parser.CodeH\x00\x12\x10\n\x08metadata\x18\x03 \x01(\t\x12\x1b\n\x06schema\x18\x04 \x01(\x0b\x32\x0b.schema.Map\x12\x17\n\x0fmax_error_count\x18\x05 \x01(\x05\x1a!\n\x0b\x44ockerImage\x12\x12\n\nimage_name\x18\x01 \x01(\t\x1a\xf6\x01\n\x08Language\x12\x37\n\x06python\x18\x01 \x01(\x0b\x32%.format.Lambda.Parser.Language.PythonH\x00\x1a\xa4\x01\n\x06Python\x12\x13\n\x0bpip_package\x18\x01 \x03(\t\x12\x36\n\x02v2\x18\x02 \x01(\x0b\x32(.format.Lambda.Parser.Language.Python.V2H\x00\x12\x36\n\x02v3\x18\x03 \x01(\x0b\x32(.format.Lambda.Parser.Language.Python.V3H\x00\x1a\x04\n\x02V2\x1a\x04\n\x02V3B\t\n\x07versionB\n\n\x08language\x1a\x13\n\x04\x46ile\x12\x0b\n\x03uri\x18\x01 \x01(\t\x1a\x80\x01\n\x04\x43ode\x12\x30\n\x08language\x18\x01 \x01(\x0b\x32\x1e.format.Lambda.Parser.Language\x12\x10\n\x06inline\x18\x02 \x01(\tH\x00\x12*\n\x04\x66ile\x18\x03 \x01(\x0b\x32\x1a.format.Lambda.Parser.FileH\x00\x42\x08\n\x06sourceB\x0c\n\nexecutable\"\xff\x04\n\x03Xsv\x12$\n\x07options\x18\x01 \x01(\x0b\x32\x13.format.Xsv.Options\x1a[\n\x07Options\x12\x11\n\tdelimiter\x18\x01 \x01(\t\x12\x16\n\x0einclude_header\x18\x02 \x01(\x08\x12%\n\x0bline_ending\x18\x03 \x01(\x0b\x32\x10.text.LineEnding\x1a]\n\tFormatter\x12\x11\n\tdelimiter\x18\x01 \x01(\t\x12\x16\n\x0einclude_header\x18\x02 \x01(\x08\x12%\n\x0bline_ending\x18\x03 \x01(\x0b\x32\x10.text.LineEnding\x1a\x95\x03\n\x06Parser\x12 \n\x07\x63olumns\x18\n \x01(\x0b\x32\x0f.format.Columns\x12\x16\n\x0e\x63omment_prefix\x18\x01 \x01(\t\x12\x11\n\tdelimiter\x18\x02 \x01(\t\x12\x18\n\x10\x65scape_character\x18\x03 \x01(\t\x12\x19\n\x11header_line_count\x18\x04 \x01(\x03\x12\x16\n\x0emax_warn_count\x18\x0b \x01(\x03\x12\x17\n\x0fquote_character\x18\x08 \x01(\t\x12\x44\n\x12headers_to_columns\x18\x05 \x03(\x0b\x32(.format.Xsv.Parser.HeadersToColumnsEntry\x12\x17\n\x0fmax_error_count\x18\x06 \x01(\x03\x12#\n\x1bmax_error_percentage_points\x18\x07 \x01(\x01\x12\x1b\n\x06schema\x18\t \x01(\x0b\x32\x0b.schema.Map\x1a\x37\n\x15HeadersToColumnsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8a\x08\n\x07\x43olumns\x12\x44\n\x16parsing_specifications\x18\x01 \x03(\x0b\x32$.format.Columns.ParsingSpecification\x1a\xb8\x07\n\x14ParsingSpecification\x12\x13\n\x0bsource_name\x18\x01 \x01(\t\x12\x13\n\x0btarget_name\x18\x02 \x01(\t\x12\x17\n\x0fnull_is_invalid\x18\x03 \x01(\x08\x12Y\n\x16invalid_value_handling\x18\x04 \x01(\x0b\x32\x39.format.Columns.ParsingSpecification.InvalidValueHandling\x12)\n\x07\x62oolean\x18\x05 \x01(\x0b\x32\x16.schema.Boolean.ParserH\x00\x12#\n\x04\x64\x61te\x18\x06 \x01(\x0b\x32\x13.schema.Date.ParserH\x00\x12\'\n\x06\x64ouble\x18\x08 \x01(\x0b\x32\x15.schema.Double.ParserH\x00\x12%\n\x05\x66loat\x18\t \x01(\x0b\x32\x14.schema.Float.ParserH\x00\x12!\n\x03int\x18\n \x01(\x0b\x32\x12.schema.Int.ParserH\x00\x12#\n\x04long\x18\x0b \x01(\x0b\x32\x13.schema.Long.ParserH\x00\x12\'\n\x06string\x18\x0c \x01(\x0b\x32\x15.schema.String.ParserH\x00\x12-\n\ttimestamp\x18\r \x01(\x0b\x32\x18.schema.Timestamp.ParserH\x00\x1a\x9f\x03\n\x14InvalidValueHandling\x12\x15\n\rsuppress_warn\x18\x01 \x01(\x08\x12[\n\x0buse_default\x18\x02 \x01(\x0b\x32\x44.format.Columns.ParsingSpecification.InvalidValueHandling.UseDefaultH\x00\x12[\n\x0bskip_record\x18\x03 \x01(\x0b\x32\x44.format.Columns.ParsingSpecification.InvalidValueHandling.SkipRecordH\x00\x12N\n\x04\x66\x61il\x18\x04 \x01(\x0b\x32>.format.Columns.ParsingSpecification.InvalidValueHandling.FailH\x00\x1a<\n\nUseDefault\x12\x17\n\rdefault_value\x18\x01 \x01(\tH\x00\x42\x15\n\x13maybe_default_value\x1a\x0c\n\nSkipRecord\x1a\x06\n\x04\x46\x61ilB\x12\n\x10on_invalid_valueB\x0f\n\rschema_parserJ\x04\x08\x07\x10\x08R\tdate_time\"\xdc\x01\n\x06\x46ormat\x12\x1c\n\x04\x61vro\x18\x01 \x01(\x0b\x32\x0c.format.AvroH\x00\x12\x1c\n\x04grok\x18\x02 \x01(\x0b\x32\x0c.format.GrokH\x00\x12\x1c\n\x04json\x18\x03 \x01(\x0b\x32\x0c.format.JsonH\x00\x12\"\n\x07parquet\x18\x04 \x01(\x0b\x32\x0f.format.ParquetH\x00\x12\x1a\n\x03xsv\x18\x06 \x01(\x0b\x32\x0b.format.XsvH\x00\x12\x1a\n\x03orc\x18\x07 \x01(\x0b\x32\x0b.format.OrcH\x00\x42\x08\n\x06\x66ormatJ\x04\x08\x05\x10\x06R\x0cuser_definedb\x06proto3'
   ,
   dependencies=[ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,ascend_dot_protos_dot_text_dot_text__pb2.DESCRIPTOR,])
 
@@ -301,36 +301,6 @@ _ORC_FORMATTER = _descriptor.Descriptor(
   serialized_end=165,
 )
 
-_ORC_PARSER = _descriptor.Descriptor(
-  name='Parser',
-  full_name='format.Orc.Parser',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='schema', full_name='format.Orc.Parser.schema', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=167,
-  serialized_end=204,
-)
-
 _ORC = _descriptor.Descriptor(
   name='Orc',
   full_name='format.Orc',
@@ -341,7 +311,7 @@ _ORC = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_ORC_FORMATTER, _ORC_PARSER, ],
+  nested_types=[_ORC_FORMATTER, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -351,7 +321,7 @@ _ORC = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=476,
-  serialized_end=533,
+  serialized_end=494,
 )
 
 
@@ -432,8 +402,8 @@ _PARQUET_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=561,
-  serialized_end=758,
+  serialized_start=522,
+  serialized_end=719,
 )
 
 _PARQUET = _descriptor.Descriptor(
@@ -455,8 +425,8 @@ _PARQUET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=536,
-  serialized_end=758,
+  serialized_start=497,
+  serialized_end=719,
 )
 
 
@@ -509,8 +479,8 @@ _LAMBDA_PARSER_DOCKERIMAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=970,
-  serialized_end=1003,
+  serialized_start=931,
+  serialized_end=964,
 )
 
 _LAMBDA_PARSER_LANGUAGE_PYTHON_V2 = _descriptor.Descriptor(
@@ -532,8 +502,8 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON_V2 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1219,
-  serialized_end=1223,
+  serialized_start=1180,
+  serialized_end=1184,
 )
 
 _LAMBDA_PARSER_LANGUAGE_PYTHON_V3 = _descriptor.Descriptor(
@@ -555,8 +525,8 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON_V3 = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1225,
-  serialized_end=1229,
+  serialized_start=1186,
+  serialized_end=1190,
 )
 
 _LAMBDA_PARSER_LANGUAGE_PYTHON = _descriptor.Descriptor(
@@ -602,8 +572,8 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON = _descriptor.Descriptor(
       name='version', full_name='format.Lambda.Parser.Language.Python.version',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1076,
-  serialized_end=1240,
+  serialized_start=1037,
+  serialized_end=1201,
 )
 
 _LAMBDA_PARSER_LANGUAGE = _descriptor.Descriptor(
@@ -635,8 +605,8 @@ _LAMBDA_PARSER_LANGUAGE = _descriptor.Descriptor(
       name='language', full_name='format.Lambda.Parser.Language.language',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1006,
-  serialized_end=1252,
+  serialized_start=967,
+  serialized_end=1213,
 )
 
 _LAMBDA_PARSER_FILE = _descriptor.Descriptor(
@@ -665,8 +635,8 @@ _LAMBDA_PARSER_FILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1254,
-  serialized_end=1273,
+  serialized_start=1215,
+  serialized_end=1234,
 )
 
 _LAMBDA_PARSER_CODE = _descriptor.Descriptor(
@@ -712,8 +682,8 @@ _LAMBDA_PARSER_CODE = _descriptor.Descriptor(
       name='source', full_name='format.Lambda.Parser.Code.source',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1276,
-  serialized_end=1404,
+  serialized_start=1237,
+  serialized_end=1365,
 )
 
 _LAMBDA_PARSER = _descriptor.Descriptor(
@@ -773,8 +743,8 @@ _LAMBDA_PARSER = _descriptor.Descriptor(
       name='executable', full_name='format.Lambda.Parser.executable',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=785,
-  serialized_end=1418,
+  serialized_start=746,
+  serialized_end=1379,
 )
 
 _LAMBDA = _descriptor.Descriptor(
@@ -796,8 +766,8 @@ _LAMBDA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=761,
-  serialized_end=1418,
+  serialized_start=722,
+  serialized_end=1379,
 )
 
 
@@ -841,8 +811,8 @@ _XSV_OPTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1466,
-  serialized_end=1557,
+  serialized_start=1427,
+  serialized_end=1518,
 )
 
 _XSV_FORMATTER = _descriptor.Descriptor(
@@ -885,8 +855,8 @@ _XSV_FORMATTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1559,
-  serialized_end=1652,
+  serialized_start=1520,
+  serialized_end=1613,
 )
 
 _XSV_PARSER_HEADERSTOCOLUMNSENTRY = _descriptor.Descriptor(
@@ -922,8 +892,8 @@ _XSV_PARSER_HEADERSTOCOLUMNSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2005,
-  serialized_end=2060,
+  serialized_start=1966,
+  serialized_end=2021,
 )
 
 _XSV_PARSER = _descriptor.Descriptor(
@@ -1022,8 +992,8 @@ _XSV_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1655,
-  serialized_end=2060,
+  serialized_start=1616,
+  serialized_end=2021,
 )
 
 _XSV = _descriptor.Descriptor(
@@ -1052,8 +1022,8 @@ _XSV = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1421,
-  serialized_end=2060,
+  serialized_start=1382,
+  serialized_end=2021,
 )
 
 
@@ -1086,8 +1056,8 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_USEDEFAULT = _descriptor.Desc
       name='maybe_default_value', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.UseDefault.maybe_default_value',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=2961,
-  serialized_end=3021,
+  serialized_start=2922,
+  serialized_end=2982,
 )
 
 _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_SKIPRECORD = _descriptor.Descriptor(
@@ -1109,8 +1079,8 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_SKIPRECORD = _descriptor.Desc
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3023,
-  serialized_end=3035,
+  serialized_start=2984,
+  serialized_end=2996,
 )
 
 _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_FAIL = _descriptor.Descriptor(
@@ -1132,8 +1102,8 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_FAIL = _descriptor.Descriptor
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3037,
-  serialized_end=3043,
+  serialized_start=2998,
+  serialized_end=3004,
 )
 
 _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING = _descriptor.Descriptor(
@@ -1186,8 +1156,8 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING = _descriptor.Descriptor(
       name='on_invalid_value', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.on_invalid_value',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=2648,
-  serialized_end=3063,
+  serialized_start=2609,
+  serialized_end=3024,
 )
 
 _COLUMNS_PARSINGSPECIFICATION = _descriptor.Descriptor(
@@ -1296,8 +1266,8 @@ _COLUMNS_PARSINGSPECIFICATION = _descriptor.Descriptor(
       name='schema_parser', full_name='format.Columns.ParsingSpecification.schema_parser',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=2145,
-  serialized_end=3097,
+  serialized_start=2106,
+  serialized_end=3058,
 )
 
 _COLUMNS = _descriptor.Descriptor(
@@ -1326,8 +1296,8 @@ _COLUMNS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2063,
-  serialized_end=3097,
+  serialized_start=2024,
+  serialized_end=3058,
 )
 
 
@@ -1395,8 +1365,8 @@ _FORMAT = _descriptor.Descriptor(
       name='format', full_name='format.Format.format',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=3100,
-  serialized_end=3320,
+  serialized_start=3061,
+  serialized_end=3281,
 )
 
 _AVRO_FORMATTER.containing_type = _AVRO
@@ -1408,8 +1378,6 @@ _JSON_PARSER.fields_by_name['columns'].message_type = _COLUMNS
 _JSON_PARSER.fields_by_name['schema'].message_type = ascend_dot_protos_dot_schema_dot_schema__pb2._MAP
 _JSON_PARSER.containing_type = _JSON
 _ORC_FORMATTER.containing_type = _ORC
-_ORC_PARSER.fields_by_name['schema'].message_type = ascend_dot_protos_dot_schema_dot_schema__pb2._MAP
-_ORC_PARSER.containing_type = _ORC
 _PARQUET_FORMATTER.containing_type = _PARQUET
 _PARQUET_PARSER.fields_by_name['schema'].message_type = ascend_dot_protos_dot_schema_dot_schema__pb2._MAP
 _PARQUET_PARSER.containing_type = _PARQUET
@@ -1619,20 +1587,12 @@ Orc = _reflection.GeneratedProtocolMessageType('Orc', (_message.Message,), {
     # @@protoc_insertion_point(class_scope:format.Orc.Formatter)
     })
   ,
-
-  'Parser' : _reflection.GeneratedProtocolMessageType('Parser', (_message.Message,), {
-    'DESCRIPTOR' : _ORC_PARSER,
-    '__module__' : 'ascend.protos.format.format_pb2'
-    # @@protoc_insertion_point(class_scope:format.Orc.Parser)
-    })
-  ,
   'DESCRIPTOR' : _ORC,
   '__module__' : 'ascend.protos.format.format_pb2'
   # @@protoc_insertion_point(class_scope:format.Orc)
   })
 _sym_db.RegisterMessage(Orc)
 _sym_db.RegisterMessage(Orc.Formatter)
-_sym_db.RegisterMessage(Orc.Parser)
 
 Parquet = _reflection.GeneratedProtocolMessageType('Parquet', (_message.Message,), {
 
