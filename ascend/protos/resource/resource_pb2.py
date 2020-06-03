@@ -26,7 +26,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='resource',
   syntax='proto3',
   serialized_options=b'H\001',
-  serialized_pb=b'\n%ascend/protos/resource/resource.proto\x12\x08resource\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x35\x61scend/protos/content_encoding/content_encoding.proto\x1a\x19\x61scend/protos/io/io.proto\x1a%ascend/protos/operator/operator.proto\x1a#ascend/protos/pattern/pattern.proto\x1a!ascend/protos/schema/schema.proto\";\n\x0b\x45nvironment\x12,\n\rdata_services\x18\x01 \x03(\x0b\x32\x15.resource.DataService\"3\n\x0b\x43redentials\x12$\n\x0b\x63redentials\x18\x01 \x03(\x0b\x32\x0f.io.Credentials\"\x9e\x02\n\x08Resource\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12-\n\x0c\x64\x61ta_service\x18\x04 \x01(\x0b\x32\x15.resource.DataServiceH\x00\x12&\n\x08\x64\x61taflow\x18\x05 \x01(\x0b\x32\x12.resource.DataflowH\x00\x12 \n\x05group\x18\x06 \x01(\x0b\x32\x0f.resource.GroupH\x00\x12\'\n\tdata_feed\x18\x07 \x01(\x0b\x32\x12.resource.DataFeedH\x00\x12(\n\tcomponent\x18\x08 \x01(\x0b\x32\x13.resource.ComponentH\x00\x12\x0f\n\x07version\x18\n \x01(\x05\x42\x06\n\x04type\"\x8b\x01\n\x0b\x44\x61taService\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12&\n\ndata_feeds\x18\x05 \x03(\x0b\x32\x12.resource.DataFeed\x12%\n\tdataflows\x18\x06 \x03(\x0b\x32\x12.resource.Dataflow\"\x83\x01\n\x08\x44\x61taflow\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x1f\n\x06groups\x18\x06 \x03(\x0b\x32\x0f.resource.Group\x12\'\n\ncomponents\x18\x07 \x03(\x0b\x32\x13.resource.Component\"\xe9\x01\n\tComponent\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x31\n\x0eread_connector\x18\x04 \x01(\x0b\x32\x17.resource.ReadConnectorH\x00\x12(\n\ttransform\x18\x05 \x01(\x0b\x32\x13.resource.TransformH\x00\x12\x33\n\x0fwrite_connector\x18\x06 \x01(\x0b\x32\x18.resource.WriteConnectorH\x00\x12\x10\n\x08group_id\x18\x0c \x01(\tB\t\n\x07\x64\x65tails\"6\n\x05Group\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"\xc2\x03\n\rReadConnector\x12!\n\x07pattern\x18\x01 \x01(\x0b\x32\x10.pattern.Pattern\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12.\n\x10updatePeriodical\x18\x03 \x01(\x0b\x32\x14.resource.Periodical\x12<\n\x18last_manual_refresh_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\x11\x61ssigned_priority\x18\x05 \x01(\x0b\x32\x12.resource.Priority\x12\x32\n\x05\x62ytes\x18\x06 \x01(\x0b\x32!.resource.ReadConnector.FromBytesH\x00\x12\x36\n\x07records\x18\x07 \x01(\x0b\x32#.resource.ReadConnector.FromRecordsH\x00\x1a/\n\tFromBytes\x12\"\n\x06parser\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x1a*\n\x0b\x46romRecords\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.MapB\x06\n\x04\x66rom\"s\n\tTransform\x12\x11\n\tinput_ids\x18\x01 \x03(\t\x12$\n\x08operator\x18\x02 \x01(\x0b\x32\x12.operator.Operator\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\"\xdf\x02\n\x0eWriteConnector\x12\x10\n\x08input_id\x18\x01 \x01(\t\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\x12\x31\n\x05\x62ytes\x18\x04 \x01(\x0b\x32 .resource.WriteConnector.ToBytesH\x00\x12\x35\n\x07records\x18\x05 \x01(\x0b\x32\".resource.WriteConnector.ToRecordsH\x00\x1am\n\x07ToBytes\x12%\n\tformatter\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x12;\n\x10\x63ontent_encoding\x18\x02 \x01(\x0b\x32!.content_encoding.ContentEncoding\x1a\x0b\n\tToRecordsB\x04\n\x02to\"\xc9\x01\n\x08\x44\x61taFeed\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08input_id\x18\x04 \x01(\t\x12+\n\x07sharing\x18\x05 \x01(\x0b\x32\x1a.resource.DataFeed.Sharing\x12\x10\n\x08group_id\x18\x06 \x01(\t\x1a=\n\x07Sharing\x12\x15\n\rdata_services\x18\x01 \x03(\t\x12\x0b\n\x03\x61ll\x18\x02 \x01(\x08\x12\x0e\n\x06hidden\x18\x03 \x01(\x08\"b\n\nPeriodical\x12)\n\x06period\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12)\n\x06offset\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"8\n\x08Priority\x12,\n\x06weight\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.DoubleValueB\x02H\x01\x62\x06proto3'
+  serialized_pb=b'\n%ascend/protos/resource/resource.proto\x12\x08resource\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x35\x61scend/protos/content_encoding/content_encoding.proto\x1a\x19\x61scend/protos/io/io.proto\x1a%ascend/protos/operator/operator.proto\x1a#ascend/protos/pattern/pattern.proto\x1a!ascend/protos/schema/schema.proto\";\n\x0b\x45nvironment\x12,\n\rdata_services\x18\x01 \x03(\x0b\x32\x15.resource.DataService\"3\n\x0b\x43redentials\x12$\n\x0b\x63redentials\x18\x01 \x03(\x0b\x32\x0f.io.Credentials\"\x9e\x02\n\x08Resource\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12-\n\x0c\x64\x61ta_service\x18\x04 \x01(\x0b\x32\x15.resource.DataServiceH\x00\x12&\n\x08\x64\x61taflow\x18\x05 \x01(\x0b\x32\x12.resource.DataflowH\x00\x12 \n\x05group\x18\x06 \x01(\x0b\x32\x0f.resource.GroupH\x00\x12\'\n\tdata_feed\x18\x07 \x01(\x0b\x32\x12.resource.DataFeedH\x00\x12(\n\tcomponent\x18\x08 \x01(\x0b\x32\x13.resource.ComponentH\x00\x12\x0f\n\x07version\x18\n \x01(\x05\x42\x06\n\x04type\"\x8b\x01\n\x0b\x44\x61taService\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12&\n\ndata_feeds\x18\x05 \x03(\x0b\x32\x12.resource.DataFeed\x12%\n\tdataflows\x18\x06 \x03(\x0b\x32\x12.resource.Dataflow\"\x83\x01\n\x08\x44\x61taflow\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x1f\n\x06groups\x18\x06 \x03(\x0b\x32\x0f.resource.Group\x12\'\n\ncomponents\x18\x07 \x03(\x0b\x32\x13.resource.Component\"\xe9\x01\n\tComponent\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x31\n\x0eread_connector\x18\x04 \x01(\x0b\x32\x17.resource.ReadConnectorH\x00\x12(\n\ttransform\x18\x05 \x01(\x0b\x32\x13.resource.TransformH\x00\x12\x33\n\x0fwrite_connector\x18\x06 \x01(\x0b\x32\x18.resource.WriteConnectorH\x00\x12\x10\n\x08group_id\x18\x0c \x01(\tB\t\n\x07\x64\x65tails\"6\n\x05Group\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"\xfa\x03\n\rReadConnector\x12!\n\x07pattern\x18\x01 \x01(\x0b\x32\x10.pattern.Pattern\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12.\n\x10updatePeriodical\x18\x03 \x01(\x0b\x32\x14.resource.Periodical\x12<\n\x18last_manual_refresh_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\x11\x61ssigned_priority\x18\x05 \x01(\x0b\x32\x12.resource.Priority\x12\x36\n\x11\x61ggregation_limit\x18\x08 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x32\n\x05\x62ytes\x18\x06 \x01(\x0b\x32!.resource.ReadConnector.FromBytesH\x00\x12\x36\n\x07records\x18\x07 \x01(\x0b\x32#.resource.ReadConnector.FromRecordsH\x00\x1a/\n\tFromBytes\x12\"\n\x06parser\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x1a*\n\x0b\x46romRecords\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.MapB\x06\n\x04\x66rom\"s\n\tTransform\x12\x11\n\tinput_ids\x18\x01 \x03(\t\x12$\n\x08operator\x18\x02 \x01(\x0b\x32\x12.operator.Operator\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\"\xdf\x02\n\x0eWriteConnector\x12\x10\n\x08input_id\x18\x01 \x01(\t\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\x12\x31\n\x05\x62ytes\x18\x04 \x01(\x0b\x32 .resource.WriteConnector.ToBytesH\x00\x12\x35\n\x07records\x18\x05 \x01(\x0b\x32\".resource.WriteConnector.ToRecordsH\x00\x1am\n\x07ToBytes\x12%\n\tformatter\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x12;\n\x10\x63ontent_encoding\x18\x02 \x01(\x0b\x32!.content_encoding.ContentEncoding\x1a\x0b\n\tToRecordsB\x04\n\x02to\"\xc9\x01\n\x08\x44\x61taFeed\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08input_id\x18\x04 \x01(\t\x12+\n\x07sharing\x18\x05 \x01(\x0b\x32\x1a.resource.DataFeed.Sharing\x12\x10\n\x08group_id\x18\x06 \x01(\t\x1a=\n\x07Sharing\x12\x15\n\rdata_services\x18\x01 \x03(\t\x12\x0b\n\x03\x61ll\x18\x02 \x01(\x08\x12\x0e\n\x06hidden\x18\x03 \x01(\x08\"b\n\nPeriodical\x12)\n\x06period\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12)\n\x06offset\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"8\n\x08Priority\x12,\n\x06weight\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.DoubleValueB\x02H\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,ascend_dot_protos_dot_content__encoding_dot_content__encoding__pb2.DESCRIPTOR,ascend_dot_protos_dot_io_dot_io__pb2.DESCRIPTOR,ascend_dot_protos_dot_operator_dot_operator__pb2.DESCRIPTOR,ascend_dot_protos_dot_pattern_dot_pattern__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,])
 
@@ -450,8 +450,8 @@ _READCONNECTOR_FROMBYTES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1664,
-  serialized_end=1711,
+  serialized_start=1720,
+  serialized_end=1767,
 )
 
 _READCONNECTOR_FROMRECORDS = _descriptor.Descriptor(
@@ -480,8 +480,8 @@ _READCONNECTOR_FROMRECORDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1713,
-  serialized_end=1755,
+  serialized_start=1769,
+  serialized_end=1811,
 )
 
 _READCONNECTOR = _descriptor.Descriptor(
@@ -527,14 +527,21 @@ _READCONNECTOR = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='bytes', full_name='resource.ReadConnector.bytes', index=5,
+      name='aggregation_limit', full_name='resource.ReadConnector.aggregation_limit', index=5,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='bytes', full_name='resource.ReadConnector.bytes', index=6,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='records', full_name='resource.ReadConnector.records', index=6,
+      name='records', full_name='resource.ReadConnector.records', index=7,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -556,7 +563,7 @@ _READCONNECTOR = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=1313,
-  serialized_end=1763,
+  serialized_end=1819,
 )
 
 
@@ -600,8 +607,8 @@ _TRANSFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1765,
-  serialized_end=1880,
+  serialized_start=1821,
+  serialized_end=1936,
 )
 
 
@@ -638,8 +645,8 @@ _WRITECONNECTOR_TOBYTES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2106,
-  serialized_end=2215,
+  serialized_start=2162,
+  serialized_end=2271,
 )
 
 _WRITECONNECTOR_TORECORDS = _descriptor.Descriptor(
@@ -661,8 +668,8 @@ _WRITECONNECTOR_TORECORDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2217,
-  serialized_end=2228,
+  serialized_start=2273,
+  serialized_end=2284,
 )
 
 _WRITECONNECTOR = _descriptor.Descriptor(
@@ -722,8 +729,8 @@ _WRITECONNECTOR = _descriptor.Descriptor(
       name='to', full_name='resource.WriteConnector.to',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=1883,
-  serialized_end=2234,
+  serialized_start=1939,
+  serialized_end=2290,
 )
 
 
@@ -767,8 +774,8 @@ _DATAFEED_SHARING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2377,
-  serialized_end=2438,
+  serialized_start=2433,
+  serialized_end=2494,
 )
 
 _DATAFEED = _descriptor.Descriptor(
@@ -832,8 +839,8 @@ _DATAFEED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2237,
-  serialized_end=2438,
+  serialized_start=2293,
+  serialized_end=2494,
 )
 
 
@@ -870,8 +877,8 @@ _PERIODICAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2440,
-  serialized_end=2538,
+  serialized_start=2496,
+  serialized_end=2594,
 )
 
 
@@ -901,8 +908,8 @@ _PRIORITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2540,
-  serialized_end=2596,
+  serialized_start=2596,
+  serialized_end=2652,
 )
 
 _ENVIRONMENT.fields_by_name['data_services'].message_type = _DATASERVICE
@@ -952,6 +959,7 @@ _READCONNECTOR.fields_by_name['container'].message_type = ascend_dot_protos_dot_
 _READCONNECTOR.fields_by_name['updatePeriodical'].message_type = _PERIODICAL
 _READCONNECTOR.fields_by_name['last_manual_refresh_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _READCONNECTOR.fields_by_name['assigned_priority'].message_type = _PRIORITY
+_READCONNECTOR.fields_by_name['aggregation_limit'].message_type = google_dot_protobuf_dot_wrappers__pb2._INT64VALUE
 _READCONNECTOR.fields_by_name['bytes'].message_type = _READCONNECTOR_FROMBYTES
 _READCONNECTOR.fields_by_name['records'].message_type = _READCONNECTOR_FROMRECORDS
 _READCONNECTOR.oneofs_by_name['from'].fields.append(
