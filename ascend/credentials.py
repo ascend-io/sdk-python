@@ -64,8 +64,9 @@ class Credential:
     @staticmethod
     def from_entry(entry):
         name = entry.get('name')
-        proto = io_pb2.Credentials
-        ParseDict(entry.get('credential'), proto)
+        proto = io_pb2.Credentials()
+        d = entry.get('credential')
+        ParseDict(d, proto)
         return Credential(proto=proto, name=name)
 
     @property

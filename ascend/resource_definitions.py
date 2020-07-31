@@ -789,7 +789,7 @@ class ResourceSession:
                     if not isinstance(res_def, ComponentDef):
                         raise Exception(f"Only components should have creds: {res_def}: {t}")
                     needed_creds.update({
-                        k: (res_def.data_service_id, v) for k, v in t.snippet()
+                        k: (res_def.data_service_id, v) for k, v in t.snippet().items()
                     })
 
         # create credentials if necessary
@@ -840,7 +840,8 @@ class ResourceSession:
                 elif name in config_creds:
                     sh.info(f"CREATE CRED: {name}")
                     role = self.everyone_role(ds_id)
-                    created = self.client.create_credential(ds_id, role['uuid'], config_creds[name])
+                    to_create = credentials.Credential(proto=config_creds[name].proto, name=name)
+                    created = self.client.create_credential(ds_id, role['uuid'], to_create)
                     processed_creds[name] = created
                 else:
                     raise KeyError(f"unknown cred {name} must be provided or created")

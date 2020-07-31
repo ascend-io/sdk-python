@@ -160,7 +160,8 @@ class Base64(MapData):
         return base64.b64decode(data).decode('utf-8')
 
 
-def apply_creds(cont, typ, cred_id, creds):
+def apply_creds(cont, typ, orig_cred_id, creds):
+    cred_id = orig_cred_id['value']
     sh.debug(f'apply cred: {cred_id}')
     if cred_id in creds:
         cred = creds[cred_id]
@@ -168,6 +169,7 @@ def apply_creds(cont, typ, cred_id, creds):
             raise ValueError(f'Wrong type for {cred_id} '
                              f'(expected {typ}, but found {cred.credential_type})')
         cont['credentials'] = cred.credential_value
+        orig_cred_id['value'] = cred.credential_id
     else:
         sh.debug(f'{cred_id} not found in creds')
 
@@ -207,7 +209,7 @@ class BasicCreds(Creds):
                 typ: rd.get('credentials')
             }
             ParseDict(d, cred)
-            result[cred_id['value']] = credentials.Credential(cred)
+            result[cred_id['value']] = credentials.Credential(proto=cred, name=cred_id)
         if not staging and self.staging_type() is not None:
             self._snippet(result, self.staging_type(), rd['stagingContainer'], staging=True)
         return result
@@ -224,8 +226,7 @@ class BasicCreds(Creds):
     def _set_creds(self, rd, typ, creds, staging=False):
         cred_id = rd.get('credentialId', None)
         if cred_id is not None:
-            v = cred_id['value']
-            apply_creds(rd, typ, v, creds)
+            apply_creds(rd, typ, cred_id, creds)
             if not staging and self.staging_type() is not None:
                 self._set_creds(rd['stagingContainer'], self.staging_type(), creds, staging=True)
         else:
@@ -283,7 +284,7 @@ class FunctionCreds(Creds):
                 'function': config.get('credentials')
             }
             ParseDict(d, cred)
-            result[cred_id['value']] = credentials.Credential(cred)
+            result[cred_id['value']] = credentials.Credential(proto=cred, name=cred_id)
         return result
 
     def convert_to_name(self, rd, translate_cred):
@@ -293,7 +294,7 @@ class FunctionCreds(Creds):
     def set_creds(self, rd, creds):
         config = rd.get('credentialsConfiguration')
         if config is not None:
-            cred_id = config['id']['value']
+            cred_id = config['id']
             apply_creds(config, 'function', cred_id, creds)
         else:
             sh.debug(f'no credential config for {rd}')
@@ -323,7 +324,7 @@ class StagedCreds(Creds):
             }
             cred = io_pb2.Credentials()
             ParseDict(d, cred)
-            result[cred_id['value']] = credentials.Credential(cred)
+            result[cred_id['value']] = credentials.Credential(proto=cred, name=cred_id)
         staging_type = self.staging_type(rd)
         staging_creds = self.staging_reg[staging_type](rd, staging_type)
         staging_result = staging_creds.snippet()
@@ -334,9 +335,8 @@ class StagedCreds(Creds):
         cred_id_to_name(rd[self.staging_type], translate_cred)
 
     def set_creds(self, rd, creds):
-        id = rd.get('credentialId')
+        cred_id = rd.get('credentialId')
         if id is not None:
-            cred_id = id['value']
             apply_creds(rd, self.cred_type(), cred_id, creds)
             staging_type = self.staging_type(rd)
             staging_creds = self.staging_reg[staging_type](rd, staging_type)

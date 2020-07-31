@@ -209,10 +209,13 @@ class Client(object):
         ))
 
     def create_credential(self, org_id, role_id, cred: 'credentials.Credential'):
+        payload = cred.create_payload()
+        sh.debug(f'create payload: {payload}')
         resp = self.session.post(
             f'credentials/organizations/{org_id}/roles/{role_id}/vault',
             cred.create_payload(),
             service='authz')
+        sh.debug(f'create resp: {resp}')
         return Credential.from_entry(resp['data'])
 
     def lookup_credential_name(self, cred_id) -> str:
