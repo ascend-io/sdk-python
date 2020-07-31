@@ -23,8 +23,8 @@ ROOT_PATH = (None, None, None)
 
 
 class ResourceDefinition:
-    def __init__(self, resource, resource_type, resource_id):
-        self.resource = MessageToDict(resource)
+    def __init__(self, resource_dict, resource_type, resource_id):
+        self.resource = resource_dict
         self.transforms = transforms.Transforms.from_rd(self.resource)
         self.rd = self.resource[resource_type]
         self.resource_name = coalesce(self.resource.get('name'), self.rd.get('name'))
@@ -73,16 +73,17 @@ class ResourceDefinition:
         sh.debug(m)
         t = m.WhichOneof('type')
         typed_resource = getattr(m, t)
+        resource_dict = MessageToDict(m)
         if isinstance(typed_resource, resource_pb2.DataService):
-            resource = DataServiceDef(m, override_path)
+            resource = DataServiceDef(resource_dict, override_path)
         elif isinstance(typed_resource, resource_pb2.Dataflow):
-            resource = DataflowDef(m, override_path)
+            resource = DataflowDef(resource_dict, override_path)
         elif isinstance(typed_resource, resource_pb2.Component):
-            resource = ComponentDef(m, override_path)
+            resource = ComponentDef(resource_dict, override_path)
         elif isinstance(typed_resource, resource_pb2.Group):
-            resource = GroupDef(m, override_path)
+            resource = GroupDef(resource_dict, override_path)
         elif isinstance(typed_resource, resource_pb2.DataFeed):
-            resource = DataFeedDef(m, override_path)
+            resource = DataFeedDef(resource_dict, override_path)
         else:
             raise KeyError(f"Unrecognizable resource {m}")
         return resource
@@ -114,11 +115,14 @@ class ResourceDefinition:
     def all_transforms(self):
         return self.transforms + flatten(child.transforms for child in self.contained())
 
-    def dump(self, origin, options, translate_cred):
+    def dump(self, origin, options, translate_cred, creds_snippet):
         if not self.exportable:
             return
         target = self.get_dump_target(origin, options)
         self.do_dump(target, options.directory, translate_cred)
+        for transform in self.all_transforms():
+            if isinstance(transform, transforms.Creds):
+                creds_snippet.update(transform.snippet())
 
     def do_dump(self, target: Optional[str], directory, translate_cred):
         cleanup = []
@@ -131,7 +135,7 @@ class ResourceDefinition:
             directory=directory,
             parent_directory=parent_dir,
             res_def=self,
-            translate_cred=translate_cred) for t in self.transforms])
+            translate_cred=translate_cred) for t in self.all_transforms()])
         if len(fns) > 0:
             prefixes, post_fns = zip(*fns)
         else:
@@ -242,9 +246,9 @@ class WriteConnectorDef(ComponentDetailsDef):
 
 
 class DataFeedDef(ResourceDefinition):
-    def __init__(self, resource: resource_pb2.Resource, override_path):
+    def __init__(self, resource_dict, override_path):
         self.data_service_id, resource_id, _ = override_path
-        super().__init__(resource, 'dataFeed', resource_id)
+        super().__init__(resource_dict, 'dataFeed', resource_id)
         self.dataflow_id, self.input_id = self.rd['inputId'].split('.')
         self.exportable = False
 
@@ -301,9 +305,9 @@ class DataFeedDef(ResourceDefinition):
 
 
 class GroupDef(ResourceDefinition):
-    def __init__(self, resource: resource_pb2.Resource, override_path):
+    def __init__(self, resource_dict, override_path):
         self.data_service_id, self.dataflow_id, resource_id = override_path
-        super().__init__(resource, 'group', resource_id)
+        super().__init__(resource_dict, 'group', resource_id)
         self.exportable = False
 
     @property
@@ -352,9 +356,9 @@ class ComponentDef(ResourceDefinition):
         'writeConnector': WriteConnectorDef,
     }
 
-    def __init__(self, resource: resource_pb2.Resource, override_path):
+    def __init__(self, resource_dict, override_path):
         self.data_service_id, self.dataflow_id, resource_id = override_path
-        super().__init__(resource, 'component', resource_id)
+        super().__init__(resource_dict, 'component', resource_id)
         self.type, = filter(lambda t: t in self.rd, ComponentDef.TYPES)
         self.details = ComponentDef.TYPES[self.type](self.rd[self.type], self)
 
@@ -456,15 +460,9 @@ class DataflowDef(ResourceDefinition):
     def contained(self):
         res_defs = []
         for component in self.rd.get('components', []):
-            m = resource_pb2.Resource()
-            d = {'component': component}
-            ParseDict(d, m)
-            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
+            res_defs.append(ComponentDef({'component': component}, self.path))
         for group in self.rd.get('groups', []):
-            m = resource_pb2.Resource()
-            d = {'group': group}
-            ParseDict(d, m)
-            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
+            res_defs.append(GroupDef({'group': group}, self.path))
         return res_defs
 
     def dependencies(self):
@@ -502,15 +500,9 @@ class DataServiceDef(ResourceDefinition):
     def contained(self):
         res_defs = []
         for dataflow in self.rd.get('dataflows', []):
-            m = resource_pb2.Resource()
-            d = {'dataflow': dataflow}
-            ParseDict(d, m)
-            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
+            res_defs.append(DataflowDef({'dataflow': dataflow}, self.path))
         for data_feed in self.rd.get('dataFeeds', []):
-            m = resource_pb2.Resource()
-            d = {'dataFeed': data_feed}
-            ParseDict(d, m)
-            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
+            res_defs.append(DataFeedDef({'dataFeed': data_feed}, self.path))
         return res_defs
 
     def apply(self, rs: 'ResourceSession') -> Resource:
@@ -857,6 +849,7 @@ class ResourceSession:
             }
         except KeyError:
             pass
+        self.accessible_creds_loaded = True
 
     def translate_cred_id_to_name(self, cred_id) -> str:
         self.load_accessible_credentials()
@@ -898,16 +891,13 @@ class ResourceSession:
         if res_path.exportable:
             proto = res_path.resource.to_resource_proto(self, options)
             res_def = ResourceDefinition.from_resource_proto(proto, res_path.rd_path)
-            for transform in res_def.all_transforms():
-                if isinstance(transform, transforms.Creds):
-                    creds_snippet.update(transform.snippet())
             if options.directory:
                 assert options.output is not None, "output req'd for dir"
-                res_def.dump(origin, options, self.translate_cred_id_to_name)
+                res_def.dump(origin, options, self.translate_cred_id_to_name, creds_snippet)
             else:
                 # have integrated to root, time to dump
                 if origin == res_path:
-                    res_def.dump(origin, options, self.translate_cred_id_to_name)
+                    res_def.dump(origin, options, self.translate_cred_id_to_name, creds_snippet)
 
     def delete(self, res_path_str, options):
         res_path = ResourcePath.from_arg(res_path_str, self)

@@ -267,9 +267,10 @@ class RedshiftCreds(BasicCreds):
 
 
 def cred_id_to_name(rd, translate_cred, staging_type=None):
-    rd['credentialId']['value'] = translate_cred(rd['credentialId']['value'])
-    if staging_type is not None:
-        cred_id_to_name(rd['stagingContainer'], translate_cred)
+    if 'credentialId' in rd:
+        rd['credentialId']['value'] = translate_cred(rd['credentialId']['value'])
+        if staging_type is not None:
+            cred_id_to_name(rd['stagingContainer'], translate_cred)
 
 
 class FunctionCreds(Creds):
@@ -288,8 +289,9 @@ class FunctionCreds(Creds):
         return result
 
     def convert_to_name(self, rd, translate_cred):
-        config = self.rd.get('credentialsConfiguration')
-        config['id']['value'] = translate_cred(config['id']['value'])
+        config = rd.get('credentialsConfiguration')
+        if config is not None:
+            config['id']['value'] = translate_cred(config['id']['value'])
 
     def set_creds(self, rd, creds):
         config = rd.get('credentialsConfiguration')
@@ -332,7 +334,7 @@ class StagedCreds(Creds):
 
     def convert_to_name(self, rd, translate_cred):
         cred_id_to_name(rd, translate_cred)
-        cred_id_to_name(rd[self.staging_type], translate_cred)
+        cred_id_to_name(rd[self.staging_type(rd)], translate_cred)
 
     def set_creds(self, rd, creds):
         cred_id = rd.get('credentialId')
