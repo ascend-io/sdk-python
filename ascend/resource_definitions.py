@@ -746,7 +746,7 @@ class ResourceSession:
                     raise KeyError(f'Unable to load dependency {path}') from e
 
         res_defs_to_apply = [
-            self.path_to_def[path] for path in reversed(nx.topological_sort(g))
+            self.path_to_def[path] for path in reversed(list(nx.topological_sort(g)))
             if path in self.path_to_def
         ]
 
