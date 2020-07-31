@@ -179,9 +179,16 @@ class Creds(Transform):
     def set_creds(self, rd, creds):
         raise NotImplementedError(self)
 
+    def convert_to_name(self, rd, translate_cred):
+        raise NotImplementedError(self)
+
     def to_api(self, *args, **kwargs):
         creds = kwargs['creds']
         self.set_creds(self.rd[self.k], creds)
+
+    def from_api(self, *args, **kwargs):
+        translate_cred = kwargs['translate_cred']
+        self.convert_to_name(self.rd[self.k], translate_cred)
 
 
 class BasicCreds(Creds):
@@ -210,6 +217,9 @@ class BasicCreds(Creds):
 
     def set_creds(self, rd, creds):
         self._set_creds(rd, self.cred_type(), creds)
+
+    def convert_to_name(self, rd, translate_cred):
+        cred_id_to_name(rd, translate_cred, self.staging_type())
 
     def _set_creds(self, rd, typ, creds, staging=False):
         cred_id = rd.get('credentialId', None)
@@ -255,6 +265,12 @@ class RedshiftCreds(BasicCreds):
         return 'aws'
 
 
+def cred_id_to_name(rd, translate_cred, staging_type=None):
+    rd['credentialId']['value'] = translate_cred(rd['credentialId']['value'])
+    if staging_type is not None:
+        cred_id_to_name(rd['stagingContainer'], translate_cred)
+
+
 class FunctionCreds(Creds):
     def snippet(self):
         result = {}
@@ -269,6 +285,10 @@ class FunctionCreds(Creds):
             ParseDict(d, cred)
             result[cred_id['value']] = credentials.Credential(cred)
         return result
+
+    def convert_to_name(self, rd, translate_cred):
+        config = self.rd.get('credentialsConfiguration')
+        config['id']['value'] = translate_cred(config['id']['value'])
 
     def set_creds(self, rd, creds):
         config = rd.get('credentialsConfiguration')
@@ -286,6 +306,9 @@ class StagedCreds(Creds):
         'abs': AzureCreds
     }
 
+    def staging_type(self, rd):
+        return (set(self.staging_reg.keys()) & set(rd.keys())).pop()
+
     def cred_type(self):
         raise NotImplementedError(self)
 
@@ -301,17 +324,21 @@ class StagedCreds(Creds):
             cred = io_pb2.Credentials()
             ParseDict(d, cred)
             result[cred_id['value']] = credentials.Credential(cred)
-        staging_type = (set(self.staging_reg.keys()) & set(rd.keys())).pop()
+        staging_type = self.staging_type(rd)
         staging_creds = self.staging_reg[staging_type](rd, staging_type)
         staging_result = staging_creds.snippet()
         return {**result, **staging_result}
+
+    def convert_to_name(self, rd, translate_cred):
+        cred_id_to_name(rd, translate_cred)
+        cred_id_to_name(rd[self.staging_type], translate_cred)
 
     def set_creds(self, rd, creds):
         id = rd.get('credentialId')
         if id is not None:
             cred_id = id['value']
             apply_creds(rd, self.cred_type(), cred_id, creds)
-            staging_type = (set(self.staging_reg.keys()) & set(rd.keys())).pop()
+            staging_type = self.staging_type(rd)
             staging_creds = self.staging_reg[staging_type](rd, staging_type)
             staging_creds.set_creds(rd[staging_type], creds)
         else:

@@ -2,6 +2,7 @@ from ascend.cli import sh
 from dataclasses import dataclass
 from ascend.protos.io import io_pb2
 from ascend.protos.resource import resource_pb2
+from ascend.util import coalesce
 from google.protobuf.json_format import MessageToDict, ParseDict
 from typing import Mapping, Optional
 import os
@@ -25,7 +26,7 @@ def load_credentials(override_path: Optional[str]) -> Mapping[str, 'Credential']
             d = yaml.load(data, Loader=yaml.SafeLoader)
             ParseDict(d, proto)
             for cred in proto.credentials:
-                result[cred.id.value] = Credential(cred)
+                result[cred.id.value] = Credential(proto=cred, name=cred.id.value)
         except Exception as e:
             raise BadCredentialsFile(path) from e
     sh.debug(f'Loaded {len(d)} credentials from {path}')
@@ -44,9 +45,28 @@ def dump_credentials(d: Mapping[str, 'Credential']):
 @dataclass
 class Credential:
     proto: io_pb2.Credentials
+    name: str
+
     @property
     def credential_id(self):
         return self.proto.id.value
+
+    def create_payload(self):
+        inner = {
+            **MessageToDict(self.proto)
+        }
+        del inner['id']
+        return {
+            'credential': inner,
+            'name': self.name,
+        }
+
+    @staticmethod
+    def from_entry(entry):
+        name = entry.get('name')
+        proto = io_pb2.Credentials
+        ParseDict(entry.get('credential'), proto)
+        return Credential(proto=proto, name=name)
 
     @property
     def credential_type(self):

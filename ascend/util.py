@@ -47,3 +47,7 @@ def filter_none(l):
 
 def compose(f, g):
     return lambda x: f(g(x))
+
+
+def coalesce(*l):
+    return next(filter(lambda e: e is not None, l), None)
