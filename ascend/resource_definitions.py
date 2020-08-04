@@ -831,9 +831,8 @@ class ResourceSession:
                     processed_creds[name] = accessible_name_to_cred[name]
                 elif name in config_creds:
                     sh.info(f"CREATE CRED: {name}")
-                    role = self.everyone_role(ds_id)
                     to_create = credentials.Credential(proto=config_creds[name].proto, name=name)
-                    created = self.client.create_credential(ds_id, role['uuid'], to_create)
+                    created = self.create_credential(ds_id, to_create)
                     processed_creds[name] = created
                 else:
                     raise KeyError(f"unknown cred {name} must be provided or created")
@@ -850,6 +849,11 @@ class ResourceSession:
         except KeyError:
             pass
         self.accessible_creds_loaded = True
+
+    def create_credential(self, data_service_id, credentials):
+        role = self.everyone_role(data_service_id)
+        role_id = role['uuid']
+        self.client.create_credential(data_service_id, role_id, credentials)
 
     def translate_cred_id_to_name(self, cred_id) -> str:
         self.load_accessible_credentials()
@@ -943,7 +947,12 @@ class ResourceSession:
         for role in roles:
             self.uuid_to_resource[role['uuid']] = role
 
+    def load_roles(self):
+        if self.roles is None:
+            self.refresh_roles()
+
     def everyone_role(self, data_service_id):
+        self.load_roles()
         orgUUID = self.get_ds(data_service_id).uuid
         return next(r for r in self.roles if r['orgId'] == orgUUID and r['id'] == 'Everyone')
 
