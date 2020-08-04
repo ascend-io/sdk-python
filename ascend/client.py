@@ -208,7 +208,7 @@ class Client(object):
             creds_list
         ))
 
-    def create_credential(self, org_id, role_id, cred: 'credentials.Credential'):
+    def create_credential(self, org_id, role_id, cred: 'Credential') -> 'Credential':
         payload = cred.create_payload()
         sh.debug(f'create payload: {payload}')
         resp = self.session.post(

@@ -76,7 +76,7 @@ class TestTemplates(unittest.TestCase):
         res_def = ResourceDefinition.from_resource_proto(res_proto, ('ds', 'df', resource_id))
         initial_rd = copy.deepcopy(res_def.rd)
         path = os.path.join(self.DEST, f"{resource_id}.yaml")
-        res_def.do_dump(path, directory=True, translate_cred=lambda x: x)
+        res_def.do_dump(path, directory=True)
 
         # round trip compare
         with open(path, 'r') as f:

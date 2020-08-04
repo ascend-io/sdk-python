@@ -2,7 +2,7 @@ import abc
 import os
 import sys
 from collections import defaultdict
-from typing import List, Mapping, Optional, Tuple
+from typing import List, Optional, Tuple
 
 import jinja2
 import networkx as nx
@@ -11,10 +11,11 @@ from google.protobuf.json_format import MessageToDict, ParseDict
 
 import ascend.cli.global_values as global_values
 import ascend.cli.sh as sh
-import ascend.credentials as credentials
+import ascend.credentials
 import ascend.jinja as jinja
 import ascend.model as model
 import ascend.transforms as transforms
+from ascend.credentials import Credential
 from ascend.resource import Resource, Component
 from ascend.util import coalesce, filter_none, flatten
 from ascend.protos.resource import resource_pb2
@@ -23,8 +24,8 @@ ROOT_PATH = (None, None, None)
 
 
 class ResourceDefinition:
-    def __init__(self, resource_dict, resource_type, resource_id):
-        self.resource = resource_dict
+    def __init__(self, resource, resource_type, resource_id):
+        self.resource = MessageToDict(resource)
         self.transforms = transforms.Transforms.from_rd(self.resource)
         self.rd = self.resource[resource_type]
         self.resource_name = coalesce(self.resource.get('name'), self.rd.get('name'))
@@ -73,17 +74,16 @@ class ResourceDefinition:
         sh.debug(m)
         t = m.WhichOneof('type')
         typed_resource = getattr(m, t)
-        resource_dict = MessageToDict(m)
         if isinstance(typed_resource, resource_pb2.DataService):
-            resource = DataServiceDef(resource_dict, override_path)
+            resource = DataServiceDef(m, override_path)
         elif isinstance(typed_resource, resource_pb2.Dataflow):
-            resource = DataflowDef(resource_dict, override_path)
+            resource = DataflowDef(m, override_path)
         elif isinstance(typed_resource, resource_pb2.Component):
-            resource = ComponentDef(resource_dict, override_path)
+            resource = ComponentDef(m, override_path)
         elif isinstance(typed_resource, resource_pb2.Group):
-            resource = GroupDef(resource_dict, override_path)
+            resource = GroupDef(m, override_path)
         elif isinstance(typed_resource, resource_pb2.DataFeed):
-            resource = DataFeedDef(resource_dict, override_path)
+            resource = DataFeedDef(m, override_path)
         else:
             raise KeyError(f"Unrecognizable resource {m}")
         return resource
@@ -115,16 +115,13 @@ class ResourceDefinition:
     def all_transforms(self):
         return self.transforms + flatten(child.transforms for child in self.contained())
 
-    def dump(self, origin, options, translate_cred, creds_snippet):
+    def dump(self, origin, options):
         if not self.exportable:
             return
         target = self.get_dump_target(origin, options)
-        self.do_dump(target, options.directory, translate_cred)
-        for transform in self.all_transforms():
-            if isinstance(transform, transforms.Creds):
-                creds_snippet.update(transform.snippet())
+        self.do_dump(target, options.directory)
 
-    def do_dump(self, target: Optional[str], directory, translate_cred):
+    def do_dump(self, target: Optional[str], directory):
         cleanup = []
         self.rd.pop('id', None)
         self.resource.pop('id', None)
@@ -134,8 +131,7 @@ class ResourceDefinition:
         fns = filter_none([t.from_api(
             directory=directory,
             parent_directory=parent_dir,
-            res_def=self,
-            translate_cred=translate_cred) for t in self.all_transforms()])
+            res_def=self) for t in self.transforms])
         if len(fns) > 0:
             prefixes, post_fns = zip(*fns)
         else:
@@ -246,9 +242,9 @@ class WriteConnectorDef(ComponentDetailsDef):
 
 
 class DataFeedDef(ResourceDefinition):
-    def __init__(self, resource_dict, override_path):
+    def __init__(self, resource: resource_pb2.Resource, override_path):
         self.data_service_id, resource_id, _ = override_path
-        super().__init__(resource_dict, 'dataFeed', resource_id)
+        super().__init__(resource, 'dataFeed', resource_id)
         self.dataflow_id, self.input_id = self.rd['inputId'].split('.')
         self.exportable = False
 
@@ -305,9 +301,9 @@ class DataFeedDef(ResourceDefinition):
 
 
 class GroupDef(ResourceDefinition):
-    def __init__(self, resource_dict, override_path):
+    def __init__(self, resource: resource_pb2.Resource, override_path):
         self.data_service_id, self.dataflow_id, resource_id = override_path
-        super().__init__(resource_dict, 'group', resource_id)
+        super().__init__(resource, 'group', resource_id)
         self.exportable = False
 
     @property
@@ -356,9 +352,9 @@ class ComponentDef(ResourceDefinition):
         'writeConnector': WriteConnectorDef,
     }
 
-    def __init__(self, resource_dict, override_path):
+    def __init__(self, resource: resource_pb2.Resource, override_path):
         self.data_service_id, self.dataflow_id, resource_id = override_path
-        super().__init__(resource_dict, 'component', resource_id)
+        super().__init__(resource, 'component', resource_id)
         self.type, = filter(lambda t: t in self.rd, ComponentDef.TYPES)
         self.details = ComponentDef.TYPES[self.type](self.rd[self.type], self)
 
@@ -460,9 +456,15 @@ class DataflowDef(ResourceDefinition):
     def contained(self):
         res_defs = []
         for component in self.rd.get('components', []):
-            res_defs.append(ComponentDef({'component': component}, self.path))
+            m = resource_pb2.Resource()
+            d = {'component': component}
+            ParseDict(d, m)
+            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
         for group in self.rd.get('groups', []):
-            res_defs.append(GroupDef({'group': group}, self.path))
+            m = resource_pb2.Resource()
+            d = {'group': group}
+            ParseDict(d, m)
+            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
         return res_defs
 
     def dependencies(self):
@@ -500,9 +502,15 @@ class DataServiceDef(ResourceDefinition):
     def contained(self):
         res_defs = []
         for dataflow in self.rd.get('dataflows', []):
-            res_defs.append(DataflowDef({'dataflow': dataflow}, self.path))
+            m = resource_pb2.Resource()
+            d = {'dataflow': dataflow}
+            ParseDict(d, m)
+            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
         for data_feed in self.rd.get('dataFeeds', []):
-            res_defs.append(DataFeedDef({'dataFeed': data_feed}, self.path))
+            m = resource_pb2.Resource()
+            d = {'dataFeed': data_feed}
+            ParseDict(d, m)
+            res_defs.append(ResourceDefinition.from_resource_proto(m, self.path))
         return res_defs
 
     def apply(self, rs: 'ResourceSession') -> Resource:
@@ -632,8 +640,6 @@ class ResourceSession:
         self.roles = None
         self.pub_uuid_to_dfc = {}
         self.list_only = False
-        self.accessible_creds_loaded = False
-        self.cred_id_to_named: Mapping[str, credentials.Credential] = None
 
     def update_group(self, group_path: Optional, content_path):
         old_group = self.content_path_to_group_path.get(content_path)
@@ -737,62 +743,31 @@ class ResourceSession:
                 except Exception as e:
                     raise KeyError(f'Unable to load dependency {path}') from e
 
-        res_defs_to_apply = [
-            self.path_to_def[path] for path in reversed(list(nx.topological_sort(g)))
-            if path in self.path_to_def
-        ]
-
-        def apply_def(res_def, creds):
-            path = res_def.path
-            if isinstance(res_def, GroupDef):
-                # groups need to go last
-                groups.add(res_def)
-                return
-            for transform in res_def.transforms:
-                transform.to_api(creds=creds)
-
-            sh.info(f'APPLY: {res_def.path}')
-            sh.debug(res_def.resource)
-            if not options.dry_run:
-                res = res_def.apply(self)
-                self.path_to_uuid[path] = res.uuid
-                self.uuid_to_resource[res.uuid] = res
+        for path in reversed(list(nx.topological_sort(g))):
+            if path not in self.path_to_def:
+                continue
             else:
-                try:
-                    res = self.get_resource(*res_def.path)
+                res_def = self.path_to_def[path]
+                if isinstance(res_def, GroupDef):
+                    # groups need to go last
+                    groups.add(res_def)
+                    continue
+                for transform in res_def.transforms:
+                    transform.to_api(creds=creds)
+                sh.info(f'APPLY: {res_def.path}')
+                sh.debug(res_def.resource)
+                if not options.dry_run:
+                    res = res_def.apply(self)
                     self.path_to_uuid[path] = res.uuid
                     self.uuid_to_resource[res.uuid] = res
-                except KeyError:
-                    sh.info(f'Unable to get {res_def.path} during dry run')
+                else:
+                    try:
+                        res = self.get_resource(*res_def.path)
+                        self.path_to_uuid[path] = res.uuid
+                        self.uuid_to_resource[res.uuid] = res
+                    except KeyError:
+                        sh.info(f'Unable to get {res_def.path} during dry run')
 
-        def is_stage1(res_def):
-            return isinstance(res_def, DataflowDef) or isinstance(res_def, DataServiceDef)
-
-        # Stage 1: ensure existence of data services and dataflows
-        for res_def in res_defs_to_apply:
-            if is_stage1(res_def):
-                apply_def(res_def, {})
-
-        # validate credential existence
-        needed_creds = {} # name -> (orgId, Credential)
-        for res_def in res_defs_to_apply:
-            for t in res_def.transforms:
-                if isinstance(t, transforms.Creds):
-                    if not isinstance(res_def, ComponentDef):
-                        raise Exception(f"Only components should have creds: {res_def}: {t}")
-                    needed_creds.update({
-                        k: (res_def.data_service_id, v) for k, v in t.snippet().items()
-                    })
-
-        # create credentials if necessary
-        processed_creds = self.process_creds(creds, needed_creds)
-
-        # apply normal components after processing credentials
-        for res_def in res_defs_to_apply:
-            if not is_stage1(res_def):
-                apply_def(res_def, creds=processed_creds)
-
-        # Groups need special logic
         group_paths = self.dirty_groups | {g.path for g in groups}
         for group_path in group_paths:
             group_def = self.path_to_def.get(group_path)
@@ -815,55 +790,6 @@ class ResourceSession:
                 if child.exportable and child.rd_path not in marked_paths:
                     self._delete(child, options)
 
-    def process_creds(self, config_creds, needed_creds) -> Mapping[str, 'credentials.Credential']:
-        processed_creds = {}
-        if len(needed_creds) > 0:
-            self.load_accessible_credentials()
-            if self.cred_id_to_named is None:
-                # feature not enabled yet
-                return config_creds
-            accessible_creds = self.cred_id_to_named.values()
-            accessible_name_to_cred = {
-                c.name: c for c in accessible_creds
-            }
-            for name, (ds_id, cred) in needed_creds.items():
-                if name in accessible_name_to_cred:
-                    processed_creds[name] = accessible_name_to_cred[name]
-                elif name in config_creds:
-                    sh.info(f"CREATE CRED: {name}")
-                    to_create = credentials.Credential(proto=config_creds[name].proto, name=name)
-                    created = self.create_credential(ds_id, to_create)
-                    processed_creds[name] = created
-                else:
-                    raise KeyError(f"unknown cred {name} must be provided or created")
-        return processed_creds
-
-    def load_accessible_credentials(self):
-        if self.accessible_creds_loaded:
-            return
-        try:
-            creds = self.client.list_accessible_credentials()
-            self.cred_id_to_named = {
-                cred.credential_id: cred for cred in creds
-            }
-        except KeyError:
-            pass
-        self.accessible_creds_loaded = True
-
-    def create_credential(self, data_service_id, credentials):
-        role = self.everyone_role(data_service_id)
-        role_id = role['uuid']
-        self.client.create_credential(data_service_id, role_id, credentials)
-
-    def translate_cred_id_to_name(self, cred_id) -> str:
-        self.load_accessible_credentials()
-        if self.cred_id_to_named is None:
-            return cred_id
-        elif cred_id in self.cred_id_to_named:
-            return self.cred_id_to_named[cred_id].name
-        else:
-            return self.client.lookup_credential_name(cred_id=cred_id)
-
     def list(self, path_str, recursive):
         self.list_only = True
         res_path = ResourcePath.from_arg(path_str, self)
@@ -885,7 +811,7 @@ class ResourceSession:
         creds_snippet = {}
         self._get(res_path, res_path, options, creds_snippet)
         if options.output is not None:
-            sys.stdout.write(credentials.dump_credentials(creds_snippet))
+            sys.stdout.write(ascend.credentials.dump_credentials(creds_snippet))
 
     def _get(self, origin, res_path: ResourcePath, options, creds_snippet):
         # load resources for path
@@ -895,13 +821,16 @@ class ResourceSession:
         if res_path.exportable:
             proto = res_path.resource.to_resource_proto(self, options)
             res_def = ResourceDefinition.from_resource_proto(proto, res_path.rd_path)
+            for transform in res_def.all_transforms():
+                if isinstance(transform, transforms.Creds):
+                    creds_snippet.update(transform.snippet())
             if options.directory:
                 assert options.output is not None, "output req'd for dir"
-                res_def.dump(origin, options, self.translate_cred_id_to_name, creds_snippet)
+                res_def.dump(origin, options)
             else:
                 # have integrated to root, time to dump
                 if origin == res_path:
-                    res_def.dump(origin, options, self.translate_cred_id_to_name, creds_snippet)
+                    res_def.dump(origin, options)
 
     def delete(self, res_path_str, options):
         res_path = ResourcePath.from_arg(res_path_str, self)
@@ -955,6 +884,10 @@ class ResourceSession:
         self.load_roles()
         orgUUID = self.get_ds(data_service_id).uuid
         return next(r for r in self.roles if r['orgId'] == orgUUID and r['id'] == 'Everyone')
+
+    def create_credential(self, data_service_id, cred: 'Credential') -> 'Credential':
+        role = self.everyone_role(data_service_id)
+        return self.client.create_credential(data_service_id, role['uuid'], cred)
 
     def load_data_service(self, ds):
         path = ds.get_api_path()
