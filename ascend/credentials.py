@@ -80,6 +80,6 @@ class CredentialEntry:
     @staticmethod
     def from_json(payload):
         role_uuid = payload['ownerRoleId']
-        proto = resource_pb2.CredentialsEntry()
-        ParseDict(payload, proto)
+        proto = resource_pb2.CredentialEntry()
+        ParseDict(payload, proto, ignore_unknown_fields=True)
         return CredentialEntry(proto=proto, role_uuid=role_uuid)
