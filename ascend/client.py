@@ -208,11 +208,11 @@ class Client(object):
             creds_list
         ))
 
-    def create_credential(self, org_id, role_id, cred: 'CredentialEntry') -> 'CredentialEntry':
-        payload = cred.get_creation_payload()
+    def create_credential_entry(self, org_id, entry: 'CredentialEntry') -> 'CredentialEntry':
+        payload = entry.get_creation_payload()
         sh.debug(f'create payload: {payload}')
         resp = self.session.post(
-            f'credentials/organizations/{org_id}/roles/{role_id}/vault',
+            f'credentials/organizations/{org_id}/roles/{entry.role_uuid}/vault',
             payload,
             service='authz')
         sh.debug(f'create resp: {resp}')

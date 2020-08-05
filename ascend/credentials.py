@@ -78,6 +78,16 @@ class CredentialEntry:
         return d
 
     @staticmethod
+    def from_credential(cred: Credential, role_uuid: str, name: str):
+        d = {
+            'credential': MessageToDict(cred.proto),
+            'name': name
+        }
+        proto = resource_pb2.CredentialEntry()
+        ParseDict(d, proto)
+        return CredentialEntry(proto, role_uuid)
+
+    @staticmethod
     def from_json(payload):
         role_uuid = payload['ownerRoleId']
         proto = resource_pb2.CredentialEntry()

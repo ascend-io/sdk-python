@@ -886,10 +886,11 @@ class ResourceSession:
         org_uuid = self.get_ds(data_service_id).uuid
         return next(r for r in self.roles if r['orgId'] == org_uuid and r['id'] == 'Everyone')
 
-    def create_credential(self, data_service_id, cred: 'CredentialEntry') -> 'CredentialEntry':
+    def create_credential(self, data_service_id, name, cred: 'Credential') -> 'CredentialEntry':
         role = self.everyone_role(data_service_id)
         self.accessible_credentials = None  # invalidate
-        return self.client.create_credential(data_service_id, role['uuid'], cred)
+        entry = CredentialEntry.from_credential(cred, role['uuid'], name)
+        return self.client.create_credential_entry(data_service_id, entry)
 
     def maybe_accessible_entry(self, data_service_id, name) -> Optional['CredentialEntry']:
         self.load_accessible_creds()
