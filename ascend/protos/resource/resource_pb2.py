@@ -26,7 +26,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='resource',
   syntax='proto3',
   serialized_options=b'H\001',
-  serialized_pb=b'\n%ascend/protos/resource/resource.proto\x12\x08resource\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x35\x61scend/protos/content_encoding/content_encoding.proto\x1a\x19\x61scend/protos/io/io.proto\x1a%ascend/protos/operator/operator.proto\x1a#ascend/protos/pattern/pattern.proto\x1a!ascend/protos/schema/schema.proto\";\n\x0b\x45nvironment\x12,\n\rdata_services\x18\x01 \x03(\x0b\x32\x15.resource.DataService\"3\n\x0b\x43redentials\x12$\n\x0b\x63redentials\x18\x01 \x03(\x0b\x32\x0f.io.Credentials\"\x9e\x02\n\x08Resource\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12-\n\x0c\x64\x61ta_service\x18\x04 \x01(\x0b\x32\x15.resource.DataServiceH\x00\x12&\n\x08\x64\x61taflow\x18\x05 \x01(\x0b\x32\x12.resource.DataflowH\x00\x12 \n\x05group\x18\x06 \x01(\x0b\x32\x0f.resource.GroupH\x00\x12\'\n\tdata_feed\x18\x07 \x01(\x0b\x32\x12.resource.DataFeedH\x00\x12(\n\tcomponent\x18\x08 \x01(\x0b\x32\x13.resource.ComponentH\x00\x12\x0f\n\x07version\x18\n \x01(\x05\x42\x06\n\x04type\"\x8b\x01\n\x0b\x44\x61taService\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12&\n\ndata_feeds\x18\x05 \x03(\x0b\x32\x12.resource.DataFeed\x12%\n\tdataflows\x18\x06 \x03(\x0b\x32\x12.resource.Dataflow\"\x83\x01\n\x08\x44\x61taflow\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x1f\n\x06groups\x18\x06 \x03(\x0b\x32\x0f.resource.Group\x12\'\n\ncomponents\x18\x07 \x03(\x0b\x32\x13.resource.Component\"\xe9\x01\n\tComponent\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x31\n\x0eread_connector\x18\x04 \x01(\x0b\x32\x17.resource.ReadConnectorH\x00\x12(\n\ttransform\x18\x05 \x01(\x0b\x32\x13.resource.TransformH\x00\x12\x33\n\x0fwrite_connector\x18\x06 \x01(\x0b\x32\x18.resource.WriteConnectorH\x00\x12\x10\n\x08group_id\x18\x0c \x01(\tB\t\n\x07\x64\x65tails\"6\n\x05Group\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"\xfa\x03\n\rReadConnector\x12!\n\x07pattern\x18\x01 \x01(\x0b\x32\x10.pattern.Pattern\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12.\n\x10updatePeriodical\x18\x03 \x01(\x0b\x32\x14.resource.Periodical\x12<\n\x18last_manual_refresh_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\x11\x61ssigned_priority\x18\x05 \x01(\x0b\x32\x12.resource.Priority\x12\x36\n\x11\x61ggregation_limit\x18\x08 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x32\n\x05\x62ytes\x18\x06 \x01(\x0b\x32!.resource.ReadConnector.FromBytesH\x00\x12\x36\n\x07records\x18\x07 \x01(\x0b\x32#.resource.ReadConnector.FromRecordsH\x00\x1a/\n\tFromBytes\x12\"\n\x06parser\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x1a*\n\x0b\x46romRecords\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.MapB\x06\n\x04\x66rom\"s\n\tTransform\x12\x11\n\tinput_ids\x18\x01 \x03(\t\x12$\n\x08operator\x18\x02 \x01(\x0b\x32\x12.operator.Operator\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\"\xdf\x02\n\x0eWriteConnector\x12\x10\n\x08input_id\x18\x01 \x01(\t\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\x12\x31\n\x05\x62ytes\x18\x04 \x01(\x0b\x32 .resource.WriteConnector.ToBytesH\x00\x12\x35\n\x07records\x18\x05 \x01(\x0b\x32\".resource.WriteConnector.ToRecordsH\x00\x1am\n\x07ToBytes\x12%\n\tformatter\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x12;\n\x10\x63ontent_encoding\x18\x02 \x01(\x0b\x32!.content_encoding.ContentEncoding\x1a\x0b\n\tToRecordsB\x04\n\x02to\"\xc9\x01\n\x08\x44\x61taFeed\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08input_id\x18\x04 \x01(\t\x12+\n\x07sharing\x18\x05 \x01(\x0b\x32\x1a.resource.DataFeed.Sharing\x12\x10\n\x08group_id\x18\x06 \x01(\t\x1a=\n\x07Sharing\x12\x15\n\rdata_services\x18\x01 \x03(\t\x12\x0b\n\x03\x61ll\x18\x02 \x01(\x08\x12\x0e\n\x06hidden\x18\x03 \x01(\x08\"b\n\nPeriodical\x12)\n\x06period\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12)\n\x06offset\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"8\n\x08Priority\x12,\n\x06weight\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.DoubleValueB\x02H\x01\x62\x06proto3'
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n%ascend/protos/resource/resource.proto\x12\x08resource\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x35\x61scend/protos/content_encoding/content_encoding.proto\x1a\x19\x61scend/protos/io/io.proto\x1a%ascend/protos/operator/operator.proto\x1a#ascend/protos/pattern/pattern.proto\x1a!ascend/protos/schema/schema.proto\";\n\x0b\x45nvironment\x12,\n\rdata_services\x18\x01 \x03(\x0b\x32\x15.resource.DataService\"3\n\x0b\x43redentials\x12$\n\x0b\x63redentials\x18\x01 \x03(\x0b\x32\x0f.io.Credentials\"D\n\x0f\x43redentialEntry\x12#\n\ncredential\x18\x01 \x01(\x0b\x32\x0f.io.Credentials\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x9e\x02\n\x08Resource\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12-\n\x0c\x64\x61ta_service\x18\x04 \x01(\x0b\x32\x15.resource.DataServiceH\x00\x12&\n\x08\x64\x61taflow\x18\x05 \x01(\x0b\x32\x12.resource.DataflowH\x00\x12 \n\x05group\x18\x06 \x01(\x0b\x32\x0f.resource.GroupH\x00\x12\'\n\tdata_feed\x18\x07 \x01(\x0b\x32\x12.resource.DataFeedH\x00\x12(\n\tcomponent\x18\x08 \x01(\x0b\x32\x13.resource.ComponentH\x00\x12\x0f\n\x07version\x18\n \x01(\x05\x42\x06\n\x04type\"\x8b\x01\n\x0b\x44\x61taService\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12&\n\ndata_feeds\x18\x05 \x03(\x0b\x32\x12.resource.DataFeed\x12%\n\tdataflows\x18\x06 \x03(\x0b\x32\x12.resource.Dataflow\"\x83\x01\n\x08\x44\x61taflow\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x1f\n\x06groups\x18\x06 \x03(\x0b\x32\x0f.resource.Group\x12\'\n\ncomponents\x18\x07 \x03(\x0b\x32\x13.resource.Component\"\xe9\x01\n\tComponent\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x31\n\x0eread_connector\x18\x04 \x01(\x0b\x32\x17.resource.ReadConnectorH\x00\x12(\n\ttransform\x18\x05 \x01(\x0b\x32\x13.resource.TransformH\x00\x12\x33\n\x0fwrite_connector\x18\x06 \x01(\x0b\x32\x18.resource.WriteConnectorH\x00\x12\x10\n\x08group_id\x18\x0c \x01(\tB\t\n\x07\x64\x65tails\"6\n\x05Group\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"\xfa\x03\n\rReadConnector\x12!\n\x07pattern\x18\x01 \x01(\x0b\x32\x10.pattern.Pattern\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12.\n\x10updatePeriodical\x18\x03 \x01(\x0b\x32\x14.resource.Periodical\x12<\n\x18last_manual_refresh_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\x11\x61ssigned_priority\x18\x05 \x01(\x0b\x32\x12.resource.Priority\x12\x36\n\x11\x61ggregation_limit\x18\x08 \x01(\x0b\x32\x1b.google.protobuf.Int64Value\x12\x32\n\x05\x62ytes\x18\x06 \x01(\x0b\x32!.resource.ReadConnector.FromBytesH\x00\x12\x36\n\x07records\x18\x07 \x01(\x0b\x32#.resource.ReadConnector.FromRecordsH\x00\x1a/\n\tFromBytes\x12\"\n\x06parser\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x1a*\n\x0b\x46romRecords\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.MapB\x06\n\x04\x66rom\"s\n\tTransform\x12\x11\n\tinput_ids\x18\x01 \x03(\t\x12$\n\x08operator\x18\x02 \x01(\x0b\x32\x12.operator.Operator\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\"\xdf\x02\n\x0eWriteConnector\x12\x10\n\x08input_id\x18\x01 \x01(\t\x12 \n\tcontainer\x18\x02 \x01(\x0b\x32\r.io.Container\x12-\n\x11\x61ssigned_priority\x18\x03 \x01(\x0b\x32\x12.resource.Priority\x12\x31\n\x05\x62ytes\x18\x04 \x01(\x0b\x32 .resource.WriteConnector.ToBytesH\x00\x12\x35\n\x07records\x18\x05 \x01(\x0b\x32\".resource.WriteConnector.ToRecordsH\x00\x1am\n\x07ToBytes\x12%\n\tformatter\x18\x01 \x01(\x0b\x32\x12.operator.Operator\x12;\n\x10\x63ontent_encoding\x18\x02 \x01(\x0b\x32!.content_encoding.ContentEncoding\x1a\x0b\n\tToRecordsB\x04\n\x02to\"\xc9\x01\n\x08\x44\x61taFeed\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x10\n\x08input_id\x18\x04 \x01(\t\x12+\n\x07sharing\x18\x05 \x01(\x0b\x32\x1a.resource.DataFeed.Sharing\x12\x10\n\x08group_id\x18\x06 \x01(\t\x1a=\n\x07Sharing\x12\x15\n\rdata_services\x18\x01 \x03(\t\x12\x0b\n\x03\x61ll\x18\x02 \x01(\x08\x12\x0e\n\x06hidden\x18\x03 \x01(\x08\"b\n\nPeriodical\x12)\n\x06period\x18\x01 \x01(\x0b\x32\x19.google.protobuf.Duration\x12)\n\x06offset\x18\x02 \x01(\x0b\x32\x19.google.protobuf.Duration\"8\n\x08Priority\x12,\n\x06weight\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.DoubleValueB\x02H\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,ascend_dot_protos_dot_content__encoding_dot_content__encoding__pb2.DESCRIPTOR,ascend_dot_protos_dot_io_dot_io__pb2.DESCRIPTOR,ascend_dot_protos_dot_operator_dot_operator__pb2.DESCRIPTOR,ascend_dot_protos_dot_pattern_dot_pattern__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,])
 
@@ -39,6 +40,7 @@ _ENVIRONMENT = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='data_services', full_name='resource.Environment.data_services', index=0,
@@ -46,7 +48,7 @@ _ENVIRONMENT = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -70,6 +72,7 @@ _CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='resource.Credentials.credentials', index=0,
@@ -77,7 +80,7 @@ _CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -95,12 +98,52 @@ _CREDENTIALS = _descriptor.Descriptor(
 )
 
 
+_CREDENTIALENTRY = _descriptor.Descriptor(
+  name='CredentialEntry',
+  full_name='resource.CredentialEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='credential', full_name='resource.CredentialEntry.credential', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='name', full_name='resource.CredentialEntry.name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=455,
+  serialized_end=523,
+)
+
+
 _RESOURCE = _descriptor.Descriptor(
   name='Resource',
   full_name='resource.Resource',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='resource.Resource.id', index=0,
@@ -108,63 +151,63 @@ _RESOURCE = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='resource.Resource.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='description', full_name='resource.Resource.description', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='data_service', full_name='resource.Resource.data_service', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='dataflow', full_name='resource.Resource.dataflow', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='group', full_name='resource.Resource.group', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='data_feed', full_name='resource.Resource.data_feed', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='component', full_name='resource.Resource.component', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='version', full_name='resource.Resource.version', index=8,
       number=10, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -178,10 +221,12 @@ _RESOURCE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='type', full_name='resource.Resource.type',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=456,
-  serialized_end=742,
+  serialized_start=526,
+  serialized_end=812,
 )
 
 
@@ -191,6 +236,7 @@ _DATASERVICE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='resource.DataService.id', index=0,
@@ -198,35 +244,35 @@ _DATASERVICE = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='resource.DataService.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='description', full_name='resource.DataService.description', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='data_feeds', full_name='resource.DataService.data_feeds', index=3,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='dataflows', full_name='resource.DataService.dataflows', index=4,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -239,8 +285,8 @@ _DATASERVICE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=745,
-  serialized_end=884,
+  serialized_start=815,
+  serialized_end=954,
 )
 
 
@@ -250,6 +296,7 @@ _DATAFLOW = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='resource.Dataflow.id', index=0,
@@ -257,35 +304,35 @@ _DATAFLOW = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='resource.Dataflow.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='description', full_name='resource.Dataflow.description', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='groups', full_name='resource.Dataflow.groups', index=3,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='components', full_name='resource.Dataflow.components', index=4,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -298,8 +345,8 @@ _DATAFLOW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=887,
-  serialized_end=1018,
+  serialized_start=957,
+  serialized_end=1088,
 )
 
 
@@ -309,6 +356,7 @@ _COMPONENT = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='resource.Component.id', index=0,
@@ -316,49 +364,49 @@ _COMPONENT = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='resource.Component.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='description', full_name='resource.Component.description', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='read_connector', full_name='resource.Component.read_connector', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='transform', full_name='resource.Component.transform', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='write_connector', full_name='resource.Component.write_connector', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='group_id', full_name='resource.Component.group_id', index=6,
       number=12, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -372,10 +420,12 @@ _COMPONENT = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='resource.Component.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=1021,
-  serialized_end=1254,
+  serialized_start=1091,
+  serialized_end=1324,
 )
 
 
@@ -385,6 +435,7 @@ _GROUP = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='resource.Group.id', index=0,
@@ -392,21 +443,21 @@ _GROUP = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='resource.Group.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='description', full_name='resource.Group.description', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -419,8 +470,8 @@ _GROUP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1256,
-  serialized_end=1310,
+  serialized_start=1326,
+  serialized_end=1380,
 )
 
 
@@ -430,6 +481,7 @@ _READCONNECTOR_FROMBYTES = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='parser', full_name='resource.ReadConnector.FromBytes.parser', index=0,
@@ -437,7 +489,7 @@ _READCONNECTOR_FROMBYTES = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -450,8 +502,8 @@ _READCONNECTOR_FROMBYTES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1720,
-  serialized_end=1767,
+  serialized_start=1790,
+  serialized_end=1837,
 )
 
 _READCONNECTOR_FROMRECORDS = _descriptor.Descriptor(
@@ -460,6 +512,7 @@ _READCONNECTOR_FROMRECORDS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='schema', full_name='resource.ReadConnector.FromRecords.schema', index=0,
@@ -467,7 +520,7 @@ _READCONNECTOR_FROMRECORDS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -480,8 +533,8 @@ _READCONNECTOR_FROMRECORDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1769,
-  serialized_end=1811,
+  serialized_start=1839,
+  serialized_end=1881,
 )
 
 _READCONNECTOR = _descriptor.Descriptor(
@@ -490,6 +543,7 @@ _READCONNECTOR = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='pattern', full_name='resource.ReadConnector.pattern', index=0,
@@ -497,56 +551,56 @@ _READCONNECTOR = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='container', full_name='resource.ReadConnector.container', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='updatePeriodical', full_name='resource.ReadConnector.updatePeriodical', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='last_manual_refresh_time', full_name='resource.ReadConnector.last_manual_refresh_time', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='assigned_priority', full_name='resource.ReadConnector.assigned_priority', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='aggregation_limit', full_name='resource.ReadConnector.aggregation_limit', index=5,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='bytes', full_name='resource.ReadConnector.bytes', index=6,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='records', full_name='resource.ReadConnector.records', index=7,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -560,10 +614,12 @@ _READCONNECTOR = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='from', full_name='resource.ReadConnector.from',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=1313,
-  serialized_end=1819,
+  serialized_start=1383,
+  serialized_end=1889,
 )
 
 
@@ -573,6 +629,7 @@ _TRANSFORM = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='input_ids', full_name='resource.Transform.input_ids', index=0,
@@ -580,21 +637,21 @@ _TRANSFORM = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='operator', full_name='resource.Transform.operator', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='assigned_priority', full_name='resource.Transform.assigned_priority', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -607,8 +664,8 @@ _TRANSFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1821,
-  serialized_end=1936,
+  serialized_start=1891,
+  serialized_end=2006,
 )
 
 
@@ -618,6 +675,7 @@ _WRITECONNECTOR_TOBYTES = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='formatter', full_name='resource.WriteConnector.ToBytes.formatter', index=0,
@@ -625,14 +683,14 @@ _WRITECONNECTOR_TOBYTES = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='content_encoding', full_name='resource.WriteConnector.ToBytes.content_encoding', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -645,8 +703,8 @@ _WRITECONNECTOR_TOBYTES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2162,
-  serialized_end=2271,
+  serialized_start=2232,
+  serialized_end=2341,
 )
 
 _WRITECONNECTOR_TORECORDS = _descriptor.Descriptor(
@@ -655,6 +713,7 @@ _WRITECONNECTOR_TORECORDS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -668,8 +727,8 @@ _WRITECONNECTOR_TORECORDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2273,
-  serialized_end=2284,
+  serialized_start=2343,
+  serialized_end=2354,
 )
 
 _WRITECONNECTOR = _descriptor.Descriptor(
@@ -678,6 +737,7 @@ _WRITECONNECTOR = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='input_id', full_name='resource.WriteConnector.input_id', index=0,
@@ -685,35 +745,35 @@ _WRITECONNECTOR = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='container', full_name='resource.WriteConnector.container', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='assigned_priority', full_name='resource.WriteConnector.assigned_priority', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='bytes', full_name='resource.WriteConnector.bytes', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='records', full_name='resource.WriteConnector.records', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -727,10 +787,12 @@ _WRITECONNECTOR = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='to', full_name='resource.WriteConnector.to',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=1939,
-  serialized_end=2290,
+  serialized_start=2009,
+  serialized_end=2360,
 )
 
 
@@ -740,6 +802,7 @@ _DATAFEED_SHARING = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='data_services', full_name='resource.DataFeed.Sharing.data_services', index=0,
@@ -747,21 +810,21 @@ _DATAFEED_SHARING = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='all', full_name='resource.DataFeed.Sharing.all', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='hidden', full_name='resource.DataFeed.Sharing.hidden', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -774,8 +837,8 @@ _DATAFEED_SHARING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2433,
-  serialized_end=2494,
+  serialized_start=2503,
+  serialized_end=2564,
 )
 
 _DATAFEED = _descriptor.Descriptor(
@@ -784,6 +847,7 @@ _DATAFEED = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='resource.DataFeed.id', index=0,
@@ -791,42 +855,42 @@ _DATAFEED = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='resource.DataFeed.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='description', full_name='resource.DataFeed.description', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='input_id', full_name='resource.DataFeed.input_id', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='sharing', full_name='resource.DataFeed.sharing', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='group_id', full_name='resource.DataFeed.group_id', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -839,8 +903,8 @@ _DATAFEED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2293,
-  serialized_end=2494,
+  serialized_start=2363,
+  serialized_end=2564,
 )
 
 
@@ -850,6 +914,7 @@ _PERIODICAL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='period', full_name='resource.Periodical.period', index=0,
@@ -857,14 +922,14 @@ _PERIODICAL = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='offset', full_name='resource.Periodical.offset', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -877,8 +942,8 @@ _PERIODICAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2496,
-  serialized_end=2594,
+  serialized_start=2566,
+  serialized_end=2664,
 )
 
 
@@ -888,6 +953,7 @@ _PRIORITY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='weight', full_name='resource.Priority.weight', index=0,
@@ -895,7 +961,7 @@ _PRIORITY = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -908,12 +974,13 @@ _PRIORITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2596,
-  serialized_end=2652,
+  serialized_start=2666,
+  serialized_end=2722,
 )
 
 _ENVIRONMENT.fields_by_name['data_services'].message_type = _DATASERVICE
 _CREDENTIALS.fields_by_name['credentials'].message_type = ascend_dot_protos_dot_io_dot_io__pb2._CREDENTIALS
+_CREDENTIALENTRY.fields_by_name['credential'].message_type = ascend_dot_protos_dot_io_dot_io__pb2._CREDENTIALS
 _RESOURCE.fields_by_name['data_service'].message_type = _DATASERVICE
 _RESOURCE.fields_by_name['dataflow'].message_type = _DATAFLOW
 _RESOURCE.fields_by_name['group'].message_type = _GROUP
@@ -991,6 +1058,7 @@ _PERIODICAL.fields_by_name['offset'].message_type = google_dot_protobuf_dot_dura
 _PRIORITY.fields_by_name['weight'].message_type = google_dot_protobuf_dot_wrappers__pb2._DOUBLEVALUE
 DESCRIPTOR.message_types_by_name['Environment'] = _ENVIRONMENT
 DESCRIPTOR.message_types_by_name['Credentials'] = _CREDENTIALS
+DESCRIPTOR.message_types_by_name['CredentialEntry'] = _CREDENTIALENTRY
 DESCRIPTOR.message_types_by_name['Resource'] = _RESOURCE
 DESCRIPTOR.message_types_by_name['DataService'] = _DATASERVICE
 DESCRIPTOR.message_types_by_name['Dataflow'] = _DATAFLOW
@@ -1017,6 +1085,13 @@ Credentials = _reflection.GeneratedProtocolMessageType('Credentials', (_message.
   # @@protoc_insertion_point(class_scope:resource.Credentials)
   })
 _sym_db.RegisterMessage(Credentials)
+
+CredentialEntry = _reflection.GeneratedProtocolMessageType('CredentialEntry', (_message.Message,), {
+  'DESCRIPTOR' : _CREDENTIALENTRY,
+  '__module__' : 'ascend.protos.resource.resource_pb2'
+  # @@protoc_insertion_point(class_scope:resource.CredentialEntry)
+  })
+_sym_db.RegisterMessage(CredentialEntry)
 
 Resource = _reflection.GeneratedProtocolMessageType('Resource', (_message.Message,), {
   'DESCRIPTOR' : _RESOURCE,

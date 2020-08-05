@@ -24,6 +24,11 @@ message Credentials {
     repeated io.Credentials credentials = 1;
 }
 
+message CredentialEntry {
+    io.Credentials credential = 1;
+    string name = 2;
+}
+
 message Resource {
     string id = 1;
     string name = 2;

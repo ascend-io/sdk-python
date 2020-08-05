@@ -24,6 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='operator',
   syntax='proto3',
   serialized_options=None,
+  create_key=_descriptor._internal_create_key,
   serialized_pb=b'\n%ascend/protos/operator/operator.proto\x12\x08operator\x1a\x1egoogle/protobuf/wrappers.proto\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/format/format.proto\x1a%ascend/protos/function/function.proto\x1a\x19\x61scend/protos/io/io.proto\x1a!ascend/protos/schema/schema.proto\"\xb5\x03\n\x0bGranularity\x12*\n\x04time\x18\x01 \x01(\x0b\x32\x1a.operator.Granularity.TimeH\x00\x1a\xea\x02\n\x04Time\x12/\n\x04\x61uto\x18\x01 \x01(\x0b\x32\x1f.operator.Granularity.Time.AutoH\x00\x12/\n\x04year\x18\x02 \x01(\x0b\x32\x1f.operator.Granularity.Time.YearH\x00\x12\x31\n\x05month\x18\x03 \x01(\x0b\x32 .operator.Granularity.Time.MonthH\x00\x12-\n\x03\x64\x61y\x18\x04 \x01(\x0b\x32\x1e.operator.Granularity.Time.DayH\x00\x12/\n\x04hour\x18\x05 \x01(\x0b\x32\x1f.operator.Granularity.Time.HourH\x00\x12\x33\n\x06minute\x18\x06 \x01(\x0b\x32!.operator.Granularity.Time.MinuteH\x00\x1a\x06\n\x04\x41uto\x1a\x06\n\x04Year\x1a\x07\n\x05Month\x1a\x05\n\x03\x44\x61y\x1a\x06\n\x04Hour\x1a\x08\n\x06MinuteB\x06\n\x04timeB\r\n\x0bgranularity\"\xff\x01\n\x0cInstanceType\x12-\n\x05small\x18\x01 \x01(\x0b\x32\x1c.operator.InstanceType.SmallH\x00\x12/\n\x06medium\x18\x02 \x01(\x0b\x32\x1d.operator.InstanceType.MediumH\x00\x12-\n\x05large\x18\x03 \x01(\x0b\x32\x1c.operator.InstanceType.LargeH\x00\x12/\n\x06xlarge\x18\x04 \x01(\x0b\x32\x1d.operator.InstanceType.XLargeH\x00\x1a\x07\n\x05Small\x1a\x08\n\x06Medium\x1a\x07\n\x05Large\x1a\x08\n\x06XLargeB\t\n\x07\x64\x65tails\"\xd0\x03\n\tReduction\x12(\n\x04\x66ull\x18\x01 \x01(\x0b\x32\x18.operator.Reduction.FullH\x00\x12\x37\n\x0cno_reduction\x18\x02 \x01(\x0b\x32\x1f.operator.Reduction.NoReductionH\x00\x12.\n\x07partial\x18\x03 \x01(\x0b\x32\x1b.operator.Reduction.PartialH\x00\x1a\r\n\x0bNoReduction\x1a\x06\n\x04\x46ull\x1a\x8b\x02\n\x07Partial\x12\x42\n\x0cpartition_by\x18\x01 \x03(\x0b\x32,.operator.Reduction.Partial.PartitionByEntry\x1aT\n\x16PartitionSpecification\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12*\n\x0bgranularity\x18\x02 \x01(\x0b\x32\x15.operator.Granularity\x1a\x66\n\x10PartitionByEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32\x32.operator.Reduction.Partial.PartitionSpecification:\x02\x38\x01\x42\x0b\n\treduction\"^\n\x03Sql\x1aW\n\x05Query\x12\x0b\n\x03sql\x18\x01 \x01(\t\x12\x41\n\x17spark_job_configuration\x18\x02 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"\xa9\x03\n\x05Spark\x1a\xb9\x01\n\x10JobConfiguration\x12\x37\n\x12\x65xecutor_instances\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x36\n\x16\x65xecutor_instance_type\x18\x02 \x01(\x0b\x32\x16.operator.InstanceType\x12\x34\n\x14\x64river_instance_type\x18\x03 \x01(\x0b\x32\x16.operator.InstanceType\x1a\xe3\x01\n\x08\x46unction\x12(\n\nexecutable\x18\x01 \x01(\x0b\x32\x14.function.Executable\x12&\n\treduction\x18\x02 \x01(\x0b\x32\x13.operator.Reduction\x12H\n\x19\x63redentials_configuration\x18\x03 \x01(\x0b\x32%.io.Function.CredentialsConfiguration\x12;\n\x11job_configuration\x18\x04 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"*\n\x08Identity\x12\x1e\n\x06schema\x18\x01 \x01(\x0b\x32\x0e.schema.Schema\"\xee\x05\n\x08Operator\x12\x30\n\x0e\x61vro_formatter\x18\x02 \x01(\x0b\x32\x16.format.Avro.FormatterH\x00\x12*\n\x0b\x61vro_parser\x18\x03 \x01(\x0b\x32\x13.format.Avro.ParserH\x00\x12*\n\x0bgrok_parser\x18\x04 \x01(\x0b\x32\x13.format.Grok.ParserH\x00\x12\x30\n\x0ejson_formatter\x18\x05 \x01(\x0b\x32\x16.format.Json.FormatterH\x00\x12*\n\x0bjson_parser\x18\x06 \x01(\x0b\x32\x13.format.Json.ParserH\x00\x12\x34\n\x10lambda_formatter\x18\r \x01(\x0b\x32\x18.format.Lambda.FormatterH\x00\x12.\n\rlambda_parser\x18\x0e \x01(\x0b\x32\x15.format.Lambda.ParserH\x00\x12.\n\rorc_formatter\x18\x10 \x01(\x0b\x32\x15.format.Orc.FormatterH\x00\x12\x36\n\x11parquet_formatter\x18\x07 \x01(\x0b\x32\x19.format.Parquet.FormatterH\x00\x12\x30\n\x0eparquet_parser\x18\x08 \x01(\x0b\x32\x16.format.Parquet.ParserH\x00\x12.\n\rxsv_formatter\x18\x0b \x01(\x0b\x32\x15.format.Xsv.FormatterH\x00\x12(\n\nxsv_parser\x18\x0c \x01(\x0b\x32\x12.format.Xsv.ParserH\x00\x12\x32\n\x0espark_function\x18\x0f \x01(\x0b\x32\x18.operator.Spark.FunctionH\x00\x12(\n\tsql_query\x18\x01 \x01(\x0b\x32\x13.operator.Sql.QueryH\x00\x42\t\n\x07\x64\x65tailsJ\x04\x08\t\x10\nJ\x04\x08\n\x10\x0bR\x16user_defined_formatterR\x13user_defined_parserb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,ascend_dot_protos_dot_format_dot_format__pb2.DESCRIPTOR,ascend_dot_protos_dot_function_dot_function__pb2.DESCRIPTOR,ascend_dot_protos_dot_io_dot_io__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,])
@@ -37,6 +38,7 @@ _GRANULARITY_TIME_AUTO = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -60,6 +62,7 @@ _GRANULARITY_TIME_YEAR = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -83,6 +86,7 @@ _GRANULARITY_TIME_MONTH = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -106,6 +110,7 @@ _GRANULARITY_TIME_DAY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -129,6 +134,7 @@ _GRANULARITY_TIME_HOUR = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -152,6 +158,7 @@ _GRANULARITY_TIME_MINUTE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -175,6 +182,7 @@ _GRANULARITY_TIME = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='auto', full_name='operator.Granularity.Time.auto', index=0,
@@ -182,42 +190,42 @@ _GRANULARITY_TIME = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='year', full_name='operator.Granularity.Time.year', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='month', full_name='operator.Granularity.Time.month', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='day', full_name='operator.Granularity.Time.day', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='hour', full_name='operator.Granularity.Time.hour', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='minute', full_name='operator.Granularity.Time.minute', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -231,7 +239,9 @@ _GRANULARITY_TIME = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='time', full_name='operator.Granularity.Time.time',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=315,
   serialized_end=677,
@@ -243,6 +253,7 @@ _GRANULARITY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='time', full_name='operator.Granularity.time', index=0,
@@ -250,7 +261,7 @@ _GRANULARITY = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -264,7 +275,9 @@ _GRANULARITY = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='granularity', full_name='operator.Granularity.granularity',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=255,
   serialized_end=692,
@@ -277,6 +290,7 @@ _INSTANCETYPE_SMALL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -300,6 +314,7 @@ _INSTANCETYPE_MEDIUM = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -323,6 +338,7 @@ _INSTANCETYPE_LARGE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -346,6 +362,7 @@ _INSTANCETYPE_XLARGE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -369,6 +386,7 @@ _INSTANCETYPE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='small', full_name='operator.InstanceType.small', index=0,
@@ -376,28 +394,28 @@ _INSTANCETYPE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='medium', full_name='operator.InstanceType.medium', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='large', full_name='operator.InstanceType.large', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='xlarge', full_name='operator.InstanceType.xlarge', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -411,7 +429,9 @@ _INSTANCETYPE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='operator.InstanceType.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=695,
   serialized_end=950,
@@ -424,6 +444,7 @@ _REDUCTION_NOREDUCTION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -447,6 +468,7 @@ _REDUCTION_FULL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -470,6 +492,7 @@ _REDUCTION_PARTIAL_PARTITIONSPECIFICATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='column', full_name='operator.Reduction.Partial.PartitionSpecification.column', index=0,
@@ -477,14 +500,14 @@ _REDUCTION_PARTIAL_PARTITIONSPECIFICATION = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='granularity', full_name='operator.Reduction.Partial.PartitionSpecification.granularity', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -507,6 +530,7 @@ _REDUCTION_PARTIAL_PARTITIONBYENTRY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='key', full_name='operator.Reduction.Partial.PartitionByEntry.key', index=0,
@@ -514,14 +538,14 @@ _REDUCTION_PARTIAL_PARTITIONBYENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='value', full_name='operator.Reduction.Partial.PartitionByEntry.value', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -544,6 +568,7 @@ _REDUCTION_PARTIAL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='partition_by', full_name='operator.Reduction.Partial.partition_by', index=0,
@@ -551,7 +576,7 @@ _REDUCTION_PARTIAL = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -574,6 +599,7 @@ _REDUCTION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='full', full_name='operator.Reduction.full', index=0,
@@ -581,21 +607,21 @@ _REDUCTION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='no_reduction', full_name='operator.Reduction.no_reduction', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='partial', full_name='operator.Reduction.partial', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -609,7 +635,9 @@ _REDUCTION = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='reduction', full_name='operator.Reduction.reduction',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=953,
   serialized_end=1417,
@@ -622,6 +650,7 @@ _SQL_QUERY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='sql', full_name='operator.Sql.Query.sql', index=0,
@@ -629,14 +658,14 @@ _SQL_QUERY = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='spark_job_configuration', full_name='operator.Sql.Query.spark_job_configuration', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -659,6 +688,7 @@ _SQL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -683,6 +713,7 @@ _SPARK_JOBCONFIGURATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='executor_instances', full_name='operator.Spark.JobConfiguration.executor_instances', index=0,
@@ -690,21 +721,21 @@ _SPARK_JOBCONFIGURATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='executor_instance_type', full_name='operator.Spark.JobConfiguration.executor_instance_type', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='driver_instance_type', full_name='operator.Spark.JobConfiguration.driver_instance_type', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -727,6 +758,7 @@ _SPARK_FUNCTION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='executable', full_name='operator.Spark.Function.executable', index=0,
@@ -734,28 +766,28 @@ _SPARK_FUNCTION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='reduction', full_name='operator.Spark.Function.reduction', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credentials_configuration', full_name='operator.Spark.Function.credentials_configuration', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='job_configuration', full_name='operator.Spark.Function.job_configuration', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -778,6 +810,7 @@ _SPARK = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -802,6 +835,7 @@ _IDENTITY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='schema', full_name='operator.Identity.schema', index=0,
@@ -809,7 +843,7 @@ _IDENTITY = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -833,6 +867,7 @@ _OPERATOR = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='avro_formatter', full_name='operator.Operator.avro_formatter', index=0,
@@ -840,98 +875,98 @@ _OPERATOR = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='avro_parser', full_name='operator.Operator.avro_parser', index=1,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='grok_parser', full_name='operator.Operator.grok_parser', index=2,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='json_formatter', full_name='operator.Operator.json_formatter', index=3,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='json_parser', full_name='operator.Operator.json_parser', index=4,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='lambda_formatter', full_name='operator.Operator.lambda_formatter', index=5,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='lambda_parser', full_name='operator.Operator.lambda_parser', index=6,
       number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='orc_formatter', full_name='operator.Operator.orc_formatter', index=7,
       number=16, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='parquet_formatter', full_name='operator.Operator.parquet_formatter', index=8,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='parquet_parser', full_name='operator.Operator.parquet_parser', index=9,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='xsv_formatter', full_name='operator.Operator.xsv_formatter', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='xsv_parser', full_name='operator.Operator.xsv_parser', index=11,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='spark_function', full_name='operator.Operator.spark_function', index=12,
       number=15, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='sql_query', full_name='operator.Operator.sql_query', index=13,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -945,7 +980,9 @@ _OPERATOR = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='operator.Operator.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=1988,
   serialized_end=2738,

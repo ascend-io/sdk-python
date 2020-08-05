@@ -2,7 +2,6 @@ from ascend.cli import sh
 from dataclasses import dataclass
 from ascend.protos.io import io_pb2
 from ascend.protos.resource import resource_pb2
-from ascend.util import coalesce
 from google.protobuf.json_format import MessageToDict, ParseDict
 from typing import Mapping, Optional
 import os
@@ -26,7 +25,7 @@ def load_credentials(override_path: Optional[str]) -> Mapping[str, 'Credential']
             d = yaml.load(data, Loader=yaml.SafeLoader)
             ParseDict(d, proto)
             for cred in proto.credentials:
-                result[cred.id.value] = Credential(proto=cred, name=cred.id.value)
+                result[cred.id.value] = Credential(cred)
         except Exception as e:
             raise BadCredentialsFile(path) from e
     sh.debug(f'Loaded {len(d)} credentials from {path}')
@@ -45,29 +44,10 @@ def dump_credentials(d: Mapping[str, 'Credential']):
 @dataclass
 class Credential:
     proto: io_pb2.Credentials
-    name: str
 
     @property
     def credential_id(self):
         return self.proto.id.value
-
-    def create_payload(self):
-        inner = {
-            **MessageToDict(self.proto)
-        }
-        del inner['id']
-        return {
-            'credential': inner,
-            'name': self.name,
-        }
-
-    @staticmethod
-    def from_entry(entry):
-        name = entry.get('name')
-        proto = io_pb2.Credentials()
-        d = entry.get('credential')
-        ParseDict(d, proto)
-        return Credential(proto=proto, name=name)
 
     @property
     def credential_type(self):
@@ -76,3 +56,30 @@ class Credential:
     @property
     def credential_value(self):
         return MessageToDict(getattr(self.proto, self.credential_type))
+
+
+@dataclass
+class CredentialEntry:
+    proto: resource_pb2.CredentialEntry
+    role_uuid: str
+
+    @property
+    def credential(self):
+        return Credential(proto=self.proto.credential)
+
+    @property
+    def name(self):
+        return self.proto.name
+
+    def get_creation_payload(self):
+        d = MessageToDict(self.proto)
+        if d.get('credential', {}).get('id') is not None:
+            del d['credential']['id']
+        return d
+
+    @staticmethod
+    def from_json(payload):
+        role_uuid = payload['ownerRoleId']
+        proto = resource_pb2.CredentialsEntry()
+        ParseDict(payload, proto)
+        return CredentialEntry(proto=proto, role_uuid=role_uuid)

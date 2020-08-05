@@ -18,6 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='function',
   syntax='proto3',
   serialized_options=None,
+  create_key=_descriptor._internal_create_key,
   serialized_pb=b'\n%ascend/protos/function/function.proto\x12\x08\x66unction\"\xfd\x02\n\x04\x43ode\x12)\n\x08language\x18\x01 \x01(\x0b\x32\x17.function.Code.Language\x12%\n\x06source\x18\x02 \x01(\x0b\x32\x15.function.Code.Source\x1a\xfc\x01\n\x08Language\x12\x30\n\x06python\x18\x01 \x01(\x0b\x32\x1e.function.Code.Language.PythonH\x00\x1a\xb1\x01\n\x06Python\x12\x13\n\x0bpip_package\x18\x01 \x03(\t\x12\x37\n\x02v2\x18\x02 \x01(\x0b\x32).function.Code.Language.Python.Version.V2H\x00\x12\x37\n\x02v3\x18\x03 \x01(\x0b\x32).function.Code.Language.Python.Version.V3H\x00\x1a\x15\n\x07Version\x1a\x04\n\x02V2\x1a\x04\n\x02V3B\t\n\x07versionB\n\n\x08language\x1a$\n\x06Source\x12\x10\n\x06inline\x18\x02 \x01(\tH\x00\x42\x08\n\x06source\":\n\nExecutable\x12\x1e\n\x04\x63ode\x18\x01 \x01(\x0b\x32\x0e.function.CodeH\x00\x42\x0c\n\nexecutableb\x06proto3'
 )
 
@@ -30,6 +31,7 @@ _CODE_LANGUAGE_PYTHON_VERSION_V2 = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -53,6 +55,7 @@ _CODE_LANGUAGE_PYTHON_VERSION_V3 = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -76,6 +79,7 @@ _CODE_LANGUAGE_PYTHON_VERSION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -99,6 +103,7 @@ _CODE_LANGUAGE_PYTHON = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='pip_package', full_name='function.Code.Language.Python.pip_package', index=0,
@@ -106,21 +111,21 @@ _CODE_LANGUAGE_PYTHON = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='v2', full_name='function.Code.Language.Python.v2', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='v3', full_name='function.Code.Language.Python.v3', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -134,7 +139,9 @@ _CODE_LANGUAGE_PYTHON = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='version', full_name='function.Code.Language.Python.version',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=206,
   serialized_end=383,
@@ -146,6 +153,7 @@ _CODE_LANGUAGE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='python', full_name='function.Code.Language.python', index=0,
@@ -153,7 +161,7 @@ _CODE_LANGUAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -167,7 +175,9 @@ _CODE_LANGUAGE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='language', full_name='function.Code.Language.language',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=143,
   serialized_end=395,
@@ -179,6 +189,7 @@ _CODE_SOURCE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='inline', full_name='function.Code.Source.inline', index=0,
@@ -186,7 +197,7 @@ _CODE_SOURCE = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -200,7 +211,9 @@ _CODE_SOURCE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='source', full_name='function.Code.Source.source',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=397,
   serialized_end=433,
@@ -212,6 +225,7 @@ _CODE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='language', full_name='function.Code.language', index=0,
@@ -219,14 +233,14 @@ _CODE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='source', full_name='function.Code.source', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -250,6 +264,7 @@ _EXECUTABLE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='code', full_name='function.Executable.code', index=0,
@@ -257,7 +272,7 @@ _EXECUTABLE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -271,7 +286,9 @@ _EXECUTABLE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='executable', full_name='function.Executable.executable',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=435,
   serialized_end=493,

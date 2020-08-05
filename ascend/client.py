@@ -9,7 +9,7 @@ from ascend.model import Component, DataFeed, Dataflow, DataService
 from ascend.lineage import LineageGraph
 from ascend.session import Session
 from urllib.error import HTTPError
-from ascend.credentials import Credential
+from ascend.credentials import Credential, CredentialEntry
 
 import ascend.cli.sh as sh
 import configparser
@@ -204,19 +204,19 @@ class Client(object):
         creds_list = raw_resp['data']
 
         return list(map(
-            Credential.from_entry,
+            CredentialEntry.from_json,
             creds_list
         ))
 
-    def create_credential(self, org_id, role_id, cred: 'Credential') -> 'Credential':
-        payload = cred.create_payload()
+    def create_credential(self, org_id, role_id, cred: 'CredentialEntry') -> 'CredentialEntry':
+        payload = cred.get_creation_payload()
         sh.debug(f'create payload: {payload}')
         resp = self.session.post(
             f'credentials/organizations/{org_id}/roles/{role_id}/vault',
-            cred.create_payload(),
+            payload,
             service='authz')
         sh.debug(f'create resp: {resp}')
-        return Credential.from_entry(resp['data'])
+        return CredentialEntry.from_json(resp['data'])
 
     def lookup_credential_name(self, cred_id) -> str:
         resp = self.session.get(f'credentials/lookup?credentialId={cred_id}', service='authz')

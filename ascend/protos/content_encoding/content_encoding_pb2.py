@@ -18,6 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='content_encoding',
   syntax='proto3',
   serialized_options=None,
+  create_key=_descriptor._internal_create_key,
   serialized_pb=b'\n5ascend/protos/content_encoding/content_encoding.proto\x12\x10\x63ontent_encoding\"\n\n\x08Identity\"\n\n\x08\x43ompress\"\t\n\x07\x44\x65\x66late\"\x06\n\x04Gzip\"\x05\n\x03Lzo\"\xf9\x01\n\x0f\x43ontentEncoding\x12.\n\x08identity\x18\x01 \x01(\x0b\x32\x1a.content_encoding.IdentityH\x00\x12.\n\x08\x63ompress\x18\x02 \x01(\x0b\x32\x1a.content_encoding.CompressH\x00\x12,\n\x07\x64\x65\x66late\x18\x03 \x01(\x0b\x32\x19.content_encoding.DeflateH\x00\x12&\n\x04gzip\x18\x04 \x01(\x0b\x32\x16.content_encoding.GzipH\x00\x12$\n\x03lzo\x18\x05 \x01(\x0b\x32\x15.content_encoding.LzoH\x00\x42\n\n\x08\x65ncodingb\x06proto3'
 )
 
@@ -30,6 +31,7 @@ _IDENTITY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -54,6 +56,7 @@ _COMPRESS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -78,6 +81,7 @@ _DEFLATE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -102,6 +106,7 @@ _GZIP = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -126,6 +131,7 @@ _LZO = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -150,6 +156,7 @@ _CONTENTENCODING = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='identity', full_name='content_encoding.ContentEncoding.identity', index=0,
@@ -157,35 +164,35 @@ _CONTENTENCODING = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='compress', full_name='content_encoding.ContentEncoding.compress', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='deflate', full_name='content_encoding.ContentEncoding.deflate', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gzip', full_name='content_encoding.ContentEncoding.gzip', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='lzo', full_name='content_encoding.ContentEncoding.lzo', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -199,7 +206,9 @@ _CONTENTENCODING = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='encoding', full_name='content_encoding.ContentEncoding.encoding',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=126,
   serialized_end=375,
