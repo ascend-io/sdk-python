@@ -214,10 +214,13 @@ class BasicCreds(Creds):
     def _set_creds(self, rd, typ, creds, staging=False):
         cred_id = rd.get('credentialId', None)
         if cred_id is not None:
-            v = cred_id['value']
-            apply_creds(rd, typ, v, creds)
-            if not staging and self.staging_type() is not None:
-                self._set_creds(rd['stagingContainer'], self.staging_type(), creds, staging=True)
+            try:
+                v = cred_id['value']
+                apply_creds(rd, typ, v, creds)
+                if not staging and self.staging_type() is not None:
+                    self._set_creds(rd['stagingContainer'], self.staging_type(), creds, staging=True)
+            except Exception as e:
+                sh.warn(f'Creds application failure for {cred_id}: {e}')
         else:
             sh.debug(f'no credentialId for {rd}')
 
