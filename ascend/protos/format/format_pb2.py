@@ -21,6 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='format',
   syntax='proto3',
   serialized_options=None,
+  create_key=_descriptor._internal_create_key,
   serialized_pb=b'\n!ascend/protos/format/format.proto\x12\x06\x66ormat\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/schema/schema.proto\x1a\x1d\x61scend/protos/text/text.proto\":\n\x04\x41vro\x1a\x0b\n\tFormatter\x1a%\n\x06Parser\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\"!\n\x04Grok\x1a\x19\n\x06Parser\x12\x0f\n\x07pattern\x18\x01 \x01(\t\"\xe8\x01\n\x04Json\x1a\x0b\n\tFormatter\x1a\xd2\x01\n\x06Parser\x12 \n\x07\x63olumns\x18\x06 \x01(\x0b\x32\x0f.format.Columns\x12\x16\n\x0e\x66latten_nested\x18\x05 \x01(\x08\x12\x16\n\x0emax_warn_count\x18\x07 \x01(\x03\x12\x1b\n\x13namespace_delimiter\x18\x04 \x01(\t\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\x12\x17\n\x0fmax_error_count\x18\x02 \x01(\x05\x12#\n\x1bmax_error_percentage_points\x18\x03 \x01(\x01\"\x12\n\x03Orc\x1a\x0b\n\tFormatter\"\xde\x01\n\x07Parquet\x1a\x0b\n\tFormatter\x1a\xc5\x01\n\x06Parser\x12\x1b\n\x06schema\x18\x01 \x01(\x0b\x32\x0b.schema.Map\x12\x1b\n\x13namespace_delimiter\x18\x02 \x01(\t\x12,\n$require_no_missing_fields_in_parquet\x18\x03 \x01(\x08\x12*\n\"require_no_extra_fields_in_parquet\x18\x04 \x01(\x08\x12\'\n\x1frequire_field_type_match_schema\x18\x05 \x01(\x08\"\x91\x05\n\x06Lambda\x1a\x0b\n\tFormatter\x1a\xf9\x04\n\x06Parser\x12\x39\n\x0c\x64ocker_image\x18\x01 \x01(\x0b\x32!.format.Lambda.Parser.DockerImageH\x00\x12*\n\x04\x63ode\x18\x02 \x01(\x0b\x32\x1a.format.Lambda.Parser.CodeH\x00\x12\x10\n\x08metadata\x18\x03 \x01(\t\x12\x1b\n\x06schema\x18\x04 \x01(\x0b\x32\x0b.schema.Map\x12\x17\n\x0fmax_error_count\x18\x05 \x01(\x05\x1a!\n\x0b\x44ockerImage\x12\x12\n\nimage_name\x18\x01 \x01(\t\x1a\xf6\x01\n\x08Language\x12\x37\n\x06python\x18\x01 \x01(\x0b\x32%.format.Lambda.Parser.Language.PythonH\x00\x1a\xa4\x01\n\x06Python\x12\x13\n\x0bpip_package\x18\x01 \x03(\t\x12\x36\n\x02v2\x18\x02 \x01(\x0b\x32(.format.Lambda.Parser.Language.Python.V2H\x00\x12\x36\n\x02v3\x18\x03 \x01(\x0b\x32(.format.Lambda.Parser.Language.Python.V3H\x00\x1a\x04\n\x02V2\x1a\x04\n\x02V3B\t\n\x07versionB\n\n\x08language\x1a\x13\n\x04\x46ile\x12\x0b\n\x03uri\x18\x01 \x01(\t\x1a\x80\x01\n\x04\x43ode\x12\x30\n\x08language\x18\x01 \x01(\x0b\x32\x1e.format.Lambda.Parser.Language\x12\x10\n\x06inline\x18\x02 \x01(\tH\x00\x12*\n\x04\x66ile\x18\x03 \x01(\x0b\x32\x1a.format.Lambda.Parser.FileH\x00\x42\x08\n\x06sourceB\x0c\n\nexecutable\"\xff\x04\n\x03Xsv\x12$\n\x07options\x18\x01 \x01(\x0b\x32\x13.format.Xsv.Options\x1a[\n\x07Options\x12\x11\n\tdelimiter\x18\x01 \x01(\t\x12\x16\n\x0einclude_header\x18\x02 \x01(\x08\x12%\n\x0bline_ending\x18\x03 \x01(\x0b\x32\x10.text.LineEnding\x1a]\n\tFormatter\x12\x11\n\tdelimiter\x18\x01 \x01(\t\x12\x16\n\x0einclude_header\x18\x02 \x01(\x08\x12%\n\x0bline_ending\x18\x03 \x01(\x0b\x32\x10.text.LineEnding\x1a\x95\x03\n\x06Parser\x12 \n\x07\x63olumns\x18\n \x01(\x0b\x32\x0f.format.Columns\x12\x16\n\x0e\x63omment_prefix\x18\x01 \x01(\t\x12\x11\n\tdelimiter\x18\x02 \x01(\t\x12\x18\n\x10\x65scape_character\x18\x03 \x01(\t\x12\x19\n\x11header_line_count\x18\x04 \x01(\x03\x12\x16\n\x0emax_warn_count\x18\x0b \x01(\x03\x12\x17\n\x0fquote_character\x18\x08 \x01(\t\x12\x44\n\x12headers_to_columns\x18\x05 \x03(\x0b\x32(.format.Xsv.Parser.HeadersToColumnsEntry\x12\x17\n\x0fmax_error_count\x18\x06 \x01(\x03\x12#\n\x1bmax_error_percentage_points\x18\x07 \x01(\x01\x12\x1b\n\x06schema\x18\t \x01(\x0b\x32\x0b.schema.Map\x1a\x37\n\x15HeadersToColumnsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x8a\x08\n\x07\x43olumns\x12\x44\n\x16parsing_specifications\x18\x01 \x03(\x0b\x32$.format.Columns.ParsingSpecification\x1a\xb8\x07\n\x14ParsingSpecification\x12\x13\n\x0bsource_name\x18\x01 \x01(\t\x12\x13\n\x0btarget_name\x18\x02 \x01(\t\x12\x17\n\x0fnull_is_invalid\x18\x03 \x01(\x08\x12Y\n\x16invalid_value_handling\x18\x04 \x01(\x0b\x32\x39.format.Columns.ParsingSpecification.InvalidValueHandling\x12)\n\x07\x62oolean\x18\x05 \x01(\x0b\x32\x16.schema.Boolean.ParserH\x00\x12#\n\x04\x64\x61te\x18\x06 \x01(\x0b\x32\x13.schema.Date.ParserH\x00\x12\'\n\x06\x64ouble\x18\x08 \x01(\x0b\x32\x15.schema.Double.ParserH\x00\x12%\n\x05\x66loat\x18\t \x01(\x0b\x32\x14.schema.Float.ParserH\x00\x12!\n\x03int\x18\n \x01(\x0b\x32\x12.schema.Int.ParserH\x00\x12#\n\x04long\x18\x0b \x01(\x0b\x32\x13.schema.Long.ParserH\x00\x12\'\n\x06string\x18\x0c \x01(\x0b\x32\x15.schema.String.ParserH\x00\x12-\n\ttimestamp\x18\r \x01(\x0b\x32\x18.schema.Timestamp.ParserH\x00\x1a\x9f\x03\n\x14InvalidValueHandling\x12\x15\n\rsuppress_warn\x18\x01 \x01(\x08\x12[\n\x0buse_default\x18\x02 \x01(\x0b\x32\x44.format.Columns.ParsingSpecification.InvalidValueHandling.UseDefaultH\x00\x12[\n\x0bskip_record\x18\x03 \x01(\x0b\x32\x44.format.Columns.ParsingSpecification.InvalidValueHandling.SkipRecordH\x00\x12N\n\x04\x66\x61il\x18\x04 \x01(\x0b\x32>.format.Columns.ParsingSpecification.InvalidValueHandling.FailH\x00\x1a<\n\nUseDefault\x12\x17\n\rdefault_value\x18\x01 \x01(\tH\x00\x42\x15\n\x13maybe_default_value\x1a\x0c\n\nSkipRecord\x1a\x06\n\x04\x46\x61ilB\x12\n\x10on_invalid_valueB\x0f\n\rschema_parserJ\x04\x08\x07\x10\x08R\tdate_time\"\xdc\x01\n\x06\x46ormat\x12\x1c\n\x04\x61vro\x18\x01 \x01(\x0b\x32\x0c.format.AvroH\x00\x12\x1c\n\x04grok\x18\x02 \x01(\x0b\x32\x0c.format.GrokH\x00\x12\x1c\n\x04json\x18\x03 \x01(\x0b\x32\x0c.format.JsonH\x00\x12\"\n\x07parquet\x18\x04 \x01(\x0b\x32\x0f.format.ParquetH\x00\x12\x1a\n\x03xsv\x18\x06 \x01(\x0b\x32\x0b.format.XsvH\x00\x12\x1a\n\x03orc\x18\x07 \x01(\x0b\x32\x0b.format.OrcH\x00\x42\x08\n\x06\x66ormatJ\x04\x08\x05\x10\x06R\x0cuser_definedb\x06proto3'
   ,
   dependencies=[ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,ascend_dot_protos_dot_text_dot_text__pb2.DESCRIPTOR,])
@@ -34,6 +35,7 @@ _AVRO_FORMATTER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -57,6 +59,7 @@ _AVRO_PARSER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='schema', full_name='format.Avro.Parser.schema', index=0,
@@ -64,7 +67,7 @@ _AVRO_PARSER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -87,6 +90,7 @@ _AVRO = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -111,6 +115,7 @@ _GROK_PARSER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='pattern', full_name='format.Grok.Parser.pattern', index=0,
@@ -118,7 +123,7 @@ _GROK_PARSER = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -141,6 +146,7 @@ _GROK = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -165,6 +171,7 @@ _JSON_FORMATTER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -188,6 +195,7 @@ _JSON_PARSER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='columns', full_name='format.Json.Parser.columns', index=0,
@@ -195,49 +203,49 @@ _JSON_PARSER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='flatten_nested', full_name='format.Json.Parser.flatten_nested', index=1,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='max_warn_count', full_name='format.Json.Parser.max_warn_count', index=2,
       number=7, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='namespace_delimiter', full_name='format.Json.Parser.namespace_delimiter', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='format.Json.Parser.schema', index=4,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='max_error_count', full_name='format.Json.Parser.max_error_count', index=5,
       number=2, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='max_error_percentage_points', full_name='format.Json.Parser.max_error_percentage_points', index=6,
       number=3, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -260,6 +268,7 @@ _JSON = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -284,6 +293,7 @@ _ORC_FORMATTER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -307,6 +317,7 @@ _ORC = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -331,6 +342,7 @@ _PARQUET_FORMATTER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -354,6 +366,7 @@ _PARQUET_PARSER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='schema', full_name='format.Parquet.Parser.schema', index=0,
@@ -361,35 +374,35 @@ _PARQUET_PARSER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='namespace_delimiter', full_name='format.Parquet.Parser.namespace_delimiter', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='require_no_missing_fields_in_parquet', full_name='format.Parquet.Parser.require_no_missing_fields_in_parquet', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='require_no_extra_fields_in_parquet', full_name='format.Parquet.Parser.require_no_extra_fields_in_parquet', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='require_field_type_match_schema', full_name='format.Parquet.Parser.require_field_type_match_schema', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -412,6 +425,7 @@ _PARQUET = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -436,6 +450,7 @@ _LAMBDA_FORMATTER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -459,6 +474,7 @@ _LAMBDA_PARSER_DOCKERIMAGE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='image_name', full_name='format.Lambda.Parser.DockerImage.image_name', index=0,
@@ -466,7 +482,7 @@ _LAMBDA_PARSER_DOCKERIMAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -489,6 +505,7 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON_V2 = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -512,6 +529,7 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON_V3 = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -535,6 +553,7 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='pip_package', full_name='format.Lambda.Parser.Language.Python.pip_package', index=0,
@@ -542,21 +561,21 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='v2', full_name='format.Lambda.Parser.Language.Python.v2', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='v3', full_name='format.Lambda.Parser.Language.Python.v3', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -570,7 +589,9 @@ _LAMBDA_PARSER_LANGUAGE_PYTHON = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='version', full_name='format.Lambda.Parser.Language.Python.version',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=1037,
   serialized_end=1201,
@@ -582,6 +603,7 @@ _LAMBDA_PARSER_LANGUAGE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='python', full_name='format.Lambda.Parser.Language.python', index=0,
@@ -589,7 +611,7 @@ _LAMBDA_PARSER_LANGUAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -603,7 +625,9 @@ _LAMBDA_PARSER_LANGUAGE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='language', full_name='format.Lambda.Parser.Language.language',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=967,
   serialized_end=1213,
@@ -615,6 +639,7 @@ _LAMBDA_PARSER_FILE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='uri', full_name='format.Lambda.Parser.File.uri', index=0,
@@ -622,7 +647,7 @@ _LAMBDA_PARSER_FILE = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -645,6 +670,7 @@ _LAMBDA_PARSER_CODE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='language', full_name='format.Lambda.Parser.Code.language', index=0,
@@ -652,21 +678,21 @@ _LAMBDA_PARSER_CODE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='inline', full_name='format.Lambda.Parser.Code.inline', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='file', full_name='format.Lambda.Parser.Code.file', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -680,7 +706,9 @@ _LAMBDA_PARSER_CODE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='source', full_name='format.Lambda.Parser.Code.source',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=1237,
   serialized_end=1365,
@@ -692,6 +720,7 @@ _LAMBDA_PARSER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='docker_image', full_name='format.Lambda.Parser.docker_image', index=0,
@@ -699,35 +728,35 @@ _LAMBDA_PARSER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='code', full_name='format.Lambda.Parser.code', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='metadata', full_name='format.Lambda.Parser.metadata', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='format.Lambda.Parser.schema', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='max_error_count', full_name='format.Lambda.Parser.max_error_count', index=4,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -741,7 +770,9 @@ _LAMBDA_PARSER = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='executable', full_name='format.Lambda.Parser.executable',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=746,
   serialized_end=1379,
@@ -753,6 +784,7 @@ _LAMBDA = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -777,6 +809,7 @@ _XSV_OPTIONS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='delimiter', full_name='format.Xsv.Options.delimiter', index=0,
@@ -784,21 +817,21 @@ _XSV_OPTIONS = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='include_header', full_name='format.Xsv.Options.include_header', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='line_ending', full_name='format.Xsv.Options.line_ending', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -821,6 +854,7 @@ _XSV_FORMATTER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='delimiter', full_name='format.Xsv.Formatter.delimiter', index=0,
@@ -828,21 +862,21 @@ _XSV_FORMATTER = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='include_header', full_name='format.Xsv.Formatter.include_header', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='line_ending', full_name='format.Xsv.Formatter.line_ending', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -865,6 +899,7 @@ _XSV_PARSER_HEADERSTOCOLUMNSENTRY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='key', full_name='format.Xsv.Parser.HeadersToColumnsEntry.key', index=0,
@@ -872,14 +907,14 @@ _XSV_PARSER_HEADERSTOCOLUMNSENTRY = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='value', full_name='format.Xsv.Parser.HeadersToColumnsEntry.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -902,6 +937,7 @@ _XSV_PARSER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='columns', full_name='format.Xsv.Parser.columns', index=0,
@@ -909,77 +945,77 @@ _XSV_PARSER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='comment_prefix', full_name='format.Xsv.Parser.comment_prefix', index=1,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='delimiter', full_name='format.Xsv.Parser.delimiter', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='escape_character', full_name='format.Xsv.Parser.escape_character', index=3,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='header_line_count', full_name='format.Xsv.Parser.header_line_count', index=4,
       number=4, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='max_warn_count', full_name='format.Xsv.Parser.max_warn_count', index=5,
       number=11, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='quote_character', full_name='format.Xsv.Parser.quote_character', index=6,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='headers_to_columns', full_name='format.Xsv.Parser.headers_to_columns', index=7,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='max_error_count', full_name='format.Xsv.Parser.max_error_count', index=8,
       number=6, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='max_error_percentage_points', full_name='format.Xsv.Parser.max_error_percentage_points', index=9,
       number=7, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='format.Xsv.Parser.schema', index=10,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1002,6 +1038,7 @@ _XSV = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='options', full_name='format.Xsv.options', index=0,
@@ -1009,7 +1046,7 @@ _XSV = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1033,6 +1070,7 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_USEDEFAULT = _descriptor.Desc
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='default_value', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.UseDefault.default_value', index=0,
@@ -1040,7 +1078,7 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_USEDEFAULT = _descriptor.Desc
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1054,7 +1092,9 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_USEDEFAULT = _descriptor.Desc
   oneofs=[
     _descriptor.OneofDescriptor(
       name='maybe_default_value', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.UseDefault.maybe_default_value',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=2922,
   serialized_end=2982,
@@ -1066,6 +1106,7 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_SKIPRECORD = _descriptor.Desc
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1089,6 +1130,7 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING_FAIL = _descriptor.Descriptor
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1112,6 +1154,7 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='suppress_warn', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.suppress_warn', index=0,
@@ -1119,28 +1162,28 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='use_default', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.use_default', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='skip_record', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.skip_record', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='fail', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.fail', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1154,7 +1197,9 @@ _COLUMNS_PARSINGSPECIFICATION_INVALIDVALUEHANDLING = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='on_invalid_value', full_name='format.Columns.ParsingSpecification.InvalidValueHandling.on_invalid_value',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=2609,
   serialized_end=3024,
@@ -1166,6 +1211,7 @@ _COLUMNS_PARSINGSPECIFICATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='source_name', full_name='format.Columns.ParsingSpecification.source_name', index=0,
@@ -1173,84 +1219,84 @@ _COLUMNS_PARSINGSPECIFICATION = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='target_name', full_name='format.Columns.ParsingSpecification.target_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='null_is_invalid', full_name='format.Columns.ParsingSpecification.null_is_invalid', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='invalid_value_handling', full_name='format.Columns.ParsingSpecification.invalid_value_handling', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='boolean', full_name='format.Columns.ParsingSpecification.boolean', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='date', full_name='format.Columns.ParsingSpecification.date', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='double', full_name='format.Columns.ParsingSpecification.double', index=6,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='float', full_name='format.Columns.ParsingSpecification.float', index=7,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='int', full_name='format.Columns.ParsingSpecification.int', index=8,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='long', full_name='format.Columns.ParsingSpecification.long', index=9,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='string', full_name='format.Columns.ParsingSpecification.string', index=10,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='timestamp', full_name='format.Columns.ParsingSpecification.timestamp', index=11,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1264,7 +1310,9 @@ _COLUMNS_PARSINGSPECIFICATION = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='schema_parser', full_name='format.Columns.ParsingSpecification.schema_parser',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=2106,
   serialized_end=3058,
@@ -1276,6 +1324,7 @@ _COLUMNS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='parsing_specifications', full_name='format.Columns.parsing_specifications', index=0,
@@ -1283,7 +1332,7 @@ _COLUMNS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1307,6 +1356,7 @@ _FORMAT = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='avro', full_name='format.Format.avro', index=0,
@@ -1314,42 +1364,42 @@ _FORMAT = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='grok', full_name='format.Format.grok', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='json', full_name='format.Format.json', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='parquet', full_name='format.Format.parquet', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='xsv', full_name='format.Format.xsv', index=4,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='orc', full_name='format.Format.orc', index=5,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1363,7 +1413,9 @@ _FORMAT = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='format', full_name='format.Format.format',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=3061,
   serialized_end=3281,

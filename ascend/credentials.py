@@ -44,6 +44,7 @@ def dump_credentials(d: Mapping[str, 'Credential']):
 @dataclass
 class Credential:
     proto: io_pb2.Credentials
+
     @property
     def credential_id(self):
         return self.proto.id.value
@@ -55,3 +56,40 @@ class Credential:
     @property
     def credential_value(self):
         return MessageToDict(getattr(self.proto, self.credential_type))
+
+
+@dataclass
+class CredentialEntry:
+    proto: resource_pb2.CredentialEntry
+    role_uuid: str
+
+    @property
+    def credential(self):
+        return Credential(proto=self.proto.credential)
+
+    @property
+    def name(self):
+        return self.proto.name
+
+    def get_creation_payload(self):
+        d = MessageToDict(self.proto)
+        if d.get('credential', {}).get('id') is not None:
+            del d['credential']['id']
+        return d
+
+    @staticmethod
+    def from_credential(cred: Credential, role_uuid: str, name: str):
+        d = {
+            'credential': MessageToDict(cred.proto),
+            'name': name
+        }
+        proto = resource_pb2.CredentialEntry()
+        ParseDict(d, proto)
+        return CredentialEntry(proto, role_uuid)
+
+    @staticmethod
+    def from_json(payload):
+        role_uuid = payload['ownerRoleId']
+        proto = resource_pb2.CredentialEntry()
+        ParseDict(payload, proto, ignore_unknown_fields=True)
+        return CredentialEntry(proto=proto, role_uuid=role_uuid)

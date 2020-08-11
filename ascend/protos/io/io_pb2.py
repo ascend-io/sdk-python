@@ -26,6 +26,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='io',
   syntax='proto3',
   serialized_options=None,
+  create_key=_descriptor._internal_create_key,
   serialized_pb=b'\n\x19\x61scend/protos/io/io.proto\x12\x02io\x1a\x1bgoogle/protobuf/empty.proto\x1a!ascend/protos/ascend/ascend.proto\x1a\x35\x61scend/protos/content_encoding/content_encoding.proto\x1a!ascend/protos/format/format.proto\x1a%ascend/protos/function/function.proto\x1a#ascend/protos/pattern/pattern.proto\x1a!ascend/protos/schema/schema.proto\"\xab\x03\n\x0b\x43redentials\x12\x1e\n\x02id\x18\x01 \x01(\x0b\x32\x12.io.Credentials.Id\x12\"\n\x03\x61ws\x18\x02 \x01(\x0b\x32\x13.io.Aws.CredentialsH\x00\x12\x30\n\x08redshift\x18\x03 \x01(\x0b\x32\x1c.io.Aws.Redshift.CredentialsH\x00\x12&\n\x05\x61zure\x18\x07 \x01(\x0b\x32\x15.io.Azure.CredentialsH\x00\x12,\n\x08\x66unction\x18\x06 \x01(\x0b\x32\x18.io.Function.CredentialsH\x00\x12\"\n\x03gcp\x18\x04 \x01(\x0b\x32\x13.io.Gcp.CredentialsH\x00\x12\x34\n\rms_sql_server\x18\t \x01(\x0b\x32\x1b.io.MsSqlServer.CredentialsH\x00\x12&\n\x05mysql\x18\x05 \x01(\x0b\x32\x15.io.Mysql.CredentialsH\x00\x12.\n\tsnowflake\x18\x08 \x01(\x0b\x32\x19.io.Snowflake.CredentialsH\x00\x1a\x13\n\x02Id\x12\r\n\x05value\x18\x01 \x01(\tB\t\n\x07\x64\x65tails\"\xd9\x07\n\x03\x41ws\x1a/\n\x0b\x43redentials\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x06secret\x18\x02 \x01(\tB\x04\x90\xc3\x1a\x01\x1a\x89\x03\n\x02S3\x1a\xb8\x02\n\tContainer\x12(\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x13.io.Aws.Credentials\x12)\n\rcredential_id\x18\n \x01(\x0b\x32\x12.io.Credentials.Id\x12\x0e\n\x06region\x18\x02 \x01(\t\x12\x0e\n\x06\x62ucket\x18\x03 \x01(\t\x12\x0e\n\x06prefix\x18\x04 \x01(\t\x12\x11\n\tdelimiter\x18\x05 \x01(\t\x12%\n\x1d\x64isable_random_location_infix\x18\x08 \x01(\x08\x12\x19\n\x11location_template\x18\x06 \x01(\t\x12\x17\n\x0flocation_suffix\x18\t \x01(\t\x12\x1e\n\x08manifest\x18\x07 \x01(\x0b\x32\x0c.io.Manifest\x12\x18\n\x10write_part_files\x18\x0b \x01(\x08\x1aH\n\x08Location\x12\'\n\tcontainer\x18\x01 \x01(\x0b\x32\x14.io.Aws.S3.Container\x12\x13\n\x0bobject_name\x18\x02 \x01(\t\x1a\x94\x04\n\x08Redshift\x1a\x37\n\x0b\x43redentials\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x16\n\x08password\x18\x02 \x01(\tB\x04\x90\xc3\x1a\x01\x1a\xb9\x02\n\tContainer\x12\x31\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x1c.io.Aws.Redshift.Credentials\x12)\n\rcredential_id\x18\x08 \x01(\x0b\x32\x12.io.Credentials.Id\x12\x10\n\x08jdbc_url\x18\x02 \x01(\t\x12/\n\x11staging_container\x18\x04 \x01(\x0b\x32\x14.io.Aws.S3.Container\x12\x19\n\x11location_template\x18\x05 \x01(\t\x12\x16\n\x0e\x64\x65\x66\x61ult_to_ssl\x18\x06 \x01(\x08\x12+\n\rupdate_policy\x18\x07 \x01(\x0b\x32\x14.schema.UpdatePolicy\x12\x14\n\x0ciam_role_arn\x18\t \x01(\tJ\x04\x08\x03\x10\x04R\x0fno_egress_proxy\x1a\x92\x01\n\x08Location\x12-\n\tcontainer\x18\x01 \x01(\x0b\x32\x1a.io.Aws.Redshift.Container\x12\x12\n\ntable_name\x18\x02 \x01(\t\x12\x1b\n\x06schema\x18\x03 \x01(\x0b\x32\x0b.schema.Map\x12\x10\n\x08sort_key\x18\x04 \x03(\t\x12\x14\n\x0cpartition_id\x18\x05 \x01(\t\"\xa9\x06\n\x05\x41zure\x1a\x86\x03\n\x0b\x43redentials\x12\x35\n\nshared_key\x18\x01 \x01(\x0b\x32\x1f.io.Azure.Credentials.SharedKeyH\x00\x12\x43\n\x11service_principal\x18\x02 \x01(\x0b\x32&.io.Azure.Credentials.ServicePrincipalH\x00\x12L\n\x16service_principal_json\x18\x03 \x01(\x0b\x32*.io.Azure.Credentials.ServicePrincipalJsonH\x00\x1a\x1e\n\tSharedKey\x12\x11\n\x03key\x18\x01 \x01(\tB\x04\x90\xc3\x1a\x01\x1aR\n\x10ServicePrincipal\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x1b\n\rclient_secret\x18\x02 \x01(\tB\x04\x90\xc3\x1a\x01\x12\x0e\n\x06tenant\x18\x03 \x01(\t\x1a.\n\x14ServicePrincipalJson\x12\x16\n\x08json_key\x18\x01 \x01(\tB\x04\x90\xc3\x1a\x01\x42\t\n\x07\x64\x65tails\x1a\x96\x03\n\x03\x41\x62s\x1a\xc3\x02\n\tContainer\x12\x14\n\x0c\x61\x63\x63ount_name\x18\x01 \x01(\t\x12*\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x15.io.Azure.Credentials\x12)\n\rcredential_id\x18\x03 \x01(\x0b\x32\x12.io.Credentials.Id\x12\x11\n\tcontainer\x18\x04 \x01(\t\x12\x0e\n\x06prefix\x18\x05 \x01(\t\x12\x11\n\tdelimiter\x18\x06 \x01(\t\x12%\n\x1d\x64isable_random_location_infix\x18\x07 \x01(\x08\x12\x19\n\x11location_template\x18\x08 \x01(\t\x12\x17\n\x0flocation_suffix\x18\t \x01(\t\x12\x1e\n\x08manifest\x18\n \x01(\x0b\x32\x0c.io.Manifest\x12\x18\n\x10write_part_files\x18\x0b \x01(\x08\x1aI\n\x08Location\x12*\n\tcontainer\x18\x01 \x01(\x0b\x32\x17.io.Azure.Abs.Container\x12\x11\n\tblob_name\x18\x02 \x01(\t\"\x86\x01\n\x04\x46ile\x1a\x36\n\tContainer\x12\x0e\n\x06prefix\x18\x01 \x01(\t\x12\x19\n\x11location_template\x18\x02 \x01(\t\x1a\x46\n\x08Location\x12%\n\tcontainer\x18\x01 \x01(\x0b\x32\x12.io.File.Container\x12\x13\n\x0bobject_name\x18\x02 \x01(\t\"\xe5\x06\n\x03Gcp\x1a.\n\x0b\x43redentials\x12\x18\n\x08json_key\x18\x01 \x01(\tB\x04\x90\xc3\x1a\x01H\x00\x42\x05\n\x03key\x1a\xaf\x03\n\x08\x42igQuery\x1a\x83\x02\n\tContainer\x12(\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x13.io.Gcp.Credentials\x12)\n\rcredential_id\x18\x07 \x01(\x0b\x32\x12.io.Credentials.Id\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x16\n\x0e\x64\x61taset_prefix\x18\x03 \x01(\t\x12\x19\n\x11location_template\x18\x04 \x01(\t\x12+\n\x11partition_pattern\x18\x05 \x01(\x0b\x32\x10.pattern.Pattern\x12\x30\n\x11staging_container\x18\x06 \x01(\x0b\x32\x15.io.Gcp.Gcs.Container\x1a\x9c\x01\n\x08Location\x12-\n\tcontainer\x18\x01 \x01(\x0b\x32\x1a.io.Gcp.BigQuery.Container\x12\x12\n\ntable_name\x18\x03 \x01(\t\x12\x1b\n\x06schema\x18\x04 \x01(\x0b\x32\x0b.schema.Map\x12!\n\x19\x63ontainer_partition_index\x18\x05 \x01(\x05J\x04\x08\x02\x10\x03R\x07\x64\x61taset\x1a\xfb\x02\n\x03Gcs\x1a\xa8\x02\n\tContainer\x12(\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x13.io.Gcp.Credentials\x12)\n\rcredential_id\x18\t \x01(\x0b\x32\x12.io.Credentials.Id\x12\x0e\n\x06\x62ucket\x18\x02 \x01(\t\x12\x0e\n\x06prefix\x18\x03 \x01(\t\x12\x11\n\tdelimiter\x18\x04 \x01(\t\x12%\n\x1d\x64isable_random_location_infix\x18\x07 \x01(\x08\x12\x19\n\x11location_template\x18\x05 \x01(\t\x12\x17\n\x0flocation_suffix\x18\x08 \x01(\t\x12\x1e\n\x08manifest\x18\x06 \x01(\x0b\x32\x0c.io.Manifest\x12\x18\n\x10write_part_files\x18\n \x01(\x08\x1aI\n\x08Location\x12(\n\tcontainer\x18\x01 \x01(\x0b\x32\x15.io.Gcp.Gcs.Container\x12\x13\n\x0bobject_name\x18\x02 \x01(\t\"\xdb\x01\n\tImmediate\x1a;\n\x06Object\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06length\x18\x03 \x01(\x03\x12\x13\n\x0b\x63ontent_sha\x18\x04 \x01(\x0c\x1a\x90\x01\n\tContainer\x12\x1c\n\x0c\x63ontent_some\x18\x01 \x01(\x0c\x42\x04\x98\xc3\x1a\x01H\x00\x12.\n\x0c\x63ontent_none\x18\x02 \x01(\x0b\x32\x16.google.protobuf.EmptyH\x00\x12$\n\x06object\x18\x03 \x03(\x0b\x32\x14.io.Immediate.ObjectB\x0f\n\rmaybe_content\"\xf3\x04\n\x0bMsSqlServer\x1a\xa0\x01\n\x0b\x43redentials\x12K\n\x12sql_authentication\x18\x01 \x01(\x0b\x32-.io.MsSqlServer.Credentials.SqlAuthenticationH\x00\x1a\x39\n\x11SqlAuthentication\x12\x0c\n\x04user\x18\x01 \x01(\t\x12\x16\n\x08password\x18\x02 \x01(\tB\x04\x90\xc3\x1a\x01\x42\t\n\x07\x64\x65tails\x1a\xbf\x02\n\tContainer\x12\x30\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x1b.io.MsSqlServer.Credentials\x12)\n\rcredential_id\x18\x02 \x01(\x0b\x32\x12.io.Credentials.Id\x12\x13\n\x0bserver_name\x18\x03 \x01(\t\x12\x0c\n\x04port\x18\x04 \x01(\x05\x12\x16\n\x0euse_encryption\x18\x05 \x01(\x08\x12\x15\n\rdatabase_name\x18\x06 \x01(\t\x12&\n\x03\x61\x62s\x18\x07 \x01(\x0b\x32\x17.io.Azure.Abs.ContainerH\x00\x12\x19\n\x11location_template\x18\x08 \x01(\t\x12+\n\rupdate_policy\x18\t \x01(\x0b\x32\x14.schema.UpdatePolicyB\x13\n\x11staging_container\x1a\x7f\n\x08Location\x12,\n\tcontainer\x18\x01 \x01(\x0b\x32\x19.io.MsSqlServer.Container\x12\x12\n\ntable_name\x18\x02 \x01(\t\x12\x1b\n\x06schema\x18\x03 \x01(\x0b\x32\x0b.schema.Map\x12\x14\n\x0cpartition_id\x18\x05 \x01(\t\"\xbb\x05\n\x05Mysql\x1a\x37\n\x0b\x43redentials\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x16\n\x08password\x18\x02 \x01(\tB\x04\x90\xc3\x1a\x01\x1a\xc0\x01\n\tContainer\x12*\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x15.io.Mysql.Credentials\x12)\n\rcredential_id\x18\x06 \x01(\x0b\x32\x12.io.Credentials.Id\x12\x0c\n\x04host\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\x05\x12\x10\n\x08\x64\x61tabase\x18\x04 \x01(\t\x12\x19\n\x11location_template\x18\x05 \x01(\t\x12\x13\n\x0b\x64isable_tls\x18\x07 \x01(\x08\x1a\x63\n\x08Location\x12&\n\tcontainer\x18\x01 \x01(\x0b\x32\x13.io.Mysql.Container\x12\x12\n\ntable_name\x18\x02 \x01(\t\x12\x1b\n\x06schema\x18\x03 \x01(\x0b\x32\x0b.schema.Map\x1a\xd0\x02\n\tPartition\x1a\xcf\x01\n\tContainer\x12*\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x15.io.Mysql.Credentials\x12)\n\rcredential_id\x18\x07 \x01(\x0b\x32\x12.io.Credentials.Id\x12\x0c\n\x04host\x18\x02 \x01(\t\x12\x0c\n\x04port\x18\x03 \x01(\x05\x12\x10\n\x08\x64\x61tabase\x18\x04 \x01(\t\x12\r\n\x05table\x18\x05 \x01(\t\x12\x19\n\x11location_template\x18\x06 \x01(\t\x12\x13\n\x0b\x64isable_tls\x18\x08 \x01(\x08\x1aq\n\x08Location\x12\x30\n\tcontainer\x18\x01 \x01(\x0b\x32\x1d.io.Mysql.Partition.Container\x12\x16\n\x0epartition_name\x18\x02 \x01(\t\x12\x1b\n\x06schema\x18\x03 \x01(\x0b\x32\x0b.schema.Map\"\xcb\x04\n\tSnowflake\x1a\x37\n\x0b\x43redentials\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x16\n\x08password\x18\x02 \x01(\tB\x04\x90\xc3\x1a\x01\x1a\x85\x03\n\tContainer\x12.\n\x0b\x63redentials\x18\x01 \x01(\x0b\x32\x19.io.Snowflake.Credentials\x12)\n\rcredential_id\x18\x02 \x01(\x0b\x32\x12.io.Credentials.Id\x12+\n\rupdate_policy\x18\x03 \x01(\x0b\x32\x14.schema.UpdatePolicy\x12\"\n\x02s3\x18\x04 \x01(\x0b\x32\x14.io.Aws.S3.ContainerH\x00\x12$\n\x03gcs\x18\x05 \x01(\x0b\x32\x15.io.Gcp.Gcs.ContainerH\x00\x12&\n\x03\x61\x62s\x18\x06 \x01(\x0b\x32\x17.io.Azure.Abs.ContainerH\x00\x12\x19\n\x11location_template\x18\x07 \x01(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x08 \x01(\t\x12\x11\n\twarehouse\x18\t \x01(\t\x12\x10\n\x08\x64\x61tabase\x18\n \x01(\t\x12\x18\n\x10snowflake_schema\x18\x0b \x01(\tB\x13\n\x11staging_container\x1a}\n\x08Location\x12*\n\tcontainer\x18\x01 \x01(\x0b\x32\x17.io.Snowflake.Container\x12\x12\n\ntable_name\x18\x02 \x01(\t\x12\x1b\n\x06schema\x18\x03 \x01(\x0b\x32\x0b.schema.Map\x12\x14\n\x0cpartition_id\x18\x05 \x01(\t\"\x80\x03\n\x05Spark\x1a\xe1\x01\n\x05Store\x12\"\n\x02s3\x18\x01 \x01(\x0b\x32\x14.io.Aws.S3.ContainerH\x00\x12$\n\x03gcs\x18\x02 \x01(\x0b\x32\x15.io.Gcp.Gcs.ContainerH\x00\x12&\n\x03\x61\x62s\x18\x05 \x01(\x0b\x32\x17.io.Azure.Abs.ContainerH\x00\x12\x1e\n\x06\x66ormat\x18\x03 \x01(\x0b\x32\x0e.format.Format\x12;\n\x10\x63ontent_encoding\x18\x04 \x01(\x0b\x32!.content_encoding.ContentEncodingB\t\n\x07\x64\x65tails\x1a+\n\tContainer\x12\x1e\n\x05store\x18\x01 \x01(\x0b\x32\x0f.io.Spark.Store\x1a\x66\n\x08Location\x12&\n\tcontainer\x18\x01 \x01(\x0b\x32\x13.io.Spark.Container\x12\x15\n\robject_prefix\x18\x02 \x01(\t\x12\x1b\n\x06schema\x18\x03 \x01(\x0b\x32\x0b.schema.Map\"\xbe\x04\n\x08\x46unction\x1a#\n\x0b\x43redentials\x12\x14\n\x06secret\x18\x01 \x01(\tB\x04\x90\xc3\x1a\x01\x1ai\n\x18\x43redentialsConfiguration\x12\x1e\n\x02id\x18\x01 \x01(\x0b\x32\x12.io.Credentials.Id\x12-\n\x0b\x63redentials\x18\x02 \x01(\x0b\x32\x18.io.Function.Credentials\x1a\xe7\x01\n\tContainer\x12(\n\nexecutable\x18\x01 \x01(\x0b\x32\x14.function.Executable\x12H\n\x19\x63redentials_configuration\x18\x02 \x01(\x0b\x32%.io.Function.CredentialsConfiguration\x1a\x31\n\x04\x42yte\x12)\n\tcontainer\x18\x01 \x01(\x0b\x32\x16.io.Function.Container\x1a\x33\n\x06Record\x12)\n\tcontainer\x18\x01 \x01(\x0b\x32\x16.io.Function.Container\x1a\xb7\x01\n\x08Location\x1a\x44\n\x04\x42yte\x12.\n\tcontainer\x18\x01 \x01(\x0b\x32\x1b.io.Function.Container.Byte\x12\x0c\n\x04name\x18\x02 \x01(\t\x1a\x65\n\x06Record\x12\x30\n\tcontainer\x18\x01 \x01(\x0b\x32\x1d.io.Function.Container.Record\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x1b\n\x06schema\x18\x03 \x01(\x0b\x32\x0b.schema.Map\"\x93\x05\n\tContainer\x12.\n\x08redshift\x18\x01 \x01(\x0b\x32\x1a.io.Aws.Redshift.ContainerH\x00\x12\"\n\x02s3\x18\x02 \x01(\x0b\x32\x14.io.Aws.S3.ContainerH\x00\x12&\n\x03\x61\x62s\x18\x0c \x01(\x0b\x32\x17.io.Azure.Abs.ContainerH\x00\x12\"\n\x04\x66ile\x18\x03 \x01(\x0b\x32\x12.io.File.ContainerH\x00\x12\x34\n\rbyte_function\x18\n \x01(\x0b\x32\x1b.io.Function.Container.ByteH\x00\x12\x38\n\x0frecord_function\x18\x0b \x01(\x0b\x32\x1d.io.Function.Container.RecordH\x00\x12/\n\tbig_query\x18\x04 \x01(\x0b\x32\x1a.io.Gcp.BigQuery.ContainerH\x00\x12$\n\x03gcs\x18\x05 \x01(\x0b\x32\x15.io.Gcp.Gcs.ContainerH\x00\x12,\n\timmediate\x18\x08 \x01(\x0b\x32\x17.io.Immediate.ContainerH\x00\x12\x32\n\rms_sql_server\x18\x0e \x01(\x0b\x32\x19.io.MsSqlServer.ContainerH\x00\x12$\n\x05mysql\x18\x06 \x01(\x0b\x32\x13.io.Mysql.ContainerH\x00\x12\x38\n\x0fmysql_partition\x18\t \x01(\x0b\x32\x1d.io.Mysql.Partition.ContainerH\x00\x12,\n\tsnowflake\x18\r \x01(\x0b\x32\x17.io.Snowflake.ContainerH\x00\x12$\n\x05spark\x18\x07 \x01(\x0b\x32\x13.io.Spark.ContainerH\x00\x42\t\n\x07\x64\x65tails\"\xe9\x03\n\x08Location\x12-\n\x08redshift\x18\x01 \x01(\x0b\x32\x19.io.Aws.Redshift.LocationH\x00\x12!\n\x02s3\x18\x02 \x01(\x0b\x32\x13.io.Aws.S3.LocationH\x00\x12%\n\x03\x61\x62s\x18\t \x01(\x0b\x32\x16.io.Azure.Abs.LocationH\x00\x12!\n\x04\x66ile\x18\x03 \x01(\x0b\x32\x11.io.File.LocationH\x00\x12.\n\tbig_query\x18\x04 \x01(\x0b\x32\x19.io.Gcp.BigQuery.LocationH\x00\x12#\n\x03gcs\x18\x05 \x01(\x0b\x32\x14.io.Gcp.Gcs.LocationH\x00\x12\x31\n\rms_sql_server\x18\x0b \x01(\x0b\x32\x18.io.MsSqlServer.LocationH\x00\x12#\n\x05mysql\x18\x06 \x01(\x0b\x32\x12.io.Mysql.LocationH\x00\x12\x37\n\x0fmysql_partition\x18\x08 \x01(\x0b\x32\x1c.io.Mysql.Partition.LocationH\x00\x12+\n\tsnowflake\x18\n \x01(\x0b\x32\x16.io.Snowflake.LocationH\x00\x12#\n\x05spark\x18\x07 \x01(\x0b\x32\x12.io.Spark.LocationH\x00\x42\t\n\x07\x64\x65tails\"\xa5\x01\n\x08Manifest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12#\n\x06\x66ormat\x18\x02 \x01(\x0b\x32\x13.io.Manifest.Format\x1a\x06\n\x04Json\x1a\x05\n\x03\x43sv\x1aW\n\x06\x46ormat\x12!\n\x04json\x18\x01 \x01(\x0b\x32\x11.io.Manifest.JsonH\x00\x12\x1f\n\x03\x63sv\x18\x02 \x01(\x0b\x32\x10.io.Manifest.CsvH\x00\x42\t\n\x07\x64\x65tails*\x1d\n\x11\x43haracterEncoding\x12\x08\n\x04UTF8\x10\x00\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,ascend_dot_protos_dot_content__encoding_dot_content__encoding__pb2.DESCRIPTOR,ascend_dot_protos_dot_format_dot_format__pb2.DESCRIPTOR,ascend_dot_protos_dot_function_dot_function__pb2.DESCRIPTOR,ascend_dot_protos_dot_pattern_dot_pattern__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,])
@@ -35,11 +36,13 @@ _CHARACTERENCODING = _descriptor.EnumDescriptor(
   full_name='io.CharacterEncoding',
   filename=None,
   file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
   values=[
     _descriptor.EnumValueDescriptor(
       name='UTF8', index=0, number=0,
       serialized_options=None,
-      type=None),
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
@@ -59,6 +62,7 @@ _CREDENTIALS_ID = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='value', full_name='io.Credentials.Id.value', index=0,
@@ -66,7 +70,7 @@ _CREDENTIALS_ID = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -89,6 +93,7 @@ _CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='io.Credentials.id', index=0,
@@ -96,63 +101,63 @@ _CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='aws', full_name='io.Credentials.aws', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='redshift', full_name='io.Credentials.redshift', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='azure', full_name='io.Credentials.azure', index=3,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='function', full_name='io.Credentials.function', index=4,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gcp', full_name='io.Credentials.gcp', index=5,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ms_sql_server', full_name='io.Credentials.ms_sql_server', index=6,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='mysql', full_name='io.Credentials.mysql', index=7,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='snowflake', full_name='io.Credentials.snowflake', index=8,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -166,7 +171,9 @@ _CREDENTIALS = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='io.Credentials.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=299,
   serialized_end=726,
@@ -179,6 +186,7 @@ _AWS_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='io.Aws.Credentials.id', index=0,
@@ -186,14 +194,14 @@ _AWS_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='secret', full_name='io.Aws.Credentials.secret', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -216,6 +224,7 @@ _AWS_S3_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Aws.S3.Container.credentials', index=0,
@@ -223,77 +232,77 @@ _AWS_S3_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Aws.S3.Container.credential_id', index=1,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='region', full_name='io.Aws.S3.Container.region', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='bucket', full_name='io.Aws.S3.Container.bucket', index=3,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='prefix', full_name='io.Aws.S3.Container.prefix', index=4,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='delimiter', full_name='io.Aws.S3.Container.delimiter', index=5,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='disable_random_location_infix', full_name='io.Aws.S3.Container.disable_random_location_infix', index=6,
       number=8, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Aws.S3.Container.location_template', index=7,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_suffix', full_name='io.Aws.S3.Container.location_suffix', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='manifest', full_name='io.Aws.S3.Container.manifest', index=9,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='write_part_files', full_name='io.Aws.S3.Container.write_part_files', index=10,
       number=11, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -316,6 +325,7 @@ _AWS_S3_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Aws.S3.Location.container', index=0,
@@ -323,14 +333,14 @@ _AWS_S3_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='object_name', full_name='io.Aws.S3.Location.object_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -353,6 +363,7 @@ _AWS_S3 = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -376,6 +387,7 @@ _AWS_REDSHIFT_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='username', full_name='io.Aws.Redshift.Credentials.username', index=0,
@@ -383,14 +395,14 @@ _AWS_REDSHIFT_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='password', full_name='io.Aws.Redshift.Credentials.password', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -413,6 +425,7 @@ _AWS_REDSHIFT_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Aws.Redshift.Container.credentials', index=0,
@@ -420,56 +433,56 @@ _AWS_REDSHIFT_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Aws.Redshift.Container.credential_id', index=1,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='jdbc_url', full_name='io.Aws.Redshift.Container.jdbc_url', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='staging_container', full_name='io.Aws.Redshift.Container.staging_container', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Aws.Redshift.Container.location_template', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='default_to_ssl', full_name='io.Aws.Redshift.Container.default_to_ssl', index=5,
       number=6, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='update_policy', full_name='io.Aws.Redshift.Container.update_policy', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='iam_role_arn', full_name='io.Aws.Redshift.Container.iam_role_arn', index=7,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -492,6 +505,7 @@ _AWS_REDSHIFT_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Aws.Redshift.Location.container', index=0,
@@ -499,35 +513,35 @@ _AWS_REDSHIFT_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='table_name', full_name='io.Aws.Redshift.Location.table_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.Aws.Redshift.Location.schema', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='sort_key', full_name='io.Aws.Redshift.Location.sort_key', index=3,
       number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='partition_id', full_name='io.Aws.Redshift.Location.partition_id', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -550,6 +564,7 @@ _AWS_REDSHIFT = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -573,6 +588,7 @@ _AWS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -597,6 +613,7 @@ _AZURE_CREDENTIALS_SHAREDKEY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='key', full_name='io.Azure.Credentials.SharedKey.key', index=0,
@@ -604,7 +621,7 @@ _AZURE_CREDENTIALS_SHAREDKEY = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -627,6 +644,7 @@ _AZURE_CREDENTIALS_SERVICEPRINCIPAL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='client_id', full_name='io.Azure.Credentials.ServicePrincipal.client_id', index=0,
@@ -634,21 +652,21 @@ _AZURE_CREDENTIALS_SERVICEPRINCIPAL = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='client_secret', full_name='io.Azure.Credentials.ServicePrincipal.client_secret', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='tenant', full_name='io.Azure.Credentials.ServicePrincipal.tenant', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -671,6 +689,7 @@ _AZURE_CREDENTIALS_SERVICEPRINCIPALJSON = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='json_key', full_name='io.Azure.Credentials.ServicePrincipalJson.json_key', index=0,
@@ -678,7 +697,7 @@ _AZURE_CREDENTIALS_SERVICEPRINCIPALJSON = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -701,6 +720,7 @@ _AZURE_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='shared_key', full_name='io.Azure.Credentials.shared_key', index=0,
@@ -708,21 +728,21 @@ _AZURE_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='service_principal', full_name='io.Azure.Credentials.service_principal', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='service_principal_json', full_name='io.Azure.Credentials.service_principal_json', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -736,7 +756,9 @@ _AZURE_CREDENTIALS = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='io.Azure.Credentials.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=1727,
   serialized_end=2117,
@@ -748,6 +770,7 @@ _AZURE_ABS_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='account_name', full_name='io.Azure.Abs.Container.account_name', index=0,
@@ -755,77 +778,77 @@ _AZURE_ABS_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Azure.Abs.Container.credentials', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Azure.Abs.Container.credential_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Azure.Abs.Container.container', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='prefix', full_name='io.Azure.Abs.Container.prefix', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='delimiter', full_name='io.Azure.Abs.Container.delimiter', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='disable_random_location_infix', full_name='io.Azure.Abs.Container.disable_random_location_infix', index=6,
       number=7, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Azure.Abs.Container.location_template', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_suffix', full_name='io.Azure.Abs.Container.location_suffix', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='manifest', full_name='io.Azure.Abs.Container.manifest', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='write_part_files', full_name='io.Azure.Abs.Container.write_part_files', index=10,
       number=11, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -848,6 +871,7 @@ _AZURE_ABS_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Azure.Abs.Location.container', index=0,
@@ -855,14 +879,14 @@ _AZURE_ABS_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='blob_name', full_name='io.Azure.Abs.Location.blob_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -885,6 +909,7 @@ _AZURE_ABS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -908,6 +933,7 @@ _AZURE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -932,6 +958,7 @@ _FILE_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='prefix', full_name='io.File.Container.prefix', index=0,
@@ -939,14 +966,14 @@ _FILE_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.File.Container.location_template', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -969,6 +996,7 @@ _FILE_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.File.Location.container', index=0,
@@ -976,14 +1004,14 @@ _FILE_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='object_name', full_name='io.File.Location.object_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1006,6 +1034,7 @@ _FILE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1030,6 +1059,7 @@ _GCP_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='json_key', full_name='io.Gcp.Credentials.json_key', index=0,
@@ -1037,7 +1067,7 @@ _GCP_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1051,7 +1081,9 @@ _GCP_CREDENTIALS = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='key', full_name='io.Gcp.Credentials.key',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=2673,
   serialized_end=2719,
@@ -1063,6 +1095,7 @@ _GCP_BIGQUERY_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Gcp.BigQuery.Container.credentials', index=0,
@@ -1070,49 +1103,49 @@ _GCP_BIGQUERY_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Gcp.BigQuery.Container.credential_id', index=1,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='project', full_name='io.Gcp.BigQuery.Container.project', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='dataset_prefix', full_name='io.Gcp.BigQuery.Container.dataset_prefix', index=3,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Gcp.BigQuery.Container.location_template', index=4,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='partition_pattern', full_name='io.Gcp.BigQuery.Container.partition_pattern', index=5,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='staging_container', full_name='io.Gcp.BigQuery.Container.staging_container', index=6,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1135,6 +1168,7 @@ _GCP_BIGQUERY_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Gcp.BigQuery.Location.container', index=0,
@@ -1142,28 +1176,28 @@ _GCP_BIGQUERY_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='table_name', full_name='io.Gcp.BigQuery.Location.table_name', index=1,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.Gcp.BigQuery.Location.schema', index=2,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='container_partition_index', full_name='io.Gcp.BigQuery.Location.container_partition_index', index=3,
       number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1186,6 +1220,7 @@ _GCP_BIGQUERY = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1209,6 +1244,7 @@ _GCP_GCS_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Gcp.Gcs.Container.credentials', index=0,
@@ -1216,70 +1252,70 @@ _GCP_GCS_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Gcp.Gcs.Container.credential_id', index=1,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='bucket', full_name='io.Gcp.Gcs.Container.bucket', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='prefix', full_name='io.Gcp.Gcs.Container.prefix', index=3,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='delimiter', full_name='io.Gcp.Gcs.Container.delimiter', index=4,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='disable_random_location_infix', full_name='io.Gcp.Gcs.Container.disable_random_location_infix', index=5,
       number=7, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Gcp.Gcs.Container.location_template', index=6,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_suffix', full_name='io.Gcp.Gcs.Container.location_suffix', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='manifest', full_name='io.Gcp.Gcs.Container.manifest', index=8,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='write_part_files', full_name='io.Gcp.Gcs.Container.write_part_files', index=9,
       number=10, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1302,6 +1338,7 @@ _GCP_GCS_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Gcp.Gcs.Location.container', index=0,
@@ -1309,14 +1346,14 @@ _GCP_GCS_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='object_name', full_name='io.Gcp.Gcs.Location.object_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1339,6 +1376,7 @@ _GCP_GCS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1362,6 +1400,7 @@ _GCP = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1386,6 +1425,7 @@ _IMMEDIATE_OBJECT = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='name', full_name='io.Immediate.Object.name', index=0,
@@ -1393,21 +1433,21 @@ _IMMEDIATE_OBJECT = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='length', full_name='io.Immediate.Object.length', index=1,
       number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='content_sha', full_name='io.Immediate.Object.content_sha', index=2,
       number=4, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1430,6 +1470,7 @@ _IMMEDIATE_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='content_some', full_name='io.Immediate.Container.content_some', index=0,
@@ -1437,21 +1478,21 @@ _IMMEDIATE_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\230\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\230\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='content_none', full_name='io.Immediate.Container.content_none', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='object', full_name='io.Immediate.Container.object', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1465,7 +1506,9 @@ _IMMEDIATE_CONTAINER = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='maybe_content', full_name='io.Immediate.Container.maybe_content',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=3613,
   serialized_end=3757,
@@ -1477,6 +1520,7 @@ _IMMEDIATE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1501,6 +1545,7 @@ _MSSQLSERVER_CREDENTIALS_SQLAUTHENTICATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='user', full_name='io.MsSqlServer.Credentials.SqlAuthentication.user', index=0,
@@ -1508,14 +1553,14 @@ _MSSQLSERVER_CREDENTIALS_SQLAUTHENTICATION = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='password', full_name='io.MsSqlServer.Credentials.SqlAuthentication.password', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1538,6 +1583,7 @@ _MSSQLSERVER_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='sql_authentication', full_name='io.MsSqlServer.Credentials.sql_authentication', index=0,
@@ -1545,7 +1591,7 @@ _MSSQLSERVER_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1559,7 +1605,9 @@ _MSSQLSERVER_CREDENTIALS = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='io.MsSqlServer.Credentials.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=3776,
   serialized_end=3936,
@@ -1571,6 +1619,7 @@ _MSSQLSERVER_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.MsSqlServer.Container.credentials', index=0,
@@ -1578,63 +1627,63 @@ _MSSQLSERVER_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.MsSqlServer.Container.credential_id', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='server_name', full_name='io.MsSqlServer.Container.server_name', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='port', full_name='io.MsSqlServer.Container.port', index=3,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='use_encryption', full_name='io.MsSqlServer.Container.use_encryption', index=4,
       number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='database_name', full_name='io.MsSqlServer.Container.database_name', index=5,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='abs', full_name='io.MsSqlServer.Container.abs', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.MsSqlServer.Container.location_template', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='update_policy', full_name='io.MsSqlServer.Container.update_policy', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1648,7 +1697,9 @@ _MSSQLSERVER_CONTAINER = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='staging_container', full_name='io.MsSqlServer.Container.staging_container',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=3939,
   serialized_end=4258,
@@ -1660,6 +1711,7 @@ _MSSQLSERVER_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.MsSqlServer.Location.container', index=0,
@@ -1667,28 +1719,28 @@ _MSSQLSERVER_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='table_name', full_name='io.MsSqlServer.Location.table_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.MsSqlServer.Location.schema', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='partition_id', full_name='io.MsSqlServer.Location.partition_id', index=3,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1711,6 +1763,7 @@ _MSSQLSERVER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -1735,6 +1788,7 @@ _MYSQL_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='username', full_name='io.Mysql.Credentials.username', index=0,
@@ -1742,14 +1796,14 @@ _MYSQL_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='password', full_name='io.Mysql.Credentials.password', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1772,6 +1826,7 @@ _MYSQL_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Mysql.Container.credentials', index=0,
@@ -1779,49 +1834,49 @@ _MYSQL_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Mysql.Container.credential_id', index=1,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='host', full_name='io.Mysql.Container.host', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='port', full_name='io.Mysql.Container.port', index=3,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='database', full_name='io.Mysql.Container.database', index=4,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Mysql.Container.location_template', index=5,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='disable_tls', full_name='io.Mysql.Container.disable_tls', index=6,
       number=7, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1844,6 +1899,7 @@ _MYSQL_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Mysql.Location.container', index=0,
@@ -1851,21 +1907,21 @@ _MYSQL_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='table_name', full_name='io.Mysql.Location.table_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.Mysql.Location.schema', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1888,6 +1944,7 @@ _MYSQL_PARTITION_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Mysql.Partition.Container.credentials', index=0,
@@ -1895,56 +1952,56 @@ _MYSQL_PARTITION_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Mysql.Partition.Container.credential_id', index=1,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='host', full_name='io.Mysql.Partition.Container.host', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='port', full_name='io.Mysql.Partition.Container.port', index=3,
       number=3, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='database', full_name='io.Mysql.Partition.Container.database', index=4,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='table', full_name='io.Mysql.Partition.Container.table', index=5,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Mysql.Partition.Container.location_template', index=6,
       number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='disable_tls', full_name='io.Mysql.Partition.Container.disable_tls', index=7,
       number=8, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1967,6 +2024,7 @@ _MYSQL_PARTITION_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Mysql.Partition.Location.container', index=0,
@@ -1974,21 +2032,21 @@ _MYSQL_PARTITION_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='partition_name', full_name='io.Mysql.Partition.Location.partition_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.Mysql.Partition.Location.schema', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2011,6 +2069,7 @@ _MYSQL_PARTITION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2034,6 +2093,7 @@ _MYSQL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2058,6 +2118,7 @@ _SNOWFLAKE_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='username', full_name='io.Snowflake.Credentials.username', index=0,
@@ -2065,14 +2126,14 @@ _SNOWFLAKE_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='password', full_name='io.Snowflake.Credentials.password', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2095,6 +2156,7 @@ _SNOWFLAKE_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Snowflake.Container.credentials', index=0,
@@ -2102,77 +2164,77 @@ _SNOWFLAKE_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credential_id', full_name='io.Snowflake.Container.credential_id', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='update_policy', full_name='io.Snowflake.Container.update_policy', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='s3', full_name='io.Snowflake.Container.s3', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gcs', full_name='io.Snowflake.Container.gcs', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='abs', full_name='io.Snowflake.Container.abs', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='location_template', full_name='io.Snowflake.Container.location_template', index=6,
       number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='account', full_name='io.Snowflake.Container.account', index=7,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='warehouse', full_name='io.Snowflake.Container.warehouse', index=8,
       number=9, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='database', full_name='io.Snowflake.Container.database', index=9,
       number=10, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='snowflake_schema', full_name='io.Snowflake.Container.snowflake_schema', index=10,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2186,7 +2248,9 @@ _SNOWFLAKE_CONTAINER = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='staging_container', full_name='io.Snowflake.Container.staging_container',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=5163,
   serialized_end=5552,
@@ -2198,6 +2262,7 @@ _SNOWFLAKE_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Snowflake.Location.container', index=0,
@@ -2205,28 +2270,28 @@ _SNOWFLAKE_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='table_name', full_name='io.Snowflake.Location.table_name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.Snowflake.Location.schema', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='partition_id', full_name='io.Snowflake.Location.partition_id', index=3,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2249,6 +2314,7 @@ _SNOWFLAKE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2273,6 +2339,7 @@ _SPARK_STORE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='s3', full_name='io.Spark.Store.s3', index=0,
@@ -2280,35 +2347,35 @@ _SPARK_STORE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gcs', full_name='io.Spark.Store.gcs', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='abs', full_name='io.Spark.Store.abs', index=2,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='format', full_name='io.Spark.Store.format', index=3,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='content_encoding', full_name='io.Spark.Store.content_encoding', index=4,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2322,7 +2389,9 @@ _SPARK_STORE = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='io.Spark.Store.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=5692,
   serialized_end=5917,
@@ -2334,6 +2403,7 @@ _SPARK_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='store', full_name='io.Spark.Container.store', index=0,
@@ -2341,7 +2411,7 @@ _SPARK_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2364,6 +2434,7 @@ _SPARK_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Spark.Location.container', index=0,
@@ -2371,21 +2442,21 @@ _SPARK_LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='object_prefix', full_name='io.Spark.Location.object_prefix', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.Spark.Location.schema', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2408,6 +2479,7 @@ _SPARK = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2432,6 +2504,7 @@ _FUNCTION_CREDENTIALS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='secret', full_name='io.Function.Credentials.secret', index=0,
@@ -2439,7 +2512,7 @@ _FUNCTION_CREDENTIALS = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=b'\220\303\032\001', file=DESCRIPTOR),
+      serialized_options=b'\220\303\032\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2462,6 +2535,7 @@ _FUNCTION_CREDENTIALSCONFIGURATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='io.Function.CredentialsConfiguration.id', index=0,
@@ -2469,14 +2543,14 @@ _FUNCTION_CREDENTIALSCONFIGURATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credentials', full_name='io.Function.CredentialsConfiguration.credentials', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2499,6 +2573,7 @@ _FUNCTION_CONTAINER_BYTE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Function.Container.Byte.container', index=0,
@@ -2506,7 +2581,7 @@ _FUNCTION_CONTAINER_BYTE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2529,6 +2604,7 @@ _FUNCTION_CONTAINER_RECORD = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Function.Container.Record.container', index=0,
@@ -2536,7 +2612,7 @@ _FUNCTION_CONTAINER_RECORD = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2559,6 +2635,7 @@ _FUNCTION_CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='executable', full_name='io.Function.Container.executable', index=0,
@@ -2566,14 +2643,14 @@ _FUNCTION_CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='credentials_configuration', full_name='io.Function.Container.credentials_configuration', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2596,6 +2673,7 @@ _FUNCTION_LOCATION_BYTE = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Function.Location.Byte.container', index=0,
@@ -2603,14 +2681,14 @@ _FUNCTION_LOCATION_BYTE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='io.Function.Location.Byte.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2633,6 +2711,7 @@ _FUNCTION_LOCATION_RECORD = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='container', full_name='io.Function.Location.Record.container', index=0,
@@ -2640,21 +2719,21 @@ _FUNCTION_LOCATION_RECORD = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='name', full_name='io.Function.Location.Record.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='schema', full_name='io.Function.Location.Record.schema', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2677,6 +2756,7 @@ _FUNCTION_LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2700,6 +2780,7 @@ _FUNCTION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2724,6 +2805,7 @@ _CONTAINER = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='redshift', full_name='io.Container.redshift', index=0,
@@ -2731,98 +2813,98 @@ _CONTAINER = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='s3', full_name='io.Container.s3', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='abs', full_name='io.Container.abs', index=2,
       number=12, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='file', full_name='io.Container.file', index=3,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='byte_function', full_name='io.Container.byte_function', index=4,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='record_function', full_name='io.Container.record_function', index=5,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='big_query', full_name='io.Container.big_query', index=6,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gcs', full_name='io.Container.gcs', index=7,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='immediate', full_name='io.Container.immediate', index=8,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ms_sql_server', full_name='io.Container.ms_sql_server', index=9,
       number=14, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='mysql', full_name='io.Container.mysql', index=10,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='mysql_partition', full_name='io.Container.mysql_partition', index=11,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='snowflake', full_name='io.Container.snowflake', index=12,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='spark', full_name='io.Container.spark', index=13,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2836,7 +2918,9 @@ _CONTAINER = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='io.Container.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=6646,
   serialized_end=7305,
@@ -2849,6 +2933,7 @@ _LOCATION = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='redshift', full_name='io.Location.redshift', index=0,
@@ -2856,77 +2941,77 @@ _LOCATION = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='s3', full_name='io.Location.s3', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='abs', full_name='io.Location.abs', index=2,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='file', full_name='io.Location.file', index=3,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='big_query', full_name='io.Location.big_query', index=4,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='gcs', full_name='io.Location.gcs', index=5,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ms_sql_server', full_name='io.Location.ms_sql_server', index=6,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='mysql', full_name='io.Location.mysql', index=7,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='mysql_partition', full_name='io.Location.mysql_partition', index=8,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='snowflake', full_name='io.Location.snowflake', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='spark', full_name='io.Location.spark', index=10,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -2940,7 +3025,9 @@ _LOCATION = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='io.Location.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=7308,
   serialized_end=7797,
@@ -2953,6 +3040,7 @@ _MANIFEST_JSON = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2976,6 +3064,7 @@ _MANIFEST_CSV = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -2999,6 +3088,7 @@ _MANIFEST_FORMAT = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='json', full_name='io.Manifest.Format.json', index=0,
@@ -3006,14 +3096,14 @@ _MANIFEST_FORMAT = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='csv', full_name='io.Manifest.Format.csv', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -3027,7 +3117,9 @@ _MANIFEST_FORMAT = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='details', full_name='io.Manifest.Format.details',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=7878,
   serialized_end=7965,
@@ -3039,6 +3131,7 @@ _MANIFEST = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='name', full_name='io.Manifest.name', index=0,
@@ -3046,14 +3139,14 @@ _MANIFEST = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='format', full_name='io.Manifest.format', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],

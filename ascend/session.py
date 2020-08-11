@@ -164,7 +164,7 @@ class Session:
             resp = self.request_with_bearer(
                 'POST', self.make_url(endpoint, service), data=json.dumps(data), verify=self.verify)
             resp.raise_for_status()
-            return resp.status_code
+            return resp.json()
 
         return post_with_bearer()
 

@@ -2,7 +2,7 @@ import abc
 import os
 import sys
 from collections import defaultdict
-from typing import List, Optional, Tuple
+from typing import List, Mapping, Optional, Tuple
 
 import jinja2
 import networkx as nx
@@ -15,8 +15,9 @@ import ascend.credentials
 import ascend.jinja as jinja
 import ascend.model as model
 import ascend.transforms as transforms
+from ascend.credentials import Credential, CredentialEntry
 from ascend.resource import Resource, Component
-from ascend.util import filter_none, flatten
+from ascend.util import coalesce, filter_none, flatten
 from ascend.protos.resource import resource_pb2
 
 ROOT_PATH = (None, None, None)
@@ -639,6 +640,7 @@ class ResourceSession:
         self.roles = None
         self.pub_uuid_to_dfc = {}
         self.list_only = False
+        self.accessible_credentials: Optional[Mapping[str, 'Credential']] = None
 
     def update_group(self, group_path: Optional, content_path):
         old_group = self.content_path_to_group_path.get(content_path)
@@ -875,6 +877,38 @@ class ResourceSession:
         for role in roles:
             self.uuid_to_resource[role['uuid']] = role
 
+    def load_roles(self):
+        if self.roles is None:
+            self.refresh_roles()
+
+    def everyone_role(self, data_service_id):
+        self.load_roles()
+        org_uuid = self.get_ds(data_service_id).uuid
+        return next(r for r in self.roles if r['orgId'] == org_uuid and r['id'] == 'Everyone')
+
+    def create_credential(self, data_service_id, name, cred: 'Credential') -> 'CredentialEntry':
+        role = self.everyone_role(data_service_id)
+        self.accessible_credentials = None  # invalidate
+        entry = CredentialEntry.from_credential(cred, role['uuid'], name)
+        return self.client.create_credential_entry(data_service_id, entry)
+
+    def maybe_accessible_entry(self, data_service_id, name) -> Optional['CredentialEntry']:
+        self.load_accessible_creds()
+        role = self.everyone_role(data_service_id)
+        l = [v for v in self.accessible_credentials.values()
+             if v.role_uuid == role['uuid'] and v.name == name]
+        if len(l) > 1:
+            return l[0]
+        else:
+            return None
+
+    def load_accessible_creds(self):
+        if self.accessible_credentials is None:
+            creds = self.client.list_accessible_credentials()
+            self.accessible_credentials = {
+                c.credential.credential_id: c for c in creds
+            }
+
     def load_data_service(self, ds):
         path = ds.get_api_path()
         if path not in self.loaded:
@@ -983,7 +1017,3 @@ def resolve_path(arg_path, base_path, res_path) -> str:
     sh.debug(res_path)
     overrides = '/'.join(filter_none(res_path[strip_length:]))
     return os.path.join(arg_path, overrides)
-
-
-def coalesce(*l):
-    return next(filter(lambda e: e is not None, l), None)

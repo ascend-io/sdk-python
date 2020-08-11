@@ -18,6 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='text',
   syntax='proto3',
   serialized_options=None,
+  create_key=_descriptor._internal_create_key,
   serialized_pb=b'\n\x1d\x61scend/protos/text/text.proto\x12\x04text\"\x98\x03\n\nLineEnding\x12!\n\x02\x63r\x18\x01 \x01(\x0b\x32\x13.text.LineEnding.CrH\x00\x12&\n\x05\x63r_lf\x18\x02 \x01(\x0b\x32\x15.text.LineEnding.CrLfH\x00\x12!\n\x02lf\x18\x03 \x01(\x0b\x32\x13.text.LineEnding.LfH\x00\x12&\n\x05lf_cr\x18\x04 \x01(\x0b\x32\x15.text.LineEnding.LfCrH\x00\x12!\n\x02\x66\x66\x18\x05 \x01(\x0b\x32\x13.text.LineEnding.FfH\x00\x12!\n\x02ls\x18\x06 \x01(\x0b\x32\x13.text.LineEnding.LsH\x00\x12#\n\x03nel\x18\x07 \x01(\x0b\x32\x14.text.LineEnding.NelH\x00\x12!\n\x02ps\x18\x08 \x01(\x0b\x32\x13.text.LineEnding.PsH\x00\x12!\n\x02vt\x18\t \x01(\x0b\x32\x13.text.LineEnding.VtH\x00\x1a\x04\n\x02\x43r\x1a\x06\n\x04\x43rLf\x1a\x04\n\x02Lf\x1a\x06\n\x04LfCr\x1a\x04\n\x02\x46\x66\x1a\x04\n\x02Ls\x1a\x05\n\x03Nel\x1a\x04\n\x02Ps\x1a\x04\n\x02VtB\x08\n\x06\x64\x65tailb\x06proto3'
 )
 
@@ -30,6 +31,7 @@ _LINEENDING_CR = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -53,6 +55,7 @@ _LINEENDING_CRLF = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -76,6 +79,7 @@ _LINEENDING_LF = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -99,6 +103,7 @@ _LINEENDING_LFCR = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -122,6 +127,7 @@ _LINEENDING_FF = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -145,6 +151,7 @@ _LINEENDING_LS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -168,6 +175,7 @@ _LINEENDING_NEL = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -191,6 +199,7 @@ _LINEENDING_PS = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -214,6 +223,7 @@ _LINEENDING_VT = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
   ],
   extensions=[
@@ -237,6 +247,7 @@ _LINEENDING = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='cr', full_name='text.LineEnding.cr', index=0,
@@ -244,63 +255,63 @@ _LINEENDING = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='cr_lf', full_name='text.LineEnding.cr_lf', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='lf', full_name='text.LineEnding.lf', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='lf_cr', full_name='text.LineEnding.lf_cr', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ff', full_name='text.LineEnding.ff', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ls', full_name='text.LineEnding.ls', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='nel', full_name='text.LineEnding.nel', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='ps', full_name='text.LineEnding.ps', index=7,
       number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='vt', full_name='text.LineEnding.vt', index=8,
       number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -314,7 +325,9 @@ _LINEENDING = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='detail', full_name='text.LineEnding.detail',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=40,
   serialized_end=448,

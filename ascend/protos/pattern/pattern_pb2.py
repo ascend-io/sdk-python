@@ -18,6 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='pattern',
   syntax='proto3',
   serialized_options=None,
+  create_key=_descriptor._internal_create_key,
   serialized_pb=b'\n#ascend/protos/pattern/pattern.proto\x12\x07pattern\"L\n\x07Pattern\x12\x0e\n\x04glob\x18\x01 \x01(\tH\x00\x12\x0f\n\x05regex\x18\x02 \x01(\tH\x00\x12\x15\n\x0b\x65xact_match\x18\x03 \x01(\tH\x00\x42\t\n\x07patternb\x06proto3'
 )
 
@@ -30,6 +31,7 @@ _PATTERN = _descriptor.Descriptor(
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
+  create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
       name='glob', full_name='pattern.Pattern.glob', index=0,
@@ -37,21 +39,21 @@ _PATTERN = _descriptor.Descriptor(
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='regex', full_name='pattern.Pattern.regex', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
       name='exact_match', full_name='pattern.Pattern.exact_match', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -65,7 +67,9 @@ _PATTERN = _descriptor.Descriptor(
   oneofs=[
     _descriptor.OneofDescriptor(
       name='pattern', full_name='pattern.Pattern.pattern',
-      index=0, containing_type=None, fields=[]),
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=48,
   serialized_end=124,
