@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%ascend/protos/operator/operator.proto\x12\x08operator\x1a\x1egoogle/protobuf/wrappers.proto\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/format/format.proto\x1a%ascend/protos/function/function.proto\x1a\x19\x61scend/protos/io/io.proto\x1a!ascend/protos/schema/schema.proto\"\xb5\x03\n\x0bGranularity\x12*\n\x04time\x18\x01 \x01(\x0b\x32\x1a.operator.Granularity.TimeH\x00\x1a\xea\x02\n\x04Time\x12/\n\x04\x61uto\x18\x01 \x01(\x0b\x32\x1f.operator.Granularity.Time.AutoH\x00\x12/\n\x04year\x18\x02 \x01(\x0b\x32\x1f.operator.Granularity.Time.YearH\x00\x12\x31\n\x05month\x18\x03 \x01(\x0b\x32 .operator.Granularity.Time.MonthH\x00\x12-\n\x03\x64\x61y\x18\x04 \x01(\x0b\x32\x1e.operator.Granularity.Time.DayH\x00\x12/\n\x04hour\x18\x05 \x01(\x0b\x32\x1f.operator.Granularity.Time.HourH\x00\x12\x33\n\x06minute\x18\x06 \x01(\x0b\x32!.operator.Granularity.Time.MinuteH\x00\x1a\x06\n\x04\x41uto\x1a\x06\n\x04Year\x1a\x07\n\x05Month\x1a\x05\n\x03\x44\x61y\x1a\x06\n\x04Hour\x1a\x08\n\x06MinuteB\x06\n\x04timeB\r\n\x0bgranularity\"\xff\x01\n\x0cInstanceType\x12-\n\x05small\x18\x01 \x01(\x0b\x32\x1c.operator.InstanceType.SmallH\x00\x12/\n\x06medium\x18\x02 \x01(\x0b\x32\x1d.operator.InstanceType.MediumH\x00\x12-\n\x05large\x18\x03 \x01(\x0b\x32\x1c.operator.InstanceType.LargeH\x00\x12/\n\x06xlarge\x18\x04 \x01(\x0b\x32\x1d.operator.InstanceType.XLargeH\x00\x1a\x07\n\x05Small\x1a\x08\n\x06Medium\x1a\x07\n\x05Large\x1a\x08\n\x06XLargeB\t\n\x07\x64\x65tails\"\xd0\x03\n\tReduction\x12(\n\x04\x66ull\x18\x01 \x01(\x0b\x32\x18.operator.Reduction.FullH\x00\x12\x37\n\x0cno_reduction\x18\x02 \x01(\x0b\x32\x1f.operator.Reduction.NoReductionH\x00\x12.\n\x07partial\x18\x03 \x01(\x0b\x32\x1b.operator.Reduction.PartialH\x00\x1a\r\n\x0bNoReduction\x1a\x06\n\x04\x46ull\x1a\x8b\x02\n\x07Partial\x12\x42\n\x0cpartition_by\x18\x01 \x03(\x0b\x32,.operator.Reduction.Partial.PartitionByEntry\x1aT\n\x16PartitionSpecification\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12*\n\x0bgranularity\x18\x02 \x01(\x0b\x32\x15.operator.Granularity\x1a\x66\n\x10PartitionByEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32\x32.operator.Reduction.Partial.PartitionSpecification:\x02\x38\x01\x42\x0b\n\treduction\"^\n\x03Sql\x1aW\n\x05Query\x12\x0b\n\x03sql\x18\x01 \x01(\t\x12\x41\n\x17spark_job_configuration\x18\x02 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"\xa9\x03\n\x05Spark\x1a\xb9\x01\n\x10JobConfiguration\x12\x37\n\x12\x65xecutor_instances\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x36\n\x16\x65xecutor_instance_type\x18\x02 \x01(\x0b\x32\x16.operator.InstanceType\x12\x34\n\x14\x64river_instance_type\x18\x03 \x01(\x0b\x32\x16.operator.InstanceType\x1a\xe3\x01\n\x08\x46unction\x12(\n\nexecutable\x18\x01 \x01(\x0b\x32\x14.function.Executable\x12&\n\treduction\x18\x02 \x01(\x0b\x32\x13.operator.Reduction\x12H\n\x19\x63redentials_configuration\x18\x03 \x01(\x0b\x32%.io.Function.CredentialsConfiguration\x12;\n\x11job_configuration\x18\x04 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"*\n\x08Identity\x12\x1e\n\x06schema\x18\x01 \x01(\x0b\x32\x0e.schema.Schema\"\xee\x05\n\x08Operator\x12\x30\n\x0e\x61vro_formatter\x18\x02 \x01(\x0b\x32\x16.format.Avro.FormatterH\x00\x12*\n\x0b\x61vro_parser\x18\x03 \x01(\x0b\x32\x13.format.Avro.ParserH\x00\x12*\n\x0bgrok_parser\x18\x04 \x01(\x0b\x32\x13.format.Grok.ParserH\x00\x12\x30\n\x0ejson_formatter\x18\x05 \x01(\x0b\x32\x16.format.Json.FormatterH\x00\x12*\n\x0bjson_parser\x18\x06 \x01(\x0b\x32\x13.format.Json.ParserH\x00\x12\x34\n\x10lambda_formatter\x18\r \x01(\x0b\x32\x18.format.Lambda.FormatterH\x00\x12.\n\rlambda_parser\x18\x0e \x01(\x0b\x32\x15.format.Lambda.ParserH\x00\x12.\n\rorc_formatter\x18\x10 \x01(\x0b\x32\x15.format.Orc.FormatterH\x00\x12\x36\n\x11parquet_formatter\x18\x07 \x01(\x0b\x32\x19.format.Parquet.FormatterH\x00\x12\x30\n\x0eparquet_parser\x18\x08 \x01(\x0b\x32\x16.format.Parquet.ParserH\x00\x12.\n\rxsv_formatter\x18\x0b \x01(\x0b\x32\x15.format.Xsv.FormatterH\x00\x12(\n\nxsv_parser\x18\x0c \x01(\x0b\x32\x12.format.Xsv.ParserH\x00\x12\x32\n\x0espark_function\x18\x0f \x01(\x0b\x32\x18.operator.Spark.FunctionH\x00\x12(\n\tsql_query\x18\x01 \x01(\x0b\x32\x13.operator.Sql.QueryH\x00\x42\t\n\x07\x64\x65tailsJ\x04\x08\t\x10\nJ\x04\x08\n\x10\x0bR\x16user_defined_formatterR\x13user_defined_parserb\x06proto3'
+  serialized_pb=b'\n%ascend/protos/operator/operator.proto\x12\x08operator\x1a\x1egoogle/protobuf/wrappers.proto\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/format/format.proto\x1a%ascend/protos/function/function.proto\x1a\x19\x61scend/protos/io/io.proto\x1a!ascend/protos/schema/schema.proto\"\xb5\x03\n\x0bGranularity\x12*\n\x04time\x18\x01 \x01(\x0b\x32\x1a.operator.Granularity.TimeH\x00\x1a\xea\x02\n\x04Time\x12/\n\x04\x61uto\x18\x01 \x01(\x0b\x32\x1f.operator.Granularity.Time.AutoH\x00\x12/\n\x04year\x18\x02 \x01(\x0b\x32\x1f.operator.Granularity.Time.YearH\x00\x12\x31\n\x05month\x18\x03 \x01(\x0b\x32 .operator.Granularity.Time.MonthH\x00\x12-\n\x03\x64\x61y\x18\x04 \x01(\x0b\x32\x1e.operator.Granularity.Time.DayH\x00\x12/\n\x04hour\x18\x05 \x01(\x0b\x32\x1f.operator.Granularity.Time.HourH\x00\x12\x33\n\x06minute\x18\x06 \x01(\x0b\x32!.operator.Granularity.Time.MinuteH\x00\x1a\x06\n\x04\x41uto\x1a\x06\n\x04Year\x1a\x07\n\x05Month\x1a\x05\n\x03\x44\x61y\x1a\x06\n\x04Hour\x1a\x08\n\x06MinuteB\x06\n\x04timeB\r\n\x0bgranularity\"\xe3\x02\n\x16RecursionSpecification\x12\x34\n\x0fseed_data_index\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12J\n\x10retention_policy\x18\x02 \x01(\x0b\x32\x30.operator.RecursionSpecification.RetentionPolicy\x1a\xc6\x01\n\x0fRetentionPolicy\x12\x43\n\x03\x61ll\x18\x01 \x01(\x0b\x32\x34.operator.RecursionSpecification.RetentionPolicy.AllH\x00\x12H\n\x06last_n\x18\x02 \x01(\x0b\x32\x36.operator.RecursionSpecification.RetentionPolicy.LastNH\x00\x1a\x05\n\x03\x41ll\x1a\x12\n\x05LastN\x12\t\n\x01n\x18\x01 \x01(\x05\x42\t\n\x07\x64\x65tails\"\xff\x01\n\x0cInstanceType\x12-\n\x05small\x18\x01 \x01(\x0b\x32\x1c.operator.InstanceType.SmallH\x00\x12/\n\x06medium\x18\x02 \x01(\x0b\x32\x1d.operator.InstanceType.MediumH\x00\x12-\n\x05large\x18\x03 \x01(\x0b\x32\x1c.operator.InstanceType.LargeH\x00\x12/\n\x06xlarge\x18\x04 \x01(\x0b\x32\x1d.operator.InstanceType.XLargeH\x00\x1a\x07\n\x05Small\x1a\x08\n\x06Medium\x1a\x07\n\x05Large\x1a\x08\n\x06XLargeB\t\n\x07\x64\x65tails\"\x93\x04\n\tReduction\x12(\n\x04\x66ull\x18\x01 \x01(\x0b\x32\x18.operator.Reduction.FullH\x00\x12\x37\n\x0cno_reduction\x18\x02 \x01(\x0b\x32\x1f.operator.Reduction.NoReductionH\x00\x12.\n\x07partial\x18\x03 \x01(\x0b\x32\x1b.operator.Reduction.PartialH\x00\x1a\r\n\x0bNoReduction\x1a\x06\n\x04\x46ull\x1a\xce\x02\n\x07Partial\x12\x42\n\x0cpartition_by\x18\x01 \x03(\x0b\x32,.operator.Reduction.Partial.PartitionByEntry\x12\x41\n\x17recursion_specification\x18\x02 \x01(\x0b\x32 .operator.RecursionSpecification\x1aT\n\x16PartitionSpecification\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12*\n\x0bgranularity\x18\x02 \x01(\x0b\x32\x15.operator.Granularity\x1a\x66\n\x10PartitionByEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32\x32.operator.Reduction.Partial.PartitionSpecification:\x02\x38\x01\x42\x0b\n\treduction\"^\n\x03Sql\x1aW\n\x05Query\x12\x0b\n\x03sql\x18\x01 \x01(\t\x12\x41\n\x17spark_job_configuration\x18\x02 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"\xa9\x03\n\x05Spark\x1a\xb9\x01\n\x10JobConfiguration\x12\x37\n\x12\x65xecutor_instances\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x36\n\x16\x65xecutor_instance_type\x18\x02 \x01(\x0b\x32\x16.operator.InstanceType\x12\x34\n\x14\x64river_instance_type\x18\x03 \x01(\x0b\x32\x16.operator.InstanceType\x1a\xe3\x01\n\x08\x46unction\x12(\n\nexecutable\x18\x01 \x01(\x0b\x32\x14.function.Executable\x12&\n\treduction\x18\x02 \x01(\x0b\x32\x13.operator.Reduction\x12H\n\x19\x63redentials_configuration\x18\x03 \x01(\x0b\x32%.io.Function.CredentialsConfiguration\x12;\n\x11job_configuration\x18\x04 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"*\n\x08Identity\x12\x1e\n\x06schema\x18\x01 \x01(\x0b\x32\x0e.schema.Schema\"\xee\x05\n\x08Operator\x12\x30\n\x0e\x61vro_formatter\x18\x02 \x01(\x0b\x32\x16.format.Avro.FormatterH\x00\x12*\n\x0b\x61vro_parser\x18\x03 \x01(\x0b\x32\x13.format.Avro.ParserH\x00\x12*\n\x0bgrok_parser\x18\x04 \x01(\x0b\x32\x13.format.Grok.ParserH\x00\x12\x30\n\x0ejson_formatter\x18\x05 \x01(\x0b\x32\x16.format.Json.FormatterH\x00\x12*\n\x0bjson_parser\x18\x06 \x01(\x0b\x32\x13.format.Json.ParserH\x00\x12\x34\n\x10lambda_formatter\x18\r \x01(\x0b\x32\x18.format.Lambda.FormatterH\x00\x12.\n\rlambda_parser\x18\x0e \x01(\x0b\x32\x15.format.Lambda.ParserH\x00\x12.\n\rorc_formatter\x18\x10 \x01(\x0b\x32\x15.format.Orc.FormatterH\x00\x12\x36\n\x11parquet_formatter\x18\x07 \x01(\x0b\x32\x19.format.Parquet.FormatterH\x00\x12\x30\n\x0eparquet_parser\x18\x08 \x01(\x0b\x32\x16.format.Parquet.ParserH\x00\x12.\n\rxsv_formatter\x18\x0b \x01(\x0b\x32\x15.format.Xsv.FormatterH\x00\x12(\n\nxsv_parser\x18\x0c \x01(\x0b\x32\x12.format.Xsv.ParserH\x00\x12\x32\n\x0espark_function\x18\x0f \x01(\x0b\x32\x18.operator.Spark.FunctionH\x00\x12(\n\tsql_query\x18\x01 \x01(\x0b\x32\x13.operator.Sql.QueryH\x00\x42\t\n\x07\x64\x65tailsJ\x04\x08\t\x10\nJ\x04\x08\n\x10\x0bR\x16user_defined_formatterR\x13user_defined_parserb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,ascend_dot_protos_dot_format_dot_format__pb2.DESCRIPTOR,ascend_dot_protos_dot_function_dot_function__pb2.DESCRIPTOR,ascend_dot_protos_dot_io_dot_io__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,])
 
@@ -284,6 +284,143 @@ _GRANULARITY = _descriptor.Descriptor(
 )
 
 
+_RECURSIONSPECIFICATION_RETENTIONPOLICY_ALL = _descriptor.Descriptor(
+  name='All',
+  full_name='operator.RecursionSpecification.RetentionPolicy.All',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1014,
+  serialized_end=1019,
+)
+
+_RECURSIONSPECIFICATION_RETENTIONPOLICY_LASTN = _descriptor.Descriptor(
+  name='LastN',
+  full_name='operator.RecursionSpecification.RetentionPolicy.LastN',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='n', full_name='operator.RecursionSpecification.RetentionPolicy.LastN.n', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1021,
+  serialized_end=1039,
+)
+
+_RECURSIONSPECIFICATION_RETENTIONPOLICY = _descriptor.Descriptor(
+  name='RetentionPolicy',
+  full_name='operator.RecursionSpecification.RetentionPolicy',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='all', full_name='operator.RecursionSpecification.RetentionPolicy.all', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='last_n', full_name='operator.RecursionSpecification.RetentionPolicy.last_n', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_RECURSIONSPECIFICATION_RETENTIONPOLICY_ALL, _RECURSIONSPECIFICATION_RETENTIONPOLICY_LASTN, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='details', full_name='operator.RecursionSpecification.RetentionPolicy.details',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+  ],
+  serialized_start=852,
+  serialized_end=1050,
+)
+
+_RECURSIONSPECIFICATION = _descriptor.Descriptor(
+  name='RecursionSpecification',
+  full_name='operator.RecursionSpecification',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='seed_data_index', full_name='operator.RecursionSpecification.seed_data_index', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='retention_policy', full_name='operator.RecursionSpecification.retention_policy', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_RECURSIONSPECIFICATION_RETENTIONPOLICY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=695,
+  serialized_end=1050,
+)
+
+
 _INSTANCETYPE_SMALL = _descriptor.Descriptor(
   name='Small',
   full_name='operator.InstanceType.Small',
@@ -304,8 +441,8 @@ _INSTANCETYPE_SMALL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=903,
-  serialized_end=910,
+  serialized_start=1261,
+  serialized_end=1268,
 )
 
 _INSTANCETYPE_MEDIUM = _descriptor.Descriptor(
@@ -328,8 +465,8 @@ _INSTANCETYPE_MEDIUM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=912,
-  serialized_end=920,
+  serialized_start=1270,
+  serialized_end=1278,
 )
 
 _INSTANCETYPE_LARGE = _descriptor.Descriptor(
@@ -352,8 +489,8 @@ _INSTANCETYPE_LARGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=922,
-  serialized_end=929,
+  serialized_start=1280,
+  serialized_end=1287,
 )
 
 _INSTANCETYPE_XLARGE = _descriptor.Descriptor(
@@ -376,8 +513,8 @@ _INSTANCETYPE_XLARGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=931,
-  serialized_end=939,
+  serialized_start=1289,
+  serialized_end=1297,
 )
 
 _INSTANCETYPE = _descriptor.Descriptor(
@@ -433,8 +570,8 @@ _INSTANCETYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=695,
-  serialized_end=950,
+  serialized_start=1053,
+  serialized_end=1308,
 )
 
 
@@ -458,8 +595,8 @@ _REDUCTION_NOREDUCTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1113,
-  serialized_end=1126,
+  serialized_start=1471,
+  serialized_end=1484,
 )
 
 _REDUCTION_FULL = _descriptor.Descriptor(
@@ -482,8 +619,8 @@ _REDUCTION_FULL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1128,
-  serialized_end=1134,
+  serialized_start=1486,
+  serialized_end=1492,
 )
 
 _REDUCTION_PARTIAL_PARTITIONSPECIFICATION = _descriptor.Descriptor(
@@ -520,8 +657,8 @@ _REDUCTION_PARTIAL_PARTITIONSPECIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1216,
-  serialized_end=1300,
+  serialized_start=1641,
+  serialized_end=1725,
 )
 
 _REDUCTION_PARTIAL_PARTITIONBYENTRY = _descriptor.Descriptor(
@@ -558,8 +695,8 @@ _REDUCTION_PARTIAL_PARTITIONBYENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1302,
-  serialized_end=1404,
+  serialized_start=1727,
+  serialized_end=1829,
 )
 
 _REDUCTION_PARTIAL = _descriptor.Descriptor(
@@ -577,6 +714,13 @@ _REDUCTION_PARTIAL = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='recursion_specification', full_name='operator.Reduction.Partial.recursion_specification', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -589,8 +733,8 @@ _REDUCTION_PARTIAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1137,
-  serialized_end=1404,
+  serialized_start=1495,
+  serialized_end=1829,
 )
 
 _REDUCTION = _descriptor.Descriptor(
@@ -639,8 +783,8 @@ _REDUCTION = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=953,
-  serialized_end=1417,
+  serialized_start=1311,
+  serialized_end=1842,
 )
 
 
@@ -678,8 +822,8 @@ _SQL_QUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1426,
-  serialized_end=1513,
+  serialized_start=1851,
+  serialized_end=1938,
 )
 
 _SQL = _descriptor.Descriptor(
@@ -702,8 +846,8 @@ _SQL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1419,
-  serialized_end=1513,
+  serialized_start=1844,
+  serialized_end=1938,
 )
 
 
@@ -748,8 +892,8 @@ _SPARK_JOBCONFIGURATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1526,
-  serialized_end=1711,
+  serialized_start=1951,
+  serialized_end=2136,
 )
 
 _SPARK_FUNCTION = _descriptor.Descriptor(
@@ -800,8 +944,8 @@ _SPARK_FUNCTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1714,
-  serialized_end=1941,
+  serialized_start=2139,
+  serialized_end=2366,
 )
 
 _SPARK = _descriptor.Descriptor(
@@ -824,8 +968,8 @@ _SPARK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1516,
-  serialized_end=1941,
+  serialized_start=1941,
+  serialized_end=2366,
 )
 
 
@@ -856,8 +1000,8 @@ _IDENTITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1943,
-  serialized_end=1985,
+  serialized_start=2368,
+  serialized_end=2410,
 )
 
 
@@ -984,8 +1128,8 @@ _OPERATOR = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1988,
-  serialized_end=2738,
+  serialized_start=2413,
+  serialized_end=3163,
 )
 
 _GRANULARITY_TIME_AUTO.containing_type = _GRANULARITY_TIME
@@ -1023,6 +1167,19 @@ _GRANULARITY.fields_by_name['time'].message_type = _GRANULARITY_TIME
 _GRANULARITY.oneofs_by_name['granularity'].fields.append(
   _GRANULARITY.fields_by_name['time'])
 _GRANULARITY.fields_by_name['time'].containing_oneof = _GRANULARITY.oneofs_by_name['granularity']
+_RECURSIONSPECIFICATION_RETENTIONPOLICY_ALL.containing_type = _RECURSIONSPECIFICATION_RETENTIONPOLICY
+_RECURSIONSPECIFICATION_RETENTIONPOLICY_LASTN.containing_type = _RECURSIONSPECIFICATION_RETENTIONPOLICY
+_RECURSIONSPECIFICATION_RETENTIONPOLICY.fields_by_name['all'].message_type = _RECURSIONSPECIFICATION_RETENTIONPOLICY_ALL
+_RECURSIONSPECIFICATION_RETENTIONPOLICY.fields_by_name['last_n'].message_type = _RECURSIONSPECIFICATION_RETENTIONPOLICY_LASTN
+_RECURSIONSPECIFICATION_RETENTIONPOLICY.containing_type = _RECURSIONSPECIFICATION
+_RECURSIONSPECIFICATION_RETENTIONPOLICY.oneofs_by_name['details'].fields.append(
+  _RECURSIONSPECIFICATION_RETENTIONPOLICY.fields_by_name['all'])
+_RECURSIONSPECIFICATION_RETENTIONPOLICY.fields_by_name['all'].containing_oneof = _RECURSIONSPECIFICATION_RETENTIONPOLICY.oneofs_by_name['details']
+_RECURSIONSPECIFICATION_RETENTIONPOLICY.oneofs_by_name['details'].fields.append(
+  _RECURSIONSPECIFICATION_RETENTIONPOLICY.fields_by_name['last_n'])
+_RECURSIONSPECIFICATION_RETENTIONPOLICY.fields_by_name['last_n'].containing_oneof = _RECURSIONSPECIFICATION_RETENTIONPOLICY.oneofs_by_name['details']
+_RECURSIONSPECIFICATION.fields_by_name['seed_data_index'].message_type = google_dot_protobuf_dot_wrappers__pb2._INT32VALUE
+_RECURSIONSPECIFICATION.fields_by_name['retention_policy'].message_type = _RECURSIONSPECIFICATION_RETENTIONPOLICY
 _INSTANCETYPE_SMALL.containing_type = _INSTANCETYPE
 _INSTANCETYPE_MEDIUM.containing_type = _INSTANCETYPE
 _INSTANCETYPE_LARGE.containing_type = _INSTANCETYPE
@@ -1050,6 +1207,7 @@ _REDUCTION_PARTIAL_PARTITIONSPECIFICATION.containing_type = _REDUCTION_PARTIAL
 _REDUCTION_PARTIAL_PARTITIONBYENTRY.fields_by_name['value'].message_type = _REDUCTION_PARTIAL_PARTITIONSPECIFICATION
 _REDUCTION_PARTIAL_PARTITIONBYENTRY.containing_type = _REDUCTION_PARTIAL
 _REDUCTION_PARTIAL.fields_by_name['partition_by'].message_type = _REDUCTION_PARTIAL_PARTITIONBYENTRY
+_REDUCTION_PARTIAL.fields_by_name['recursion_specification'].message_type = _RECURSIONSPECIFICATION
 _REDUCTION_PARTIAL.containing_type = _REDUCTION
 _REDUCTION.fields_by_name['full'].message_type = _REDUCTION_FULL
 _REDUCTION.fields_by_name['no_reduction'].message_type = _REDUCTION_NOREDUCTION
@@ -1132,6 +1290,7 @@ _OPERATOR.oneofs_by_name['details'].fields.append(
   _OPERATOR.fields_by_name['sql_query'])
 _OPERATOR.fields_by_name['sql_query'].containing_oneof = _OPERATOR.oneofs_by_name['details']
 DESCRIPTOR.message_types_by_name['Granularity'] = _GRANULARITY
+DESCRIPTOR.message_types_by_name['RecursionSpecification'] = _RECURSIONSPECIFICATION
 DESCRIPTOR.message_types_by_name['InstanceType'] = _INSTANCETYPE
 DESCRIPTOR.message_types_by_name['Reduction'] = _REDUCTION
 DESCRIPTOR.message_types_by_name['Sql'] = _SQL
@@ -1202,6 +1361,37 @@ _sym_db.RegisterMessage(Granularity.Time.Month)
 _sym_db.RegisterMessage(Granularity.Time.Day)
 _sym_db.RegisterMessage(Granularity.Time.Hour)
 _sym_db.RegisterMessage(Granularity.Time.Minute)
+
+RecursionSpecification = _reflection.GeneratedProtocolMessageType('RecursionSpecification', (_message.Message,), {
+
+  'RetentionPolicy' : _reflection.GeneratedProtocolMessageType('RetentionPolicy', (_message.Message,), {
+
+    'All' : _reflection.GeneratedProtocolMessageType('All', (_message.Message,), {
+      'DESCRIPTOR' : _RECURSIONSPECIFICATION_RETENTIONPOLICY_ALL,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
+      # @@protoc_insertion_point(class_scope:operator.RecursionSpecification.RetentionPolicy.All)
+      })
+    ,
+
+    'LastN' : _reflection.GeneratedProtocolMessageType('LastN', (_message.Message,), {
+      'DESCRIPTOR' : _RECURSIONSPECIFICATION_RETENTIONPOLICY_LASTN,
+      '__module__' : 'ascend.protos.operator.operator_pb2'
+      # @@protoc_insertion_point(class_scope:operator.RecursionSpecification.RetentionPolicy.LastN)
+      })
+    ,
+    'DESCRIPTOR' : _RECURSIONSPECIFICATION_RETENTIONPOLICY,
+    '__module__' : 'ascend.protos.operator.operator_pb2'
+    # @@protoc_insertion_point(class_scope:operator.RecursionSpecification.RetentionPolicy)
+    })
+  ,
+  'DESCRIPTOR' : _RECURSIONSPECIFICATION,
+  '__module__' : 'ascend.protos.operator.operator_pb2'
+  # @@protoc_insertion_point(class_scope:operator.RecursionSpecification)
+  })
+_sym_db.RegisterMessage(RecursionSpecification)
+_sym_db.RegisterMessage(RecursionSpecification.RetentionPolicy)
+_sym_db.RegisterMessage(RecursionSpecification.RetentionPolicy.All)
+_sym_db.RegisterMessage(RecursionSpecification.RetentionPolicy.LastN)
 
 InstanceType = _reflection.GeneratedProtocolMessageType('InstanceType', (_message.Message,), {
 

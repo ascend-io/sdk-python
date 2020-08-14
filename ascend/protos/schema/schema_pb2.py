@@ -11,8 +11,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
-from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
 from ascend.protos.ascend import ascend_pb2 as ascend_dot_protos_dot_ascend_dot_ascend__pb2
 
 
@@ -22,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n!ascend/protos/schema/schema.proto\x12\x06schema\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a!ascend/protos/ascend/ascend.proto\"\x13\n\x07\x42oolean\x1a\x08\n\x06Parser\"\x10\n\x04\x42yte\x1a\x08\n\x06Parser\"\x11\n\x05\x42ytes\x1a\x08\n\x06Parser\"\x10\n\x04\x43har\x1a\x08\n\x06Parser\"\x10\n\x04\x44\x61te\x1a\x08\n\x06Parser\"J\n\x06\x44ouble\x1a@\n\x06Parser\x12\x19\n\x11\x64\x65\x63imal_separator\x18\x01 \x01(\t\x12\x1b\n\x13thousands_separator\x18\x02 \x01(\t\"I\n\x05\x46loat\x1a@\n\x06Parser\x12\x19\n\x11\x64\x65\x63imal_separator\x18\x01 \x01(\t\x12\x1b\n\x13thousands_separator\x18\x02 \x01(\t\",\n\x03Int\x1a%\n\x06Parser\x12\x1b\n\x13thousands_separator\x18\x01 \x01(\t\"-\n\x04Long\x1a%\n\x06Parser\x12\x1b\n\x13thousands_separator\x18\x01 \x01(\t\"\t\n\x07Nothing\" \n\x06String\x1a\x16\n\x06Parser\x12\x0c\n\x04trim\x18\x01 \x01(\x08\"\x15\n\tTimestamp\x1a\x08\n\x06Parser\"5\n\x05\x46ield\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x06schema\x18\x02 \x01(\x0b\x32\x0e.schema.Schema\"#\n\x03Map\x12\x1c\n\x05\x66ield\x18\x01 \x03(\x0b\x32\r.schema.Field\"\xa8\x03\n\x06Schema\x12\"\n\x07\x62oolean\x18\x01 \x01(\x0b\x32\x0f.schema.BooleanH\x00\x12\x1c\n\x04\x62yte\x18\x02 \x01(\x0b\x32\x0c.schema.ByteH\x00\x12\x1c\n\x04\x63har\x18\x03 \x01(\x0b\x32\x0c.schema.CharH\x00\x12\x1c\n\x04\x64\x61te\x18\x0b \x01(\x0b\x32\x0c.schema.DateH\x00\x12 \n\x06\x64ouble\x18\x0e \x01(\x0b\x32\x0e.schema.DoubleH\x00\x12\x1e\n\x05\x66loat\x18\x04 \x01(\x0b\x32\r.schema.FloatH\x00\x12\x1a\n\x03int\x18\x05 \x01(\x0b\x32\x0b.schema.IntH\x00\x12\x1c\n\x04long\x18\x06 \x01(\x0b\x32\x0c.schema.LongH\x00\x12\x1a\n\x03map\x18\x07 \x01(\x0b\x32\x0b.schema.MapH\x00\x12\"\n\x07nothing\x18\x08 \x01(\x0b\x32\x0f.schema.NothingH\x00\x12 \n\x06string\x18\t \x01(\x0b\x32\x0e.schema.StringH\x00\x12&\n\ttimestamp\x18\n \x01(\x0b\x32\x11.schema.TimestampH\x00\x42\t\n\x07\x64\x65tailsJ\x04\x08\x0c\x10\rR\tdate_time\"\xe7\r\n\x07\x41\x62sList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12 \n\x07\x64\x65leted\x18\x02 \x01(\x0b\x32\x0f.schema.Boolean\x12 \n\x08snapshot\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12\x34\n\x19properties__creation_time\x18\x04 \x01(\x0b\x32\x11.schema.Timestamp\x12\x34\n\x19properties__last_modified\x18\x05 \x01(\x0b\x32\x11.schema.Timestamp\x12(\n\x10properties__etag\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x30\n\x1aproperties__content_length\x18\x07 \x01(\x0b\x32\x0c.schema.Long\x12\x30\n\x18properties__content_type\x18\x08 \x01(\x0b\x32\x0e.schema.String\x12\x34\n\x1cproperties__content_encoding\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x34\n\x1cproperties__content_language\x18\n \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__content_md5\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12\x31\n\x19properties__cache_control\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12\x36\n properties__blob_sequence_number\x18\r \x01(\x0b\x32\x0c.schema.Long\x12-\n\x15properties__blob_type\x18\x0e \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__access_tier\x18\x0f \x01(\x0b\x32\x0e.schema.String\x12\x30\n\x18properties__lease_status\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__lease_state\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x32\n\x1aproperties__lease_duration\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12+\n\x13properties__copy_id\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__copy_status\x18\x14 \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__copy_source\x18\x15 \x01(\x0b\x32\x0e.schema.String\x12\x31\n\x19properties__copy_progress\x18\x16 \x01(\x0b\x32\x0e.schema.String\x12;\n properties__copy_completion_time\x18\x17 \x01(\x0b\x32\x11.schema.Timestamp\x12;\n#properties__copy_status_description\x18\x18 \x01(\x0b\x32\x0e.schema.String\x12\x35\n\x1cproperties__server_encrypted\x18\x19 \x01(\x0b\x32\x0f.schema.Boolean\x12\x35\n\x1cproperties__incremental_copy\x18\x1a \x01(\x0b\x32\x0f.schema.Boolean\x12\x39\n properties__access_tier_inferred\x18\x1b \x01(\x0b\x32\x0f.schema.Boolean\x12>\n#properties__access_tier_change_time\x18\x1c \x01(\x0b\x32\x11.schema.Timestamp\x12\x33\n\x18properties__deleted_time\x18\x1d \x01(\x0b\x32\x11.schema.Timestamp\x12:\n$properties__remaining_retention_days\x18\x1e \x01(\x0b\x32\x0c.schema.Long\x12\x37\n\x1fproperties__content_disposition\x18\x1f \x01(\x0b\x32\x0e.schema.String\x12\x38\n properties__destination_shapshot\x18  \x01(\x0b\x32\x0e.schema.String\x12\x32\n\x1aproperties__archive_status\x18! \x01(\x0b\x32\x0e.schema.String\x12 \n\x08metadata\x18\" \x01(\x0b\x32\x0e.ascend.Struct\x12\"\n\tis_prefix\x18# \x01(\x0b\x32\x0f.schema.Boolean\"\x8e\x02\n\x0c\x42qListTables\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12$\n\x0cpartition_id\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x1e\n\x06schema\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12#\n\rlast_modified\x18\x04 \x01(\x0b\x32\x0c.schema.Long\x12\x1e\n\x08num_rows\x18\x05 \x01(\x0b\x32\x0c.schema.Long\x12\"\n\tis_prefix\x18\x07 \x01(\x0b\x32\x0f.schema.Boolean\x12\x1f\n\x07\x64\x61taset\x18\x08 \x01(\x0b\x32\x0e.schema.StringJ\x04\x08\x02\x10\x03R\ninputs_sha\"\xba\x01\n\x0e\x42qListDatasets\x12\x1a\n\x02id\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\"\n\ndataset_id\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\"\n\nproject_id\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12%\n\rfriendly_name\x18\x04 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05label\x18\x05 \x01(\x0b\x32\x0e.schema.String\"J\n\rImmediateList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x03sha\x18\x02 \x01(\x0b\x32\x0e.schema.String\">\n\x19MsSqlServerListPartitions\x12!\n\tpartition\x18\x01 \x01(\x0b\x32\x0e.schema.String\"2\n\x12MysqlListDatabases\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\"8\n\x13MysqlListPartitions\x12!\n\tpartition\x18\x01 \x01(\x0b\x32\x0e.schema.String\"/\n\x0fMysqlListTables\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\"<\n\x17SnowflakeListPartitions\x12!\n\tpartition\x18\x01 \x01(\x0b\x32\x0e.schema.String\"M\n\x08\x46ileList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12#\n\rlast_modified\x18\x02 \x01(\x0b\x32\x0c.schema.Long\",\n\nListSchema\x12\x1e\n\x06record\x18\x01 \x01(\x0b\x32\x0e.ascend.Struct\"\xa2\x02\n\x06S3List\x12\x1a\n\x02id\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x65tag\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04name\x18\x04 \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x03key\x18\x05 \x01(\x0b\x32\x0e.schema.String\x12#\n\rlast_modified\x18\x06 \x01(\x0b\x32\x0c.schema.Long\x12\x1a\n\x04size\x18\x07 \x01(\x0b\x32\x0c.schema.Long\x12%\n\rstorage_class\x18\x08 \x01(\x0b\x32\x0e.schema.String\x12\"\n\tis_prefix\x18\t \x01(\x0b\x32\x0f.schema.BooleanJ\x04\x08\x01\x10\x02R\ninputs_shaR\x05token\"\xa8\x01\n\x15\x46unctionContainerList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\"\n\tis_prefix\x18\x02 \x01(\x0b\x32\x0f.schema.Boolean\x12#\n\x0b\x66ingerprint\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12(\n\rlast_modified\x18\x04 \x01(\x0b\x32\x11.schema.Timestamp\"\x85\x06\n\x07GcsList\x12\x1e\n\x06\x62ucket\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04name\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12$\n\x0c\x63ontent_type\x18\x04 \x01(\x0b\x32\x0e.schema.String\x12(\n\x10\x63ontent_language\x18\x05 \x01(\x0b\x32\x0e.schema.String\x12%\n\rcache_control\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05owner\x18\x07 \x01(\x0b\x32\x0e.schema.String\x12\x1a\n\x04size\x18\x08 \x01(\x0b\x32\x0c.schema.Long\x12(\n\x10\x63ontent_encoding\x18\t \x01(\x0b\x32\x0e.schema.String\x12+\n\x13\x63ontent_disposition\x18\n \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x03md5\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x06\x63rc32c\x18\x0c \x01(\x0b\x32\x0c.schema.Long\x12\"\n\nmedia_link\x18\r \x01(\x0b\x32\x0e.schema.String\x12 \n\ngeneration\x18\x0e \x01(\x0b\x32\x0c.schema.Long\x12%\n\x0fmeta_generation\x18\x0f \x01(\x0b\x32\x0c.schema.Long\x12%\n\rstorage_class\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07\x63reated\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07\x64\x65leted\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07updated\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12+\n\x13\x63ustomer_key_sha256\x18\x14 \x01(\x0b\x32\x0e.schema.String\x12\x1e\n\x06prefix\x18\x15 \x01(\x0b\x32\x0e.schema.String\x12\"\n\tis_prefix\x18\x16 \x01(\x0b\x32\x0f.schema.BooleanJ\x04\x08\x01\x10\x02R\ninputs_sha\"\xbe\x01\n\x0bGrokPattern\x12\x34\n\x11\x63ommon_apache_log\x18\x01 \x01(\x0b\x32\x17.schema.CommonApacheLogH\x00\x12\x38\n\x13\x63ombined_apache_log\x18\x02 \x01(\x0b\x32\x19.schema.CombinedApacheLogH\x00\x12\x34\n\x08\x61\x64obeFms\x18\x03 \x01(\x0b\x32 .schema.AdobeFlashMediaServerLogH\x00\x42\t\n\x07pattern\"\xc5\x04\n\x0f\x43ommonApacheLog\x12 \n\x08hostname\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\x19\n\x04hour\x18\x02 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06minute\x18\x03 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06second\x18\x04 \x01(\x0b\x32\x0b.schema.Int\x12\x1d\n\x05month\x18\x05 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08monthday\x18\x06 \x01(\x0b\x32\x0b.schema.Int\x12\x19\n\x04year\x18\x07 \x01(\x0b\x32\x0b.schema.Int\x12\x1c\n\x04time\x18\x08 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x61uth\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x05\x62ytes\x18\n \x01(\x0b\x32\x0c.schema.Long\x12 \n\x08\x63lientip\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12#\n\x0bhttpversion\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05ident\x18\r \x01(\x0b\x32\x0e.schema.String\x12\"\n\nrawrequest\x18\x0e \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07request\x18\x0f \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08response\x18\x10 \x01(\x0b\x32\x0b.schema.Int\x12!\n\ttimestamp\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04verb\x18\x12 \x01(\x0b\x32\x0e.schema.String\"\xb1\x05\n\x11\x43ombinedApacheLog\x12\'\n\x0f\x63ommonapachelog\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12 \n\x08hostname\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x19\n\x04hour\x18\x03 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06minute\x18\x04 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06second\x18\x05 \x01(\x0b\x32\x0b.schema.Int\x12\x1d\n\x05month\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08monthday\x18\x07 \x01(\x0b\x32\x0b.schema.Int\x12\x19\n\x04year\x18\x08 \x01(\x0b\x32\x0b.schema.Int\x12\x1c\n\x04time\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x61uth\x18\n \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x05\x62ytes\x18\x0b \x01(\x0b\x32\x0c.schema.Long\x12 \n\x08\x63lientip\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12#\n\x0bhttpversion\x18\r \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05ident\x18\x0e \x01(\x0b\x32\x0e.schema.String\x12\"\n\nrawrequest\x18\x0f \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07request\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08response\x18\x11 \x01(\x0b\x32\x0b.schema.Int\x12!\n\ttimestamp\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04verb\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12 \n\x08referrer\x18\x14 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05\x61gent\x18\x15 \x01(\x0b\x32\x0e.schema.String\"\x88\x0c\n\x18\x41\x64obeFlashMediaServerLog\x12\x1f\n\x07x_event\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\"\n\nx_category\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x19\n\x04year\x18\x03 \x01(\x0b\x32\x0b.schema.Int\x12\x1a\n\x05month\x18\x04 \x01(\x0b\x32\x0b.schema.Int\x12\x18\n\x03\x64\x61y\x18\x05 \x01(\x0b\x32\x0b.schema.Int\x12\x19\n\x04hour\x18\x06 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06minute\x18\x07 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06second\x18\x08 \x01(\x0b\x32\x0b.schema.Int\x12\x1c\n\x04time\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x1a\n\x02tz\x18\n \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05x_ctx\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04s_ip\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12\x1a\n\x05x_pid\x18\r \x01(\x0b\x32\x0b.schema.Int\x12 \n\nx_cpu_load\x18\x0e \x01(\x0b\x32\x0c.schema.Long\x12 \n\nx_mem_load\x18\x0f \x01(\x0b\x32\x0c.schema.Long\x12!\n\tx_adaptor\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07x_vhost\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05x_app\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12\"\n\nx_app_inst\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12 \n\nx_duration\x18\x14 \x01(\x0b\x32\x0c.schema.Long\x12 \n\x08x_status\x18\x15 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x63_ip\x18\x16 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07\x63_proto\x18\x17 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05s_uri\x18\x18 \x01(\x0b\x32\x0e.schema.String\x12#\n\x0b\x63s_uri_stem\x18\x19 \x01(\x0b\x32\x0e.schema.String\x12$\n\x0c\x63s_uri_query\x18\x1a \x01(\x0b\x32\x0e.schema.String\x12\"\n\nc_referrer\x18\x1b \x01(\x0b\x32\x0e.schema.String\x12$\n\x0c\x63_user_agent\x18\x1c \x01(\x0b\x32\x0e.schema.String\x12 \n\x0b\x63_client_id\x18\x1d \x01(\x0b\x32\x0b.schema.Int\x12\x1e\n\x08\x63s_bytes\x18\x1e \x01(\x0b\x32\x0c.schema.Long\x12\x1e\n\x08sc_bytes\x18\x1f \x01(\x0b\x32\x0c.schema.Long\x12\x1f\n\x07x_sname\x18  \x01(\x0b\x32\x0e.schema.String\x12%\n\rx_sname_query\x18! \x01(\x0b\x32\x0e.schema.String\x12#\n\x0bx_file_name\x18\" \x01(\x0b\x32\x0e.schema.String\x12\"\n\nx_file_ext\x18# \x01(\x0b\x32\x0e.schema.String\x12!\n\x0bx_file_size\x18$ \x01(\x0b\x32\x0c.schema.Long\x12#\n\rx_file_length\x18% \x01(\x0b\x32\x0c.schema.Long\x12\x1c\n\x06x_spos\x18& \x01(\x0b\x32\x0c.schema.Long\x12%\n\x0f\x63s_stream_bytes\x18\' \x01(\x0b\x32\x0c.schema.Long\x12%\n\x0fsc_stream_bytes\x18( \x01(\x0b\x32\x0c.schema.Long\x12$\n\x0ex_sc_qos_bytes\x18) \x01(\x0b\x32\x0c.schema.Long\x12%\n\rx_trans_sname\x18* \x01(\x0b\x32\x0e.schema.String\x12+\n\x13x_trans_sname_query\x18+ \x01(\x0b\x32\x0e.schema.String\x12(\n\x10x_trans_file_ext\x18, \x01(\x0b\x32\x0e.schema.String\x12!\n\tx_comment\x18- \x01(\x0b\x32\x0e.schema.String\"\xab\x04\n\nStatistics\x12\x1b\n\x03sha\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12!\n\tdimension\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x1e\n\x06schema\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12!\n\x0b\x63\x61rdinality\x18\x04 \x01(\x0b\x32\x0c.schema.Long\x12*\n\x14\x64istinct_cardinality\x18\x05 \x01(\x0b\x32\x0c.schema.Long\x12\x36\n approximate_distinct_cardinality\x18\x06 \x01(\x0b\x32\x0c.schema.Long\x12\"\n\x0clong_minimum\x18\x07 \x01(\x0b\x32\x0c.schema.Long\x12\"\n\x0clong_maximum\x18\x08 \x01(\x0b\x32\x0c.schema.Long\x12\x1e\n\x08long_sum\x18\r \x01(\x0b\x32\x0c.schema.Long\x12&\n\x0e\x64ouble_minimum\x18\t \x01(\x0b\x32\x0e.schema.Double\x12&\n\x0e\x64ouble_maximum\x18\n \x01(\x0b\x32\x0e.schema.Double\x12\"\n\ndouble_sum\x18\x0e \x01(\x0b\x32\x0e.schema.Double\x12,\n\x11timestamp_minimum\x18\x0b \x01(\x0b\x32\x11.schema.Timestamp\x12,\n\x11timestamp_maximum\x18\x0c \x01(\x0b\x32\x11.schema.Timestamp\"\x9e\x02\n\x0cUpdatePolicy\x12+\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x1a.schema.UpdatePolicy.ErrorH\x00\x12\x34\n\ndrop_table\x18\x02 \x01(\x0b\x32\x1e.schema.UpdatePolicy.DropTableH\x00\x12\x36\n\x0b\x61lter_table\x18\x03 \x01(\x0b\x32\x1f.schema.UpdatePolicy.AlterTableH\x00\x1a\x07\n\x05\x45rror\x1a\x0b\n\tDropTable\x1aR\n\nAlterTable\x12&\n\x1e\x61lter_columns_on_type_mismatch\x18\x01 \x01(\x08\x12\x1c\n\x14\x64rop_unknown_columns\x18\x02 \x01(\x08\x42\t\n\x07\x64\x65tails\"\xdd\x07\n\x10PartFileMetadata\x12\x1d\n\x15metadata_content_type\x18\x01 \x01(\t\x12\x12\n\npart_count\x18\x02 \x01(\r\x12\x19\n\x11part_content_type\x18\x03 \x01(\t\x12\x1d\n\x15part_content_encoding\x18\x04 \x01(\t\x12\x32\n\x0crecord_count\x18\x05 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x30\n\nbyte_count\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12,\n\x05parts\x18\x07 \x03(\x0b\x32\x1d.schema.PartFileMetadata.Part\x1a\xa8\x02\n\x04Part\x12\x32\n\x0crecord_count\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12\x30\n\nbyte_count\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.UInt64Value\x12+\n\x03\x61\x62s\x18\x0c \x01(\x0b\x32\x1c.schema.PartFileMetadata.AbsH\x00\x12-\n\x04\x66ile\x18\r \x01(\x0b\x32\x1d.schema.PartFileMetadata.FileH\x00\x12)\n\x02s3\x18\x0e \x01(\x0b\x32\x1b.schema.PartFileMetadata.S3H\x00\x12+\n\x03gcs\x18\x0f \x01(\x0b\x32\x1c.schema.PartFileMetadata.GcsH\x00\x42\x06\n\x04part\x1a\x65\n\x02S3\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0e\n\x06object\x18\x02 \x01(\t\x12\x0c\n\x04\x65tag\x18\x03 \x01(\t\x12\x31\n\rlast_modified\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x65\n\x03Gcs\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0e\n\x06object\x18\x02 \x01(\t\x12\x0b\n\x03md5\x18\x03 \x01(\t\x12\x31\n\rlast_modified\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x85\x01\n\x03\x41\x62s\x12\x0f\n\x07\x61\x63\x63ount\x18\x01 \x01(\t\x12\x11\n\tcontainer\x18\x02 \x01(\t\x12\x0c\n\x04\x62lob\x18\x03 \x01(\t\x12\x0b\n\x03md5\x18\x04 \x01(\t\x12\x0c\n\x04\x65tag\x18\x06 \x01(\t\x12\x31\n\rlast_modified\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1aG\n\x04\x46ile\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\x31\n\rlast_modified\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestampb\x06proto3'
+  serialized_pb=b'\n!ascend/protos/schema/schema.proto\x12\x06schema\x1a!ascend/protos/ascend/ascend.proto\"\x13\n\x07\x42oolean\x1a\x08\n\x06Parser\"\x10\n\x04\x42yte\x1a\x08\n\x06Parser\"\x11\n\x05\x42ytes\x1a\x08\n\x06Parser\"\x10\n\x04\x43har\x1a\x08\n\x06Parser\"\x10\n\x04\x44\x61te\x1a\x08\n\x06Parser\"J\n\x06\x44ouble\x1a@\n\x06Parser\x12\x19\n\x11\x64\x65\x63imal_separator\x18\x01 \x01(\t\x12\x1b\n\x13thousands_separator\x18\x02 \x01(\t\"I\n\x05\x46loat\x1a@\n\x06Parser\x12\x19\n\x11\x64\x65\x63imal_separator\x18\x01 \x01(\t\x12\x1b\n\x13thousands_separator\x18\x02 \x01(\t\",\n\x03Int\x1a%\n\x06Parser\x12\x1b\n\x13thousands_separator\x18\x01 \x01(\t\"-\n\x04Long\x1a%\n\x06Parser\x12\x1b\n\x13thousands_separator\x18\x01 \x01(\t\"\t\n\x07Nothing\" \n\x06String\x1a\x16\n\x06Parser\x12\x0c\n\x04trim\x18\x01 \x01(\x08\"\x15\n\tTimestamp\x1a\x08\n\x06Parser\"5\n\x05\x46ield\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1e\n\x06schema\x18\x02 \x01(\x0b\x32\x0e.schema.Schema\"#\n\x03Map\x12\x1c\n\x05\x66ield\x18\x01 \x03(\x0b\x32\r.schema.Field\"\xd0\x03\n\x06Schema\x12\"\n\x07\x62oolean\x18\x01 \x01(\x0b\x32\x0f.schema.BooleanH\x00\x12\x1c\n\x04\x62yte\x18\x02 \x01(\x0b\x32\x0c.schema.ByteH\x00\x12\x1c\n\x04\x63har\x18\x03 \x01(\x0b\x32\x0c.schema.CharH\x00\x12\x1c\n\x04\x64\x61te\x18\x0b \x01(\x0b\x32\x0c.schema.DateH\x00\x12 \n\x06\x64ouble\x18\x0e \x01(\x0b\x32\x0e.schema.DoubleH\x00\x12\x1e\n\x05\x66loat\x18\x04 \x01(\x0b\x32\r.schema.FloatH\x00\x12\x1a\n\x03int\x18\x05 \x01(\x0b\x32\x0b.schema.IntH\x00\x12\x1c\n\x04long\x18\x06 \x01(\x0b\x32\x0c.schema.LongH\x00\x12\x1a\n\x03map\x18\x07 \x01(\x0b\x32\x0b.schema.MapH\x00\x12\"\n\x07nothing\x18\x08 \x01(\x0b\x32\x0f.schema.NothingH\x00\x12 \n\x06string\x18\t \x01(\x0b\x32\x0e.schema.StringH\x00\x12&\n\ttimestamp\x18\n \x01(\x0b\x32\x11.schema.TimestampH\x00\x1a&\n\x04List\x12\x1e\n\x06schema\x18\x01 \x03(\x0b\x32\x0e.schema.SchemaB\t\n\x07\x64\x65tailsJ\x04\x08\x0c\x10\rR\tdate_time\"\xe7\r\n\x07\x41\x62sList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12 \n\x07\x64\x65leted\x18\x02 \x01(\x0b\x32\x0f.schema.Boolean\x12 \n\x08snapshot\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12\x34\n\x19properties__creation_time\x18\x04 \x01(\x0b\x32\x11.schema.Timestamp\x12\x34\n\x19properties__last_modified\x18\x05 \x01(\x0b\x32\x11.schema.Timestamp\x12(\n\x10properties__etag\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x30\n\x1aproperties__content_length\x18\x07 \x01(\x0b\x32\x0c.schema.Long\x12\x30\n\x18properties__content_type\x18\x08 \x01(\x0b\x32\x0e.schema.String\x12\x34\n\x1cproperties__content_encoding\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x34\n\x1cproperties__content_language\x18\n \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__content_md5\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12\x31\n\x19properties__cache_control\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12\x36\n properties__blob_sequence_number\x18\r \x01(\x0b\x32\x0c.schema.Long\x12-\n\x15properties__blob_type\x18\x0e \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__access_tier\x18\x0f \x01(\x0b\x32\x0e.schema.String\x12\x30\n\x18properties__lease_status\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__lease_state\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x32\n\x1aproperties__lease_duration\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12+\n\x13properties__copy_id\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__copy_status\x18\x14 \x01(\x0b\x32\x0e.schema.String\x12/\n\x17properties__copy_source\x18\x15 \x01(\x0b\x32\x0e.schema.String\x12\x31\n\x19properties__copy_progress\x18\x16 \x01(\x0b\x32\x0e.schema.String\x12;\n properties__copy_completion_time\x18\x17 \x01(\x0b\x32\x11.schema.Timestamp\x12;\n#properties__copy_status_description\x18\x18 \x01(\x0b\x32\x0e.schema.String\x12\x35\n\x1cproperties__server_encrypted\x18\x19 \x01(\x0b\x32\x0f.schema.Boolean\x12\x35\n\x1cproperties__incremental_copy\x18\x1a \x01(\x0b\x32\x0f.schema.Boolean\x12\x39\n properties__access_tier_inferred\x18\x1b \x01(\x0b\x32\x0f.schema.Boolean\x12>\n#properties__access_tier_change_time\x18\x1c \x01(\x0b\x32\x11.schema.Timestamp\x12\x33\n\x18properties__deleted_time\x18\x1d \x01(\x0b\x32\x11.schema.Timestamp\x12:\n$properties__remaining_retention_days\x18\x1e \x01(\x0b\x32\x0c.schema.Long\x12\x37\n\x1fproperties__content_disposition\x18\x1f \x01(\x0b\x32\x0e.schema.String\x12\x38\n properties__destination_shapshot\x18  \x01(\x0b\x32\x0e.schema.String\x12\x32\n\x1aproperties__archive_status\x18! \x01(\x0b\x32\x0e.schema.String\x12 \n\x08metadata\x18\" \x01(\x0b\x32\x0e.ascend.Struct\x12\"\n\tis_prefix\x18# \x01(\x0b\x32\x0f.schema.Boolean\"\x8e\x02\n\x0c\x42qListTables\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12$\n\x0cpartition_id\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x1e\n\x06schema\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12#\n\rlast_modified\x18\x04 \x01(\x0b\x32\x0c.schema.Long\x12\x1e\n\x08num_rows\x18\x05 \x01(\x0b\x32\x0c.schema.Long\x12\"\n\tis_prefix\x18\x07 \x01(\x0b\x32\x0f.schema.Boolean\x12\x1f\n\x07\x64\x61taset\x18\x08 \x01(\x0b\x32\x0e.schema.StringJ\x04\x08\x02\x10\x03R\ninputs_sha\"\xba\x01\n\x0e\x42qListDatasets\x12\x1a\n\x02id\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\"\n\ndataset_id\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\"\n\nproject_id\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12%\n\rfriendly_name\x18\x04 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05label\x18\x05 \x01(\x0b\x32\x0e.schema.String\"f\n\rImmediateList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x03sha\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x1a\n\x04size\x18\x03 \x01(\x0b\x32\x0c.schema.Long\">\n\x19MsSqlServerListPartitions\x12!\n\tpartition\x18\x01 \x01(\x0b\x32\x0e.schema.String\"2\n\x12MysqlListDatabases\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\"8\n\x13MysqlListPartitions\x12!\n\tpartition\x18\x01 \x01(\x0b\x32\x0e.schema.String\"/\n\x0fMysqlListTables\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\"<\n\x17SnowflakeListPartitions\x12!\n\tpartition\x18\x01 \x01(\x0b\x32\x0e.schema.String\"M\n\x08\x46ileList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12#\n\rlast_modified\x18\x02 \x01(\x0b\x32\x0c.schema.Long\",\n\nListSchema\x12\x1e\n\x06record\x18\x01 \x01(\x0b\x32\x0e.ascend.Struct\"\xa2\x02\n\x06S3List\x12\x1a\n\x02id\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x65tag\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04name\x18\x04 \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x03key\x18\x05 \x01(\x0b\x32\x0e.schema.String\x12#\n\rlast_modified\x18\x06 \x01(\x0b\x32\x0c.schema.Long\x12\x1a\n\x04size\x18\x07 \x01(\x0b\x32\x0c.schema.Long\x12%\n\rstorage_class\x18\x08 \x01(\x0b\x32\x0e.schema.String\x12\"\n\tis_prefix\x18\t \x01(\x0b\x32\x0f.schema.BooleanJ\x04\x08\x01\x10\x02R\ninputs_shaR\x05token\"\xa8\x01\n\x15\x46unctionContainerList\x12\x1c\n\x04name\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\"\n\tis_prefix\x18\x02 \x01(\x0b\x32\x0f.schema.Boolean\x12#\n\x0b\x66ingerprint\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12(\n\rlast_modified\x18\x04 \x01(\x0b\x32\x11.schema.Timestamp\"\x85\x06\n\x07GcsList\x12\x1e\n\x06\x62ucket\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04name\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12$\n\x0c\x63ontent_type\x18\x04 \x01(\x0b\x32\x0e.schema.String\x12(\n\x10\x63ontent_language\x18\x05 \x01(\x0b\x32\x0e.schema.String\x12%\n\rcache_control\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05owner\x18\x07 \x01(\x0b\x32\x0e.schema.String\x12\x1a\n\x04size\x18\x08 \x01(\x0b\x32\x0c.schema.Long\x12(\n\x10\x63ontent_encoding\x18\t \x01(\x0b\x32\x0e.schema.String\x12+\n\x13\x63ontent_disposition\x18\n \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x03md5\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x06\x63rc32c\x18\x0c \x01(\x0b\x32\x0c.schema.Long\x12\"\n\nmedia_link\x18\r \x01(\x0b\x32\x0e.schema.String\x12 \n\ngeneration\x18\x0e \x01(\x0b\x32\x0c.schema.Long\x12%\n\x0fmeta_generation\x18\x0f \x01(\x0b\x32\x0c.schema.Long\x12%\n\rstorage_class\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07\x63reated\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07\x64\x65leted\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07updated\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12+\n\x13\x63ustomer_key_sha256\x18\x14 \x01(\x0b\x32\x0e.schema.String\x12\x1e\n\x06prefix\x18\x15 \x01(\x0b\x32\x0e.schema.String\x12\"\n\tis_prefix\x18\x16 \x01(\x0b\x32\x0f.schema.BooleanJ\x04\x08\x01\x10\x02R\ninputs_sha\"\xbe\x01\n\x0bGrokPattern\x12\x34\n\x11\x63ommon_apache_log\x18\x01 \x01(\x0b\x32\x17.schema.CommonApacheLogH\x00\x12\x38\n\x13\x63ombined_apache_log\x18\x02 \x01(\x0b\x32\x19.schema.CombinedApacheLogH\x00\x12\x34\n\x08\x61\x64obeFms\x18\x03 \x01(\x0b\x32 .schema.AdobeFlashMediaServerLogH\x00\x42\t\n\x07pattern\"\xc5\x04\n\x0f\x43ommonApacheLog\x12 \n\x08hostname\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\x19\n\x04hour\x18\x02 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06minute\x18\x03 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06second\x18\x04 \x01(\x0b\x32\x0b.schema.Int\x12\x1d\n\x05month\x18\x05 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08monthday\x18\x06 \x01(\x0b\x32\x0b.schema.Int\x12\x19\n\x04year\x18\x07 \x01(\x0b\x32\x0b.schema.Int\x12\x1c\n\x04time\x18\x08 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x61uth\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x05\x62ytes\x18\n \x01(\x0b\x32\x0c.schema.Long\x12 \n\x08\x63lientip\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12#\n\x0bhttpversion\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05ident\x18\r \x01(\x0b\x32\x0e.schema.String\x12\"\n\nrawrequest\x18\x0e \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07request\x18\x0f \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08response\x18\x10 \x01(\x0b\x32\x0b.schema.Int\x12!\n\ttimestamp\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04verb\x18\x12 \x01(\x0b\x32\x0e.schema.String\"\xb1\x05\n\x11\x43ombinedApacheLog\x12\'\n\x0f\x63ommonapachelog\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12 \n\x08hostname\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x19\n\x04hour\x18\x03 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06minute\x18\x04 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06second\x18\x05 \x01(\x0b\x32\x0b.schema.Int\x12\x1d\n\x05month\x18\x06 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08monthday\x18\x07 \x01(\x0b\x32\x0b.schema.Int\x12\x19\n\x04year\x18\x08 \x01(\x0b\x32\x0b.schema.Int\x12\x1c\n\x04time\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x61uth\x18\n \x01(\x0b\x32\x0e.schema.String\x12\x1b\n\x05\x62ytes\x18\x0b \x01(\x0b\x32\x0c.schema.Long\x12 \n\x08\x63lientip\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12#\n\x0bhttpversion\x18\r \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05ident\x18\x0e \x01(\x0b\x32\x0e.schema.String\x12\"\n\nrawrequest\x18\x0f \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07request\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x08response\x18\x11 \x01(\x0b\x32\x0b.schema.Int\x12!\n\ttimestamp\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04verb\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12 \n\x08referrer\x18\x14 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05\x61gent\x18\x15 \x01(\x0b\x32\x0e.schema.String\"\x88\x0c\n\x18\x41\x64obeFlashMediaServerLog\x12\x1f\n\x07x_event\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12\"\n\nx_category\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x19\n\x04year\x18\x03 \x01(\x0b\x32\x0b.schema.Int\x12\x1a\n\x05month\x18\x04 \x01(\x0b\x32\x0b.schema.Int\x12\x18\n\x03\x64\x61y\x18\x05 \x01(\x0b\x32\x0b.schema.Int\x12\x19\n\x04hour\x18\x06 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06minute\x18\x07 \x01(\x0b\x32\x0b.schema.Int\x12\x1b\n\x06second\x18\x08 \x01(\x0b\x32\x0b.schema.Int\x12\x1c\n\x04time\x18\t \x01(\x0b\x32\x0e.schema.String\x12\x1a\n\x02tz\x18\n \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05x_ctx\x18\x0b \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04s_ip\x18\x0c \x01(\x0b\x32\x0e.schema.String\x12\x1a\n\x05x_pid\x18\r \x01(\x0b\x32\x0b.schema.Int\x12 \n\nx_cpu_load\x18\x0e \x01(\x0b\x32\x0c.schema.Long\x12 \n\nx_mem_load\x18\x0f \x01(\x0b\x32\x0c.schema.Long\x12!\n\tx_adaptor\x18\x10 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07x_vhost\x18\x11 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05x_app\x18\x12 \x01(\x0b\x32\x0e.schema.String\x12\"\n\nx_app_inst\x18\x13 \x01(\x0b\x32\x0e.schema.String\x12 \n\nx_duration\x18\x14 \x01(\x0b\x32\x0c.schema.Long\x12 \n\x08x_status\x18\x15 \x01(\x0b\x32\x0e.schema.String\x12\x1c\n\x04\x63_ip\x18\x16 \x01(\x0b\x32\x0e.schema.String\x12\x1f\n\x07\x63_proto\x18\x17 \x01(\x0b\x32\x0e.schema.String\x12\x1d\n\x05s_uri\x18\x18 \x01(\x0b\x32\x0e.schema.String\x12#\n\x0b\x63s_uri_stem\x18\x19 \x01(\x0b\x32\x0e.schema.String\x12$\n\x0c\x63s_uri_query\x18\x1a \x01(\x0b\x32\x0e.schema.String\x12\"\n\nc_referrer\x18\x1b \x01(\x0b\x32\x0e.schema.String\x12$\n\x0c\x63_user_agent\x18\x1c \x01(\x0b\x32\x0e.schema.String\x12 \n\x0b\x63_client_id\x18\x1d \x01(\x0b\x32\x0b.schema.Int\x12\x1e\n\x08\x63s_bytes\x18\x1e \x01(\x0b\x32\x0c.schema.Long\x12\x1e\n\x08sc_bytes\x18\x1f \x01(\x0b\x32\x0c.schema.Long\x12\x1f\n\x07x_sname\x18  \x01(\x0b\x32\x0e.schema.String\x12%\n\rx_sname_query\x18! \x01(\x0b\x32\x0e.schema.String\x12#\n\x0bx_file_name\x18\" \x01(\x0b\x32\x0e.schema.String\x12\"\n\nx_file_ext\x18# \x01(\x0b\x32\x0e.schema.String\x12!\n\x0bx_file_size\x18$ \x01(\x0b\x32\x0c.schema.Long\x12#\n\rx_file_length\x18% \x01(\x0b\x32\x0c.schema.Long\x12\x1c\n\x06x_spos\x18& \x01(\x0b\x32\x0c.schema.Long\x12%\n\x0f\x63s_stream_bytes\x18\' \x01(\x0b\x32\x0c.schema.Long\x12%\n\x0fsc_stream_bytes\x18( \x01(\x0b\x32\x0c.schema.Long\x12$\n\x0ex_sc_qos_bytes\x18) \x01(\x0b\x32\x0c.schema.Long\x12%\n\rx_trans_sname\x18* \x01(\x0b\x32\x0e.schema.String\x12+\n\x13x_trans_sname_query\x18+ \x01(\x0b\x32\x0e.schema.String\x12(\n\x10x_trans_file_ext\x18, \x01(\x0b\x32\x0e.schema.String\x12!\n\tx_comment\x18- \x01(\x0b\x32\x0e.schema.String\"\xab\x04\n\nStatistics\x12\x1b\n\x03sha\x18\x01 \x01(\x0b\x32\x0e.schema.String\x12!\n\tdimension\x18\x02 \x01(\x0b\x32\x0e.schema.String\x12\x1e\n\x06schema\x18\x03 \x01(\x0b\x32\x0e.schema.String\x12!\n\x0b\x63\x61rdinality\x18\x04 \x01(\x0b\x32\x0c.schema.Long\x12*\n\x14\x64istinct_cardinality\x18\x05 \x01(\x0b\x32\x0c.schema.Long\x12\x36\n approximate_distinct_cardinality\x18\x06 \x01(\x0b\x32\x0c.schema.Long\x12\"\n\x0clong_minimum\x18\x07 \x01(\x0b\x32\x0c.schema.Long\x12\"\n\x0clong_maximum\x18\x08 \x01(\x0b\x32\x0c.schema.Long\x12\x1e\n\x08long_sum\x18\r \x01(\x0b\x32\x0c.schema.Long\x12&\n\x0e\x64ouble_minimum\x18\t \x01(\x0b\x32\x0e.schema.Double\x12&\n\x0e\x64ouble_maximum\x18\n \x01(\x0b\x32\x0e.schema.Double\x12\"\n\ndouble_sum\x18\x0e \x01(\x0b\x32\x0e.schema.Double\x12,\n\x11timestamp_minimum\x18\x0b \x01(\x0b\x32\x11.schema.Timestamp\x12,\n\x11timestamp_maximum\x18\x0c \x01(\x0b\x32\x11.schema.Timestamp\"\x9e\x02\n\x0cUpdatePolicy\x12+\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x1a.schema.UpdatePolicy.ErrorH\x00\x12\x34\n\ndrop_table\x18\x02 \x01(\x0b\x32\x1e.schema.UpdatePolicy.DropTableH\x00\x12\x36\n\x0b\x61lter_table\x18\x03 \x01(\x0b\x32\x1f.schema.UpdatePolicy.AlterTableH\x00\x1a\x07\n\x05\x45rror\x1a\x0b\n\tDropTable\x1aR\n\nAlterTable\x12&\n\x1e\x61lter_columns_on_type_mismatch\x18\x01 \x01(\x08\x12\x1c\n\x14\x64rop_unknown_columns\x18\x02 \x01(\x08\x42\t\n\x07\x64\x65tailsb\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,])
+  dependencies=[ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,])
 
 
 
@@ -49,8 +47,8 @@ _BOOLEAN_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=156,
-  serialized_end=164,
+  serialized_start=91,
+  serialized_end=99,
 )
 
 _BOOLEAN = _descriptor.Descriptor(
@@ -73,8 +71,8 @@ _BOOLEAN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=145,
-  serialized_end=164,
+  serialized_start=80,
+  serialized_end=99,
 )
 
 
@@ -98,8 +96,8 @@ _BYTE_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=156,
-  serialized_end=164,
+  serialized_start=91,
+  serialized_end=99,
 )
 
 _BYTE = _descriptor.Descriptor(
@@ -122,8 +120,8 @@ _BYTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=166,
-  serialized_end=182,
+  serialized_start=101,
+  serialized_end=117,
 )
 
 
@@ -147,8 +145,8 @@ _BYTES_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=156,
-  serialized_end=164,
+  serialized_start=91,
+  serialized_end=99,
 )
 
 _BYTES = _descriptor.Descriptor(
@@ -171,8 +169,8 @@ _BYTES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=184,
-  serialized_end=201,
+  serialized_start=119,
+  serialized_end=136,
 )
 
 
@@ -196,8 +194,8 @@ _CHAR_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=156,
-  serialized_end=164,
+  serialized_start=91,
+  serialized_end=99,
 )
 
 _CHAR = _descriptor.Descriptor(
@@ -220,8 +218,8 @@ _CHAR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=203,
-  serialized_end=219,
+  serialized_start=138,
+  serialized_end=154,
 )
 
 
@@ -245,8 +243,8 @@ _DATE_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=156,
-  serialized_end=164,
+  serialized_start=91,
+  serialized_end=99,
 )
 
 _DATE = _descriptor.Descriptor(
@@ -269,8 +267,8 @@ _DATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=221,
-  serialized_end=237,
+  serialized_start=156,
+  serialized_end=172,
 )
 
 
@@ -308,8 +306,8 @@ _DOUBLE_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=249,
-  serialized_end=313,
+  serialized_start=184,
+  serialized_end=248,
 )
 
 _DOUBLE = _descriptor.Descriptor(
@@ -332,8 +330,8 @@ _DOUBLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=239,
-  serialized_end=313,
+  serialized_start=174,
+  serialized_end=248,
 )
 
 
@@ -371,8 +369,8 @@ _FLOAT_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=249,
-  serialized_end=313,
+  serialized_start=184,
+  serialized_end=248,
 )
 
 _FLOAT = _descriptor.Descriptor(
@@ -395,8 +393,8 @@ _FLOAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=315,
-  serialized_end=388,
+  serialized_start=250,
+  serialized_end=323,
 )
 
 
@@ -427,8 +425,8 @@ _INT_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=397,
-  serialized_end=434,
+  serialized_start=332,
+  serialized_end=369,
 )
 
 _INT = _descriptor.Descriptor(
@@ -451,8 +449,8 @@ _INT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=390,
-  serialized_end=434,
+  serialized_start=325,
+  serialized_end=369,
 )
 
 
@@ -483,8 +481,8 @@ _LONG_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=397,
-  serialized_end=434,
+  serialized_start=332,
+  serialized_end=369,
 )
 
 _LONG = _descriptor.Descriptor(
@@ -507,8 +505,8 @@ _LONG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=436,
-  serialized_end=481,
+  serialized_start=371,
+  serialized_end=416,
 )
 
 
@@ -532,8 +530,8 @@ _NOTHING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=483,
-  serialized_end=492,
+  serialized_start=418,
+  serialized_end=427,
 )
 
 
@@ -564,8 +562,8 @@ _STRING_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=504,
-  serialized_end=526,
+  serialized_start=439,
+  serialized_end=461,
 )
 
 _STRING = _descriptor.Descriptor(
@@ -588,8 +586,8 @@ _STRING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=494,
-  serialized_end=526,
+  serialized_start=429,
+  serialized_end=461,
 )
 
 
@@ -613,8 +611,8 @@ _TIMESTAMP_PARSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=156,
-  serialized_end=164,
+  serialized_start=91,
+  serialized_end=99,
 )
 
 _TIMESTAMP = _descriptor.Descriptor(
@@ -637,8 +635,8 @@ _TIMESTAMP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=528,
-  serialized_end=549,
+  serialized_start=463,
+  serialized_end=484,
 )
 
 
@@ -676,8 +674,8 @@ _FIELD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=551,
-  serialized_end=604,
+  serialized_start=486,
+  serialized_end=539,
 )
 
 
@@ -708,10 +706,41 @@ _MAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=606,
-  serialized_end=641,
+  serialized_start=541,
+  serialized_end=576,
 )
 
+
+_SCHEMA_LIST = _descriptor.Descriptor(
+  name='List',
+  full_name='schema.Schema.List',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='schema', full_name='schema.Schema.List.schema', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=977,
+  serialized_end=1015,
+)
 
 _SCHEMA = _descriptor.Descriptor(
   name='Schema',
@@ -808,7 +837,7 @@ _SCHEMA = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_SCHEMA_LIST, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -822,8 +851,8 @@ _SCHEMA = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=644,
-  serialized_end=1068,
+  serialized_start=579,
+  serialized_end=1043,
 )
 
 
@@ -1092,8 +1121,8 @@ _ABSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1071,
-  serialized_end=2838,
+  serialized_start=1046,
+  serialized_end=2813,
 )
 
 
@@ -1166,8 +1195,8 @@ _BQLISTTABLES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2841,
-  serialized_end=3111,
+  serialized_start=2816,
+  serialized_end=3086,
 )
 
 
@@ -1226,8 +1255,8 @@ _BQLISTDATASETS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3114,
-  serialized_end=3300,
+  serialized_start=3089,
+  serialized_end=3275,
 )
 
 
@@ -1253,6 +1282,13 @@ _IMMEDIATELIST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='size', full_name='schema.ImmediateList.size', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1265,8 +1301,8 @@ _IMMEDIATELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3302,
-  serialized_end=3376,
+  serialized_start=3277,
+  serialized_end=3379,
 )
 
 
@@ -1297,8 +1333,8 @@ _MSSQLSERVERLISTPARTITIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3378,
-  serialized_end=3440,
+  serialized_start=3381,
+  serialized_end=3443,
 )
 
 
@@ -1329,8 +1365,8 @@ _MYSQLLISTDATABASES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3442,
-  serialized_end=3492,
+  serialized_start=3445,
+  serialized_end=3495,
 )
 
 
@@ -1361,8 +1397,8 @@ _MYSQLLISTPARTITIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3494,
-  serialized_end=3550,
+  serialized_start=3497,
+  serialized_end=3553,
 )
 
 
@@ -1393,8 +1429,8 @@ _MYSQLLISTTABLES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3552,
-  serialized_end=3599,
+  serialized_start=3555,
+  serialized_end=3602,
 )
 
 
@@ -1425,8 +1461,8 @@ _SNOWFLAKELISTPARTITIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3601,
-  serialized_end=3661,
+  serialized_start=3604,
+  serialized_end=3664,
 )
 
 
@@ -1464,8 +1500,8 @@ _FILELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3663,
-  serialized_end=3740,
+  serialized_start=3666,
+  serialized_end=3743,
 )
 
 
@@ -1496,8 +1532,8 @@ _LISTSCHEMA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3742,
-  serialized_end=3786,
+  serialized_start=3745,
+  serialized_end=3789,
 )
 
 
@@ -1577,8 +1613,8 @@ _S3LIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3789,
-  serialized_end=4079,
+  serialized_start=3792,
+  serialized_end=4082,
 )
 
 
@@ -1630,8 +1666,8 @@ _FUNCTIONCONTAINERLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4082,
-  serialized_end=4250,
+  serialized_start=4085,
+  serialized_end=4253,
 )
 
 
@@ -1802,8 +1838,8 @@ _GCSLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4253,
-  serialized_end=5026,
+  serialized_start=4256,
+  serialized_end=5029,
 )
 
 
@@ -1853,8 +1889,8 @@ _GROKPATTERN = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=5029,
-  serialized_end=5219,
+  serialized_start=5032,
+  serialized_end=5222,
 )
 
 
@@ -2004,8 +2040,8 @@ _COMMONAPACHELOG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5222,
-  serialized_end=5803,
+  serialized_start=5225,
+  serialized_end=5806,
 )
 
 
@@ -2176,8 +2212,8 @@ _COMBINEDAPACHELOG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5806,
-  serialized_end=6495,
+  serialized_start=5809,
+  serialized_end=6498,
 )
 
 
@@ -2516,8 +2552,8 @@ _ADOBEFLASHMEDIASERVERLOG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6498,
-  serialized_end=8042,
+  serialized_start=6501,
+  serialized_end=8045,
 )
 
 
@@ -2639,8 +2675,8 @@ _STATISTICS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8045,
-  serialized_end=8600,
+  serialized_start=8048,
+  serialized_end=8603,
 )
 
 
@@ -2664,8 +2700,8 @@ _UPDATEPOLICY_ERROR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8774,
-  serialized_end=8781,
+  serialized_start=8777,
+  serialized_end=8784,
 )
 
 _UPDATEPOLICY_DROPTABLE = _descriptor.Descriptor(
@@ -2688,8 +2724,8 @@ _UPDATEPOLICY_DROPTABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8783,
-  serialized_end=8794,
+  serialized_start=8786,
+  serialized_end=8797,
 )
 
 _UPDATEPOLICY_ALTERTABLE = _descriptor.Descriptor(
@@ -2726,8 +2762,8 @@ _UPDATEPOLICY_ALTERTABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8796,
-  serialized_end=8878,
+  serialized_start=8799,
+  serialized_end=8881,
 )
 
 _UPDATEPOLICY = _descriptor.Descriptor(
@@ -2776,361 +2812,8 @@ _UPDATEPOLICY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=8603,
-  serialized_end=8889,
-)
-
-
-_PARTFILEMETADATA_PART = _descriptor.Descriptor(
-  name='Part',
-  full_name='schema.PartFileMetadata.Part',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='record_count', full_name='schema.PartFileMetadata.Part.record_count', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='byte_count', full_name='schema.PartFileMetadata.Part.byte_count', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='abs', full_name='schema.PartFileMetadata.Part.abs', index=2,
-      number=12, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='file', full_name='schema.PartFileMetadata.Part.file', index=3,
-      number=13, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='s3', full_name='schema.PartFileMetadata.Part.s3', index=4,
-      number=14, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='gcs', full_name='schema.PartFileMetadata.Part.gcs', index=5,
-      number=15, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='part', full_name='schema.PartFileMetadata.Part.part',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-  ],
-  serialized_start=9170,
-  serialized_end=9466,
-)
-
-_PARTFILEMETADATA_S3 = _descriptor.Descriptor(
-  name='S3',
-  full_name='schema.PartFileMetadata.S3',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='bucket', full_name='schema.PartFileMetadata.S3.bucket', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='object', full_name='schema.PartFileMetadata.S3.object', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='etag', full_name='schema.PartFileMetadata.S3.etag', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='last_modified', full_name='schema.PartFileMetadata.S3.last_modified', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9468,
-  serialized_end=9569,
-)
-
-_PARTFILEMETADATA_GCS = _descriptor.Descriptor(
-  name='Gcs',
-  full_name='schema.PartFileMetadata.Gcs',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='bucket', full_name='schema.PartFileMetadata.Gcs.bucket', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='object', full_name='schema.PartFileMetadata.Gcs.object', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='md5', full_name='schema.PartFileMetadata.Gcs.md5', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='last_modified', full_name='schema.PartFileMetadata.Gcs.last_modified', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9571,
-  serialized_end=9672,
-)
-
-_PARTFILEMETADATA_ABS = _descriptor.Descriptor(
-  name='Abs',
-  full_name='schema.PartFileMetadata.Abs',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='account', full_name='schema.PartFileMetadata.Abs.account', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='container', full_name='schema.PartFileMetadata.Abs.container', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='blob', full_name='schema.PartFileMetadata.Abs.blob', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='md5', full_name='schema.PartFileMetadata.Abs.md5', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='etag', full_name='schema.PartFileMetadata.Abs.etag', index=4,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='last_modified', full_name='schema.PartFileMetadata.Abs.last_modified', index=5,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9675,
-  serialized_end=9808,
-)
-
-_PARTFILEMETADATA_FILE = _descriptor.Descriptor(
-  name='File',
-  full_name='schema.PartFileMetadata.File',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='path', full_name='schema.PartFileMetadata.File.path', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='last_modified', full_name='schema.PartFileMetadata.File.last_modified', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=9810,
-  serialized_end=9881,
-)
-
-_PARTFILEMETADATA = _descriptor.Descriptor(
-  name='PartFileMetadata',
-  full_name='schema.PartFileMetadata',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='metadata_content_type', full_name='schema.PartFileMetadata.metadata_content_type', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='part_count', full_name='schema.PartFileMetadata.part_count', index=1,
-      number=2, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='part_content_type', full_name='schema.PartFileMetadata.part_content_type', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='part_content_encoding', full_name='schema.PartFileMetadata.part_content_encoding', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='record_count', full_name='schema.PartFileMetadata.record_count', index=4,
-      number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='byte_count', full_name='schema.PartFileMetadata.byte_count', index=5,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='parts', full_name='schema.PartFileMetadata.parts', index=6,
-      number=7, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_PARTFILEMETADATA_PART, _PARTFILEMETADATA_S3, _PARTFILEMETADATA_GCS, _PARTFILEMETADATA_ABS, _PARTFILEMETADATA_FILE, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=8892,
-  serialized_end=9881,
+  serialized_start=8606,
+  serialized_end=8892,
 )
 
 _BOOLEAN_PARSER.containing_type = _BOOLEAN
@@ -3146,6 +2829,8 @@ _STRING_PARSER.containing_type = _STRING
 _TIMESTAMP_PARSER.containing_type = _TIMESTAMP
 _FIELD.fields_by_name['schema'].message_type = _SCHEMA
 _MAP.fields_by_name['field'].message_type = _FIELD
+_SCHEMA_LIST.fields_by_name['schema'].message_type = _SCHEMA
+_SCHEMA_LIST.containing_type = _SCHEMA
 _SCHEMA.fields_by_name['boolean'].message_type = _BOOLEAN
 _SCHEMA.fields_by_name['byte'].message_type = _BYTE
 _SCHEMA.fields_by_name['char'].message_type = _CHAR
@@ -3243,6 +2928,7 @@ _BQLISTDATASETS.fields_by_name['friendly_name'].message_type = _STRING
 _BQLISTDATASETS.fields_by_name['label'].message_type = _STRING
 _IMMEDIATELIST.fields_by_name['name'].message_type = _STRING
 _IMMEDIATELIST.fields_by_name['sha'].message_type = _STRING
+_IMMEDIATELIST.fields_by_name['size'].message_type = _LONG
 _MSSQLSERVERLISTPARTITIONS.fields_by_name['partition'].message_type = _STRING
 _MYSQLLISTDATABASES.fields_by_name['name'].message_type = _STRING
 _MYSQLLISTPARTITIONS.fields_by_name['partition'].message_type = _STRING
@@ -3409,36 +3095,6 @@ _UPDATEPOLICY.fields_by_name['drop_table'].containing_oneof = _UPDATEPOLICY.oneo
 _UPDATEPOLICY.oneofs_by_name['details'].fields.append(
   _UPDATEPOLICY.fields_by_name['alter_table'])
 _UPDATEPOLICY.fields_by_name['alter_table'].containing_oneof = _UPDATEPOLICY.oneofs_by_name['details']
-_PARTFILEMETADATA_PART.fields_by_name['record_count'].message_type = google_dot_protobuf_dot_wrappers__pb2._UINT64VALUE
-_PARTFILEMETADATA_PART.fields_by_name['byte_count'].message_type = google_dot_protobuf_dot_wrappers__pb2._UINT64VALUE
-_PARTFILEMETADATA_PART.fields_by_name['abs'].message_type = _PARTFILEMETADATA_ABS
-_PARTFILEMETADATA_PART.fields_by_name['file'].message_type = _PARTFILEMETADATA_FILE
-_PARTFILEMETADATA_PART.fields_by_name['s3'].message_type = _PARTFILEMETADATA_S3
-_PARTFILEMETADATA_PART.fields_by_name['gcs'].message_type = _PARTFILEMETADATA_GCS
-_PARTFILEMETADATA_PART.containing_type = _PARTFILEMETADATA
-_PARTFILEMETADATA_PART.oneofs_by_name['part'].fields.append(
-  _PARTFILEMETADATA_PART.fields_by_name['abs'])
-_PARTFILEMETADATA_PART.fields_by_name['abs'].containing_oneof = _PARTFILEMETADATA_PART.oneofs_by_name['part']
-_PARTFILEMETADATA_PART.oneofs_by_name['part'].fields.append(
-  _PARTFILEMETADATA_PART.fields_by_name['file'])
-_PARTFILEMETADATA_PART.fields_by_name['file'].containing_oneof = _PARTFILEMETADATA_PART.oneofs_by_name['part']
-_PARTFILEMETADATA_PART.oneofs_by_name['part'].fields.append(
-  _PARTFILEMETADATA_PART.fields_by_name['s3'])
-_PARTFILEMETADATA_PART.fields_by_name['s3'].containing_oneof = _PARTFILEMETADATA_PART.oneofs_by_name['part']
-_PARTFILEMETADATA_PART.oneofs_by_name['part'].fields.append(
-  _PARTFILEMETADATA_PART.fields_by_name['gcs'])
-_PARTFILEMETADATA_PART.fields_by_name['gcs'].containing_oneof = _PARTFILEMETADATA_PART.oneofs_by_name['part']
-_PARTFILEMETADATA_S3.fields_by_name['last_modified'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_PARTFILEMETADATA_S3.containing_type = _PARTFILEMETADATA
-_PARTFILEMETADATA_GCS.fields_by_name['last_modified'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_PARTFILEMETADATA_GCS.containing_type = _PARTFILEMETADATA
-_PARTFILEMETADATA_ABS.fields_by_name['last_modified'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_PARTFILEMETADATA_ABS.containing_type = _PARTFILEMETADATA
-_PARTFILEMETADATA_FILE.fields_by_name['last_modified'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_PARTFILEMETADATA_FILE.containing_type = _PARTFILEMETADATA
-_PARTFILEMETADATA.fields_by_name['record_count'].message_type = google_dot_protobuf_dot_wrappers__pb2._UINT64VALUE
-_PARTFILEMETADATA.fields_by_name['byte_count'].message_type = google_dot_protobuf_dot_wrappers__pb2._UINT64VALUE
-_PARTFILEMETADATA.fields_by_name['parts'].message_type = _PARTFILEMETADATA_PART
 DESCRIPTOR.message_types_by_name['Boolean'] = _BOOLEAN
 DESCRIPTOR.message_types_by_name['Byte'] = _BYTE
 DESCRIPTOR.message_types_by_name['Bytes'] = _BYTES
@@ -3474,7 +3130,6 @@ DESCRIPTOR.message_types_by_name['CombinedApacheLog'] = _COMBINEDAPACHELOG
 DESCRIPTOR.message_types_by_name['AdobeFlashMediaServerLog'] = _ADOBEFLASHMEDIASERVERLOG
 DESCRIPTOR.message_types_by_name['Statistics'] = _STATISTICS
 DESCRIPTOR.message_types_by_name['UpdatePolicy'] = _UPDATEPOLICY
-DESCRIPTOR.message_types_by_name['PartFileMetadata'] = _PARTFILEMETADATA
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Boolean = _reflection.GeneratedProtocolMessageType('Boolean', (_message.Message,), {
@@ -3664,11 +3319,19 @@ Map = _reflection.GeneratedProtocolMessageType('Map', (_message.Message,), {
 _sym_db.RegisterMessage(Map)
 
 Schema = _reflection.GeneratedProtocolMessageType('Schema', (_message.Message,), {
+
+  'List' : _reflection.GeneratedProtocolMessageType('List', (_message.Message,), {
+    'DESCRIPTOR' : _SCHEMA_LIST,
+    '__module__' : 'ascend.protos.schema.schema_pb2'
+    # @@protoc_insertion_point(class_scope:schema.Schema.List)
+    })
+  ,
   'DESCRIPTOR' : _SCHEMA,
   '__module__' : 'ascend.protos.schema.schema_pb2'
   # @@protoc_insertion_point(class_scope:schema.Schema)
   })
 _sym_db.RegisterMessage(Schema)
+_sym_db.RegisterMessage(Schema.List)
 
 AbsList = _reflection.GeneratedProtocolMessageType('AbsList', (_message.Message,), {
   'DESCRIPTOR' : _ABSLIST,
@@ -3833,53 +3496,6 @@ _sym_db.RegisterMessage(UpdatePolicy)
 _sym_db.RegisterMessage(UpdatePolicy.Error)
 _sym_db.RegisterMessage(UpdatePolicy.DropTable)
 _sym_db.RegisterMessage(UpdatePolicy.AlterTable)
-
-PartFileMetadata = _reflection.GeneratedProtocolMessageType('PartFileMetadata', (_message.Message,), {
-
-  'Part' : _reflection.GeneratedProtocolMessageType('Part', (_message.Message,), {
-    'DESCRIPTOR' : _PARTFILEMETADATA_PART,
-    '__module__' : 'ascend.protos.schema.schema_pb2'
-    # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.Part)
-    })
-  ,
-
-  'S3' : _reflection.GeneratedProtocolMessageType('S3', (_message.Message,), {
-    'DESCRIPTOR' : _PARTFILEMETADATA_S3,
-    '__module__' : 'ascend.protos.schema.schema_pb2'
-    # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.S3)
-    })
-  ,
-
-  'Gcs' : _reflection.GeneratedProtocolMessageType('Gcs', (_message.Message,), {
-    'DESCRIPTOR' : _PARTFILEMETADATA_GCS,
-    '__module__' : 'ascend.protos.schema.schema_pb2'
-    # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.Gcs)
-    })
-  ,
-
-  'Abs' : _reflection.GeneratedProtocolMessageType('Abs', (_message.Message,), {
-    'DESCRIPTOR' : _PARTFILEMETADATA_ABS,
-    '__module__' : 'ascend.protos.schema.schema_pb2'
-    # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.Abs)
-    })
-  ,
-
-  'File' : _reflection.GeneratedProtocolMessageType('File', (_message.Message,), {
-    'DESCRIPTOR' : _PARTFILEMETADATA_FILE,
-    '__module__' : 'ascend.protos.schema.schema_pb2'
-    # @@protoc_insertion_point(class_scope:schema.PartFileMetadata.File)
-    })
-  ,
-  'DESCRIPTOR' : _PARTFILEMETADATA,
-  '__module__' : 'ascend.protos.schema.schema_pb2'
-  # @@protoc_insertion_point(class_scope:schema.PartFileMetadata)
-  })
-_sym_db.RegisterMessage(PartFileMetadata)
-_sym_db.RegisterMessage(PartFileMetadata.Part)
-_sym_db.RegisterMessage(PartFileMetadata.S3)
-_sym_db.RegisterMessage(PartFileMetadata.Gcs)
-_sym_db.RegisterMessage(PartFileMetadata.Abs)
-_sym_db.RegisterMessage(PartFileMetadata.File)
 
 
 # @@protoc_insertion_point(module_scope)

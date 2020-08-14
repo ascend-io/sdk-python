@@ -3,8 +3,6 @@ syntax = "proto3";
 package schema;
 
 
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
 import "ascend/protos/ascend/ascend.proto";
 
 message Boolean {
@@ -100,6 +98,10 @@ message Schema {
   }
   reserved 12;
   reserved "date_time";
+
+  message List {
+    repeated Schema schema = 1;
+  }
 }
 
 message AbsList {
@@ -173,6 +175,7 @@ message BqListDatasets {
 message ImmediateList {
   String name = 1;
   String sha = 2;
+  Long size = 3;
 }
 
 message MsSqlServerListPartitions {
@@ -413,52 +416,3 @@ message UpdatePolicy {
   }
 }
 
-message PartFileMetadata {
-  message Part {
-    google.protobuf.UInt64Value record_count = 1;
-    google.protobuf.UInt64Value byte_count = 2;
-    oneof part {
-      // Indexes less than 12 should used if they are unreserved
-      Abs abs = 12;
-      File file = 13;
-      S3 s3 = 14;
-      Gcs gcs = 15;
-    }
-  }
-
-  message S3 {
-    string bucket = 1;
-    string object = 2;
-    string etag = 3;
-    google.protobuf.Timestamp last_modified = 4;
-  }
-
-  message Gcs {
-    string bucket = 1;
-    string object = 2;
-    string md5 = 3;
-    google.protobuf.Timestamp last_modified = 4;
-  }
-
-  message Abs {
-    string account = 1;
-    string container = 2;
-    string blob = 3;
-    string md5 = 4;
-    string etag = 6;
-    google.protobuf.Timestamp last_modified = 5;
-  }
-
-  message File {
-    string path = 1;
-    google.protobuf.Timestamp last_modified = 2;
-  }
-
-  string metadata_content_type = 1;
-  uint32 part_count = 2;
-  string part_content_type = 3;
-  string part_content_encoding = 4;
-  google.protobuf.UInt64Value record_count = 5;
-  google.protobuf.UInt64Value byte_count = 6;
-  repeated Part parts = 7;
-}

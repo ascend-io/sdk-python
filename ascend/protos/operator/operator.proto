@@ -36,6 +36,22 @@ message Granularity {
   }
 }
 
+message RecursionSpecification {
+  message RetentionPolicy {
+    message All {}
+    message LastN {
+      int32 n = 1;
+    }
+    oneof details {
+      All all = 1;
+      LastN last_n = 2;
+    }
+  }
+
+  google.protobuf.Int32Value seed_data_index = 1;
+  RetentionPolicy retention_policy = 2;
+}
+
 message InstanceType {
   message Small {}
   message Medium {}
@@ -61,8 +77,8 @@ message Reduction {
 
     // map from input index to partition spec
     map<int32, PartitionSpecification> partition_by = 1;
+    RecursionSpecification recursion_specification = 2;
   }
-
   oneof reduction {
     Full full = 1;
     NoReduction no_reduction = 2;
