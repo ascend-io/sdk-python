@@ -4,6 +4,7 @@ package io;
 
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
 import "ascend/protos/ascend/ascend.proto";
 import "ascend/protos/content_encoding/content_encoding.proto";
 import "ascend/protos/format/format.proto";
@@ -363,7 +364,7 @@ message Function {
       Container container = 1;
     }
 
-    function.Executable executable = 1;
+    Executable executable = 1;
     CredentialsConfiguration credentials_configuration = 2; // absence means no credentials for the container
   }
 
@@ -428,4 +429,28 @@ message Manifest {
 
   string name = 1;
   Format format = 2;
+}
+
+message Code {
+  message Source {
+    message Location {
+      io.Container container = 1;
+      pattern.Pattern pattern = 2;
+      google.protobuf.Timestamp manual_refresh_time = 3;
+    }
+    oneof source {
+      string inline = 2;
+      Location location = 3;
+    }
+  }
+
+  function.Code.Language language = 1;
+  Source source = 2;
+  function.Environment environment = 3;
+}
+
+message Executable {
+  oneof executable {
+    Code code = 1;
+  }
 }

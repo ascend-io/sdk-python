@@ -6,7 +6,6 @@ package operator;
 import "google/protobuf/wrappers.proto";
 import "ascend/protos/ascend/ascend.proto";
 import "ascend/protos/format/format.proto";
-import "ascend/protos/function/function.proto";
 import "ascend/protos/io/io.proto";
 import "ascend/protos/schema/schema.proto";
 
@@ -102,7 +101,7 @@ message Spark {
   }
 
   message Function {
-    function.Executable executable = 1;
+    io.Executable executable = 1;
     Reduction reduction = 2;
     io.Function.CredentialsConfiguration credentials_configuration = 3;
     JobConfiguration job_configuration = 4;
