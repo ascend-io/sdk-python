@@ -402,6 +402,9 @@ OperatorTransforms = MappingProxyType({
                     'inline': {
                         TRANSFORM_KEY: PySpark
                     },
+                    'location': {
+                        'container': ContainerTransforms,
+                    },
                 },
             },
         },
