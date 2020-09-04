@@ -199,28 +199,14 @@ class Client(object):
             pub_list
         ))
 
-    def list_accessible_credentials(self):
-        raw_resp = self.session.get('credentials/accessible', service='authz')
-        creds_list = raw_resp['data']
-
-        return list(map(
-            CredentialEntry.from_json,
-            creds_list
-        ))
-
     def create_credential_entry(self, org_id, entry: 'CredentialEntry') -> 'CredentialEntry':
         payload = entry.get_creation_payload()
         sh.debug(f'create payload: {payload}')
         resp = self.session.post(
-            f'credentials/organizations/{org_id}/roles/{entry.role_uuid}/vault',
-            payload,
-            service='authz')
+            f'organizations/{org_id}/vault',
+            payload)
         sh.debug(f'create resp: {resp}')
         return CredentialEntry.from_json(resp['data'])
-
-    def lookup_credential_name(self, cred_id) -> str:
-        resp = self.session.get(f'credentials/lookup?credentialId={cred_id}', service='authz')
-        return resp['data']['name']
 
     def get_lineage(self):
         return LineageGraph(self.session)

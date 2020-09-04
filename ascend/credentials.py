@@ -61,7 +61,6 @@ class Credential:
 @dataclass
 class CredentialEntry:
     proto: resource_pb2.CredentialEntry
-    role_uuid: str
 
     @property
     def credential(self):
@@ -78,18 +77,17 @@ class CredentialEntry:
         return d
 
     @staticmethod
-    def from_credential(cred: Credential, role_uuid: str, name: str):
+    def from_credential(cred: Credential, name: str):
         d = {
             'credential': MessageToDict(cred.proto),
             'name': name
         }
         proto = resource_pb2.CredentialEntry()
         ParseDict(d, proto)
-        return CredentialEntry(proto, role_uuid)
+        return CredentialEntry(proto)
 
     @staticmethod
     def from_json(payload):
-        role_uuid = payload['ownerRoleId']
         proto = resource_pb2.CredentialEntry()
         ParseDict(payload, proto, ignore_unknown_fields=True)
-        return CredentialEntry(proto=proto, role_uuid=role_uuid)
+        return CredentialEntry(proto=proto)
