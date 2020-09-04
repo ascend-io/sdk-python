@@ -436,7 +436,6 @@ message Code {
     message Location {
       io.Container container = 1;
       pattern.Pattern pattern = 2;
-      google.protobuf.Timestamp manual_refresh_time = 3;
     }
     oneof source {
       string inline = 2;
