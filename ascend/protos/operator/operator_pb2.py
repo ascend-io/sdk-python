@@ -14,7 +14,6 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
 from ascend.protos.ascend import ascend_pb2 as ascend_dot_protos_dot_ascend_dot_ascend__pb2
 from ascend.protos.format import format_pb2 as ascend_dot_protos_dot_format_dot_format__pb2
-from ascend.protos.function import function_pb2 as ascend_dot_protos_dot_function_dot_function__pb2
 from ascend.protos.io import io_pb2 as ascend_dot_protos_dot_io_dot_io__pb2
 from ascend.protos.schema import schema_pb2 as ascend_dot_protos_dot_schema_dot_schema__pb2
 
@@ -25,9 +24,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n%ascend/protos/operator/operator.proto\x12\x08operator\x1a\x1egoogle/protobuf/wrappers.proto\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/format/format.proto\x1a%ascend/protos/function/function.proto\x1a\x19\x61scend/protos/io/io.proto\x1a!ascend/protos/schema/schema.proto\"\xb5\x03\n\x0bGranularity\x12*\n\x04time\x18\x01 \x01(\x0b\x32\x1a.operator.Granularity.TimeH\x00\x1a\xea\x02\n\x04Time\x12/\n\x04\x61uto\x18\x01 \x01(\x0b\x32\x1f.operator.Granularity.Time.AutoH\x00\x12/\n\x04year\x18\x02 \x01(\x0b\x32\x1f.operator.Granularity.Time.YearH\x00\x12\x31\n\x05month\x18\x03 \x01(\x0b\x32 .operator.Granularity.Time.MonthH\x00\x12-\n\x03\x64\x61y\x18\x04 \x01(\x0b\x32\x1e.operator.Granularity.Time.DayH\x00\x12/\n\x04hour\x18\x05 \x01(\x0b\x32\x1f.operator.Granularity.Time.HourH\x00\x12\x33\n\x06minute\x18\x06 \x01(\x0b\x32!.operator.Granularity.Time.MinuteH\x00\x1a\x06\n\x04\x41uto\x1a\x06\n\x04Year\x1a\x07\n\x05Month\x1a\x05\n\x03\x44\x61y\x1a\x06\n\x04Hour\x1a\x08\n\x06MinuteB\x06\n\x04timeB\r\n\x0bgranularity\"\xe3\x02\n\x16RecursionSpecification\x12\x34\n\x0fseed_data_index\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12J\n\x10retention_policy\x18\x02 \x01(\x0b\x32\x30.operator.RecursionSpecification.RetentionPolicy\x1a\xc6\x01\n\x0fRetentionPolicy\x12\x43\n\x03\x61ll\x18\x01 \x01(\x0b\x32\x34.operator.RecursionSpecification.RetentionPolicy.AllH\x00\x12H\n\x06last_n\x18\x02 \x01(\x0b\x32\x36.operator.RecursionSpecification.RetentionPolicy.LastNH\x00\x1a\x05\n\x03\x41ll\x1a\x12\n\x05LastN\x12\t\n\x01n\x18\x01 \x01(\x05\x42\t\n\x07\x64\x65tails\"\xff\x01\n\x0cInstanceType\x12-\n\x05small\x18\x01 \x01(\x0b\x32\x1c.operator.InstanceType.SmallH\x00\x12/\n\x06medium\x18\x02 \x01(\x0b\x32\x1d.operator.InstanceType.MediumH\x00\x12-\n\x05large\x18\x03 \x01(\x0b\x32\x1c.operator.InstanceType.LargeH\x00\x12/\n\x06xlarge\x18\x04 \x01(\x0b\x32\x1d.operator.InstanceType.XLargeH\x00\x1a\x07\n\x05Small\x1a\x08\n\x06Medium\x1a\x07\n\x05Large\x1a\x08\n\x06XLargeB\t\n\x07\x64\x65tails\"\x93\x04\n\tReduction\x12(\n\x04\x66ull\x18\x01 \x01(\x0b\x32\x18.operator.Reduction.FullH\x00\x12\x37\n\x0cno_reduction\x18\x02 \x01(\x0b\x32\x1f.operator.Reduction.NoReductionH\x00\x12.\n\x07partial\x18\x03 \x01(\x0b\x32\x1b.operator.Reduction.PartialH\x00\x1a\r\n\x0bNoReduction\x1a\x06\n\x04\x46ull\x1a\xce\x02\n\x07Partial\x12\x42\n\x0cpartition_by\x18\x01 \x03(\x0b\x32,.operator.Reduction.Partial.PartitionByEntry\x12\x41\n\x17recursion_specification\x18\x02 \x01(\x0b\x32 .operator.RecursionSpecification\x1aT\n\x16PartitionSpecification\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12*\n\x0bgranularity\x18\x02 \x01(\x0b\x32\x15.operator.Granularity\x1a\x66\n\x10PartitionByEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32\x32.operator.Reduction.Partial.PartitionSpecification:\x02\x38\x01\x42\x0b\n\treduction\"^\n\x03Sql\x1aW\n\x05Query\x12\x0b\n\x03sql\x18\x01 \x01(\t\x12\x41\n\x17spark_job_configuration\x18\x02 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"\xa9\x03\n\x05Spark\x1a\xb9\x01\n\x10JobConfiguration\x12\x37\n\x12\x65xecutor_instances\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x36\n\x16\x65xecutor_instance_type\x18\x02 \x01(\x0b\x32\x16.operator.InstanceType\x12\x34\n\x14\x64river_instance_type\x18\x03 \x01(\x0b\x32\x16.operator.InstanceType\x1a\xe3\x01\n\x08\x46unction\x12(\n\nexecutable\x18\x01 \x01(\x0b\x32\x14.function.Executable\x12&\n\treduction\x18\x02 \x01(\x0b\x32\x13.operator.Reduction\x12H\n\x19\x63redentials_configuration\x18\x03 \x01(\x0b\x32%.io.Function.CredentialsConfiguration\x12;\n\x11job_configuration\x18\x04 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"*\n\x08Identity\x12\x1e\n\x06schema\x18\x01 \x01(\x0b\x32\x0e.schema.Schema\"\xee\x05\n\x08Operator\x12\x30\n\x0e\x61vro_formatter\x18\x02 \x01(\x0b\x32\x16.format.Avro.FormatterH\x00\x12*\n\x0b\x61vro_parser\x18\x03 \x01(\x0b\x32\x13.format.Avro.ParserH\x00\x12*\n\x0bgrok_parser\x18\x04 \x01(\x0b\x32\x13.format.Grok.ParserH\x00\x12\x30\n\x0ejson_formatter\x18\x05 \x01(\x0b\x32\x16.format.Json.FormatterH\x00\x12*\n\x0bjson_parser\x18\x06 \x01(\x0b\x32\x13.format.Json.ParserH\x00\x12\x34\n\x10lambda_formatter\x18\r \x01(\x0b\x32\x18.format.Lambda.FormatterH\x00\x12.\n\rlambda_parser\x18\x0e \x01(\x0b\x32\x15.format.Lambda.ParserH\x00\x12.\n\rorc_formatter\x18\x10 \x01(\x0b\x32\x15.format.Orc.FormatterH\x00\x12\x36\n\x11parquet_formatter\x18\x07 \x01(\x0b\x32\x19.format.Parquet.FormatterH\x00\x12\x30\n\x0eparquet_parser\x18\x08 \x01(\x0b\x32\x16.format.Parquet.ParserH\x00\x12.\n\rxsv_formatter\x18\x0b \x01(\x0b\x32\x15.format.Xsv.FormatterH\x00\x12(\n\nxsv_parser\x18\x0c \x01(\x0b\x32\x12.format.Xsv.ParserH\x00\x12\x32\n\x0espark_function\x18\x0f \x01(\x0b\x32\x18.operator.Spark.FunctionH\x00\x12(\n\tsql_query\x18\x01 \x01(\x0b\x32\x13.operator.Sql.QueryH\x00\x42\t\n\x07\x64\x65tailsJ\x04\x08\t\x10\nJ\x04\x08\n\x10\x0bR\x16user_defined_formatterR\x13user_defined_parserb\x06proto3'
+  serialized_pb=b'\n%ascend/protos/operator/operator.proto\x12\x08operator\x1a\x1egoogle/protobuf/wrappers.proto\x1a!ascend/protos/ascend/ascend.proto\x1a!ascend/protos/format/format.proto\x1a\x19\x61scend/protos/io/io.proto\x1a!ascend/protos/schema/schema.proto\"\xb5\x03\n\x0bGranularity\x12*\n\x04time\x18\x01 \x01(\x0b\x32\x1a.operator.Granularity.TimeH\x00\x1a\xea\x02\n\x04Time\x12/\n\x04\x61uto\x18\x01 \x01(\x0b\x32\x1f.operator.Granularity.Time.AutoH\x00\x12/\n\x04year\x18\x02 \x01(\x0b\x32\x1f.operator.Granularity.Time.YearH\x00\x12\x31\n\x05month\x18\x03 \x01(\x0b\x32 .operator.Granularity.Time.MonthH\x00\x12-\n\x03\x64\x61y\x18\x04 \x01(\x0b\x32\x1e.operator.Granularity.Time.DayH\x00\x12/\n\x04hour\x18\x05 \x01(\x0b\x32\x1f.operator.Granularity.Time.HourH\x00\x12\x33\n\x06minute\x18\x06 \x01(\x0b\x32!.operator.Granularity.Time.MinuteH\x00\x1a\x06\n\x04\x41uto\x1a\x06\n\x04Year\x1a\x07\n\x05Month\x1a\x05\n\x03\x44\x61y\x1a\x06\n\x04Hour\x1a\x08\n\x06MinuteB\x06\n\x04timeB\r\n\x0bgranularity\"\xe3\x02\n\x16RecursionSpecification\x12\x34\n\x0fseed_data_index\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12J\n\x10retention_policy\x18\x02 \x01(\x0b\x32\x30.operator.RecursionSpecification.RetentionPolicy\x1a\xc6\x01\n\x0fRetentionPolicy\x12\x43\n\x03\x61ll\x18\x01 \x01(\x0b\x32\x34.operator.RecursionSpecification.RetentionPolicy.AllH\x00\x12H\n\x06last_n\x18\x02 \x01(\x0b\x32\x36.operator.RecursionSpecification.RetentionPolicy.LastNH\x00\x1a\x05\n\x03\x41ll\x1a\x12\n\x05LastN\x12\t\n\x01n\x18\x01 \x01(\x05\x42\t\n\x07\x64\x65tails\"\xff\x01\n\x0cInstanceType\x12-\n\x05small\x18\x01 \x01(\x0b\x32\x1c.operator.InstanceType.SmallH\x00\x12/\n\x06medium\x18\x02 \x01(\x0b\x32\x1d.operator.InstanceType.MediumH\x00\x12-\n\x05large\x18\x03 \x01(\x0b\x32\x1c.operator.InstanceType.LargeH\x00\x12/\n\x06xlarge\x18\x04 \x01(\x0b\x32\x1d.operator.InstanceType.XLargeH\x00\x1a\x07\n\x05Small\x1a\x08\n\x06Medium\x1a\x07\n\x05Large\x1a\x08\n\x06XLargeB\t\n\x07\x64\x65tails\"\x93\x04\n\tReduction\x12(\n\x04\x66ull\x18\x01 \x01(\x0b\x32\x18.operator.Reduction.FullH\x00\x12\x37\n\x0cno_reduction\x18\x02 \x01(\x0b\x32\x1f.operator.Reduction.NoReductionH\x00\x12.\n\x07partial\x18\x03 \x01(\x0b\x32\x1b.operator.Reduction.PartialH\x00\x1a\r\n\x0bNoReduction\x1a\x06\n\x04\x46ull\x1a\xce\x02\n\x07Partial\x12\x42\n\x0cpartition_by\x18\x01 \x03(\x0b\x32,.operator.Reduction.Partial.PartitionByEntry\x12\x41\n\x17recursion_specification\x18\x02 \x01(\x0b\x32 .operator.RecursionSpecification\x1aT\n\x16PartitionSpecification\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12*\n\x0bgranularity\x18\x02 \x01(\x0b\x32\x15.operator.Granularity\x1a\x66\n\x10PartitionByEntry\x12\x0b\n\x03key\x18\x01 \x01(\x05\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32\x32.operator.Reduction.Partial.PartitionSpecification:\x02\x38\x01\x42\x0b\n\treduction\"^\n\x03Sql\x1aW\n\x05Query\x12\x0b\n\x03sql\x18\x01 \x01(\t\x12\x41\n\x17spark_job_configuration\x18\x02 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"\xa3\x03\n\x05Spark\x1a\xb9\x01\n\x10JobConfiguration\x12\x37\n\x12\x65xecutor_instances\x18\x01 \x01(\x0b\x32\x1b.google.protobuf.Int32Value\x12\x36\n\x16\x65xecutor_instance_type\x18\x02 \x01(\x0b\x32\x16.operator.InstanceType\x12\x34\n\x14\x64river_instance_type\x18\x03 \x01(\x0b\x32\x16.operator.InstanceType\x1a\xdd\x01\n\x08\x46unction\x12\"\n\nexecutable\x18\x01 \x01(\x0b\x32\x0e.io.Executable\x12&\n\treduction\x18\x02 \x01(\x0b\x32\x13.operator.Reduction\x12H\n\x19\x63redentials_configuration\x18\x03 \x01(\x0b\x32%.io.Function.CredentialsConfiguration\x12;\n\x11job_configuration\x18\x04 \x01(\x0b\x32 .operator.Spark.JobConfiguration\"*\n\x08Identity\x12\x1e\n\x06schema\x18\x01 \x01(\x0b\x32\x0e.schema.Schema\"\xee\x05\n\x08Operator\x12\x30\n\x0e\x61vro_formatter\x18\x02 \x01(\x0b\x32\x16.format.Avro.FormatterH\x00\x12*\n\x0b\x61vro_parser\x18\x03 \x01(\x0b\x32\x13.format.Avro.ParserH\x00\x12*\n\x0bgrok_parser\x18\x04 \x01(\x0b\x32\x13.format.Grok.ParserH\x00\x12\x30\n\x0ejson_formatter\x18\x05 \x01(\x0b\x32\x16.format.Json.FormatterH\x00\x12*\n\x0bjson_parser\x18\x06 \x01(\x0b\x32\x13.format.Json.ParserH\x00\x12\x34\n\x10lambda_formatter\x18\r \x01(\x0b\x32\x18.format.Lambda.FormatterH\x00\x12.\n\rlambda_parser\x18\x0e \x01(\x0b\x32\x15.format.Lambda.ParserH\x00\x12.\n\rorc_formatter\x18\x10 \x01(\x0b\x32\x15.format.Orc.FormatterH\x00\x12\x36\n\x11parquet_formatter\x18\x07 \x01(\x0b\x32\x19.format.Parquet.FormatterH\x00\x12\x30\n\x0eparquet_parser\x18\x08 \x01(\x0b\x32\x16.format.Parquet.ParserH\x00\x12.\n\rxsv_formatter\x18\x0b \x01(\x0b\x32\x15.format.Xsv.FormatterH\x00\x12(\n\nxsv_parser\x18\x0c \x01(\x0b\x32\x12.format.Xsv.ParserH\x00\x12\x32\n\x0espark_function\x18\x0f \x01(\x0b\x32\x18.operator.Spark.FunctionH\x00\x12(\n\tsql_query\x18\x01 \x01(\x0b\x32\x13.operator.Sql.QueryH\x00\x42\t\n\x07\x64\x65tailsJ\x04\x08\t\x10\nJ\x04\x08\n\x10\x0bR\x16user_defined_formatterR\x13user_defined_parserb\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,ascend_dot_protos_dot_format_dot_format__pb2.DESCRIPTOR,ascend_dot_protos_dot_function_dot_function__pb2.DESCRIPTOR,ascend_dot_protos_dot_io_dot_io__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,ascend_dot_protos_dot_ascend_dot_ascend__pb2.DESCRIPTOR,ascend_dot_protos_dot_format_dot_format__pb2.DESCRIPTOR,ascend_dot_protos_dot_io_dot_io__pb2.DESCRIPTOR,ascend_dot_protos_dot_schema_dot_schema__pb2.DESCRIPTOR,])
 
 
 
@@ -52,8 +51,8 @@ _GRANULARITY_TIME_AUTO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=621,
-  serialized_end=627,
+  serialized_start=582,
+  serialized_end=588,
 )
 
 _GRANULARITY_TIME_YEAR = _descriptor.Descriptor(
@@ -76,8 +75,8 @@ _GRANULARITY_TIME_YEAR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=629,
-  serialized_end=635,
+  serialized_start=590,
+  serialized_end=596,
 )
 
 _GRANULARITY_TIME_MONTH = _descriptor.Descriptor(
@@ -100,8 +99,8 @@ _GRANULARITY_TIME_MONTH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=637,
-  serialized_end=644,
+  serialized_start=598,
+  serialized_end=605,
 )
 
 _GRANULARITY_TIME_DAY = _descriptor.Descriptor(
@@ -124,8 +123,8 @@ _GRANULARITY_TIME_DAY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=646,
-  serialized_end=651,
+  serialized_start=607,
+  serialized_end=612,
 )
 
 _GRANULARITY_TIME_HOUR = _descriptor.Descriptor(
@@ -148,8 +147,8 @@ _GRANULARITY_TIME_HOUR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=653,
-  serialized_end=659,
+  serialized_start=614,
+  serialized_end=620,
 )
 
 _GRANULARITY_TIME_MINUTE = _descriptor.Descriptor(
@@ -172,8 +171,8 @@ _GRANULARITY_TIME_MINUTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=661,
-  serialized_end=669,
+  serialized_start=622,
+  serialized_end=630,
 )
 
 _GRANULARITY_TIME = _descriptor.Descriptor(
@@ -243,8 +242,8 @@ _GRANULARITY_TIME = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=315,
-  serialized_end=677,
+  serialized_start=276,
+  serialized_end=638,
 )
 
 _GRANULARITY = _descriptor.Descriptor(
@@ -279,8 +278,8 @@ _GRANULARITY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=255,
-  serialized_end=692,
+  serialized_start=216,
+  serialized_end=653,
 )
 
 
@@ -304,8 +303,8 @@ _RECURSIONSPECIFICATION_RETENTIONPOLICY_ALL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1014,
-  serialized_end=1019,
+  serialized_start=975,
+  serialized_end=980,
 )
 
 _RECURSIONSPECIFICATION_RETENTIONPOLICY_LASTN = _descriptor.Descriptor(
@@ -335,8 +334,8 @@ _RECURSIONSPECIFICATION_RETENTIONPOLICY_LASTN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1021,
-  serialized_end=1039,
+  serialized_start=982,
+  serialized_end=1000,
 )
 
 _RECURSIONSPECIFICATION_RETENTIONPOLICY = _descriptor.Descriptor(
@@ -378,8 +377,8 @@ _RECURSIONSPECIFICATION_RETENTIONPOLICY = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=852,
-  serialized_end=1050,
+  serialized_start=813,
+  serialized_end=1011,
 )
 
 _RECURSIONSPECIFICATION = _descriptor.Descriptor(
@@ -416,8 +415,8 @@ _RECURSIONSPECIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=695,
-  serialized_end=1050,
+  serialized_start=656,
+  serialized_end=1011,
 )
 
 
@@ -441,8 +440,8 @@ _INSTANCETYPE_SMALL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1261,
-  serialized_end=1268,
+  serialized_start=1222,
+  serialized_end=1229,
 )
 
 _INSTANCETYPE_MEDIUM = _descriptor.Descriptor(
@@ -465,8 +464,8 @@ _INSTANCETYPE_MEDIUM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1270,
-  serialized_end=1278,
+  serialized_start=1231,
+  serialized_end=1239,
 )
 
 _INSTANCETYPE_LARGE = _descriptor.Descriptor(
@@ -489,8 +488,8 @@ _INSTANCETYPE_LARGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1280,
-  serialized_end=1287,
+  serialized_start=1241,
+  serialized_end=1248,
 )
 
 _INSTANCETYPE_XLARGE = _descriptor.Descriptor(
@@ -513,8 +512,8 @@ _INSTANCETYPE_XLARGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1289,
-  serialized_end=1297,
+  serialized_start=1250,
+  serialized_end=1258,
 )
 
 _INSTANCETYPE = _descriptor.Descriptor(
@@ -570,8 +569,8 @@ _INSTANCETYPE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1053,
-  serialized_end=1308,
+  serialized_start=1014,
+  serialized_end=1269,
 )
 
 
@@ -595,8 +594,8 @@ _REDUCTION_NOREDUCTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1471,
-  serialized_end=1484,
+  serialized_start=1432,
+  serialized_end=1445,
 )
 
 _REDUCTION_FULL = _descriptor.Descriptor(
@@ -619,8 +618,8 @@ _REDUCTION_FULL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1486,
-  serialized_end=1492,
+  serialized_start=1447,
+  serialized_end=1453,
 )
 
 _REDUCTION_PARTIAL_PARTITIONSPECIFICATION = _descriptor.Descriptor(
@@ -657,8 +656,8 @@ _REDUCTION_PARTIAL_PARTITIONSPECIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1641,
-  serialized_end=1725,
+  serialized_start=1602,
+  serialized_end=1686,
 )
 
 _REDUCTION_PARTIAL_PARTITIONBYENTRY = _descriptor.Descriptor(
@@ -695,8 +694,8 @@ _REDUCTION_PARTIAL_PARTITIONBYENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1727,
-  serialized_end=1829,
+  serialized_start=1688,
+  serialized_end=1790,
 )
 
 _REDUCTION_PARTIAL = _descriptor.Descriptor(
@@ -733,8 +732,8 @@ _REDUCTION_PARTIAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1495,
-  serialized_end=1829,
+  serialized_start=1456,
+  serialized_end=1790,
 )
 
 _REDUCTION = _descriptor.Descriptor(
@@ -783,8 +782,8 @@ _REDUCTION = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1311,
-  serialized_end=1842,
+  serialized_start=1272,
+  serialized_end=1803,
 )
 
 
@@ -822,8 +821,8 @@ _SQL_QUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1851,
-  serialized_end=1938,
+  serialized_start=1812,
+  serialized_end=1899,
 )
 
 _SQL = _descriptor.Descriptor(
@@ -846,8 +845,8 @@ _SQL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1844,
-  serialized_end=1938,
+  serialized_start=1805,
+  serialized_end=1899,
 )
 
 
@@ -892,8 +891,8 @@ _SPARK_JOBCONFIGURATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1951,
-  serialized_end=2136,
+  serialized_start=1912,
+  serialized_end=2097,
 )
 
 _SPARK_FUNCTION = _descriptor.Descriptor(
@@ -944,8 +943,8 @@ _SPARK_FUNCTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2139,
-  serialized_end=2366,
+  serialized_start=2100,
+  serialized_end=2321,
 )
 
 _SPARK = _descriptor.Descriptor(
@@ -968,8 +967,8 @@ _SPARK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1941,
-  serialized_end=2366,
+  serialized_start=1902,
+  serialized_end=2321,
 )
 
 
@@ -1000,8 +999,8 @@ _IDENTITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2368,
-  serialized_end=2410,
+  serialized_start=2323,
+  serialized_end=2365,
 )
 
 
@@ -1128,8 +1127,8 @@ _OPERATOR = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2413,
-  serialized_end=3163,
+  serialized_start=2368,
+  serialized_end=3118,
 )
 
 _GRANULARITY_TIME_AUTO.containing_type = _GRANULARITY_TIME
@@ -1227,7 +1226,7 @@ _SPARK_JOBCONFIGURATION.fields_by_name['executor_instances'].message_type = goog
 _SPARK_JOBCONFIGURATION.fields_by_name['executor_instance_type'].message_type = _INSTANCETYPE
 _SPARK_JOBCONFIGURATION.fields_by_name['driver_instance_type'].message_type = _INSTANCETYPE
 _SPARK_JOBCONFIGURATION.containing_type = _SPARK
-_SPARK_FUNCTION.fields_by_name['executable'].message_type = ascend_dot_protos_dot_function_dot_function__pb2._EXECUTABLE
+_SPARK_FUNCTION.fields_by_name['executable'].message_type = ascend_dot_protos_dot_io_dot_io__pb2._EXECUTABLE
 _SPARK_FUNCTION.fields_by_name['reduction'].message_type = _REDUCTION
 _SPARK_FUNCTION.fields_by_name['credentials_configuration'].message_type = ascend_dot_protos_dot_io_dot_io__pb2._FUNCTION_CREDENTIALSCONFIGURATION
 _SPARK_FUNCTION.fields_by_name['job_configuration'].message_type = _SPARK_JOBCONFIGURATION
