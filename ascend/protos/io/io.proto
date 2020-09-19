@@ -4,7 +4,6 @@ package io;
 
 
 import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
 import "ascend/protos/ascend/ascend.proto";
 import "ascend/protos/content_encoding/content_encoding.proto";
 import "ascend/protos/format/format.proto";
@@ -43,7 +42,6 @@ message Aws {
   message S3 {
     message Container {
 
-      Aws.Credentials credentials = 1;
       io.Credentials.Id credential_id = 10;
       string region = 2;
       string bucket = 3;
@@ -54,6 +52,8 @@ message Aws {
       string location_suffix = 9;
       Manifest manifest = 7;
       bool write_part_files = 11;
+      reserved 1;
+      reserved "credentials";
     }
 
     message Location {
@@ -70,7 +70,6 @@ message Aws {
     }
 
     message Container {
-      Credentials credentials = 1;
       io.Credentials.Id credential_id = 8;
       string jdbc_url = 2;
       Aws.S3.Container staging_container = 4;
@@ -79,8 +78,8 @@ message Aws {
       schema.UpdatePolicy update_policy = 7;
       string iam_role_arn = 9;
 
-      reserved 3;
-      reserved "no_egress_proxy";
+      reserved 1, 3;
+      reserved "credentials", "no_egress_proxy";
     }
 
     message Location {
@@ -116,7 +115,6 @@ message Azure {
   message Abs {
     message Container {
       string account_name = 1;
-      Azure.Credentials credentials = 2;
       io.Credentials.Id credential_id = 3;
       string container = 4; // this is the Azure Blob Storage Container name
       string prefix = 5;
@@ -126,6 +124,8 @@ message Azure {
       string location_suffix = 9;
       Manifest manifest = 10;
       bool write_part_files = 11;
+      reserved 2;
+      reserved "credentials";
     }
     message Location {
       Container container = 1;
@@ -155,13 +155,14 @@ message Gcp {
 
   message BigQuery {
     message Container {
-      Credentials credentials = 1;
       io.Credentials.Id credential_id = 7;
       string project = 2;
       string dataset_prefix = 3;
       string location_template = 4;
       pattern.Pattern partition_pattern = 5;
       Gcs.Container staging_container = 6;
+      reserved 1;
+      reserved "credentials";
     }
 
     message Location {
@@ -177,7 +178,6 @@ message Gcp {
 
   message Gcs {
     message Container {
-      Credentials credentials = 1;
       io.Credentials.Id credential_id = 9;
       string bucket = 2;
       string prefix = 3;
@@ -187,6 +187,8 @@ message Gcp {
       string location_suffix = 8;
       Manifest manifest = 6;
       bool write_part_files = 10;
+      reserved 1;
+      reserved "credentials";
     }
 
     message Location {
@@ -225,7 +227,6 @@ message MsSqlServer {
   }
 
   message Container {
-    Credentials credentials = 1;
     io.Credentials.Id credential_id = 2;
     string server_name = 3;
     int32 port = 4;
@@ -236,6 +237,8 @@ message MsSqlServer {
     }
     string location_template = 8;
     schema.UpdatePolicy update_policy = 9;
+    reserved 1;
+    reserved "credentials";
   }
 
   message Location {
@@ -254,13 +257,14 @@ message Mysql {
 
   message Container {
 
-    Credentials credentials = 1;
     io.Credentials.Id credential_id = 6;
     string host = 2;
     int32 port = 3;
     string database = 4;
     string location_template = 5;
     bool disable_tls = 7;
+    reserved 1;
+    reserved "credentials";
   }
 
   message Location {
@@ -273,7 +277,6 @@ message Mysql {
   message Partition {
 
     message Container {
-      Credentials credentials = 1;
       io.Credentials.Id credential_id = 7;
       string host = 2;
       int32 port = 3;
@@ -281,6 +284,8 @@ message Mysql {
       string table = 5;
       string location_template = 6;
       bool disable_tls = 8;
+      reserved 1;
+      reserved "credentials";
     }
 
     message Location {
@@ -298,7 +303,6 @@ message Snowflake {
   }
 
   message Container {
-    Credentials credentials = 1;
     io.Credentials.Id credential_id = 2;
     schema.UpdatePolicy update_policy = 3;
 
@@ -313,6 +317,8 @@ message Snowflake {
     string warehouse = 9;
     string database = 10;
     string snowflake_schema = 11; // snowflake schema is like a namespace under database
+    reserved 1;
+    reserved "credentials";
   }
 
   message Location {
@@ -352,7 +358,8 @@ message Function {
 
   message CredentialsConfiguration {
     io.Credentials.Id id = 1;
-    Credentials credentials = 2;
+    reserved 2;
+    reserved "credentials";
   }
 
   message Container {

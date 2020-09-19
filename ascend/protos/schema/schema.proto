@@ -415,4 +415,3 @@ message UpdatePolicy {
     AlterTable alter_table = 3;
   }
 }
-
