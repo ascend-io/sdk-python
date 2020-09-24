@@ -1,0 +1,33 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "format_proto",
+    srcs = ["format.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//ascend/protos/ascend",
+        "//ascend/protos/schema",
+        "//ascend/protos/text",
+    ],
+)
+
+go_proto_library(
+    name = "format_go_proto",
+    importpath = "github.com/ascend-io/source/backend/notebook/jupyter/sdk-python/ascend/protos/format",
+    proto = ":format_proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//ascend/protos/ascend:go_default_library",
+        "//ascend/protos/schema:go_default_library",
+        "//ascend/protos/text:go_default_library",
+    ],
+)
+
+go_library(
+    name = "go_default_library",
+    embed = [":format_go_proto"],
+    importpath = "github.com/ascend-io/source/backend/notebook/jupyter/sdk-python/ascend/protos/format",
+    visibility = ["//visibility:public"],
+)
