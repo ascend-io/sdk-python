@@ -810,8 +810,6 @@ class ResourceSession:
         sh.debug(f'origin: {res_path}')
         creds_snippet = {}
         self._get(res_path, res_path, options, creds_snippet)
-        if options.output is not None:
-            sys.stdout.write(ascend.credentials.dump_credentials(creds_snippet))
 
     def _get(self, origin, res_path: ResourcePath, options, creds_snippet):
         # load resources for path

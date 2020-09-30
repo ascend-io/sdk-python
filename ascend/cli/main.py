@@ -29,7 +29,8 @@ config_flag = cli.Flag("--config", help="yaml file to render resource definition
 delete_flag = cli.Flag("--delete", "-d", default=None, required=False, action="store_true",
                        help="Delete resources in Ascend that do not exist in the resource "
                             "definition")
-credentials_flag = cli.Flag("--credentials", help="Override component credentials file to use")
+credentials_flag = cli.Flag("--credentials",
+                            help="(Deprecated) Override component credentials file to use")
 
 dry_run_flag = cli.Flag("--dry-run", default=False, action="store_true",
                         help="Do not run commands against API (can cause premature failures)")
@@ -113,7 +114,6 @@ class app:
         def action(args):
             with FailureHandler('apply'):
                 client = Client.build(hostname=args.host)
-                creds = credentials.load_credentials(args.credentials)
                 if args.config is not None:
                     config_file = args.config
                     try:
@@ -125,7 +125,7 @@ class app:
                     args.config = {}
 
                 rs = ResourceSession(client, client.get_session())
-                rs.apply(args.resource, creds, args)
+                rs.apply(args.resource, {}, args)
 
     @subcommands.append
     @cli.command_from_block
