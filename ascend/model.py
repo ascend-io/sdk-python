@@ -448,8 +448,10 @@ class DataFeedConnector(Component):
         pubUUID = self.json_definition['pubUUID']
         if pubUUID not in rs.uuid_to_resource:
             payload = self.session.get(f'{self.base_api_path}/{self.resource_id}/pub')['data']
-            pub = component_from_json(payload, self.session)
-            origin_dataflow = rs.get_df(pub.data_service_id, pub.dataflow_id)
+            # workaround for this call sometimes returning public-only data
+            pub_data_service_id = payload.get('orgId') or payload['organization']['id']
+            pub_dataflow_id = payload.get('prjId') or payload['project']['id']
+            origin_dataflow = rs.get_df(pub_data_service_id, pub_dataflow_id)
             # just load the whole dataflow
             rs.load_dataflow(origin_dataflow)
         return rs.uuid_to_resource[pubUUID].resource_ref(rs)
