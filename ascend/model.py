@@ -654,6 +654,8 @@ class WriteConnector(Component):
 
 
 def component_from_json(json_definition, session):
+    if 'organization' not in json_definition:
+        raise ValueError(f'missing organization in json_definition: {json_definition}')
     data_service_id = json_definition['organization']['id']
     dataflow_id = json_definition['project']['id']
     component_id = json_definition['id']
