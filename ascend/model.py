@@ -450,7 +450,7 @@ class DataFeedConnector(Component):
             payload = self.session.get(f'{self.base_api_path}/{self.resource_id}/pub')['data']
             # workaround for this call sometimes returning public-only data
             pub_data_service_id = payload.get('orgId') or payload['organization']['id']
-            pub_dataflow_id = payload.get('prjId') or payload['project']['id']
+            pub_dataflow_id = payload.get('prjName') or payload['project']['id']
             origin_dataflow = rs.get_df(pub_data_service_id, pub_dataflow_id)
             # just load the whole dataflow
             rs.load_dataflow(origin_dataflow)
