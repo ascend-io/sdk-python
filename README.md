@@ -1,3 +1,7 @@
+## NOTE: This SDK is deprecated and has been replaced by a newer version
+
+For more details on the newer SDK, please see our [documentation](https://developer.ascend.io/docs/python-sdk)
+
 # Ascend SDK for Python
 
 This repo contains the Ascend SDK for Python.
